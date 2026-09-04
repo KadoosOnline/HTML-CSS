@@ -80,9 +80,16 @@
 
 همین حلقه «بنویس، ذخیره کن، تازه کن» تمام روش کار است.
 
-نمونه‌ها بدون دانلود هم قابل دیدن هستند. آدرس هر نمونه، مسیر همان پوشه
-بعد از آدرس سایت است. مثلاً نمونه آخر پروژه نهایی اینجاست:
-[kadoosonline.github.io/HTML-CSS/14-final-project/10-final-project](https://kadoosonline.github.io/HTML-CSS/14-final-project/10-final-project/)
+نمونه‌ها بدون دانلود هم قابل دیدن هستند. صفحه اصلی سایت،
+[kadoosonline.github.io/HTML-CSS](https://kadoosonline.github.io/HTML-CSS/)،
+به نمونه پایانی هر پانزده جلسه لینک دارد.
+
+برای دیدن بقیه نمونه‌ها، مسیر پوشه همان نمونه را به آدرس سایت اضافه کنید.
+مثلاً:
+[kadoosonline.github.io/HTML-CSS/07-flexbox/03-justify-content](https://kadoosonline.github.io/HTML-CSS/07-flexbox/03-justify-content/)
+
+دقت کنید که مسیر باید تا پوشه خودِ نمونه برود، نه فقط تا پوشه جلسه،
+چون هر نمونه یک `index.html` دارد ولی پوشه جلسه ندارد.
 
 ## پیش‌نیازها
 

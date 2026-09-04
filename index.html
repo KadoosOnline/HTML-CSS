@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="دوره طراحی صفحات وب با HTML و CSS در پانزده جلسه، به‌همراه کتاب شانزده‌فصلی دوره. مؤسسه فنی و آموزشی کادوس">
+    <title>دوره طراحی وب با HTML و CSS</title>
+    <link rel="icon" href="book/logokm.png" type="image/png">
+    <style>
+        :root {
+            --primary: #2f4f4f;
+            --primary-dark: #223a3a;
+            --accent: #ff6347;
+            --bg: #f4f5f3;
+            --paper: #ffffff;
+            --text: #2b2b2b;
+            --muted: #6f6f6f;
+            --border: #e3e3e0;
+            --radius: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Tahoma, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 2;
+        }
+
+        .wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ---------- سربرگ ---------- */
+        .hero {
+            background-color: var(--primary);
+            color: #ffffff;
+            text-align: center;
+            padding: 60px 20px 55px;
+        }
+
+        .hero img {
+            width: 78px;
+            height: auto;
+            margin: 0 auto 18px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: #cfe0e0;
+            font-size: 1.05rem;
+        }
+
+        /* ---------- کتاب ---------- */
+        .book-box {
+            background-color: var(--paper);
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--accent);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin: -30px 0 45px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+            text-align: center;
+        }
+
+        .book-box h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .book-box p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 13px 34px;
+            border-radius: var(--radius);
+            font-size: 1.05rem;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background-color: #e5533d;
+        }
+
+        /* ---------- جلسه‌ها ---------- */
+        h2.section {
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 12px;
+            margin-bottom: 22px;
+        }
+
+        h2.section::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 55px;
+            height: 3px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .lead {
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        .sessions {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 14px;
+            margin-bottom: 45px;
+        }
+
+        .session {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            background-color: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 15px 16px;
+            text-decoration: none;
+            color: var(--text);
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .session:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .session .num {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            background-color: var(--primary);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .session .t {
+            font-weight: bold;
+            color: var(--primary);
+            display: block;
+            line-height: 1.7;
+        }
+
+        .session .d {
+            color: var(--muted);
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        /* ---------- یادداشت ---------- */
+        .note {
+            background-color: #eef4f4;
+            border-right: 4px solid var(--primary);
+            padding: 16px 18px;
+            border-radius: var(--radius);
+            margin-bottom: 45px;
+        }
+
+        .note a {
+            color: var(--primary);
+        }
+
+        /* ---------- پاورقی ---------- */
+        footer {
+            background-color: var(--primary);
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer a {
+            color: #ffffff;
+            border-bottom: 1px solid var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        footer p {
+            margin-bottom: 6px;
+        }
+
+        footer .small {
+            color: #cfe0e0;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 45px 20px 50px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .book-box {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <img src="book/logokm.png" alt="لوگو مؤسسه کادوس">
+    <h1>دوره طراحی صفحات وب با HTML و CSS</h1>
+    <p>پانزده جلسه، از اولین تگ تا یک سایت کامل</p>
+</header>
+
+<div class="wrap">
+
+    <div class="book-box">
+        <h2>کتاب دوره</h2>
+        <p>
+            شانزده فصل، از مفاهیم پایه وب تا پروژه نهایی.
+            هر فصل اول موضوع را توضیح می‌دهد، بعد نمونه‌کدها را نشان می‌دهد
+            و بعد خط به خط بررسی‌شان می‌کند.
+        </p>
+        <a class="btn" href="book/">خواندن کتاب</a>
+    </div>
+
+    <h2 class="section">نمونه‌کدهای جلسه‌ها</h2>
+
+    <p class="lead">
+        هر جلسه چند نمونه شماره‌گذاری‌شده دارد. لینک زیر شما را به
+        نمونه پایانی هر جلسه می‌برد، جایی که همه مفهوم‌های آن جلسه
+        در یک صفحه کنار هم آمده‌اند.
+    </p>
+
+    <div class="sessions">
+
+        <a class="session" href="01-html-basics/08-final-example/">
+            <span class="num">۱</span>
+            <span>
+                <span class="t">مبانی HTML</span>
+                <span class="d">عنوان، پاراگراف، فهرست، لینک و تصویر</span>
+            </span>
+        </a>
+
+        <a class="session" href="02-html-tables-and-paths/07-mini-project/">
+            <span class="num">۲</span>
+            <span>
+                <span class="t">جدول و مسیر فایل</span>
+                <span class="d">تگ‌های متنی، فهرست تودرتو، جدول، توضیحات</span>
+            </span>
+        </a>
+
+        <a class="session" href="03-css-basics/08-final-example/">
+            <span class="num">۳</span>
+            <span>
+                <span class="t">آشنایی با CSS</span>
+                <span class="d">کلاس و آی‌دی، رنگ، ترازبندی و اندازه قلم</span>
+            </span>
+        </a>
+
+        <a class="session" href="04-box-model/07-final-example/">
+            <span class="num">۴</span>
+            <span>
+                <span class="t">مدل جعبه‌ای</span>
+                <span class="d">حاشیه، فاصله داخلی و بیرونی، box-sizing</span>
+            </span>
+        </a>
+
+        <a class="session" href="05-selectors-and-background/07-final-example/">
+            <span class="num">۵</span>
+            <span>
+                <span class="t">انتخابگرها و پس‌زمینه</span>
+                <span class="d">انتخابگر گروهی و فرزندی، hover، تصویر پس‌زمینه</span>
+            </span>
+        </a>
+
+        <a class="session" href="06-typography-and-semantics/07-final-example/">
+            <span class="num">۶</span>
+            <span>
+                <span class="t">متن‌آرایی و تگ‌های معنایی</span>
+                <span class="d">قلم، فاصله خطوط، تگ‌های معنایی، div و span</span>
+            </span>
+        </a>
+
+        <a class="session" href="07-flexbox/06-final-example/">
+            <span class="num">۷</span>
+            <span>
+                <span class="t">فلکس‌باکس</span>
+                <span class="d">جهت محور، justify-content، align-items</span>
+            </span>
+        </a>
+
+        <a class="session" href="08-flexbox-advanced/06-final-example/">
+            <span class="num">۸</span>
+            <span>
+                <span class="t">فلکس‌باکس پیشرفته</span>
+                <span class="d">gap، رشد آیتم‌ها، ترتیب نمایش، transition</span>
+            </span>
+        </a>
+
+        <a class="session" href="09-position-and-overflow/07-final-example/">
+            <span class="num">۹</span>
+            <span>
+                <span class="t">موقعیت‌دهی و سرریز</span>
+                <span class="d">position در چهار حالت، z-index، overflow</span>
+            </span>
+        </a>
+
+        <a class="session" href="10-forms/07-final-example/">
+            <span class="num">۱۰</span>
+            <span>
+                <span class="t">فرم‌ها</span>
+                <span class="d">input و انواع آن، برچسب، کشویی، استایل فرم</span>
+            </span>
+        </a>
+
+        <a class="session" href="11-grid/06-final-example/">
+            <span class="num">۱۱</span>
+            <span>
+                <span class="t">گرید</span>
+                <span class="d">ستون‌ها و ردیف‌ها، واحد fr، نام‌گذاری نواحی</span>
+            </span>
+        </a>
+
+        <a class="session" href="12-responsive-design/06-final-example/">
+            <span class="num">۱۲</span>
+            <span>
+                <span class="t">طراحی واکنش‌گرا</span>
+                <span class="d">واحدهای نسبی، media query، تصویر واکنش‌گرا</span>
+            </span>
+        </a>
+
+        <a class="session" href="13-advanced-css/09-final-example/">
+            <span class="num">۱۳</span>
+            <span>
+                <span class="t">تکنیک‌های تکمیلی CSS</span>
+                <span class="d">متغیرها، سایه، گرادیانت، transform، شبه‌عنصر</span>
+            </span>
+        </a>
+
+        <a class="session" href="14-final-project/10-final-project/">
+            <span class="num">۱۴</span>
+            <span>
+                <span class="t">پروژه نهایی</span>
+                <span class="d">سایت هفت‌صفحه‌ای دبیرستان دانش</span>
+            </span>
+        </a>
+
+        <a class="session" href="15-bootstrap-and-js/09-whats-next/">
+            <span class="num">۱۵</span>
+            <span>
+                <span class="t">نگاهی به آینده</span>
+                <span class="d">بوت‌استرپ، جاوااسکریپت و نقشه راه</span>
+            </span>
+        </a>
+
+    </div>
+
+    <div class="note">
+        <p>
+            این صفحه فقط نمونه پایانی هر جلسه را نشان می‌دهد.
+            همه نمونه‌ها، گام‌های ساخت پروژه نهایی و فایل‌های کامل دوره
+            در مخزن قرار دارند:
+            <a href="https://github.com/KadoosOnline/HTML-CSS">KadoosOnline/HTML-CSS</a>
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    <p>نویسنده: <a href="https://lordarma.com">علیرضا م. احمدی</a></p>
+    <p class="small">
+        تهیه‌شده برای
+        <a href="https://kadoosedu.ir">مؤسسه فنی و آموزشی کادوس</a>
+    </p>
+</footer>
+
+</body>
+</html>
