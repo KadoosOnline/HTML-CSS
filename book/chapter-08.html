@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="فصل هشت: gap، رشد و کوچک شدن آیتم‌های فلکس، ترتیب نمایش، align-self و حرکت نرم با transition">
+    <title>فصل ۸: فلکس‌باکس پیشرفته و حرکت نرم</title>
+    <link rel="icon" href="logokm.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="book-bar">
+    <a class="name" href="index.html">طراحی وب با HTML و CSS</a>
+    <a href="index.html">فهرست مطالب</a>
+</header>
+
+<main class="paper">
+
+    <div class="chapter-head">
+        <span class="chapter-num">فصل ۸</span>
+        <h1 data-t="ch08-001">فلکس‌باکس پیشرفته و حرکت نرم</h1>
+        <p class="lead" data-t="ch08-002">
+            در فصل قبل ویژگی‌های ظرف را دیدیم. حالا نوبت ویژگی‌هایی است که
+            روی خود آیتم‌ها نوشته می‌شوند، و در پایان یاد می‌گیریم
+            تغییرها را نرم و تدریجی کنیم.
+        </p>
+    </div>
+
+    <div class="mini-toc">
+        <span class="box-title" data-t="ch08-003">در این فصل با این مباحث آشنا می‌شوید</span>
+        <ol>
+            <li data-t="ch08-004"><a href="#s1">gap: فاصله بین آیتم‌ها</a></li>
+            <li data-t="ch08-005"><a href="#s2">رشد و کوچک شدن آیتم‌ها</a></li>
+            <li data-t="ch08-006"><a href="#s3">ترتیب نمایش</a></li>
+            <li><a href="#s4">align-self</a></li>
+            <li data-t="ch08-007"><a href="#s5">حرکت نرم با transition</a></li>
+            <li data-t="ch08-008"><a href="#s6">نمونه نهایی فصل</a></li>
+        </ol>
+    </div>
+
+    <h2 id="s1" data-t="ch08-009">۱. gap: فاصله بین آیتم‌ها</h2>
+
+    <p data-t="ch08-010">در فصل قبل برای فاصله دادن به کارت‌ها از <code>margin</code> استفاده کردیم. این کار جواب می‌دهد اما یک عیب دارد: به لبه‌های بیرونی ظرف هم فاصله اضافه می‌کند و برای درست کردنش باید ترفندهایی بزنید. <code>gap</code> این مشکل را کاملاً حل می‌کند.</p>
+
+    <pre class="code"><code>.container {
+    display: flex;
+    gap: 20px;                 /* فاصله یکسان بین همه آیتم‌ها */
+}
+
+.container2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 30px;            /* فاصله بین سطرها، سپس بین ستون‌ها */
+}</code></pre>
+    <p class="code-caption" data-t="ch08-011">gap: نمونه 01-gap</p>
+
+    <h3 data-t="ch08-012">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch08-013"><code>gap</code> تنها <strong>بین</strong> آیتم‌ها فاصله می‌گذارد، نه در لبه‌های بیرونی ظرف. یعنی دقیقاً همان چیزی که معمولاً می‌خواهیم.</li>
+        <li data-t="ch08-014">
+            اگر دو مقدار بدهید، اولی فاصله عمودی بین سطرها و
+            دومی فاصله افقی بین ستون‌هاست. این حالت وقتی
+            <code>flex-wrap: wrap</code> دارید معنی پیدا می‌کند.
+        </li>
+        <li data-t="ch08-015">
+            <code>gap</code> روی ظرف نوشته می‌شود، نه روی آیتم‌ها.
+        </li>
+    </ul>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch08-016">gap یا margin</span>
+        <p data-t="ch08-017">از این پس برای فاصله دادن به آیتم‌های داخل یک ظرف فلکس، همیشه <code>gap</code> را انتخاب کنید. کد کوتاه‌تر می‌شود، نیازی به حذف margin آخرین آیتم ندارید و نتیجه دقیقاً همانی است که انتظار دارید. <code>gap</code> در گرید هم کار می‌کند و در فصل یازدهم بار دیگر می‌بینیمش.</p>
+    </div>
+
+    <h2 id="s2" data-t="ch08-018">۲. رشد و کوچک شدن آیتم‌ها</h2>
+
+    <p data-t="ch08-019">
+        تا اینجا آیتم‌ها عرض ثابتی داشتند. حالا سه ویژگی می‌بینیم که
+        روی <strong>خود آیتم</strong> نوشته می‌شوند و تعیین می‌کنند
+        هر آیتم چقدر از فضای موجود را بگیرد.
+    </p>
+
+    <pre class="code"><code>.container {
+    display: flex;
+    gap: 10px;
+}
+
+.sidebar {
+    flex-basis: 250px;        /* اندازه شروع */
+    flex-grow: 0;             /* رشد نکن */
+    flex-shrink: 0;           /* کوچک هم نشو */
+}
+
+.content {
+    flex-grow: 1;             /* تمام فضای باقی‌مانده را بگیر */
+}
+
+.item-a { flex-grow: 1; }
+.item-b { flex-grow: 2; }     /* دو برابر item-a رشد می‌کند */</code></pre>
+    <p class="code-caption" data-t="ch08-020">رشد و کوچک شدن: نمونه 02-flex-grow-shrink-basis</p>
+
+    <h3 data-t="ch08-021">شرح مثال</h3>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch08-022">ویژگی</th><th data-t="ch08-023">معنی</th><th data-t="ch08-024">پیش‌فرض</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>flex-basis</code></td>
+                <td data-t="ch08-025">اندازه اولیه آیتم پیش از تقسیم فضای اضافه</td>
+                <td><code>auto</code></td>
+            </tr>
+            <tr>
+                <td><code>flex-grow</code></td>
+                <td data-t="ch08-026">اگر فضای اضافه بود، چقدر از آن را بگیرد</td>
+                <td data-t="ch08-027"><code>0</code> یعنی رشد نکن</td>
+            </tr>
+            <tr>
+                <td><code>flex-shrink</code></td>
+                <td data-t="ch08-028">اگر فضا کم بود، چقدر کوچک شود</td>
+                <td data-t="ch08-029"><code>1</code> یعنی کوچک شو</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch08-030">
+        <code>flex-grow</code> یک <strong>نسبت</strong> است، نه یک اندازه.
+        اگر آیتم اول عدد ۱ و آیتم دوم عدد ۲ داشته باشد، فضای اضافه
+        به نسبت یک به دو بینشان تقسیم می‌شود. اگر همه عدد ۱ بگیرند،
+        فضا مساوی تقسیم می‌شود و همه هم‌عرض می‌شوند.
+    </p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch08-031">پرکاربردترین الگو</span>
+        <p data-t="ch08-032">چیدمان «نوار کناری به‌علاوه محتوای اصلی» را با همین دو خط می‌سازید: به نوار کناری <code>flex-basis</code> ثابت و <code>flex-shrink: 0</code> بدهید تا هرگز فشرده نشود، و به محتوای اصلی تنها <code>flex-grow: 1</code> بدهید تا هر چه باقی ماند را بگیرد. دیگر لازم نیست هیچ درصدی حساب کنید.</p>
+    </div>
+
+    <div class="note">
+        <span class="box-title" data-t="ch08-033">نوشتار کوتاه</span>
+        <p data-t="ch08-034">
+            هر سه ویژگی را می‌شود در یک خط نوشت:
+            <code>flex: 1 0 250px;</code> که به ترتیب یعنی
+            grow، سپس shrink، سپس basis.
+            نوشتن <code>flex: 1;</code> هم میان‌بر بسیار رایجی است
+            و یعنی «رشد کن و فضای اضافه را بگیر».
+        </p>
+    </div>
+
+    <h2 id="s3" data-t="ch08-035">۳. ترتیب نمایش</h2>
+
+    <pre class="code"><code>.item {
+    order: 0;                 /* پیش‌فرض همه آیتم‌ها */
+}
+
+.first {
+    order: -1;                /* برو اول همه */
+}
+
+.last {
+    order: 10;                /* برو آخر همه */
+}</code></pre>
+    <p class="code-caption" data-t="ch08-036">ترتیب نمایش: نمونه‌های 03-order و 03-order-flags</p>
+
+    <h3 data-t="ch08-037">شرح مثال</h3>
+
+    <p data-t="ch08-038">
+        <code>order</code> ترتیب <strong>نمایش</strong> آیتم‌ها را عوض می‌کند،
+        بدون اینکه ترتیبشان در فایل HTML تغییر کند.
+        همه آیتم‌ها به طور پیش‌فرض عدد صفر دارند و مرورگر آنها را
+        از کوچک به بزرگ مرتب می‌کند. آیتم‌هایی با عدد یکسان،
+        به ترتیب نوشته شدنشان در HTML می‌مانند.
+    </p>
+
+    <p data-t="ch08-039">
+        عدد منفی کاملاً مجاز است و ساده‌ترین راه فرستادن یک آیتم به ابتداست،
+        بدون اینکه لازم باشد عدد بقیه را عوض کنید.
+    </p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch08-040">کاربرد واقعی این ویژگی</span>
+        <p data-t="ch08-041">
+            در فصل دوازدهم می‌بینید که روی موبایل گاهی می‌خواهیم ترتیب
+            قسمت‌ها فرق کند. مثلاً روی دسکتاپ تصویر سمت راست باشد
+            و روی موبایل تصویر بالای متن بیاید. با <code>order</code>
+            این کار بدون دست زدن به HTML انجام می‌شود.
+        </p>
+    </div>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch08-042">با احتیاط استفاده کنید</span>
+        <p data-t="ch08-043"><code>order</code> تنها ترتیب <strong>دیداری</strong> را عوض می‌کند. صفحه‌خوان‌ها و کلید Tab همچنان ترتیب اصلی HTML را دنبال می‌کنند. اگر بسیار از آن استفاده کنید، تجربه کاربران نابینا و کسانی که با صفحه‌کلید کار می‌کنند به هم می‌ریزد.</p>
+    </div>
+
+    <h2 id="s4" data-t="ch08-044">۴. align-self</h2>
+
+    <p data-t="ch08-045">
+        <code>align-items</code> که در فصل قبل دیدیم، روی ظرف نوشته می‌شود و
+        <strong>همه</strong> آیتم‌ها را با هم جابه‌جا می‌کند.
+        <code>align-self</code> همان کار را برای <strong>یک آیتم</strong> انجام می‌دهد.
+    </p>
+
+    <pre class="code"><code>.container {
+    display: flex;
+    align-items: center;        /* قانون کلی برای همه */
+    height: 250px;
+}
+
+.special {
+    align-self: flex-start;     /* استثنا: فقط این یکی بالا بماند */
+}
+
+.other {
+    align-self: flex-end;       /* و این یکی پایین */
+}</code></pre>
+    <p class="code-caption" data-t="ch08-046">align-self: نمونه 04-align-self</p>
+
+    <h3 data-t="ch08-047">شرح مثال</h3>
+
+    <p data-t="ch08-048">
+        مقدارهای <code>align-self</code> دقیقاً همان مقدارهای
+        <code>align-items</code> هستند: <code>flex-start</code>،
+        <code>center</code>، <code>flex-end</code> و <code>stretch</code>.
+        تنها تفاوت این است که <code>align-self</code> روی
+        <strong>آیتم</strong> نوشته می‌شود و قانون ظرف را برای همان آیتم
+        نادیده می‌گیرد.
+    </p>
+
+    <p data-t="ch08-049">
+        الگوی فکری این است: قانون کلی را روی ظرف بنویسید و
+        استثناها را روی آیتم‌ها. این همان کاری است که همیشه در CSS
+        بهترین نتیجه را می‌دهد؛ کد کوتاه می‌ماند و استثناها هم مشخص و خوانا هستند.
+    </p>
+
+    <h2 id="s5" data-t="ch08-050">۵. حرکت نرم با transition</h2>
+
+    <p data-t="ch08-051">در فصل پنجم <code>hover:</code> را یاد گرفتیم، اما تغییر رنگ ناگهانی و پرشی اتفاق می‌افتاد. <code>transition</code> این تغییر را نرم و تدریجی می‌کند و ظاهر سایت را به شکل چشمگیری حرفه‌ای‌تر.</p>
+
+    <pre class="code"><code>.btn {
+    background-color: #2f4f4f;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ff6347;
+}
+
+.card {
+    border: 1px solid #dddddd;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: #ff6347;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}</code></pre>
+    <p class="code-caption" data-t="ch08-052">حرکت نرم: نمونه 05-hover-transition</p>
+
+    <h3 data-t="ch08-053">شرح مثال</h3>
+
+    <p data-t="ch08-054">
+        <code>transition</code> سه بخش دارد و معمولاً دو تای اول کافی است:
+    </p>
+
+    <ol>
+        <li data-t="ch08-055"><strong>چه چیزی.</strong> نام ویژگی‌ای که باید نرم تغییر کند، مانند <code>background-color</code>. اگر بنویسید <code>all</code>، هر چیزی که عوض شود نرم عوض می‌شود.</li>
+        <li data-t="ch08-056"><strong>چقدر طول بکشد.</strong> مانند <code>0.3s</code> یعنی سه دهم ثانیه. واحد <code>s</code> ثانیه است و <code>ms</code> میلی‌ثانیه.</li>
+        <li data-t="ch08-057"><strong>با چه سرعتی.</strong> مانند <code>ease</code> که پیش‌فرض است: آرام شروع می‌شود، تند می‌شود و آرام تمام می‌شود. <code>linear</code> یعنی سرعت ثابت.</li>
+    </ol>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch08-058">مهم‌ترین نکته transition</span>
+        <p data-t="ch08-059"><code>transition</code> را روی <strong>حالت عادی</strong> بنویسید، نه روی <code>hover:</code>. اگر آن را داخل <code>hover:</code> بگذارید، رفتن نرم می‌شود اما برگشتن ناگهانی. نوشتنش در حالت عادی باعث می‌شود هر دو جهت نرم باشند.</p>
+    </div>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch08-060">زمان مناسب</span>
+        <p data-t="ch08-061">
+            بین ۰.۲ تا ۰.۴ ثانیه بهترین محدوده است.
+            کمتر از آن دیده نمی‌شود و بیشتر از آن کاربر را منتظر می‌گذارد
+            و حس کندی به سایت می‌دهد.
+        </p>
+    </div>
+
+    <h2 id="s6" data-t="ch08-062">۶. نمونه نهایی فصل</h2>
+
+    <pre class="code"><code>&lt;body&gt;
+
+    &lt;div class="layout"&gt;
+
+        &lt;aside class="sidebar"&gt;
+            &lt;h3&gt;دسته‌بندی&lt;/h3&gt;
+            &lt;p&gt;وب&lt;/p&gt;
+            &lt;p&gt;شبکه&lt;/p&gt;
+            &lt;p&gt;گرافیک&lt;/p&gt;
+        &lt;/aside&gt;
+
+        &lt;main class="content"&gt;
+            &lt;h2&gt;دوره‌های ما&lt;/h2&gt;
+
+            &lt;div class="cards"&gt;
+                &lt;div class="card"&gt;
+                    &lt;h3&gt;طراحی وب&lt;/h3&gt;
+                    &lt;p&gt;پانزده جلسه&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class="card"&gt;
+                    &lt;h3&gt;جاوااسکریپت&lt;/h3&gt;
+                    &lt;p&gt;بیست جلسه&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class="card featured"&gt;
+                    &lt;h3&gt;دوره ویژه&lt;/h3&gt;
+                    &lt;p&gt;ثبت‌نام محدود&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/main&gt;
+
+    &lt;/div&gt;
+
+&lt;/body&gt;</code></pre>
+
+    <pre class="code"><code>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    line-height: 1.9;
+    padding: 30px;
+}
+
+/* چیدمان کلی: نوار کناری ثابت، محتوا کشسان */
+.layout {
+    display: flex;
+    gap: 25px;
+}
+
+.sidebar {
+    flex-basis: 220px;
+    flex-shrink: 0;
+    background-color: #2f4f4f;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.content {
+    flex-grow: 1;
+}
+
+.content h2 {
+    color: #2f4f4f;
+    margin-bottom: 20px;
+}
+
+/* کارت‌ها */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.card {
+    flex-grow: 1;
+    flex-basis: 200px;
+    background-color: white;
+    padding: 22px;
+    border-radius: 10px;
+    border: 1px solid #dddddd;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: #ff6347;
+    transform: translateY(-4px);
+}
+
+.card h3 {
+    color: #2f4f4f;
+    margin-bottom: 8px;
+}
+
+/* استثنا: کارت ویژه اول بیاید و کشیده شود */
+.featured {
+    order: -1;
+    align-self: stretch;
+    border-top: 4px solid #ff6347;
+}</code></pre>
+    <p class="code-caption" data-t="ch08-063">نمونه نهایی فصل: نمونه 06-final-example</p>
+
+    <h3 data-t="ch08-064">شرح مثال</h3>
+
+    <p data-t="ch08-065">
+        این مثال یک چیدمان واقعی سایت است و هر پنج مفهوم فصل در آن نقش دارد:
+    </p>
+
+    <ul>
+        <li data-t="ch08-066">
+            <strong>gap.</strong> هم بین نوار کناری و محتوا و هم بین کارت‌ها.
+            هیچ <code>margin</code> ای در کل فایل نیست.
+        </li>
+        <li data-t="ch08-067">
+            <strong>basis و grow و shrink.</strong> نوار کناری همیشه ۲۲۰ پیکسل
+            می‌ماند چون <code>flex-shrink: 0</code> دارد. محتوا با
+            <code>flex-grow: 1</code> هر چه باقی ماند را می‌گیرد.
+            کارت‌ها هم <code>flex-basis: 200px</code> دارند و با
+            <code>flex-grow: 1</code> فضای خالی سطر آخر را پر می‌کنند
+            تا لبه‌ها ناهموار نماند.
+        </li>
+        <li data-t="ch08-068"><strong>order.</strong> کارت ویژه در HTML آخرین کارت است، اما با <code>order: -1</code> اول نمایش داده می‌شود. ترتیب محتوا در فایل دست‌نخورده مانده است.</li>
+        <li data-t="ch08-069"><strong>align-self.</strong> ظرف کارت‌ها <code>align-items: flex-start</code> دارد، پس کارت‌ها به اندازه محتوایشان کوتاه می‌مانند. اما کارت ویژه با <code>align-self: stretch</code> تا ته کشیده می‌شود و بیشتر جلب توجه می‌کند.</li>
+        <li data-t="ch08-070">
+            <strong>transition.</strong> روی حالت عادی کارت نوشته شده،
+            پس هم رفتن و هم برگشتن نرم است.
+        </li>
+    </ul>
+
+    <p data-t="ch08-071">
+        در <code>hover:</code> کارت‌ها یک ویژگی تازه هم آمده است:
+        <code>transform: translateY(-4px)</code> که کارت را چهار پیکسل
+        به بالا می‌برد و حس «بلند شدن» می‌دهد. این ویژگی را
+        در فصل سیزدهم کامل توضیح می‌دهیم.
+    </p>
+
+    <div class="folder-ref">
+        <span class="box-title" data-t="ch08-072">فایل‌های تمرینی این فصل</span>
+        <p data-t="ch08-073">
+            پوشه <code>08-flexbox-advanced</code> شامل نمونه‌های
+            <code>01-gap</code> تا <code>06-final-example</code>.
+        </p>
+    </div>
+
+    <h2 data-t="ch08-074">خلاصه فصل</h2>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch08-075">ویژگی</th><th data-t="ch08-076">روی چه</th><th data-t="ch08-077">کارش</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>gap</code></td><td data-t="ch08-078">ظرف</td><td data-t="ch08-079">فاصله بین آیتم‌ها، بدون فاصله لبه‌ها</td></tr>
+            <tr><td><code>flex-basis</code></td><td data-t="ch08-080">آیتم</td><td data-t="ch08-081">اندازه اولیه</td></tr>
+            <tr><td><code>flex-grow</code></td><td data-t="ch08-082">آیتم</td><td data-t="ch08-083">سهم از فضای اضافه، به صورت نسبت</td></tr>
+            <tr><td><code>flex-shrink</code></td><td data-t="ch08-084">آیتم</td><td data-t="ch08-085">اجازه کوچک شدن. صفر یعنی هرگز.</td></tr>
+            <tr><td><code>flex: 1</code></td><td data-t="ch08-086">آیتم</td><td data-t="ch08-087">میان‌بر رایج برای رشد کردن</td></tr>
+            <tr><td><code>order</code></td><td data-t="ch08-088">آیتم</td><td data-t="ch08-089">ترتیب نمایش. منفی هم مجاز است.</td></tr>
+            <tr><td><code>align-self</code></td><td data-t="ch08-090">آیتم</td><td data-t="ch08-091">استثنا زدن به <code>align-items</code> ظرف</td></tr>
+            <tr><td><code>transition</code></td><td data-t="ch08-092">هر عنصر</td><td data-t="ch08-093">نرم کردن تغییر. در حالت عادی بنویسید.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="exercise">
+        <h3 data-t="ch08-094">تمرین‌های فصل هشت</h3>
+        <ol>
+            <li data-t="ch08-095">چیدمان نوار کناری و محتوا را بسازید، طوری که با تغییر عرض پنجره تنها محتوا کم و بسیار شود.</li>
+            <li data-t="ch08-096">سه دکمه بسازید که رنگ و اندازه‌شان با <code>transition</code> نرم عوض شود.</li>
+            <li data-t="ch08-097">در یک فهرست پنج‌تایی، با <code>order</code> کاری کنید آخرین مورد اول نمایش داده شود.</li>
+            <li data-t="ch08-098">یک ظرف با <code>align-items: center</code> بسازید و یک آیتم را با <code>align-self</code> استثنا کنید.</li>
+            <li data-t="ch08-099">یک بار <code>transition</code> را داخل <code>hover:</code> بنویسید و ببینید چرا برگشت ناگهانی می‌شود.</li>
+            <li data-t="ch08-100">مقدار <code>gap</code> را از ۵ تا ۵۰ پیکسل عوض کنید و بهترین حالت را برای طرح خودتان پیدا کنید.</li>
+        </ol>
+    </div>
+
+    <div class="pager">
+        <a href="chapter-07.html">فصل قبل: فلکس‌باکس</a>
+        <a href="chapter-09.html">فصل بعد: موقعیت‌دهی و سرریز</a>
+    </div>
+
+</main>
+
+</body>
+</html>

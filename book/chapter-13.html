@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="فصل سیزده: متغیرهای CSS، سایه، گرادیانت و شفافیت، transform، object-fit و calc، شبه‌کلاس‌ها و شبه‌عنصرها">
+    <title>فصل ۱۳: تکنیک‌های تکمیلی CSS</title>
+    <link rel="icon" href="logokm.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="book-bar">
+    <a class="name" href="index.html">طراحی وب با HTML و CSS</a>
+    <a href="index.html">فهرست مطالب</a>
+</header>
+
+<main class="paper">
+
+    <div class="chapter-head">
+        <span class="chapter-num">فصل ۱۳</span>
+        <h1 data-t="ch13-001">تکنیک‌های تکمیلی CSS</h1>
+        <p class="lead" data-t="ch13-002">
+            هر چیزی که برای ساختن یک سایت حرفه‌ای لازم است و تا اینجا
+            نگفته بودیم. این فصل، پل ارتباطی بین دانش پایه شما و
+            پروژه نهایی فصل بعد است.
+        </p>
+    </div>
+
+    <div class="mini-toc">
+        <span class="box-title" data-t="ch13-003">در این فصل با این مباحث آشنا می‌شوید</span>
+        <ol>
+            <li data-t="ch13-004"><a href="#s1">متغیرهای CSS</a></li>
+            <li data-t="ch13-005"><a href="#s2">سایه</a></li>
+            <li data-t="ch13-006"><a href="#s3">گرادیانت و شفافیت</a></li>
+            <li><a href="#s4">transform</a></li>
+            <li data-t="ch13-007"><a href="#s5">object-fit و calc</a></li>
+            <li data-t="ch13-008"><a href="#s6">شبه‌کلاس‌های پیشرفته</a></li>
+            <li data-t="ch13-009"><a href="#s7">شبه‌عنصرها</a></li>
+            <li data-t="ch13-010"><a href="#s8">نکته‌های تکمیلی</a></li>
+            <li data-t="ch13-011"><a href="#s9">نمونه نهایی فصل</a></li>
+        </ol>
+    </div>
+
+    <h2 id="s1" data-t="ch13-012">۱. متغیرهای CSS</h2>
+
+    <p data-t="ch13-013">
+        تا اینجا هر بار رنگ سایت را دستی نوشتیم. اگر بخواهید رنگ اصلی
+        سایتتان را عوض کنید، باید ده‌ها جا را تغییر دهید و حتماً
+        یکی دو مورد را فراموش می‌کنید. متغیر این مشکل را کاملاً حل می‌کند.
+    </p>
+
+    <pre class="code"><code>:root {
+    --primary: #2f4f4f;
+    --primary-dark: #223a3a;
+    --accent: #ff6347;
+    --bg-light: #f5f5f5;
+    --text: #333333;
+    --muted: #777777;
+    --border: #e0e0e0;
+    --radius: 10px;
+    --space: 20px;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text);
+}
+
+.btn {
+    background-color: var(--primary);
+    border-radius: var(--radius);
+    padding: 12px var(--space);
+}
+
+.btn:hover {
+    background-color: var(--accent);
+}</code></pre>
+    <p class="code-caption" data-t="ch13-014">متغیرها: نمونه 01-css-variables</p>
+
+    <h3 data-t="ch13-015">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch13-016">
+            <code>root:</code> یک شبه‌کلاس است که به ریشه سند اشاره می‌کند،
+            یعنی تگ <code>html</code>. متغیرهایی که اینجا تعریف شوند،
+            در کل صفحه در دسترس‌اند.
+        </li>
+        <li data-t="ch13-017">
+            نام هر متغیر حتماً با <strong>دو خط تیره</strong> شروع می‌شود.
+            این اجباری است، نه سلیقه‌ای.
+        </li>
+        <li data-t="ch13-018">
+            برای استفاده، نام متغیر را داخل <code>var()</code> می‌گذاریم.
+        </li>
+    </ul>
+
+    <p data-t="ch13-019">حالا برای عوض کردن رنگ اصلی کل سایت، تنها یک خط در بالای فایل تغییر می‌کند و همه جا با هم به‌روز می‌شود.</p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch13-020">چه چیزهایی را متغیر کنیم</span>
+        <p data-t="ch13-021">هر چیزی که بیش از دو بار تکرار می‌شود: رنگ‌ها، گردی گوشه‌ها، فاصله استاندارد، سایه‌ها. اگر عددی تنها یک بار در کل فایل استفاده می‌شود، نیازی به متغیر ندارد.</p>
+    </div>
+
+    <h2 id="s2" data-t="ch13-022">۲. سایه</h2>
+
+    <p data-t="ch13-023">
+        سایه به عنصرها عمق می‌دهد و باعث می‌شود کارت‌ها انگار
+        روی صفحه شناور باشند. این ساده‌ترین راه حرفه‌ای‌تر کردن یک طرح است.
+    </p>
+
+    <pre class="code"><code>.card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.inner {
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}</code></pre>
+    <p class="code-caption" data-t="ch13-024">سایه: نمونه 02-shadow</p>
+
+    <h3 data-t="ch13-025">شرح مثال</h3>
+
+    <p data-t="ch13-026"><code>box-shadow</code> چهار مقدار می‌گیرد:</p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch13-027">مقدار</th><th data-t="ch13-028">معنی</th></tr>
+        </thead>
+        <tbody>
+            <tr><td data-t="ch13-029">اول</td><td data-t="ch13-030">جابه‌جایی افقی سایه</td></tr>
+            <tr><td data-t="ch13-031">دوم</td><td data-t="ch13-032">جابه‌جایی عمودی. مثبت یعنی سایه به پایین.</td></tr>
+            <tr><td data-t="ch13-033">سوم</td><td data-t="ch13-034">میزان محو شدن. عدد بزرگ‌تر یعنی سایه نرم‌تر.</td></tr>
+            <tr><td data-t="ch13-035">چهارم</td><td data-t="ch13-036">رنگ سایه</td></tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch13-037">کلمه <code>inset</code> در ابتدا، سایه را به داخل جعبه می‌برد و حس فرورفتگی می‌دهد. <code>text-shadow</code> هم دقیقاً همین‌طور کار می‌کند اما برای متن، و مقدار <code>inset</code> ندارد.</p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch13-038">راز سایه‌های خوب</span>
+        <p data-t="ch13-039">
+            سایه‌های زیبا <strong>ملایم</strong> هستند. از رنگ سیاه با
+            شفافیت کم استفاده کنید، نه از خاکستری توپر.
+            <code>rgba(0, 0, 0, 0.1)</code> یعنی سیاه با ده درصد ماندگاری،
+            که زیر آن هر رنگی باشد طبیعی به نظر می‌رسد.
+            سایه‌های تیره و تند، طرح را قدیمی نشان می‌دهند.
+        </p>
+    </div>
+
+    <h2 id="s3" data-t="ch13-040">۳. گرادیانت و شفافیت</h2>
+
+    <pre class="code"><code>.gradient {
+    background-image: linear-gradient(to left, #2f4f4f, #ff6347);
+}
+
+.faded {
+    opacity: 0.5;
+}
+
+.overlay-photo {
+    background-image:
+        linear-gradient(rgba(20, 40, 40, 0.7), rgba(20, 40, 40, 0.7)),
+        url('images/school.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}</code></pre>
+    <p class="code-caption" data-t="ch13-041">گرادیانت و شفافیت: نمونه 03-gradient-opacity</p>
+
+    <h3 data-t="ch13-042">شرح مثال</h3>
+
+    <p data-t="ch13-043">
+        <code>linear-gradient</code> یک تصویر می‌سازد که از یک رنگ به رنگ
+        دیگر محو می‌شود. اولین مقدار جهت است و بقیه رنگ‌ها.
+        چون یک تصویر است، در <code>background-image</code> نوشته می‌شود،
+        نه در <code>background-color</code>.
+    </p>
+
+    <p data-t="ch13-044"><code>opacity</code> شفافیت کل عنصر را تنظیم می‌کند: عدد ۱ یعنی کاملاً مات و ۰ یعنی کاملاً نامرئی. نکته مهم اینکه این ویژگی روی <strong>همه چیز</strong> اثر می‌گذارد، از جمله متن داخل عنصر. اگر تنها پس‌زمینه را می‌خواهید شفاف کنید، از <code>rgba</code> استفاده کنید.</p>
+
+    <p data-t="ch13-045">
+        <code>rgba</code> همان <code>rgb</code> است با یک عدد چهارم:
+        میزان ماندگاری از صفر تا یک. پس
+        <code>rgba(0, 0, 0, 0.5)</code> یعنی سیاه نیمه‌شفاف.
+    </p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch13-046">مهم‌ترین تکنیک این بخش</span>
+        <p data-t="ch13-047">بخش سوم مثال، تکنیکی است که تقریباً هر سایتی از آن استفاده می‌کند: <strong>پرده تیره روی عکس</strong>. یک گرادیانت که هر دو رنگش یکسان و نیمه‌شفاف است، مانند یک شیشه دودی روی عکس عمل می‌کند. نتیجه‌اش این است که متن سفید روی هر عکسی خوانا می‌ماند. دقت کنید که گرادیانت <strong>قبل</strong> از عکس نوشته می‌شود، چون لایه‌های پس‌زمینه از بالا به پایین چیده می‌شوند. در فصل بعد دقیقاً از همین کد برای هدر پروژه استفاده می‌کنیم.</p>
+    </div>
+
+    <h2 id="s4" data-t="ch13-048">۴. transform</h2>
+
+    <pre class="code"><code>.move {
+    transform: translateY(-5px);
+}
+
+.grow {
+    transform: scale(1.05);
+}
+
+.rotate {
+    transform: rotate(5deg);
+}
+
+.combined {
+    transform: translateY(-5px) scale(1.03);
+}
+
+.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}</code></pre>
+    <p class="code-caption" data-t="ch13-049">transform: نمونه 04-transform</p>
+
+    <h3 data-t="ch13-050">شرح مثال</h3>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch13-051">تابع</th><th data-t="ch13-052">کارش</th></tr>
+        </thead>
+        <tbody>
+            <tr><td data-t="ch13-053"><code>translateX</code> و <code>translateY</code></td><td data-t="ch13-054">جابه‌جایی افقی و عمودی</td></tr>
+            <tr><td><code>scale</code></td><td data-t="ch13-055">بزرگ یا کوچک کردن. عدد ۱ یعنی اندازه اصلی.</td></tr>
+            <tr><td><code>rotate</code></td><td data-t="ch13-056">چرخاندن بر حسب درجه</td></tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch13-057">می‌شود چند تابع را با فاصله پشت سر هم نوشت و همه با هم اعمال می‌شوند. اما دقت کنید که نمی‌توانید دو خط <code>transform</code> جدا بنویسید؛ دومی اولی را پاک می‌کند.</p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch13-058">چرا transform بهتر از تغییر مستقیم است</span>
+        <p data-t="ch13-059">برای بالا بردن یک کارت می‌شد <code>margin-top</code> منفی هم داد، اما آن کار باعث می‌شود بقیه عنصرهای صفحه جابه‌جا شوند و چیدمان تکان بخورد. <code>transform</code> تنها <strong>نمایش</strong> عنصر را عوض می‌کند و جای واقعی‌اش دست‌نخورده می‌ماند. به‌علاوه مرورگر برای آن از کارت گرافیک استفاده می‌کند و حرکت بسیار نرم‌تر است.</p>
+    </div>
+
+    <p data-t="ch13-060">
+        <code>transform</code> تقریباً همیشه همراه <code>transition</code>
+        و <code>hover:</code> می‌آید. سه خط آخر مثال، پرکاربردترین
+        الگوی افکت کارت در کل طراحی وب است.
+    </p>
+
+    <h2 id="s5" data-t="ch13-061">۵. object-fit و calc</h2>
+
+    <pre class="code"><code>.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.full-bleed {
+    width: calc(100% + 40px);
+    margin-right: -20px;
+    margin-left: -20px;
+}
+
+.main-area {
+    width: calc(100% - 250px);
+}</code></pre>
+    <p class="code-caption" data-t="ch13-062">object-fit و calc: نمونه 05-object-fit-calc</p>
+
+    <h3 data-t="ch13-063">شرح مثال</h3>
+
+    <p data-t="ch13-064">
+        <strong>مشکل:</strong> در یک ردیف کارت، عکس‌ها اندازه‌های مختلفی دارند
+        و کارت‌ها نامرتب می‌شوند. اگر عرض و ارتفاع ثابت بدهید، عکس‌ها
+        کشیده و بدشکل می‌شوند.
+    </p>
+
+    <p data-t="ch13-065"><strong>راه‌حل:</strong> <code>object-fit</code> که دقیقاً مانند <code>background-size</code> عمل می‌کند، اما روی تگ <code>img</code>:</p>
+
+    <ul>
+        <li data-t="ch13-066">
+            <code>cover</code> کادر را کامل پر می‌کند و نسبت تصویر را
+            حفظ می‌کند. لبه‌ها بریده می‌شوند. برای عکس کارت‌ها همیشه همین را بخواهید.
+        </li>
+        <li data-t="ch13-067">
+            <code>contain</code> کل تصویر را نشان می‌دهد و ممکن است
+            فضای خالی بماند. برای لوگو مناسب است.
+        </li>
+    </ul>
+
+    <p data-t="ch13-068"><code>calc()</code> اجازه می‌دهد داخل CSS محاسبه کنید، حتی بین <strong>واحدهای متفاوت</strong>. این کاری است که هیچ راه دیگری برای انجامش نیست: مرورگر نمی‌داند صد درصد چند پیکسل است، اما <code>calc</code> در لحظه نمایش حسابش می‌کند.</p>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch13-069">فاصله دور علامت‌ها اجباری است</span>
+        <p data-t="ch13-070"><code>calc(100% - 250px)</code> درست است، اما <code>calc(100%-250px)</code> اصلاً کار نمی‌کند. دور علامت‌های جمع و تفریق حتماً باید فاصله باشد.</p>
+    </div>
+
+    <p data-t="ch13-071">
+        ترکیب <code>calc</code> با حاشیه منفی، تکنیک «تصویر تمام‌عرض کارت»
+        را می‌سازد: تصویر از لبه تا لبه کارت کشیده می‌شود و
+        <code>padding</code> کارت را نادیده می‌گیرد.
+    </p>
+
+    <h2 id="s6" data-t="ch13-072">۶. شبه‌کلاس‌های پیشرفته</h2>
+
+    <p data-t="ch13-073">تا اینجا تنها <code>hover:</code> و <code>focus:</code> را دیدیم. چند شبه‌کلاس دیگر هم هستند که بر اساس <strong>جایگاه</strong> عنصر انتخاب می‌کنند.</p>
+
+    <pre class="code"><code>li:first-child {
+    font-weight: bold;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+tr:nth-child(odd) {
+    background-color: #f7f7f7;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+li:nth-child(3) {
+    color: #ff6347;
+}
+
+input:focus {
+    border-color: #2f4f4f;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}</code></pre>
+    <p class="code-caption" data-t="ch13-074">شبه‌کلاس‌های پیشرفته: نمونه 06-pseudo-class-advanced</p>
+
+    <h3 data-t="ch13-075">شرح مثال</h3>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch13-076">شبه‌کلاس</th><th data-t="ch13-077">انتخاب می‌کند</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>:first-child</code></td><td data-t="ch13-078">اولین فرزند والدش</td></tr>
+            <tr><td><code>:last-child</code></td><td data-t="ch13-079">آخرین فرزند</td></tr>
+            <tr><td><code>:nth-child(odd)</code></td><td data-t="ch13-080">فرزندان فرد: اول، سوم، پنجم</td></tr>
+            <tr><td><code>:nth-child(even)</code></td><td data-t="ch13-081">فرزندان زوج</td></tr>
+            <tr><td><code>:nth-child(3)</code></td><td data-t="ch13-082">دقیقاً سومی</td></tr>
+            <tr><td><code>:focus</code></td><td data-t="ch13-083">عنصری که نشانگر داخلش است</td></tr>
+            <tr><td><code>:active</code></td><td data-t="ch13-084">لحظه‌ای که کاربر کلیک را نگه داشته</td></tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch13-085"><code>nth-child(odd):</code> پرکاربردترینشان است و جدول راه‌راه می‌سازد که خواندن سطرهایش بسیار آسان‌تر است. <code>last-child:</code> هم برای برداشتن خط جداکننده آخرین مورد یک فهرست عالی است، تا خط اضافه‌ای زیر فهرست نماند.</p>
+
+    <p data-t="ch13-086"><code>active:</code> حس فشرده شدن دکمه را می‌دهد. کوچک کردن بسیار جزئی دکمه در لحظه کلیک، بازخوردی است که کاربر آن را نمی‌بیند اما حس می‌کند.</p>
+
+    <h2 id="s7" data-t="ch13-087">۷. شبه‌عنصرها</h2>
+
+    <p data-t="ch13-088">
+        شبه‌کلاس یک عنصر <strong>موجود</strong> را انتخاب می‌کند.
+        شبه‌عنصر یک قطعه <strong>تازه</strong> می‌سازد که در HTML وجود ندارد.
+        علامتش دو تا دو نقطه است.
+    </p>
+
+    <pre class="code"><code>.section-title {
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+.new-card::before {
+    content: "جدید";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--accent);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.check-list li::before {
+    content: "✔ ";
+    color: green;
+}</code></pre>
+    <p class="code-caption" data-t="ch13-089">شبه‌عنصرها: نمونه 07-pseudo-element</p>
+
+    <h3 data-t="ch13-090">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch13-091">
+            <code>before::</code> قطعه‌ای <strong>قبل</strong> از محتوای
+            عنصر می‌سازد و <code>after::</code> بعد از آن.
+        </li>
+        <li data-t="ch13-092">ویژگی <code>content</code> <strong>اجباری</strong> است. بدون آن، شبه‌عنصر اصلاً ساخته نمی‌شود، حتی اگر ده خط استایل دیگر برایش بنویسید. اگر تنها شکل می‌خواهید و نه متن، بنویسید <code>content: ""</code>.</li>
+        <li data-t="ch13-093">
+            شبه‌عنصر بخشی از عنصر والد است، پس با
+            <code>position: absolute</code> داخل والدِ
+            <code>relative</code> جای می‌گیرد. همان الگوی فصل نهم.
+        </li>
+    </ul>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch13-094">چرا این مهم است</span>
+        <p data-t="ch13-095">آن خط تزیینی نارنجی زیر عنوان‌ها، بدون شبه‌عنصر نیاز به یک <code>div</code> خالی و بی‌معنی در HTML داشت. با <code>after::</code> عنصر تزیینی در جای درست خودش یعنی CSS می‌ماند و HTML تمیز باقی می‌ماند. قانون کلی این است: <strong>هر چیزی که تنها تزیین است، در CSS ساخته شود نه در HTML.</strong></p>
+    </div>
+
+    <h2 id="s8" data-t="ch13-096">۸. نکته‌های تکمیلی</h2>
+
+    <pre class="code"><code>&lt;a href="#contact"&gt;تماس با ما&lt;/a&gt;
+&lt;section id="contact"&gt;...&lt;/section&gt;
+
+&lt;a href="mailto:info@school.ir"&gt;ایمیل بزنید&lt;/a&gt;
+&lt;a href="tel:01133445566"&gt;تماس بگیرید&lt;/a&gt;
+&lt;a href="https://kadoosedu.ir" target="_blank"&gt;سایت کادوس&lt;/a&gt;</code></pre>
+
+    <pre class="code"><code>html {
+    scroll-behavior: smooth;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.gray-photo {
+    filter: grayscale(100%);
+    transition: filter 0.3s;
+}
+
+.gray-photo:hover {
+    filter: grayscale(0);
+}
+
+.blurred {
+    filter: blur(3px);
+}</code></pre>
+    <p class="code-caption" data-t="ch13-097">نکته‌های تکمیلی: نمونه 08-extra-touches</p>
+
+    <h3 data-t="ch13-098">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch13-099">
+            <strong>لینک داخلی.</strong> اگر <code>href</code> با
+            <code>#</code> شروع شود، به عنصری با همان <code>id</code>
+            در همان صفحه می‌رود. اینجاست که آی‌دی فصل سوم به کار می‌آید.
+        </li>
+        <li data-t="ch13-100"><code>scroll-behavior: smooth</code> باعث می‌شود این پرش به جای ناگهانی بودن، نرم و روان انجام شود. یک خط، تأثیر بسیار.</li>
+        <li data-t="ch13-101">
+            <code>mailto:</code> برنامه ایمیل کاربر را باز می‌کند و
+            <code>tel:</code> روی گوشی شماره‌گیر را. برای صفحه تماس
+            بسیار مفیدند.
+        </li>
+        <li data-t="ch13-102">
+            <code>cursor: pointer</code> شکل موس را به دست تبدیل می‌کند.
+            روی هر چیزی که قابل کلیک است و لینک یا دکمه نیست، لازم است.
+        </li>
+        <li data-t="ch13-103">
+            <code>filter</code> جلوه‌های تصویری می‌سازد.
+            <code>grayscale</code> سیاه‌وسفید می‌کند و <code>blur</code>
+            محو. ترکیب سیاه‌وسفید با <code>hover:</code> که رنگ را برمی‌گرداند،
+            برای گالری‌ها جلوه زیبایی می‌سازد.
+        </li>
+    </ul>
+
+    <div class="note">
+        <span class="box-title" data-t="ch13-104">دو تگ فراموش‌شده در head</span>
+        <p data-t="ch13-105">
+            <code>&lt;title&gt;</code> عنوان سربرگ مرورگر است و در نتایج
+            گوگل هم به عنوان تیتر آبی نمایش داده می‌شود.
+            <code>&lt;meta name="description"&gt;</code> هم آن متن توضیحی
+            زیر تیتر است. هر صفحه باید هر دو را داشته باشد و
+            محتوایشان باید برای هر صفحه <strong>متفاوت</strong> باشد.
+        </p>
+    </div>
+
+    <h2 id="s9" data-t="ch13-106">۹. نمونه نهایی فصل</h2>
+
+    <pre class="code"><code>&lt;body&gt;
+
+    &lt;header class="hero"&gt;
+        &lt;h1&gt;دبیرستان دانش&lt;/h1&gt;
+        &lt;a href="#courses" class="btn"&gt;رشته‌ها را ببینید&lt;/a&gt;
+    &lt;/header&gt;
+
+    &lt;section id="courses"&gt;
+        &lt;h2 class="section-title"&gt;رشته‌های تحصیلی&lt;/h2&gt;
+
+        &lt;div class="cards"&gt;
+            &lt;div class="card new-card"&gt;
+                &lt;img src="images/math.jpg" alt="ریاضی"&gt;
+                &lt;h3&gt;ریاضی و فیزیک&lt;/h3&gt;
+            &lt;/div&gt;
+            &lt;div class="card"&gt;
+                &lt;img src="images/lab.jpg" alt="آزمایشگاه"&gt;
+                &lt;h3&gt;علوم تجربی&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;ul class="check-list"&gt;
+            &lt;li&gt;آزمایشگاه مجهز&lt;/li&gt;
+            &lt;li&gt;کتابخانه بزرگ&lt;/li&gt;
+            &lt;li&gt;کلاس‌های کم‌جمعیت&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/section&gt;
+
+&lt;/body&gt;</code></pre>
+
+    <pre class="code"><code>:root {
+    --primary: #2f4f4f;
+    --accent: #ff6347;
+    --bg-light: #f5f5f5;
+    --text: #333333;
+    --radius: 10px;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text);
+    line-height: 1.9;
+}
+
+/* هدر بزرگ با پرده تیره روی عکس */
+.hero {
+    height: 60vh;
+    background-image:
+        linear-gradient(rgba(20, 40, 40, 0.7), rgba(20, 40, 40, 0.7)),
+        url('images/school.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.btn {
+    background-color: var(--accent);
+    color: white;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+section {
+    padding: 50px 40px;
+}
+
+/* عنوان بخش با خط تزیینی */
+.section-title {
+    position: relative;
+    color: var(--primary);
+    padding-bottom: 12px;
+    margin-bottom: 30px;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.card {
+    position: relative;
+    background-color: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(40%);
+    transition: filter 0.3s;
+}
+
+.card:hover img {
+    filter: grayscale(0);
+}
+
+.card h3 {
+    color: var(--primary);
+    padding: 15px 18px;
+}
+
+/* نشان جدید روی کارت */
+.new-card::before {
+    content: "جدید";
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 5;
+    background-color: var(--accent);
+    color: white;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* فهرست با تیک */
+.check-list {
+    list-style: none;
+    background-color: white;
+    padding: 20px 25px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.check-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.check-list li::before {
+    content: "✔ ";
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.check-list li:last-child {
+    border-bottom: none;
+}</code></pre>
+    <p class="code-caption" data-t="ch13-107">نمونه نهایی فصل: نمونه 09-final-example</p>
+
+    <h3 data-t="ch13-108">شرح مثال</h3>
+
+    <p data-t="ch13-109">
+        این صفحه تقریباً هر چیزی را که در این فصل خواندیم به کار می‌برد
+        و شکل و حال یک سایت واقعی و امروزی را دارد.
+    </p>
+
+    <ul>
+        <li data-t="ch13-110"><strong>متغیرها.</strong> هیچ رنگی در فایل به شکل دستی نوشته نشده، حتی سایه‌ها هم متغیر شده‌اند. برای عوض کردن تم کل صفحه، تنها بلوک <code>root:</code> تغییر می‌کند.</li>
+        <li data-t="ch13-111">
+            <strong>هدر بزرگ.</strong> ترکیب گرادیانت نیمه‌شفاف روی عکس،
+            به‌علاوه فلکس‌باکس برای وسط‌چین کردن، به‌علاوه
+            <code>text-shadow</code> تا متن روی هر عکسی خوانا بماند.
+        </li>
+        <li data-t="ch13-112">
+            <strong>دکمه.</strong> سه حالت دارد: عادی، بزرگ‌شونده در
+            <code>hover:</code> و کمی فشرده در <code>active:</code>.
+            به‌علاوه لینک داخلی به بخش رشته‌ها که با
+            <code>scroll-behavior: smooth</code> نرم اسکرول می‌کند.
+        </li>
+        <li data-t="ch13-113">
+            <strong>عنوان بخش.</strong> خط تزیینی نارنجی با
+            <code>after::</code> ساخته شده، بدون هیچ تگ اضافه‌ای در HTML.
+        </li>
+        <li data-t="ch13-114">
+            <strong>کارت‌ها.</strong> تصویرها با <code>object-fit: cover</code>
+            هم‌اندازه شده‌اند، در <code>hover:</code> کارت بالا می‌آید و
+            سایه‌اش بزرگ‌تر می‌شود و رنگ عکس هم برمی‌گردد.
+            نشان «جدید» هم یک <code>before::</code> است.
+        </li>
+        <li data-t="ch13-115">
+            <strong>فهرست.</strong> تیک سبز هر مورد با <code>before::</code>
+            آمده و خط زیر آخرین مورد با <code>last-child:</code> برداشته شده است.
+        </li>
+    </ul>
+
+    <div class="note">
+        <span class="box-title" data-t="ch13-116">یک نکته تازه در گرید</span>
+        <p data-t="ch13-117">در بخش کارت‌ها نوشته‌ایم <code>repeat(auto-fit, minmax(240px, 1fr))</code>. معنی‌اش این است: «هر چند ستون که جا می‌شود بساز، به شرطی که هیچ ستونی باریک‌تر از ۲۴۰ پیکسل نشود». نتیجه‌اش یک گالری کاملاً واکنش‌گراست، <strong>بدون حتی یک media query</strong>. این پیشرفته‌ترین نکته این کتاب است و اگر آن را به خاطر بسپارید، در پروژه‌های واقعی بسیار به کارتان می‌آید.</p>
+    </div>
+
+    <div class="folder-ref">
+        <span class="box-title" data-t="ch13-118">فایل‌های تمرینی این فصل</span>
+        <p data-t="ch13-119">
+            پوشه <code>13-advanced-css</code> شامل نمونه‌های
+            <code>01-css-variables</code> تا <code>09-final-example</code>.
+        </p>
+    </div>
+
+    <h2 data-t="ch13-120">خلاصه فصل</h2>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch13-121">ویژگی</th><th data-t="ch13-122">کارش</th></tr>
+        </thead>
+        <tbody>
+            <tr><td data-t="ch13-123"><code>:root</code> و <code>--name</code></td><td data-t="ch13-124">تعریف متغیر</td></tr>
+            <tr><td><code>var(--name)</code></td><td data-t="ch13-125">استفاده از متغیر</td></tr>
+            <tr><td><code>box-shadow</code></td><td data-t="ch13-126">سایه جعبه. با <code>inset</code> به داخل.</td></tr>
+            <tr><td><code>text-shadow</code></td><td data-t="ch13-127">سایه متن</td></tr>
+            <tr><td><code>linear-gradient</code></td><td data-t="ch13-128">محو شدن یک رنگ در رنگ دیگر</td></tr>
+            <tr><td><code>rgba</code></td><td data-t="ch13-129">رنگ با شفافیت</td></tr>
+            <tr><td><code>opacity</code></td><td data-t="ch13-130">شفافیت کل عنصر، شامل متنش</td></tr>
+            <tr><td><code>transform</code></td><td data-t="ch13-131">جابه‌جایی، بزرگ‌نمایی، چرخش</td></tr>
+            <tr><td><code>object-fit: cover</code></td><td data-t="ch13-132">هم‌اندازه کردن تصویرها بدون کشیدگی</td></tr>
+            <tr><td><code>calc()</code></td><td data-t="ch13-133">محاسبه بین واحدهای متفاوت</td></tr>
+            <tr><td><code>:first-child</code> <code>:last-child</code></td><td data-t="ch13-134">اولین و آخرین فرزند</td></tr>
+            <tr><td><code>:nth-child(odd)</code></td><td data-t="ch13-135">فرزندان فرد، برای جدول راه‌راه</td></tr>
+            <tr><td><code>:active</code></td><td data-t="ch13-136">لحظه فشرده شدن</td></tr>
+            <tr><td data-t="ch13-137"><code>::before</code> و <code>::after</code></td><td data-t="ch13-138">ساختن قطعه تزیینی. <code>content</code> اجباری است.</td></tr>
+            <tr><td><code>scroll-behavior: smooth</code></td><td data-t="ch13-139">اسکرول نرم برای لینک‌های داخلی</td></tr>
+            <tr><td><code>filter</code></td><td data-t="ch13-140">جلوه‌هایی مانند سیاه‌وسفید و محو</td></tr>
+        </tbody>
+    </table>
+
+    <div class="exercise">
+        <h3 data-t="ch13-141">تمرین‌های فصل سیزده</h3>
+        <ol>
+            <li data-t="ch13-142">فایل CSS یکی از تمرین‌های قبلی را بردارید و همه رنگ‌هایش را به متغیر تبدیل کنید. بعد با عوض کردن یک خط، تم کل صفحه را تغییر دهید.</li>
+            <li data-t="ch13-143">یک هدر بزرگ با عکس و پرده تیره بسازید که متن سفیدش کاملاً خوانا باشد.</li>
+            <li data-t="ch13-144">کارتی بسازید که با رفتن موس روی آن، بالا بیاید و سایه‌اش بزرگ‌تر شود.</li>
+            <li data-t="ch13-145">زیر همه عنوان‌های بخش، یک خط تزیینی با <code>after::</code> اضافه کنید.</li>
+            <li data-t="ch13-146">یک جدول راه‌راه با <code>nth-child(odd):</code> بسازید.</li>
+            <li data-t="ch13-147">یک گالری با <code>repeat(auto-fit, minmax(240px, 1fr))</code> بسازید و پنجره را باریک کنید تا رفتارش را ببینید.</li>
+            <li data-t="ch13-148">تصویرهایی با اندازه‌های مختلف در کارت‌ها بگذارید و با <code>object-fit: cover</code> مرتبشان کنید.</li>
+        </ol>
+    </div>
+
+    <div class="pager">
+        <a href="chapter-12.html">فصل قبل: طراحی واکنش‌گرا</a>
+        <a href="chapter-14.html">فصل بعد: پروژه نهایی</a>
+    </div>
+
+</main>
+
+</body>
+</html>

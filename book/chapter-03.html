@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="فصل سه: سه روش نوشتن CSS، انتخابگر کلاس و آی‌دی، رنگ و پس‌زمینه، ترازبندی متن و اندازه قلم">
+    <title>فصل ۳: آشنایی با CSS</title>
+    <link rel="icon" href="logokm.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="book-bar">
+    <a class="name" href="index.html">طراحی وب با HTML و CSS</a>
+    <a href="index.html">فهرست مطالب</a>
+</header>
+
+<main class="paper">
+
+    <div class="chapter-head">
+        <span class="chapter-num">فصل ۳</span>
+        <h1 data-t="ch03-001">آشنایی با CSS</h1>
+        <p class="lead" data-t="ch03-002">تا اینجا صفحه‌ها از نظر ساختار درست بودند، اما هنوز ظاهر مناسبی نداشتند. از این فصل به بعد سراغ زبان دوم وب می‌رویم و کنترل ظاهر صفحه را به دست می‌گیریم.</p>
+    </div>
+
+    <div class="mini-toc">
+        <span class="box-title" data-t="ch03-003">در این فصل با این مباحث آشنا می‌شوید</span>
+        <ol>
+            <li data-t="ch03-004"><a href="#s1">روش اول: CSS درون‌خطی</a></li>
+            <li data-t="ch03-005"><a href="#s2">روش دوم: CSS داخلی</a></li>
+            <li data-t="ch03-006"><a href="#s3">انتخابگر کلاس</a></li>
+            <li data-t="ch03-007"><a href="#s4">انتخابگر آی‌دی</a></li>
+            <li data-t="ch03-008"><a href="#s5">روش سوم: CSS خارجی</a></li>
+            <li data-t="ch03-009"><a href="#s6">رنگ و پس‌زمینه</a></li>
+            <li data-t="ch03-010"><a href="#s7">ترازبندی و اندازه قلم</a></li>
+            <li data-t="ch03-011"><a href="#s8">نمونه نهایی فصل</a></li>
+        </ol>
+    </div>
+
+    <h2 id="s1" data-t="ch03-012">۱. روش اول: CSS درون‌خطی</h2>
+
+    <p data-t="ch03-013">ساده‌ترین روش برای اعمال استایل، نوشتن آن مستقیماً داخل خود تگ است، با ویژگی <code>style</code>.</p>
+
+    <pre class="code"><code>&lt;h1 style="color: red;"&gt;عنوان قرمز&lt;/h1&gt;
+
+&lt;p style="color: blue; font-size: 20px;"&gt;
+    این پاراگراف آبی و بزرگ است.
+&lt;/p&gt;</code></pre>
+    <p class="code-caption" data-t="ch03-014">CSS درون‌خطی: نمونه 01-inline-css</p>
+
+    <h3 data-t="ch03-015">شرح مثال</h3>
+
+    <p data-t="ch03-016">مقدار ویژگی <code>style</code> یک یا چند اعلان CSS است. اگر چند اعلان بنویسید، بینشان نقطه‌ویرگول می‌گذارید. اینجا خبری از انتخابگر و آکولاد نیست، چون معلوم است استایل تنها برای همین تگ است.</p>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch03-017">چرا این روش مناسب نیست</span>
+        <p data-t="ch03-018">فرض کنید سایتی با پنجاه پاراگراف دارید و می‌خواهید رنگ همه را عوض کنید. با این روش باید پنجاه بار همان تغییر را تکرار کنید. به‌علاوه، کد HTML شلوغ و ناخوانا می‌شود و دیگر معلوم نیست کجا محتواست و کجا ظاهر. این روش را تنها در حدی یاد بگیرید که هنگام دیدن کد دیگران بتوانید آن را تشخیص دهید، اما خودتان از آن استفاده نکنید.</p>
+    </div>
+
+    <h2 id="s2" data-t="ch03-019">۲. روش دوم: CSS داخلی</h2>
+
+    <p data-t="ch03-020">در این روش تمام استایل‌ها را یکجا، داخل تگ <code>style</code> در قسمت <code>head</code> می‌نویسیم.</p>
+
+    <pre class="code"><code>&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;CSS داخلی&lt;/title&gt;
+
+    &lt;style&gt;
+        h1 {
+            color: darkgreen;
+            font-size: 32px;
+        }
+
+        p {
+            color: gray;
+            font-size: 16px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;عنوان اصلی&lt;/h1&gt;
+    &lt;p&gt;پاراگراف اول&lt;/p&gt;
+    &lt;p&gt;پاراگراف دوم&lt;/p&gt;
+
+&lt;/body&gt;</code></pre>
+    <p class="code-caption" data-t="ch03-021">CSS داخلی: نمونه 02-internal-css</p>
+
+    <h3 data-t="ch03-022">شرح مثال</h3>
+
+    <p data-t="ch03-023">اینجا در اینجا برای اولین بار با یک انتخابگر واقعی روبه‌رو می‌شویم. کلمه <code>h1</code> پیش از آکولاد یعنی «هر عنصر h1 در این صفحه». پس هر چند تا <code>h1</code> داشته باشیم، همه سبز تیره می‌شوند.</p>
+
+    <p data-t="ch03-024">به همین ترتیب قانون دوم روی <strong>هر دو</strong> پاراگراف اعمال می‌شود، بدون اینکه چیزی به خود تگ‌ها اضافه کرده باشیم. همین تغییر ساده مشکل تکرار در روش قبلی را برطرف می‌کند: یک بار می‌نویسیم، همه جا اعمال می‌شود.</p>
+
+    <h2 id="s3" data-t="ch03-025">۳. انتخابگر کلاس</h2>
+
+    <p data-t="ch03-026">انتخابگر تگ تمام عنصرهای یک نوع را انتخاب می‌کند. اما اگر بخواهیم تنها <strong>بعضی</strong> پاراگراف‌ها قرمز باشند چه؟ اینجاست که <strong>کلاس</strong> به کمک می‌آید.</p>
+
+    <pre class="code"><code>&lt;style&gt;
+    .warning {
+        color: red;
+        font-size: 18px;
+    }
+
+    .success {
+        color: green;
+    }
+&lt;/style&gt;
+
+&lt;p&gt;این یک پاراگراف معمولی است.&lt;/p&gt;
+
+&lt;p class="warning"&gt;این یک هشدار است.&lt;/p&gt;
+
+&lt;p class="success"&gt;عملیات با موفقیت انجام شد.&lt;/p&gt;
+
+&lt;h2 class="warning"&gt;این عنوان هم هشدار است.&lt;/h2&gt;</code></pre>
+    <p class="code-caption" data-t="ch03-027">انتخابگر کلاس: نمونه 03-class-selector</p>
+
+    <h3 data-t="ch03-028">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch03-029">
+            در HTML به تگ یک ویژگی <code>class</code> می‌دهیم و برایش
+            یک نام دلخواه انتخاب می‌کنیم.
+        </li>
+        <li data-t="ch03-030">
+            در CSS همان نام را می‌نویسیم و <strong>یک نقطه</strong> جلویش می‌گذاریم.
+            آن نقطه به معنی «این یک کلاس است» می‌باشد.
+        </li>
+        <li data-t="ch03-031">یادتان باشد نقطه تنها در CSS نوشته می‌شود و در HTML نباید آن را بنویسید. این یکی از پرتکرارترین اشتباهات تازه‌کارهاست.</li>
+    </ul>
+
+    <p data-t="ch03-032">دو نکته مهم دیگر هم وجود دارد: نخست اینکه یک کلاس را می‌شود روی <strong>هر تعداد</strong> عنصر و حتی روی تگ‌های مختلف گذاشت. در مثال بالا کلاس <code>warning</code> هم روی یک پاراگراف است و هم روی یک عنوان. دوم اینکه یک عنصر می‌تواند <strong>چند کلاس</strong> داشته باشد؛ کافی است نامشان را با فاصله بنویسید: <code>class="warning big"</code>.</p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch03-033">نام‌گذاری خوب</span>
+        <p data-t="ch03-034">نام کلاس را بر اساس <strong>کارش</strong> انتخاب کنید، نه ظاهرش. <code>warning</code> نام خوبی است، اما <code>red-text</code> نام بدی است؛ چون اگر روزی تصمیم بگیرید هشدارها نارنجی باشند، کلاسی به نام «متن قرمز» که نارنجی است، گیج‌کننده می‌شود.</p>
+    </div>
+
+    <h2 id="s4" data-t="ch03-035">۴. انتخابگر آی‌دی</h2>
+
+    <p data-t="ch03-036">آی‌دی شبیه کلاس است، با یک تفاوت اساسی: هر آی‌دی در کل صفحه تنها <strong>یک بار</strong> استفاده می‌شود.</p>
+
+    <pre class="code"><code>&lt;style&gt;
+    #main-title {
+        color: darkblue;
+        font-size: 36px;
+    }
+
+    #footer {
+        color: gray;
+        font-size: 14px;
+    }
+&lt;/style&gt;
+
+&lt;h1 id="main-title"&gt;عنوان اصلی سایت&lt;/h1&gt;
+
+&lt;p&gt;متن معمولی صفحه&lt;/p&gt;
+
+&lt;p id="footer"&gt;تمام حقوق محفوظ است.&lt;/p&gt;</code></pre>
+    <p class="code-caption" data-t="ch03-037">انتخابگر آی‌دی: نمونه 04-id-selector</p>
+
+    <h3 data-t="ch03-038">شرح مثال</h3>
+
+    <p data-t="ch03-039">در CSS به جای نقطه، از علامت <code>#</code> استفاده می‌کنیم. بقیه چیزها مانند کلاس است.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th data-t="ch03-040">کلاس</th>
+                <th data-t="ch03-041">آی‌دی</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-t="ch03-042">در HTML</td>
+                <td><code>class="box"</code></td>
+                <td><code>id="header"</code></td>
+            </tr>
+            <tr>
+                <td data-t="ch03-043">در CSS</td>
+                <td><code>.box</code></td>
+                <td><code>#header</code></td>
+            </tr>
+            <tr>
+                <td data-t="ch03-044">چند بار در صفحه</td>
+                <td data-t="ch03-045">هر چند بار</td>
+                <td data-t="ch03-046">تنها یک بار</td>
+            </tr>
+            <tr>
+                <td data-t="ch03-047">کاربرد اصلی</td>
+                <td data-t="ch03-048">استایل‌های تکرارشونده</td>
+                <td data-t="ch03-049">عنصرهای یکتا و لینک داخلی</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note">
+        <span class="box-title" data-t="ch03-050">پس کدام‌یک را استفاده کنیم</span>
+        <p data-t="ch03-051">قانون ساده: در نود درصد مواقع <strong>کلاس</strong>. آی‌دی را برای عنصرهایی نگه دارید که واقعاً در صفحه یکتا هستند، مانند سربرگ اصلی یا پاورقی. آی‌دی یک کاربرد مهم دیگر هم دارد: ساختن لینک به داخل همان صفحه، که در فصل سیزدهم می‌بینیم.</p>
+    </div>
+
+    <h2 id="s5" data-t="ch03-052">۵. روش سوم: CSS خارجی</h2>
+
+    <p data-t="ch03-053">این همان روشی است که معمولاً در پروژه‌های حرفه‌ای استفاده می‌شود و از این پس روش ما هم همین است. استایل‌ها را در یک فایل جداگانه با پسوند <code>css.</code> می‌نویسیم.</p>
+
+    <pre class="code"><code>&lt;!-- فایل index.html --&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;CSS خارجی&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;عنوان صفحه&lt;/h1&gt;
+    &lt;p class="intro"&gt;متن معرفی&lt;/p&gt;
+&lt;/body&gt;</code></pre>
+
+    <pre class="code"><code>/* فایل style.css */
+
+h1 {
+    color: #2f4f4f;
+    font-size: 32px;
+}
+
+.intro {
+    color: #666666;
+    font-size: 18px;
+}</code></pre>
+    <p class="code-caption" data-t="ch03-054">CSS خارجی: نمونه 05-external-css، دو فایل جداگانه</p>
+
+    <h3 data-t="ch03-055">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch03-056">
+            تگ <code>link</code> داخل <code>head</code> فایل CSS را به صفحه وصل می‌کند.
+            <code>rel="stylesheet"</code> یعنی «نوع این فایل، برگه استایل است» و
+            <code>href</code> مسیر فایل است، دقیقاً با همان قوانین مسیر که در فصل دوم دیدیم.
+        </li>
+        <li data-t="ch03-057">
+            در فایل CSS دیگر تگ <code>style</code> نمی‌نویسیم. کل فایل، CSS است.
+        </li>
+        <li data-t="ch03-058">
+            توضیح در CSS شکل دیگری دارد: بین <code>/*</code> و <code>*/</code>.
+            علامت توضیح HTML در فایل CSS کار نمی‌کند.
+        </li>
+    </ul>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch03-059">مهم‌ترین مزیت این روش</span>
+        <p data-t="ch03-060">یک فایل CSS را می‌شود به <strong>ده‌ها صفحه</strong> وصل کرد. در فصل چهاردهم، هر هفت صفحه سایت به یک فایل <code>style.css</code> وصل می‌شوند. یعنی برای عوض کردن رنگ سربرگ کل سایت، تنها یک خط در یک فایل عوض می‌شود.</p>
+    </div>
+
+    <h3 data-t="ch03-061">وقتی چند استایل با یکدیگر تداخل پیدا می‌کنند</h3>
+
+    <p data-t="ch03-062">اگر یک عنصر از چند جا استایل بگیرد، کدام قانون اولویت دارد؟ قوانین به ترتیب زیر اولویت دارند:</p>
+
+    <ol>
+        <li data-t="ch03-063"><strong>CSS درون‌خطی</strong> بالاترین اولویت را دارد.</li>
+        <li data-t="ch03-064"><strong>آی‌دی</strong> قوی‌تر از کلاس است.</li>
+        <li data-t="ch03-065"><strong>کلاس</strong> قوی‌تر از انتخابگر تگ است.</li>
+        <li data-t="ch03-066">اگر دو قانون قدرت یکسانی داشته باشند، آن که <strong>پایین‌تر</strong> نوشته شده برنده است.</li>
+    </ol>
+
+    <p data-t="ch03-067">
+        همین قانون آخر دلیل این است که در فصل پانزدهم گفتیم فایل استایل خودمان
+        باید بعد از فایل کتابخانه آماده نوشته شود.
+    </p>
+
+    <h2 id="s6" data-t="ch03-068">۶. رنگ و پس‌زمینه</h2>
+
+    <p data-t="ch03-069">در CSS می‌توان رنگ را به سه روش نوشت. هر سه روش در نهایت همان نتیجه را ایجاد می‌کنند.</p>
+
+    <pre class="code"><code>body {
+    background-color: #f5f5f5;
+}
+
+h1 {
+    color: darkgreen;                    /* نام انگلیسی رنگ */
+}
+
+h2 {
+    color: #2f4f4f;                      /* کد شانزده‌شانزدهی */
+}
+
+p {
+    color: rgb(100, 100, 100);           /* ترکیب قرمز، سبز، آبی */
+}
+
+.highlight {
+    background-color: yellow;
+    color: black;
+}</code></pre>
+    <p class="code-caption" data-t="ch03-070">رنگ و پس‌زمینه: نمونه 06-color-and-background</p>
+
+    <h3 data-t="ch03-071">شرح مثال</h3>
+
+    <p data-t="ch03-072">دو ویژگی اصلی وجود دارد که به‌راحتی ممکن است با هم اشتباه شوند:</p>
+
+    <ul>
+        <li data-t="ch03-073"><code>color</code> رنگ <strong>خود متن</strong> را تعیین می‌کند.</li>
+        <li data-t="ch03-074"><code>background-color</code> رنگ <strong>پس‌زمینه</strong> عنصر را.</li>
+    </ul>
+
+    <p data-t="ch03-075">رنگ‌ها را هم می‌توان به سه شکل نوشت:</p>
+
+    <ol>
+        <li data-t="ch03-076"><strong>نام رنگ.</strong> حدود صد و چهل نام انگلیسی مانند <code>red</code> و <code>tomato</code> از قبل تعریف شده‌اند. ساده است اما انتخاب محدودی دارد.</li>
+        <li data-t="ch03-077">
+            <strong>کد شانزده‌شانزدهی.</strong> یک علامت <code>#</code> و شش رقم.
+            دو رقم اول مقدار قرمز، دو رقم بعد سبز و دو رقم آخر آبی است.
+            هر جفت از <code>00</code> تا <code>ff</code> تغییر می‌کند.
+            پس <code>ff0000#</code> قرمز کامل است و <code>000000#</code> سیاه.
+        </li>
+        <li data-t="ch03-078"><strong>rgb.</strong> همان سه عدد، اما این بار از صفر تا ۲۵۵ و به صورت خوانا.</li>
+    </ol>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch03-079">رنگ مناسب را از کجا پیدا کنیم</span>
+        <p data-t="ch03-080">لازم نیست کدهای رنگ را حفظ کنید؛ ابزارهای لازم برای انتخاب آنها در اختیار شماست. در VS Code کافی است <code>#</code> را بنویسید تا یک انتخابگر رنگ باز شود. در همه مرورگرها هم با F12 می‌شود رنگ هر قسمت از هر سایتی را دید.</p>
+    </div>
+
+    <h2 id="s7" data-t="ch03-081">۷. ترازبندی و اندازه قلم</h2>
+
+    <p data-t="ch03-082">
+        دو ویژگی پرکاربرد دیگر که با آنها متن را مرتب می‌کنیم.
+    </p>
+
+    <pre class="code"><code>h1 {
+    text-align: center;
+    font-size: 36px;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.justify {
+    text-align: justify;
+}
+
+.small-note {
+    font-size: 12px;
+    color: gray;
+}</code></pre>
+    <p class="code-caption" data-t="ch03-083">ترازبندی و اندازه قلم: نمونه 07-text-align-and-font-size</p>
+
+    <h3 data-t="ch03-084">شرح مثال</h3>
+
+    <p data-t="ch03-085"><code>text-align</code> جای قرار گرفتن متن در عرض عنصر را مشخص می‌کند:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th data-t="ch03-086">مقدار</th>
+                <th data-t="ch03-087">نتیجه</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><code>right</code></td><td data-t="ch03-088">راست‌چین. در صفحه‌های فارسی حالت پیش‌فرض است.</td></tr>
+            <tr><td><code>left</code></td><td data-t="ch03-089">چپ‌چین. برای متن یا کد انگلیسی مناسب است.</td></tr>
+            <tr><td><code>center</code></td><td data-t="ch03-090">وسط‌چین. برای عنوان‌ها بسیار به کار می‌آید.</td></tr>
+            <tr><td><code>justify</code></td><td data-t="ch03-091">دو طرف صاف. لبه راست و چپ متن هم‌تراز می‌شوند.</td></tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch03-092">
+        <code>font-size</code> اندازه حروف است. رایج‌ترین واحدش فعلاً پیکسل است.
+        اندازه پیش‌فرض متن در مرورگرها شانزده پیکسل است.
+        در فصل دوازدهم واحدهای بهتری هم یاد می‌گیریم.
+    </p>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch03-093">دقت کنید</span>
+        <p data-t="ch03-094">بین عدد و واحد <strong>نباید</strong> فاصله باشد. <code>font-size: 20px;</code> درست است و <code>font-size: 20 px;</code> اصلاً کار نمی‌کند. همچنین نوشتن عدد بدون واحد، مانند <code>font-size: 20;</code> هم اشتباه است.</p>
+    </div>
+
+    <h2 id="s8" data-t="ch03-095">۸. نمونه نهایی فصل</h2>
+
+    <p data-t="ch03-096">
+        حالا یک صفحه کامل با فایل CSS جداگانه می‌سازیم و هر هشت مفهوم فصل را
+        در آن به کار می‌بریم.
+    </p>
+
+    <pre class="code"><code>&lt;!-- index.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="fa" dir="rtl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;کارگاه طراحی وب&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1 id="main-title"&gt;کارگاه طراحی وب&lt;/h1&gt;
+
+    &lt;p class="intro"&gt;
+        در این کارگاه ساخت صفحه‌های وب را از پایه یاد می‌گیریم.
+    &lt;/p&gt;
+
+    &lt;h2&gt;سرفصل‌ها&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;آشنایی با HTML&lt;/li&gt;
+        &lt;li class="done"&gt;آشنایی با CSS&lt;/li&gt;
+        &lt;li&gt;چیدمان صفحه&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p class="note-box"&gt;
+        ثبت‌نام تا پایان همین هفته ادامه دارد.
+    &lt;/p&gt;
+
+    &lt;p id="footer"&gt;مؤسسه فنی و آموزشی کادوس&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <pre class="code"><code>/* style.css */
+
+body {
+    background-color: #f5f5f5;
+    color: #333333;
+    text-align: right;
+}
+
+#main-title {
+    color: #2f4f4f;
+    font-size: 34px;
+    text-align: center;
+}
+
+h2 {
+    color: #2f4f4f;
+    font-size: 22px;
+}
+
+.intro {
+    font-size: 18px;
+    color: #555555;
+    text-align: justify;
+}
+
+.done {
+    color: green;
+}
+
+.note-box {
+    background-color: #fff3cd;
+    color: #7a5b00;
+    font-size: 15px;
+}
+
+#footer {
+    text-align: center;
+    color: gray;
+    font-size: 13px;
+}</code></pre>
+    <p class="code-caption" data-t="ch03-097">نمونه نهایی فصل: نمونه 08-final-example</p>
+
+    <h3 data-t="ch03-098">شرح مثال</h3>
+
+    <p data-t="ch03-099">
+        در فایل CSS پنج نوع انتخابگر مختلف داریم و هر کدام کار متفاوتی می‌کند:
+    </p>
+
+    <ul>
+        <li data-t="ch03-100">
+            <code>body</code> استایل پایه کل صفحه را می‌دهد. رنگ متن و راست‌چینی
+            که اینجا تعریف شده، به همه عنصرهای داخل بدنه هم می‌رسد.
+            به این رفتار <strong>ارث‌بری</strong> می‌گویند.
+        </li>
+        <li data-t="ch03-101">
+            <code>h2</code> انتخابگر تگ است و روی همه عنوان‌های سطح دو اعمال می‌شود.
+        </li>
+        <li data-t="ch03-102"><code>main-title#</code> و <code>footer#</code> آی‌دی هستند و هر کدام تنها یک عنصر یکتا را هدف می‌گیرند.</li>
+        <li data-t="ch03-103"><code>intro.</code> و <code>done.</code> و <code>note-box.</code> کلاس هستند و می‌شود آنها را هر جای دیگری از سایت هم بار دیگر استفاده کرد.</li>
+    </ul>
+
+    <p data-t="ch03-104">به این هم دقت کنید که فایل HTML چقدر تمیز مانده است. هیچ ویژگی <code>style</code> در آن نیست. HTML تنها می‌گوید چه چیزی در صفحه هست و CSS می‌گوید آن چیزها چه شکلی باشند. این جدا بودن، مهم‌ترین درس این فصل است.</p>
+
+    <div class="folder-ref">
+        <span class="box-title" data-t="ch03-105">فایل‌های تمرینی این فصل</span>
+        <p data-t="ch03-106">
+            پوشه <code>03-css-basics</code> شامل هشت نمونه:
+            <code>01-inline-css</code> تا <code>08-final-example</code>.
+        </p>
+    </div>
+
+    <h2 data-t="ch03-107">خلاصه فصل</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th data-t="ch03-108">موضوع</th>
+                <th data-t="ch03-109">نوشتار</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td data-t="ch03-110">CSS درون‌خطی</td><td><code>&lt;p style="color: red;"&gt;</code></td></tr>
+            <tr><td data-t="ch03-111">CSS داخلی</td><td data-t="ch03-112"><code>&lt;style&gt; ... &lt;/style&gt;</code> در head</td></tr>
+            <tr><td data-t="ch03-113">CSS خارجی</td><td><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></td></tr>
+            <tr><td data-t="ch03-114">انتخابگر تگ</td><td><code>p { ... }</code></td></tr>
+            <tr><td data-t="ch03-115">انتخابگر کلاس</td><td><code>.intro { ... }</code></td></tr>
+            <tr><td data-t="ch03-116">انتخابگر آی‌دی</td><td><code>#header { ... }</code></td></tr>
+            <tr><td data-t="ch03-117">رنگ متن</td><td><code>color: #2f4f4f;</code></td></tr>
+            <tr><td data-t="ch03-118">رنگ پس‌زمینه</td><td><code>background-color: yellow;</code></td></tr>
+            <tr><td data-t="ch03-119">ترازبندی</td><td><code>text-align: center;</code></td></tr>
+            <tr><td data-t="ch03-120">اندازه قلم</td><td><code>font-size: 18px;</code></td></tr>
+            <tr><td data-t="ch03-121">توضیح در CSS</td><td><code>/* ... */</code></td></tr>
+        </tbody>
+    </table>
+
+    <div class="exercise">
+        <h3 data-t="ch03-122">تمرین‌های فصل سه</h3>
+        <ol>
+            <li data-t="ch03-123">صفحه‌ای که در فصل دوم ساختید را بردارید و یک فایل <code>style.css</code> به آن وصل کنید.</li>
+            <li data-t="ch03-124">رنگ پس‌زمینه صفحه، رنگ عنوان‌ها و اندازه قلم پاراگراف‌ها را تنظیم کنید.</li>
+            <li data-t="ch03-125">یک کلاس به نام <code>important</code> بسازید و روی سه عنصر مختلف از سه نوع تگ به کار ببرید.</li>
+            <li data-t="ch03-126">به پاورقی صفحه یک آی‌دی بدهید و آن را وسط‌چین و خاکستری کنید.</li>
+            <li data-t="ch03-127">یک رنگ را یک بار با نام، یک بار با کد شانزده‌شانزدهی و یک بار با <code>rgb</code> بنویسید و ببینید هر سه یکسان‌اند.</li>
+            <li data-t="ch03-128">عمداً یک نقطه‌ویرگول را حذف کنید و ببینید کدام قسمت‌ها از کار می‌افتند.</li>
+        </ol>
+    </div>
+
+    <div class="pager">
+        <a href="chapter-02.html">فصل قبل: جدول و مسیر فایل</a>
+        <a href="chapter-04.html">فصل بعد: مدل جعبه‌ای</a>
+    </div>
+
+</main>
+
+</body>
+</html>

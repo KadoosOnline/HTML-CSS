@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="فصل هفت: فلکس‌باکس، display flex، جهت محور، justify-content، align-items و flex-wrap">
+    <title>فصل ۷: فلکس‌باکس</title>
+    <link rel="icon" href="logokm.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="book-bar">
+    <a class="name" href="index.html">طراحی وب با HTML و CSS</a>
+    <a href="index.html">فهرست مطالب</a>
+</header>
+
+<main class="paper">
+
+    <div class="chapter-head">
+        <span class="chapter-num">فصل ۷</span>
+        <h1 data-t="ch07-001">فلکس‌باکس: چیدمان مدرن</h1>
+        <p class="lead" data-t="ch07-002">
+            تا اینجا هر جعبه زیر جعبه قبلی می‌رفت و کاری از دستمان برنمی‌آمد.
+            فلکس‌باکس این را تغییر می‌دهد و کنترل کامل چیدمان را به ما می‌دهد.
+        </p>
+    </div>
+
+    <div class="mini-toc">
+        <span class="box-title" data-t="ch07-003">در این فصل با این مباحث آشنا می‌شوید</span>
+        <ol>
+            <li data-t="ch07-004"><a href="#s1">مشکلی که فلکس‌باکس حل می‌کند</a></li>
+            <li data-t="ch07-005"><a href="#s2">جهت محور</a></li>
+            <li><a href="#s3">justify-content</a></li>
+            <li><a href="#s4">align-items</a></li>
+            <li><a href="#s5">flex-wrap</a></li>
+            <li data-t="ch07-006"><a href="#s6">نمونه نهایی فصل</a></li>
+        </ol>
+    </div>
+
+    <h2 id="s1" data-t="ch07-007">۱. مشکلی که فلکس‌باکس حل می‌کند</h2>
+
+    <p data-t="ch07-008">
+        فرض کنید سه کارت دارید و می‌خواهید کنار هم قرار بگیرند.
+        هر سه <code>div</code> هستند و <code>div</code> بلوکی است،
+        پس زیر هم می‌روند. سال‌ها طراحان برای حل این مشکل از
+        روش‌های عجیبی استفاده می‌کردند که همیشه دردسر داشتند.
+    </p>
+
+    <p data-t="ch07-009">
+        فلکس‌باکس روش امروزی و درست این کار است. با یک خط شروع می‌شود:
+    </p>
+
+    <pre class="code"><code>&lt;div class="container"&gt;
+    &lt;div class="item"&gt;یک&lt;/div&gt;
+    &lt;div class="item"&gt;دو&lt;/div&gt;
+    &lt;div class="item"&gt;سه&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+    <pre class="code"><code>.container {
+    display: flex;
+}
+
+.item {
+    background-color: #2f4f4f;
+    color: white;
+    padding: 20px;
+}</code></pre>
+    <p class="code-caption" data-t="ch07-010">اولین فلکس: نمونه 01-display-flex-intro</p>
+
+    <h3 data-t="ch07-011">شرح مثال</h3>
+
+    <p data-t="ch07-012">تنها یک خط نوشتیم و هر سه جعبه کنار هم رفتند. اما مهم‌تر از نتیجه، فهمیدن مدل ذهنی فلکس‌باکس است:</p>
+
+    <ul>
+        <li data-t="ch07-013">
+            <code>display: flex</code> را روی <strong>ظرف</strong> می‌نویسیم،
+            یعنی روی عنصر والد. آن عنصر از این لحظه یک «ظرف فلکس» می‌شود.
+        </li>
+        <li data-t="ch07-014">
+            فرزندان <strong>مستقیم</strong> آن ظرف، «آیتم فلکس» می‌شوند
+            و از قوانین چیدمان فلکس پیروی می‌کنند.
+        </li>
+        <li data-t="ch07-015">نوه‌ها تحت تأثیر نیستند. فلکس تنها یک سطح پایین‌تر را کنترل می‌کند.</li>
+    </ul>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch07-016">مهم‌ترین جمله این فصل</span>
+        <p data-t="ch07-017">
+            هر ویژگی فلکس یا مال <strong>ظرف</strong> است یا مال <strong>آیتم</strong>.
+            اگر ویژگی را اشتباهی جای دیگری بنویسید، هیچ اتفاقی نمی‌افتد.
+            تمام ویژگی‌های این فصل مال ظرف هستند.
+        </p>
+    </div>
+
+    <h2 id="s2" data-t="ch07-018">۲. جهت محور</h2>
+
+    <p data-t="ch07-019">
+        در فلکس‌باکس دو محور داریم و همه چیز حول این دو می‌چرخد:
+    </p>
+
+    <ul>
+        <li data-t="ch07-020"><strong>محور اصلی:</strong> جهتی که آیتم‌ها در آن ردیف می‌شوند.</li>
+        <li data-t="ch07-021"><strong>محور عرضی:</strong> جهت عمود بر محور اصلی.</li>
+    </ul>
+
+    <pre class="code"><code>.row {
+    display: flex;
+    flex-direction: row;              /* پیش‌فرض: کنار هم */
+}
+
+.column {
+    display: flex;
+    flex-direction: column;           /* زیر هم */
+}
+
+.row-reverse {
+    display: flex;
+    flex-direction: row-reverse;      /* کنار هم، برعکس */
+}</code></pre>
+    <p class="code-caption" data-t="ch07-022">جهت محور: نمونه 02-flex-direction</p>
+
+    <h3 data-t="ch07-023">شرح مثال</h3>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch07-024">مقدار</th><th data-t="ch07-025">محور اصلی</th><th data-t="ch07-026">نتیجه</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>row</code></td><td data-t="ch07-027">افقی</td><td data-t="ch07-028">پیش‌فرض. آیتم‌ها کنار هم.</td></tr>
+            <tr><td><code>column</code></td><td data-t="ch07-029">عمودی</td><td data-t="ch07-030">آیتم‌ها زیر هم.</td></tr>
+            <tr><td><code>row-reverse</code></td><td data-t="ch07-031">افقی، معکوس</td><td data-t="ch07-032">ترتیب آیتم‌ها برعکس می‌شود.</td></tr>
+            <tr><td><code>column-reverse</code></td><td data-t="ch07-033">عمودی، معکوس</td><td data-t="ch07-034">آخرین آیتم بالا می‌آید.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="note">
+        <span class="box-title" data-t="ch07-035">نکته مهم در صفحه‌های راست‌چین</span>
+        <p data-t="ch07-036">
+            در صفحه‌ای که <code>dir="rtl"</code> دارد، محور اصلی از
+            <strong>راست</strong> شروع می‌شود. یعنی با <code>row</code>
+            اولین آیتم سمت راست قرار می‌گیرد، نه سمت چپ.
+            این دقیقاً همان چیزی است که برای فارسی می‌خواهیم و
+            یکی از دلایلی است که نوشتن <code>dir="rtl"</code> در تگ
+            <code>html</code> اینقدر مهم است.
+        </p>
+    </div>
+
+    <p data-t="ch07-037">
+        نکته کلیدی برای فهم بقیه فصل: وقتی <code>flex-direction</code> را
+        عوض می‌کنید، معنی دو ویژگی بعدی هم عوض می‌شود.
+        چون آنها به «محور اصلی» و «محور عرضی» کار دارند، نه به «افقی» و «عمودی».
+    </p>
+
+    <h2 id="s3" data-t="ch07-038">۳. justify-content</h2>
+
+    <p data-t="ch07-039">
+        این ویژگی آیتم‌ها را در امتداد <strong>محور اصلی</strong> جابه‌جا می‌کند.
+        در حالت پیش‌فرض که <code>row</code> است، یعنی به صورت افقی.
+    </p>
+
+    <pre class="code"><code>.start {
+    display: flex;
+    justify-content: flex-start;      /* پیش‌فرض */
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.around {
+    display: flex;
+    justify-content: space-around;
+}</code></pre>
+    <p class="code-caption" data-t="ch07-040">justify-content: نمونه 03-justify-content</p>
+
+    <h3 data-t="ch07-041">شرح مثال</h3>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch07-042">مقدار</th><th data-t="ch07-043">نتیجه</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>flex-start</code></td>
+                <td data-t="ch07-044">همه آیتم‌ها در ابتدای محور. در صفحه راست‌چین یعنی سمت راست.</td>
+            </tr>
+            <tr>
+                <td><code>center</code></td>
+                <td data-t="ch07-045">همه آیتم‌ها وسط ظرف، چسبیده به هم.</td>
+            </tr>
+            <tr>
+                <td><code>flex-end</code></td>
+                <td data-t="ch07-046">همه آیتم‌ها انتهای محور. در صفحه راست‌چین یعنی سمت چپ.</td>
+            </tr>
+            <tr>
+                <td><code>space-between</code></td>
+                <td data-t="ch07-047">اولی کاملاً ابتدا، آخری کاملاً انتها، بقیه فضا بینشان تقسیم می‌شود.</td>
+            </tr>
+            <tr>
+                <td><code>space-around</code></td>
+                <td data-t="ch07-048">دور هر آیتم فضای مساوی. فاصله بین دو آیتم دو برابر فاصله لبه‌هاست.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch07-049">پرکاربردترین حالت واقعی</span>
+        <p data-t="ch07-050">
+            <code>space-between</code> پرکاربردترین مقدار در طراحی سایت است.
+            هر سربرگی که لوگو در یک طرف و منو در طرف دیگر دارد،
+            با همین یک خط ساخته می‌شود. در فصل چهاردهم دقیقاً همین کار را می‌کنیم.
+        </p>
+    </div>
+
+    <h2 id="s4" data-t="ch07-051">۴. align-items</h2>
+
+    <p data-t="ch07-052">
+        این ویژگی آیتم‌ها را در امتداد <strong>محور عرضی</strong> جابه‌جا می‌کند.
+        وقتی جهت <code>row</code> است، یعنی به صورت عمودی.
+    </p>
+
+    <pre class="code"><code>.box {
+    display: flex;
+    height: 300px;
+}
+
+.stretch {
+    align-items: stretch;             /* پیش‌فرض */
+}
+
+.top {
+    align-items: flex-start;
+}
+
+.middle {
+    align-items: center;
+}
+
+.bottom {
+    align-items: flex-end;
+}</code></pre>
+    <p class="code-caption" data-t="ch07-053">align-items: نمونه 04-align-items</p>
+
+    <h3 data-t="ch07-054">شرح مثال</h3>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch07-055">مقدار</th><th data-t="ch07-056">نتیجه در حالت row</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>stretch</code></td>
+                <td data-t="ch07-057">پیش‌فرض. همه آیتم‌ها کشیده می‌شوند تا هم‌ارتفاع ظرف شوند.</td>
+            </tr>
+            <tr><td><code>flex-start</code></td><td data-t="ch07-058">همه به بالا می‌چسبند.</td></tr>
+            <tr><td><code>center</code></td><td data-t="ch07-059">همه در وسط ارتفاع قرار می‌گیرند.</td></tr>
+            <tr><td><code>flex-end</code></td><td data-t="ch07-060">همه به پایین می‌چسبند.</td></tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch07-061">
+        مقدار پیش‌فرض <code>stretch</code> بسیار مفید است: اگر سه کارت
+        با متن‌های به‌طول متفاوت داشته باشید، هر سه خودکار هم‌ارتفاع می‌شوند
+        و طرح مرتب می‌ماند. پیش از فلکس‌باکس، انجام این کار واقعاً سخت بود.
+    </p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch07-062">وسط‌چین کردن کامل، بالاخره</span>
+        <p data-t="ch07-063">
+            سال‌ها وسط‌چین کردن یک عنصر در وسط صفحه، هم افقی و هم عمودی،
+            سخت‌ترین کار CSS بود. حالا با سه خط انجام می‌شود:
+        </p>
+    </div>
+
+    <pre class="code"><code>.perfect-center {
+    display: flex;
+    justify-content: center;    /* وسط افقی */
+    align-items: center;        /* وسط عمودی */
+    height: 100vh;              /* ارتفاع کل پنجره */
+}</code></pre>
+    <p class="code-caption" data-t="ch07-064">وسط‌چین کامل با سه خط</p>
+
+    <p data-t="ch07-065">
+        واحد <code>vh</code> یعنی درصدی از ارتفاع پنجره مرورگر.
+        <code>100vh</code> یعنی «به اندازه کل ارتفاع صفحه نمایش».
+        این واحد را در فصل دوازدهم کامل بررسی می‌کنیم.
+    </p>
+
+    <h2 id="s5" data-t="ch07-066">۵. flex-wrap</h2>
+
+    <p data-t="ch07-067">به طور پیش‌فرض، فلکس‌باکس <strong>اصرار دارد</strong> همه آیتم‌ها را در یک خط جا بدهد. اگر جا کم بیاید، آنها را فشرده می‌کند تا جا شوند. روی صفحه بزرگ خوب است، اما روی موبایل فاجعه می‌شود.</p>
+
+    <pre class="code"><code>.no-wrap {
+    display: flex;
+    flex-wrap: nowrap;                /* پیش‌فرض */
+}
+
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 300px;
+    padding: 20px;
+    background-color: white;
+}</code></pre>
+    <p class="code-caption" data-t="ch07-068">flex-wrap: نمونه 05-flex-wrap</p>
+
+    <h3 data-t="ch07-069">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch07-070">
+            <code>nowrap</code> پیش‌فرض است. آیتم‌ها هر طور شده در یک خط می‌مانند
+            و در صورت لزوم از عرضشان کم می‌شود، حتی اگر <code>width</code>
+            مشخصی داده باشید.
+        </li>
+        <li data-t="ch07-071">
+            <code>wrap</code> اجازه می‌دهد آیتم‌هایی که جا نمی‌شوند
+            به خط بعد بروند و عرض اصلی خودشان را حفظ کنند.
+        </li>
+    </ul>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch07-072">یک عادت خوب</span>
+        <p data-t="ch07-073">
+            هر وقت فلکس‌باکس را برای چیدن چند کارت یا محصول به کار می‌برید،
+            تقریباً همیشه <code>flex-wrap: wrap</code> را هم بنویسید.
+            همین یک خط باعث می‌شود صفحه روی موبایل هم قابل استفاده بماند
+            و کارت‌ها به جای فشرده شدن، زیر هم بروند.
+            این ساده‌ترین قدم به سمت طراحی واکنش‌گراست، بدون اینکه هنوز
+            حتی یک media query نوشته باشیم.
+        </p>
+    </div>
+
+    <h2 id="s6" data-t="ch07-074">۶. نمونه نهایی فصل</h2>
+
+    <pre class="code"><code>&lt;body&gt;
+
+    &lt;header class="site-header"&gt;
+        &lt;div class="logo"&gt;کادوس&lt;/div&gt;
+        &lt;nav class="menu"&gt;
+            &lt;a href="#"&gt;خانه&lt;/a&gt;
+            &lt;a href="#"&gt;دوره‌ها&lt;/a&gt;
+            &lt;a href="#"&gt;تماس&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;section class="hero"&gt;
+        &lt;h1&gt;آموزش طراحی وب&lt;/h1&gt;
+    &lt;/section&gt;
+
+    &lt;section class="cards"&gt;
+        &lt;div class="card"&gt;
+            &lt;h3&gt;HTML&lt;/h3&gt;
+            &lt;p&gt;ساختار صفحه&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="card"&gt;
+            &lt;h3&gt;CSS&lt;/h3&gt;
+            &lt;p&gt;ظاهر صفحه و چیدمان آن&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="card"&gt;
+            &lt;h3&gt;JavaScript&lt;/h3&gt;
+            &lt;p&gt;رفتار صفحه&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+&lt;/body&gt;</code></pre>
+
+    <pre class="code"><code>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    line-height: 1.9;
+}
+
+/* سربرگ: لوگو یک طرف، منو طرف دیگر */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2f4f4f;
+    padding: 15px 30px;
+}
+
+.logo {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.menu {
+    display: flex;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.menu a:hover {
+    color: #ff6347;
+}
+
+/* هدر بزرگ: متن دقیقاً وسط */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background-color: #223a3a;
+    color: white;
+}
+
+/* کارت‌ها: کنار هم و در موبایل زیر هم */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.card {
+    width: 280px;
+    background-color: white;
+    padding: 25px;
+    margin: 10px;
+    border-radius: 10px;
+    border-top: 4px solid #ff6347;
+}
+
+.card h3 {
+    color: #2f4f4f;
+    margin-bottom: 10px;
+}</code></pre>
+    <p class="code-caption" data-t="ch07-075">نمونه نهایی فصل: نمونه 06-final-example</p>
+
+    <h3 data-t="ch07-076">شرح مثال</h3>
+
+    <p data-t="ch07-077">
+        در این صفحه <strong>چهار</strong> ظرف فلکس داریم و هر کدام
+        کار متفاوتی انجام می‌دهد. این نکته مهمی است: فلکس‌باکس چیزی نیست
+        که یک بار در صفحه استفاده شود، بلکه ابزاری است که هر جا چند چیز
+        باید کنار هم بنشینند به کار می‌آید.
+    </p>
+
+    <ol>
+        <li data-t="ch07-078">
+            <strong>سربرگ.</strong> <code>space-between</code> لوگو را به یک
+            انتها و منو را به انتهای دیگر می‌فرستد.
+            <code>align-items: center</code> هم باعث می‌شود لوگو و منو
+            در ارتفاع سربرگ هم‌تراز باشند، حتی با اینکه اندازه‌هایشان فرق دارد.
+        </li>
+        <li data-t="ch07-079"><strong>منو.</strong> خودش هم یک ظرف فلکس جداگانه است تا سه لینک کنار هم بنشینند. پس یک عنصر می‌تواند هم‌زمان آیتم ظرف بالاتر و ظرف آیتم‌های پایین‌تر باشد.</li>
+        <li data-t="ch07-080">
+            <strong>هدر بزرگ.</strong> همان الگوی وسط‌چین کامل با سه خط،
+            که عنوان را دقیقاً در مرکز مستطیل قرار می‌دهد.
+        </li>
+        <li data-t="ch07-081"><strong>بخش کارت‌ها.</strong> ترکیب <code>wrap</code> و <code>center</code>. روی صفحه بزرگ هر سه کارت کنار هم و وسط‌چین‌اند. پنجره را که باریک کنید، کارت سوم به خط بعد می‌رود و بار دیگر وسط می‌ماند.</li>
+    </ol>
+
+    <p data-t="ch07-082">و توجه کنید که برای این چیدمان هیچ عدد جادویی و هیچ محاسبه‌ای ننوشتیم. همه چیز را به مرورگر سپردیم و تنها گفتیم چه می‌خواهیم. این تفاوت اصلی فلکس‌باکس با روش‌های قدیمی است.</p>
+
+    <div class="folder-ref">
+        <span class="box-title" data-t="ch07-083">فایل‌های تمرینی این فصل</span>
+        <p data-t="ch07-084">
+            پوشه <code>07-flexbox</code> شامل نمونه‌های
+            <code>01-display-flex-intro</code> تا <code>06-final-example</code>.
+        </p>
+    </div>
+
+    <h2 data-t="ch07-085">خلاصه فصل</h2>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch07-086">ویژگی</th><th data-t="ch07-087">روی چه</th><th data-t="ch07-088">کارش</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>display: flex</code></td><td data-t="ch07-089">ظرف</td><td data-t="ch07-090">فعال کردن فلکس‌باکس</td></tr>
+            <tr><td><code>flex-direction</code></td><td data-t="ch07-091">ظرف</td><td data-t="ch07-092">جهت محور اصلی: <code>row</code> یا <code>column</code></td></tr>
+            <tr><td><code>justify-content</code></td><td data-t="ch07-093">ظرف</td><td data-t="ch07-094">چیدمان در محور اصلی</td></tr>
+            <tr><td><code>align-items</code></td><td data-t="ch07-095">ظرف</td><td data-t="ch07-096">چیدمان در محور عرضی</td></tr>
+            <tr><td><code>flex-wrap: wrap</code></td><td data-t="ch07-097">ظرف</td><td data-t="ch07-098">اجازه رفتن به خط بعد</td></tr>
+        </tbody>
+    </table>
+
+    <div class="exercise">
+        <h3 data-t="ch07-099">تمرین‌های فصل هفت</h3>
+        <ol>
+            <li data-t="ch07-100">یک سربرگ بسازید که لوگو در یک سمت و سه لینک در سمت دیگر باشد.</li>
+            <li data-t="ch07-101">یک جعبه به ارتفاع کل صفحه بسازید و یک متن را دقیقاً در مرکز آن قرار دهید.</li>
+            <li data-t="ch07-102">شش کارت بسازید و با <code>flex-wrap</code> کاری کنید که با باریک شدن پنجره، خودشان مرتب زیر هم بروند.</li>
+            <li data-t="ch07-103">هر پنج مقدار <code>justify-content</code> را روی یک ظرف امتحان کنید و تفاوتشان را یادداشت کنید.</li>
+            <li data-t="ch07-104">سه کارت با متن‌های کوتاه و بلند بسازید و ببینید <code>align-items: stretch</code> چگونه هر سه را هم‌ارتفاع می‌کند.</li>
+        </ol>
+    </div>
+
+    <div class="pager">
+        <a href="chapter-06.html">فصل قبل: متن‌آرایی</a>
+        <a href="chapter-08.html">فصل بعد: فلکس‌باکس پیشرفته</a>
+    </div>
+
+</main>
+
+</body>
+</html>

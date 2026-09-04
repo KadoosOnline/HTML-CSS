@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="فصل دو: تگ‌های تکمیلی متن، فهرست تودرتو، مسیر فایل، جدول‌ها، توضیحات و تفاوت عنصر بلوکی و درون‌خطی">
+    <title>فصل ۲: جدول، مسیر فایل و تگ‌های تکمیلی</title>
+    <link rel="icon" href="logokm.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="book-bar">
+    <a class="name" href="index.html">طراحی وب با HTML و CSS</a>
+    <a href="index.html">فهرست مطالب</a>
+</header>
+
+<main class="paper">
+
+    <div class="chapter-head">
+        <span class="chapter-num">فصل ۲</span>
+        <h1 data-t="ch02-001">جدول، مسیر فایل و تگ‌های تکمیلی متن</h1>
+        <p class="lead" data-t="ch02-002">فصل دوم آخرین فصلی است که تنها به HTML اختصاص دارد. در این فصل کار با HTML را به پایان می‌رسانیم تا از فصل بعد سراغ ظاهر و استایل صفحه برویم.</p>
+    </div>
+
+    <div class="mini-toc">
+        <span class="box-title" data-t="ch02-003">در این فصل با این مباحث آشنا می‌شوید</span>
+        <ol>
+            <li data-t="ch02-004"><a href="#s1">تگ‌های تکمیلی متن</a></li>
+            <li data-t="ch02-005"><a href="#s2">فهرست تودرتو</a></li>
+            <li data-t="ch02-006"><a href="#s3">مسیر فایل‌ها</a></li>
+            <li data-t="ch02-007"><a href="#s4">جدول</a></li>
+            <li data-t="ch02-008"><a href="#s5">توضیحات در کد</a></li>
+            <li data-t="ch02-009"><a href="#s6">عنصر بلوکی و درون‌خطی</a></li>
+            <li data-t="ch02-010"><a href="#s7">پروژه کوچک فصل</a></li>
+        </ol>
+    </div>
+
+    <h2 id="s1" data-t="ch02-011">۱. تگ‌های تکمیلی متن</h2>
+
+    <p data-t="ch02-012">در فصل قبل <code>strong</code> و <code>em</code> را دیدیم. چند تگ کوچک دیگر هم وجود دارد که هرکدام کاربرد مشخصی دارند.</p>
+
+    <pre class="code"><code>&lt;h1&gt;تگ‌های متنی&lt;/h1&gt;
+
+&lt;p&gt;این کلمه &lt;strong&gt;مهم&lt;/strong&gt; است.&lt;/p&gt;
+
+&lt;p&gt;این کلمه &lt;em&gt;تأکید&lt;/em&gt; دارد.&lt;/p&gt;
+
+&lt;p&gt;این قسمت &lt;mark&gt;هایلایت&lt;/mark&gt; شده است.&lt;/p&gt;
+
+&lt;p&gt;فرمول آب: H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
+
+&lt;p&gt;مساحت مربع: a&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;</code></pre>
+    <p class="code-caption" data-t="ch02-013">تگ‌های متنی: نمونه 01-text-tags</p>
+
+    <h3 data-t="ch02-014">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch02-015"><code>mark</code> متن را با پس‌زمینه زرد نشان می‌دهد، دقیقاً مانند وقتی که با ماژیک هایلایت روی کتاب خط می‌کشید.</li>
+        <li data-t="ch02-016"><code>sub</code> مخفف subscript است و متن را کوچک و پایین خط می‌برد. برای فرمول‌های شیمی مانند عدد ۲ در آب استفاده می‌شود.</li>
+        <li data-t="ch02-017">
+            <code>sup</code> مخفف superscript است و متن را کوچک و بالای خط می‌برد.
+            برای توان‌های ریاضی کاربرد دارد.
+        </li>
+    </ul>
+
+    <p data-t="ch02-018">هر سه این تگ‌ها <strong>درون‌خطی</strong> هستند، یعنی تنها همان چند حرف را در بر می‌گیرند و باعث نمی‌شوند بقیه متن به خط بعد برود. در بخش ششم همین فصل به این موضوع برمی‌گردیم.</p>
+
+    <h2 id="s2" data-t="ch02-019">۲. فهرست تودرتو</h2>
+
+    <p data-t="ch02-020">گاهی یکی از موارد فهرست، خودش چند زیرمورد دارد. در این حالت یک فهرست کامل را داخل یک <code>li</code> می‌گذاریم.</p>
+
+    <pre class="code"><code>&lt;h1&gt;رشته‌های دبیرستان&lt;/h1&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;ریاضی و فیزیک
+        &lt;ul&gt;
+            &lt;li&gt;حسابان&lt;/li&gt;
+            &lt;li&gt;هندسه&lt;/li&gt;
+            &lt;li&gt;فیزیک&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+
+    &lt;li&gt;علوم تجربی
+        &lt;ul&gt;
+            &lt;li&gt;زیست‌شناسی&lt;/li&gt;
+            &lt;li&gt;شیمی&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+
+    &lt;li&gt;علوم انسانی&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+    <p class="code-caption" data-t="ch02-021">فهرست تودرتو: نمونه 02-nested-lists</p>
+
+    <h3 data-t="ch02-022">شرح مثال</h3>
+
+    <p data-t="ch02-023">
+        نکته اصلی این مثال جای درست <code>ul</code> دوم است.
+        فهرست داخلی باید <strong>داخل</strong> <code>li</code> والد خودش باشد،
+        نه بعد از آن. اگر آن را بیرون بگذارید، مرورگر تودرتویی را نمی‌فهمد
+        و فهرست به هم می‌ریزد.
+    </p>
+
+    <p data-t="ch02-024">دقت کنید که <code>li</code> مربوط به «ریاضی و فیزیک» تا بعد از بسته شدن فهرست داخلی، بسته نشده است. برای اینکه در چنین ساختارهایی سردرگم نشوید، از <strong>تورفتگی</strong> استفاده کنید: هر سطح تودرتویی را چهار فاصله جلوتر بنویسید. این کار روی خروجی هیچ تأثیری ندارد، اما خواندن کد را برای شما و بقیه آسان می‌کند.</p>
+
+    <h2 id="s3" data-t="ch02-025">۳. مسیر فایل‌ها</h2>
+
+    <p data-t="ch02-026">وقتی می‌خواهیم تصویری را نمایش دهیم یا به صفحه دیگری لینک بدهیم، باید مسیر آن فایل را مشخص کنیم. به این آدرس‌دهی <strong>مسیر</strong> می‌گوییم و دو نوع دارد.</p>
+
+    <pre class="code"><code>&lt;h1&gt;انواع مسیر&lt;/h1&gt;
+
+&lt;!-- تصویر در همان پوشه فایل HTML --&gt;
+&lt;img src="logo.png" alt="لوگو"&gt;
+
+&lt;!-- تصویر داخل پوشه images --&gt;
+&lt;img src="images/school.jpg" alt="مدرسه"&gt;
+
+&lt;!-- یک پوشه به عقب، بعد داخل پوشه images --&gt;
+&lt;img src="../images/shared.jpg" alt="تصویر مشترک"&gt;
+
+&lt;!-- مسیر کامل یک تصویر روی اینترنت --&gt;
+&lt;img src="https://example.com/pic.jpg" alt="تصویر بیرونی"&gt;</code></pre>
+    <p class="code-caption" data-t="ch02-027">مسیر فایل‌ها: نمونه 03-paths-and-images</p>
+
+    <h3 data-t="ch02-028">شرح مثال</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th data-t="ch02-029">نوشتار</th>
+                <th data-t="ch02-030">معنی</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>logo.png</code></td>
+                <td data-t="ch02-031">فایل کنار همین فایل HTML، در یک پوشه</td>
+            </tr>
+            <tr>
+                <td><code>images/school.jpg</code></td>
+                <td data-t="ch02-032">وارد پوشه images شو، بعد فایل را بردار</td>
+            </tr>
+            <tr>
+                <td><code>../images/shared.jpg</code></td>
+                <td data-t="ch02-033">دو نقطه یعنی یک پوشه برو بیرون، بعد وارد images شو</td>
+            </tr>
+            <tr>
+                <td><code>https://...</code></td>
+                <td data-t="ch02-034">مسیر مطلق؛ فایل روی کامپیوتر شما نیست و از اینترنت خوانده می‌شود</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch02-035">
+        سه مورد اول <strong>مسیر نسبی</strong> هستند، یعنی نسبت به محل فایل فعلی
+        محاسبه می‌شوند. مورد آخر <strong>مسیر مطلق</strong> است.
+    </p>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch02-036">دو نکته که بهتر است از همان ابتدا رعایت کنید</span>
+        <p data-t="ch02-037">نخست اینکه در مسیرها همیشه از اسلش رو به جلو استفاده کنید، نه بک‌اسلش، حتی در ویندوز. دوم اینکه حروف بزرگ و کوچک در نام فایل‌ها اهمیت دارند. فایلی به نام <code>Photo.JPG</code> با <code>photo.jpg</code> یکی نیست. روی کامپیوتر خودتان شاید کار کند، اما وقتی سایت را روی سرور بگذارید، تصویر باز نمی‌شود. بهتر است نام فایل‌ها را با حروف کوچک انگلیسی و بدون فاصله انتخاب کنید.</p>
+    </div>
+
+    <h2 id="s4" data-t="ch02-038">۴. جدول</h2>
+
+    <p data-t="ch02-039">جدول برای نمایش داده‌هایی مناسب است که در قالب سطر و ستون قرار می‌گیرند، مانند: برنامه هفتگی، فهرست قیمت، نمرات. جدول از سه تگ اصلی ساخته می‌شود.</p>
+
+    <pre class="code"><code>&lt;h1&gt;برنامه هفتگی&lt;/h1&gt;
+
+&lt;table border="1"&gt;
+    &lt;tr&gt;
+        &lt;th&gt;روز&lt;/th&gt;
+        &lt;th&gt;زنگ اول&lt;/th&gt;
+        &lt;th&gt;زنگ دوم&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;شنبه&lt;/td&gt;
+        &lt;td&gt;ریاضی&lt;/td&gt;
+        &lt;td&gt;فیزیک&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;یکشنبه&lt;/td&gt;
+        &lt;td&gt;ادبیات&lt;/td&gt;
+        &lt;td&gt;شیمی&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+    <p class="code-caption" data-t="ch02-040">جدول: نمونه 04-tables</p>
+
+    <h3 data-t="ch02-041">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch02-042"><code>table</code> کل جدول را در بر می‌گیرد.</li>
+        <li data-t="ch02-043"><code>tr</code> مخفف table row است و یک <strong>سطر</strong> می‌سازد.</li>
+        <li data-t="ch02-044"><code>th</code> مخفف table header است و خانه‌های <strong>عنوان</strong> را می‌سازد. متنش خودکار پررنگ و وسط‌چین می‌شود.</li>
+        <li data-t="ch02-045"><code>td</code> مخفف table data است و خانه‌های <strong>معمولی</strong> را می‌سازد.</li>
+    </ul>
+
+    <p data-t="ch02-046">برای ساخت جدول، ابتدا سطرها را ایجاد می‌کنید و سپس خانه‌های هر سطر را در آن قرار می‌دهید. یعنی جدول را <strong>سطر به سطر</strong> می‌نویسید، نه ستون به ستون. تعداد خانه‌های همه سطرها باید یکسان باشد، وگرنه جدول کج و معوج می‌شود.</p>
+
+    <div class="note">
+        <span class="box-title" data-t="ch02-047">درباره ویژگی border در تگ</span>
+        <p data-t="ch02-048">ویژگی <code>border="1"</code> روشی سریع برای مشاهده خطوط جدول است، اما روش اصولی، تعریف حاشیه با CSS است. در فصل چهارم این کار را به شکل اصولی انجام می‌دهیم و جدول‌های بسیار زیباتری می‌سازیم.</p>
+    </div>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch02-049">جدول تنها برای داده</span>
+        <p data-t="ch02-050">در گذشته طراحان از جدول برای چیدمان کامل صفحه هم استفاده می‌کردند. امروز این کار روش مناسبی نیست. برای چیدمان، فلکس‌باکس و گرید داریم که در فصل‌های هفتم و یازدهم یاد می‌گیریم. جدول تنها برای داده‌های واقعاً جدولی است.</p>
+    </div>
+
+    <h2 id="s5" data-t="ch02-051">۵. توضیحات در کد</h2>
+
+    <p data-t="ch02-052">گاهی لازم است داخل کد یادداشتی برای خودمان بنویسیم که در صفحه نمایش داده نشود. به این کار <strong>توضیح</strong> یا کامنت می‌گویند.</p>
+
+    <pre class="code"><code>&lt;h1&gt;توضیحات&lt;/h1&gt;
+
+&lt;!-- این یک توضیح است و در صفحه دیده نمی‌شود --&gt;
+
+&lt;p&gt;این پاراگراف دیده می‌شود.&lt;/p&gt;
+
+&lt;!--
+    توضیح می‌تواند چند خط هم باشد.
+    مثلاً یادداشت کنیم که این قسمت بعداً باید کامل شود.
+--&gt;
+
+&lt;!-- &lt;p&gt;این پاراگراف موقتاً غیرفعال شده است.&lt;/p&gt; --&gt;</code></pre>
+    <p class="code-caption" data-t="ch02-053">توضیحات: نمونه 05-comments</p>
+
+    <h3 data-t="ch02-054">شرح مثال</h3>
+
+    <p data-t="ch02-055">توضیح با <code>&lt;!--</code> شروع می‌شود و با <code>--&gt;</code> تمام می‌شود. هر چیزی بین این دو قرار بگیرد، مرورگر آن را نادیده می‌گیرد.</p>
+
+    <p data-t="ch02-056">کامنت‌ها معمولاً دو کاربرد اصلی دارند:</p>
+
+    <ol>
+        <li data-t="ch02-057">
+            <strong>یادداشت‌گذاری.</strong> در یک صفحه بلند، با یک توضیح مشخص کنید
+            کدام قسمت سربرگ است و کدام قسمت پاورقی. وقتی چند هفته بعد به کد برگردید،
+            خودتان از خودتان تشکر می‌کنید.
+        </li>
+        <li data-t="ch02-058"><strong>غیرفعال کردن موقت.</strong> مانند خط آخر مثال. اگر می‌خواهید ببینید صفحه بدون یک قسمت چه شکلی می‌شود، به جای پاک کردنش آن را داخل توضیح بگذارید. بعد آسان برش می‌گردانید.</li>
+    </ol>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch02-059">توضیحات پنهان نیستند</span>
+        <p data-t="ch02-060">هر کسی می‌تواند با F12 کد صفحه را مشاهده کند؛ توضیحات شما هم در همان کد قابل مشاهده‌اند. پس هیچ‌وقت رمز عبور یا اطلاعات خصوصی را در توضیح ننویسید.</p>
+    </div>
+
+    <h2 id="s6" data-t="ch02-061">۶. عنصر بلوکی و درون‌خطی</h2>
+
+    <p data-t="ch02-062">این مفهوم یکی از مهم‌ترین مباحث HTML است و اگر آن را به‌خوبی درک کنید، بسیاری از رفتارهای عجیب صفحه‌ها برایتان منطقی می‌شود. هر عنصر HTML در حالت پیش‌فرض در یکی از این دو دسته قرار می‌گیرد.</p>
+
+    <pre class="code"><code>&lt;h1&gt;بلوکی و درون‌خطی&lt;/h1&gt;
+
+&lt;p&gt;پاراگراف اول&lt;/p&gt;
+&lt;p&gt;پاراگراف دوم&lt;/p&gt;
+
+&lt;p&gt;
+    این یک متن است با
+    &lt;a href="#"&gt;یک لینک&lt;/a&gt;
+    و یک &lt;strong&gt;کلمه پررنگ&lt;/strong&gt;
+    که همه در یک خط قرار می‌گیرند.
+&lt;/p&gt;</code></pre>
+    <p class="code-caption" data-t="ch02-063">بلوکی و درون‌خطی: نمونه 06-block-inline</p>
+
+    <h3 data-t="ch02-064">شرح مثال</h3>
+
+    <p data-t="ch02-065">دو پاراگراف اول زیر هم قرار می‌گیرند، حتی اگر متنشان کوتاه باشد و جا برای کنار هم بودن داشته باشند. اما لینک و کلمه پررنگ داخل پاراگراف سوم، وسط خط می‌مانند و متن را نمی‌شکنند. علت این رفتار این است:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th data-t="ch02-066">ویژگی</th>
+                <th data-t="ch02-067">عنصر بلوکی</th>
+                <th data-t="ch02-068">عنصر درون‌خطی</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-t="ch02-069">عرض</td>
+                <td data-t="ch02-070">تمام عرض موجود را می‌گیرد</td>
+                <td data-t="ch02-071">تنها به اندازه محتوایش</td>
+            </tr>
+            <tr>
+                <td data-t="ch02-072">خط جدید</td>
+                <td data-t="ch02-073">همیشه از خط جدید شروع می‌شود</td>
+                <td data-t="ch02-074">در ادامه همان خط می‌ماند</td>
+            </tr>
+            <tr>
+                <td data-t="ch02-075">نمونه‌ها</td>
+                <td data-t="ch02-076"><code>h1</code> تا <code>h6</code>، <code>p</code>، <code>ul</code>، <code>li</code>، <code>table</code>، <code>div</code></td>
+                <td data-t="ch02-077"><code>a</code>، <code>strong</code>، <code>em</code>، <code>mark</code>، <code>sub</code>، <code>sup</code>، <code>img</code>، <code>span</code></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch02-078">یک قانون ساده هم از این موضوع بیرون می‌آید: عنصر بلوکی می‌تواند درون‌خطی را در بر بگیرد، اما برعکسش درست نیست. یعنی <code>strong</code> داخل <code>p</code> کاملاً درست است، اما گذاشتن یک <code>p</code> داخل <code>strong</code> اشتباه است.</p>
+
+    <div class="note">
+        <span class="box-title" data-t="ch02-079">این تقسیم‌بندی قطعی و همیشگی نیست</span>
+        <p data-t="ch02-080">
+            در فصل سوم یاد می‌گیریم که با یک ویژگی CSS به نام <code>display</code>
+            می‌شود رفتار هر عنصری را عوض کرد. یعنی این تقسیم‌بندی، رفتار
+            <strong>پیش‌فرض</strong> است، نه سرنوشت حتمی.
+        </p>
+    </div>
+
+    <h2 id="s7" data-t="ch02-081">۷. پروژه کوچک فصل</h2>
+
+    <p data-t="ch02-082">حالا مطالب دو فصل گذشته را در قالب یک صفحه معرفی مدرسه کنار هم قرار می‌دهیم.</p>
+
+    <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fa" dir="rtl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;هنرستان کامپیوتر&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;!-- بخش معرفی --&gt;
+    &lt;h1&gt;هنرستان کامپیوتر کادوس&lt;/h1&gt;
+    &lt;img src="images/school.jpg" alt="ساختمان هنرستان" width="500"&gt;
+
+    &lt;p&gt;
+        ما در رشته &lt;strong&gt;شبکه و نرم‌افزار&lt;/strong&gt; دانش‌آموز می‌پذیریم.
+    &lt;/p&gt;
+
+    &lt;!-- بخش درس‌ها --&gt;
+    &lt;h2&gt;درس‌های تخصصی&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;برنامه‌نویسی
+            &lt;ul&gt;
+                &lt;li&gt;طراحی صفحات وب&lt;/li&gt;
+                &lt;li&gt;پایگاه داده&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;شبکه&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;!-- بخش برنامه هفتگی --&gt;
+    &lt;h2&gt;برنامه هفتگی&lt;/h2&gt;
+    &lt;table border="1"&gt;
+        &lt;tr&gt;
+            &lt;th&gt;روز&lt;/th&gt;
+            &lt;th&gt;درس&lt;/th&gt;
+            &lt;th&gt;ساعت&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;شنبه&lt;/td&gt;
+            &lt;td&gt;طراحی وب&lt;/td&gt;
+            &lt;td&gt;۸ تا ۱۰&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;دوشنبه&lt;/td&gt;
+            &lt;td&gt;شبکه&lt;/td&gt;
+            &lt;td&gt;۱۰ تا ۱۲&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+
+    &lt;!-- بخش تماس --&gt;
+    &lt;h2&gt;تماس با ما&lt;/h2&gt;
+    &lt;p&gt;
+        وب‌سایت:
+        &lt;a href="https://kadoosedu.ir/computer" target="_blank"&gt;kadoosedu.ir&lt;/a&gt;
+    &lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p class="code-caption" data-t="ch02-083">پروژه کوچک فصل: نمونه 07-mini-project</p>
+
+    <h3 data-t="ch02-084">شرح مثال</h3>
+
+    <p data-t="ch02-085">
+        در این صفحه چهار بخش داریم و هر بخش با یک توضیح از بخش بعدی جدا شده است.
+        این عادت را از همین حالا نگه دارید؛ در فصل چهاردهم که صفحه‌ها طولانی می‌شوند،
+        همین توضیح‌ها نجاتتان می‌دهند.
+    </p>
+
+    <p data-t="ch02-086">محتوای هر بخش با نوع داده‌اش انتخاب شده است. درس‌ها ترتیب خاصی ندارند و زیرمجموعه دارند، پس فهرست تودرتو. برنامه هفتگی سطر و ستون دارد، پس جدول. معرفی مدرسه متن ساده است، پس پاراگراف. انتخاب تگ مناسب برای هر محتوا، یکی از تفاوت‌های اصلی بین کد خوب و کد ضعیف است.</p>
+
+    <p data-t="ch02-087">این صفحه هنوز ظاهر ساده و بدون استایلی دارد. از فصل بعد ظاهر آن را مرحله‌به‌مرحله بهتر می‌کنیم.</p>
+
+    <div class="folder-ref">
+        <span class="box-title" data-t="ch02-088">فایل‌های تمرینی این فصل</span>
+        <p data-t="ch02-089">
+            پوشه <code>02-html-tables-and-paths</code> شامل هفت نمونه:
+            <code>01-text-tags</code> تا <code>07-mini-project</code>.
+        </p>
+    </div>
+
+    <h2 data-t="ch02-090">خلاصه فصل</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th data-t="ch02-091">تگ یا مفهوم</th>
+                <th data-t="ch02-092">کارش</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><code>&lt;mark&gt;</code></td><td data-t="ch02-093">هایلایت کردن متن</td></tr>
+            <tr><td data-t="ch02-094"><code>&lt;sub&gt;</code> و <code>&lt;sup&gt;</code></td><td data-t="ch02-095">زیرنویس و بالانویس</td></tr>
+            <tr><td data-t="ch02-096">فهرست تودرتو</td><td data-t="ch02-097">یک <code>ul</code> کامل داخل یک <code>li</code></td></tr>
+            <tr><td><code>images/pic.jpg</code></td><td data-t="ch02-098">مسیر نسبی، ورود به یک پوشه</td></tr>
+            <tr><td><code>../pic.jpg</code></td><td data-t="ch02-099">مسیر نسبی، یک پوشه به عقب</td></tr>
+            <tr><td><code>&lt;table&gt;</code></td><td data-t="ch02-100">کل جدول</td></tr>
+            <tr><td><code>&lt;tr&gt;</code></td><td data-t="ch02-101">یک سطر جدول</td></tr>
+            <tr><td><code>&lt;th&gt;</code></td><td data-t="ch02-102">خانه عنوان، پررنگ و وسط‌چین</td></tr>
+            <tr><td><code>&lt;td&gt;</code></td><td data-t="ch02-103">خانه معمولی</td></tr>
+            <tr><td><code>&lt;!-- ... --&gt;</code></td><td data-t="ch02-104">توضیح، دیده نمی‌شود</td></tr>
+            <tr><td data-t="ch02-105">عنصر بلوکی</td><td data-t="ch02-106">تمام عرض، همیشه خط جدید</td></tr>
+            <tr><td data-t="ch02-107">عنصر درون‌خطی</td><td data-t="ch02-108">به اندازه محتوا، در همان خط</td></tr>
+        </tbody>
+    </table>
+
+    <div class="exercise">
+        <h3 data-t="ch02-109">تمرین‌های فصل دو</h3>
+        <ol>
+            <li data-t="ch02-110">جدول نمرات خودتان را با ستون‌های نام درس، نمره نوبت اول و نمره نوبت دوم بسازید.</li>
+            <li data-t="ch02-111">یک فهرست تودرتو از علاقه‌مندی‌هایتان بنویسید که حداقل دو سطح داشته باشد.</li>
+            <li data-t="ch02-112">پوشه‌ای به نام <code>images</code> بسازید، سه تصویر در آن بگذارید و هر سه را در صفحه نمایش دهید.</li>
+            <li data-t="ch02-113">یک فرمول شیمی و یک فرمول ریاضی با <code>sub</code> و <code>sup</code> بنویسید.</li>
+            <li data-t="ch02-114">هر بخش صفحه‌تان را با یک توضیح مشخص کنید.</li>
+            <li data-t="ch02-115">یک پاراگراف بنویسید که داخلش هم لینک باشد و هم کلمه پررنگ، و ببینید همه در یک خط می‌مانند.</li>
+        </ol>
+    </div>
+
+    <div class="pager">
+        <a href="chapter-01.html">فصل قبل: اولین صفحه</a>
+        <a href="chapter-03.html">فصل بعد: آشنایی با CSS</a>
+    </div>
+
+</main>
+
+</body>
+</html>

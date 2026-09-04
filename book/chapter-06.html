@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="فصل شش: قلم، وزن و شیب حروف، فاصله خطوط و حروف، تزیین و تبدیل متن، تگ‌های معنایی و کاربرد div و span">
+    <title>فصل ۶: متن‌آرایی و تگ‌های معنایی</title>
+    <link rel="icon" href="logokm.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="book-bar">
+    <a class="name" href="index.html">طراحی وب با HTML و CSS</a>
+    <a href="index.html">فهرست مطالب</a>
+</header>
+
+<main class="paper">
+
+    <div class="chapter-head">
+        <span class="chapter-num">فصل ۶</span>
+        <h1 data-t="ch06-001">متن‌آرایی و تگ‌های معنایی</h1>
+        <p class="lead" data-t="ch06-002">
+            بیشتر محتوای هر سایتی متن است. در این فصل یاد می‌گیریم متن را
+            خوانا و زیبا کنیم، و صفحه را طوری بسازیم که ساختارش برای
+            مرورگر و گوگل هم قابل فهم باشد.
+        </p>
+    </div>
+
+    <div class="mini-toc">
+        <span class="box-title" data-t="ch06-003">در این فصل با این مباحث آشنا می‌شوید</span>
+        <ol>
+            <li data-t="ch06-004"><a href="#s1">انتخاب قلم</a></li>
+            <li data-t="ch06-005"><a href="#s2">وزن و شیب حروف</a></li>
+            <li data-t="ch06-006"><a href="#s3">فاصله خطوط و حروف</a></li>
+            <li data-t="ch06-007"><a href="#s4">تزیین و تبدیل متن</a></li>
+            <li data-t="ch06-008"><a href="#s5">تگ‌های معنایی</a></li>
+            <li data-t="ch06-009"><a href="#s6">div و span</a></li>
+            <li data-t="ch06-010"><a href="#s7">نمونه نهایی فصل</a></li>
+        </ol>
+    </div>
+
+    <h2 id="s1" data-t="ch06-011">۱. انتخاب قلم</h2>
+
+    <pre class="code"><code>body {
+    font-family: Tahoma, sans-serif;
+}
+
+h1, h2 {
+    font-family: 'Times New Roman', serif;
+}
+
+.code-sample {
+    font-family: Consolas, monospace;
+}</code></pre>
+    <p class="code-caption" data-t="ch06-012">انتخاب قلم: نمونه 01-font-family</p>
+
+    <h3 data-t="ch06-013">شرح مثال</h3>
+
+    <p data-t="ch06-014">
+        <code>font-family</code> یک <strong>فهرست</strong> می‌گیرد، نه یک نام.
+        دلیلش این است که هیچ تضمینی نیست قلمی که شما انتخاب کرده‌اید
+        روی کامپیوتر بازدیدکننده نصب باشد. مرورگر از راست به چپ فهرست را
+        بررسی می‌کند و اولین قلمی را که پیدا کند به کار می‌برد.
+    </p>
+
+    <p data-t="ch06-015">
+        به همین دلیل، آخرین مورد فهرست همیشه یک <strong>خانواده عمومی</strong> است.
+        این‌ها نام قلم نیستند، بلکه دسته‌بندی‌اند و هر سیستمی حتماً یکی از هر دسته دارد:
+    </p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch06-016">خانواده</th><th data-t="ch06-017">ویژگی</th><th data-t="ch06-018">مناسب برای</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>sans-serif</code></td>
+                <td data-t="ch06-019">بدون سرکش و زائده، ساده و مدرن</td>
+                <td data-t="ch06-020">سایت‌ها. تقریباً همیشه همین را می‌خواهید.</td>
+            </tr>
+            <tr>
+                <td><code>serif</code></td>
+                <td data-t="ch06-021">دارای سرکش، رسمی و کلاسیک</td>
+                <td data-t="ch06-022">متن‌های چاپی و رسمی</td>
+            </tr>
+            <tr>
+                <td><code>monospace</code></td>
+                <td data-t="ch06-023">عرض همه حروف یکسان است</td>
+                <td data-t="ch06-024">نمایش کد</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch06-025">اگر نام قلم فاصله داشته باشد، مانند <code>Times New Roman</code>، باید داخل گیومه نوشته شود.</p>
+
+    <div class="note">
+        <span class="box-title" data-t="ch06-026">قلم فارسی</span>
+        <p data-t="ch06-027">برای متن فارسی، <strong>Tahoma</strong> بهترین انتخاب پیش‌فرض است، چون روی تقریباً همه کامپیوترها نصب است و حروف فارسی را درست نشان می‌دهد. قلم‌های زیباتری مانند وزیر و ایران‌سنس هم هستند، اما باید فایلشان را همراه سایت بفرستید. در این دوره از تهوما استفاده می‌کنیم.</p>
+    </div>
+
+    <h2 id="s2" data-t="ch06-028">۲. وزن و شیب حروف</h2>
+
+    <pre class="code"><code>.bold {
+    font-weight: bold;
+}
+
+.light {
+    font-weight: normal;
+}
+
+.heavy {
+    font-weight: 700;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.no-italic {
+    font-style: normal;
+}</code></pre>
+    <p class="code-caption" data-t="ch06-029">وزن و شیب: نمونه 02-font-weight-style</p>
+
+    <h3 data-t="ch06-030">شرح مثال</h3>
+
+    <p data-t="ch06-031">
+        <code>font-weight</code> ضخامت حروف است. دو راه برای نوشتنش هست:
+    </p>
+
+    <ul>
+        <li data-t="ch06-032">
+            با کلمه: <code>normal</code> برای حالت عادی و
+            <code>bold</code> برای پررنگ.
+        </li>
+        <li data-t="ch06-033">با عدد: از ۱۰۰ تا ۹۰۰ و در گام‌های صدتایی. عدد ۴۰۰ برابر <code>normal</code> و عدد ۷۰۰ برابر <code>bold</code> است. البته قلم باید آن وزن را داشته باشد؛ تهوما تنها دو وزن دارد، پس نوشتن ۳۰۰ یا ۵۰۰ روی آن تفاوتی ایجاد نمی‌کند.</li>
+    </ul>
+
+    <p data-t="ch06-034">
+        <code>font-style: italic</code> حروف را کج می‌کند.
+        نکته مهم برای ما این است که حروف فارسی حالت کج استاندارد ندارند
+        و مرورگر آنها را به زور می‌خواباند، که معمولاً زشت می‌شود.
+        پس <code>italic</code> را برای متن فارسی توصیه نمی‌کنیم.
+    </p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch06-035">کاربرد پرتکرار font-weight</span>
+        <p data-t="ch06-036">
+            عنوان‌ها به طور پیش‌فرض پررنگ هستند. اگر طرح شما عنوان نازک می‌خواهد،
+            با <code>font-weight: normal</code> این حالت پیش‌فرض را برمی‌دارید.
+            برعکسش هم صادق است: با <code>font-weight: bold</code> می‌شود
+            یک پاراگراف معمولی را کاملاً پررنگ کرد، بدون استفاده از تگ
+            <code>strong</code>. یادتان باشد <code>strong</code> برای
+            <strong>معنی</strong> است و این ویژگی برای <strong>ظاهر</strong>.
+        </p>
+    </div>
+
+    <h2 id="s3" data-t="ch06-037">۳. فاصله خطوط و حروف</h2>
+
+    <p data-t="ch06-038">این دو ویژگی کمتر شناخته‌شده‌اند اما تأثیرشان بر خوانایی متن از هر چیز دیگری بیشتر است.</p>
+
+    <pre class="code"><code>body {
+    line-height: 1.8;
+}
+
+.tight {
+    line-height: 1.2;
+}
+
+h1 {
+    letter-spacing: 1px;
+}
+
+.spaced-title {
+    letter-spacing: 3px;
+}
+
+.compact {
+    letter-spacing: -0.5px;
+}</code></pre>
+    <p class="code-caption" data-t="ch06-039">فاصله خطوط و حروف: نمونه 03-line-height-letter-spacing</p>
+
+    <h3 data-t="ch06-040">شرح مثال</h3>
+
+    <p data-t="ch06-041">
+        <code>line-height</code> فاصله عمودی بین خطوط یک پاراگراف است.
+        بهترین راه نوشتنش، عدد بدون واحد است. عدد ۱.۸ یعنی
+        «ارتفاع هر خط، ۱.۸ برابر اندازه قلم باشد». مزیت عدد بدون واحد این است
+        که اگر بعداً اندازه قلم را عوض کنید، فاصله خطوط خودش متناسب تنظیم می‌شود.
+    </p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch06-042">مقدار</th><th data-t="ch06-043">نتیجه</th></tr>
+        </thead>
+        <tbody>
+            <tr><td data-t="ch06-044">۱ تا ۱.۳</td><td data-t="ch06-045">بسیار فشرده. برای عنوان‌های چندخطی مناسب است.</td></tr>
+            <tr><td data-t="ch06-046">۱.۶ تا ۱.۸</td><td data-t="ch06-047">بهترین محدوده برای متن عادی.</td></tr>
+            <tr><td data-t="ch06-048">۲ و بالاتر</td><td data-t="ch06-049">بسیار باز. برای متن فارسی گاهی مناسب است.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch06-050">نکته مخصوص فارسی</span>
+        <p data-t="ch06-051">حروف فارسی زیرنویس و بالانویس بسیار دارند: نقطه‌های «ژ» و «ی» و کشیدگی‌ها. به همین دلیل متن فارسی به فاصله خطوط بیشتری نسبت به انگلیسی نیاز دارد. برای متن فارسی <code>line-height: 1.8</code> یا حتی <code>2</code> را امتحان کنید. همین یک خط، خوانایی سایت شما را به شکل محسوسی بالا می‌برد.</p>
+    </div>
+
+    <p data-t="ch06-052">
+        <code>letter-spacing</code> فاصله افقی بین حروف است.
+        عدد مثبت حروف را از هم دور و عدد منفی آنها را به هم نزدیک می‌کند.
+    </p>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch06-053">هشدار مهم برای فارسی</span>
+        <p data-t="ch06-054">در فارسی حروف به هم می‌چسبند و یک کلمه را می‌سازند. اگر <code>letter-spacing</code> بدهید، این چسبندگی از بین می‌رود و کلمه‌ها از هم می‌پاشند. پس این ویژگی را <strong>تنها برای متن انگلیسی</strong> استفاده کنید.</p>
+    </div>
+
+    <h2 id="s4" data-t="ch06-055">۴. تزیین و تبدیل متن</h2>
+
+    <pre class="code"><code>a {
+    text-decoration: none;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.deleted {
+    text-decoration: line-through;
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+.lower {
+    text-transform: lowercase;
+}
+
+.capital {
+    text-transform: capitalize;
+}</code></pre>
+    <p class="code-caption" data-t="ch06-056">تزیین و تبدیل متن: نمونه 04-text-decoration-transform</p>
+
+    <h3 data-t="ch06-057">شرح مثال</h3>
+
+    <p data-t="ch06-058"><code>text-decoration</code> خط‌های تزیینی روی متن را کنترل می‌کند:</p>
+
+    <ul>
+        <li data-t="ch06-059"><code>none</code> برداشتن خط. پرکاربردترین حالت، برای برداشتن خط زیر لینک‌ها.</li>
+        <li data-t="ch06-060"><code>underline</code> خط زیر متن.</li>
+        <li data-t="ch06-061"><code>line-through</code> خط روی متن. برای نمایش قیمت قدیمی در تخفیف‌ها عالی است.</li>
+    </ul>
+
+    <p data-t="ch06-062">
+        لینک‌ها به طور پیش‌فرض آبی و زیرخط‌دار هستند.
+        در طراحی امروزی معمولاً خط را برمی‌داریم و به جایش رنگ متفاوت
+        و یک <code>hover:</code> می‌گذاریم، دقیقاً همان کاری که در فصل قبل کردیم.
+    </p>
+
+    <p data-t="ch06-063">
+        <code>text-transform</code> بزرگی و کوچکی حروف را عوض می‌کند
+        <strong>بدون اینکه</strong> متن اصلی شما تغییر کند:
+    </p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch06-064">مقدار</th><th data-t="ch06-065">روی <code>hello world</code></th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>uppercase</code></td><td>HELLO WORLD</td></tr>
+            <tr><td><code>lowercase</code></td><td>hello world</td></tr>
+            <tr><td><code>capitalize</code></td><td>Hello World</td></tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch06-066">این ویژگی روی فارسی هیچ اثری ندارد، چون حروف فارسی بزرگ و کوچک ندارند. اما برای منوها و دکمه‌های انگلیسی بسیار به کار می‌آید. مزیتش این است که متن در HTML به شکل عادی می‌ماند و تنها نمایشش تغییر می‌کند.</p>
+
+    <h2 id="s5" data-t="ch06-067">۵. تگ‌های معنایی</h2>
+
+    <p data-t="ch06-068">
+        تا اینجا برای گروه‌بندی قسمت‌های صفحه چیزی نداشتیم.
+        HTML مجموعه‌ای از تگ‌ها دارد که هر کدام نام یک قسمت از صفحه هستند.
+        به این‌ها <strong>تگ‌های معنایی</strong> می‌گویند.
+    </p>
+
+    <pre class="code"><code>&lt;body&gt;
+
+    &lt;header&gt;
+        &lt;h1&gt;دبیرستان دانش&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href="#"&gt;خانه&lt;/a&gt;
+            &lt;a href="#"&gt;درباره ما&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;section&gt;
+            &lt;h2&gt;معرفی مدرسه&lt;/h2&gt;
+            &lt;p&gt;متن معرفی...&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;article&gt;
+            &lt;h2&gt;خبر جدید&lt;/h2&gt;
+            &lt;p&gt;متن خبر...&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+
+    &lt;aside&gt;
+        &lt;h3&gt;لینک‌های مفید&lt;/h3&gt;
+    &lt;/aside&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;تمام حقوق محفوظ است&lt;/p&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;</code></pre>
+    <p class="code-caption" data-t="ch06-069">تگ‌های معنایی: نمونه 05-semantic-tags</p>
+
+    <h3 data-t="ch06-070">شرح مثال</h3>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch06-071">تگ</th><th data-t="ch06-072">یعنی چه قسمتی از صفحه</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>header</code></td><td data-t="ch06-073">سربرگ. معمولاً لوگو و منو.</td></tr>
+            <tr><td><code>nav</code></td><td data-t="ch06-074">منوی ناوبری. مجموعه لینک‌های اصلی سایت.</td></tr>
+            <tr><td><code>main</code></td><td data-t="ch06-075">محتوای اصلی صفحه. در هر صفحه تنها یک بار.</td></tr>
+            <tr><td><code>section</code></td><td data-t="ch06-076">یک بخش موضوعی از محتوا.</td></tr>
+            <tr><td><code>article</code></td><td data-t="ch06-077">محتوایی که به تنهایی هم معنی دارد، مانند یک خبر یا پست.</td></tr>
+            <tr><td><code>aside</code></td><td data-t="ch06-078">محتوای کناری و فرعی.</td></tr>
+            <tr><td><code>footer</code></td><td data-t="ch06-079">پاورقی. اطلاعات تماس و حق نشر.</td></tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch06-080">
+        نکته‌ای که همه را غافلگیر می‌کند: این تگ‌ها هیچ ظاهر خاصی ندارند.
+        اگر <code>header</code> را با یک <code>div</code> عوض کنید،
+        صفحه <strong>دقیقاً</strong> همان‌طور نمایش داده می‌شود. پس چرا از آنها استفاده کنیم؟
+    </p>
+
+    <ol>
+        <li data-t="ch06-081">
+            <strong>موتورهای جست‌وجو.</strong> گوگل با دیدن <code>nav</code> می‌فهمد
+            آن قسمت منوست و با دیدن <code>article</code> می‌فهمد آنجا محتوای اصلی است.
+            این روی رتبه سایت شما اثر دارد.
+        </li>
+        <li data-t="ch06-082">
+            <strong>دسترس‌پذیری.</strong> برنامه‌های صفحه‌خوان که برای نابینایان
+            صفحه را می‌خوانند، با این تگ‌ها می‌توانند مستقیم به محتوای اصلی بپرند
+            و منو را رد کنند.
+        </li>
+        <li data-t="ch06-083">
+            <strong>خوانایی کد.</strong> در یک صفحه با پنجاه <code>div</code>،
+            پیدا کردن پاورقی سخت است. با <code>footer</code> فوراً پیدا می‌شود.
+        </li>
+    </ol>
+
+    <h2 id="s6" data-t="ch06-084">۶. div و span</h2>
+
+    <p data-t="ch06-085">این دو تگ هیچ معنی خاصی ندارند و دقیقاً به همین دلیل ساخته شده‌اند: وقتی می‌خواهید چیزی را تنها برای استایل دادن گروه‌بندی کنید.</p>
+
+    <pre class="code"><code>&lt;div class="card"&gt;
+    &lt;h3&gt;دوره طراحی وب&lt;/h3&gt;
+    &lt;p&gt;
+        قیمت:
+        &lt;span class="old-price"&gt;۸۰۰,۰۰۰&lt;/span&gt;
+        &lt;span class="new-price"&gt;۵۰۰,۰۰۰&lt;/span&gt;
+        تومان
+    &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+    <pre class="code"><code>.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.new-price {
+    color: #ff6347;
+    font-weight: bold;
+}</code></pre>
+    <p class="code-caption" data-t="ch06-086">div و span: نمونه 06-div-span</p>
+
+    <h3 data-t="ch06-087">شرح مثال</h3>
+
+    <p data-t="ch06-088">
+        تفاوت این دو دقیقاً همان تفاوت بلوکی و درون‌خطی است که در فصل دوم دیدیم:
+    </p>
+
+    <ul>
+        <li data-t="ch06-089">
+            <code>div</code> یک عنصر <strong>بلوکی</strong> است.
+            تمام عرض را می‌گیرد و از خط جدید شروع می‌شود.
+            برای گروه‌بندی <strong>قسمت‌های</strong> صفحه از آن استفاده می‌کنیم.
+        </li>
+        <li data-t="ch06-090"><code>span</code> یک عنصر <strong>درون‌خطی</strong> است. تنها به اندازه محتوایش جا می‌گیرد و متن را نمی‌شکند. برای گرفتن <strong>چند کلمه</strong> از وسط یک متن به کار می‌رود.</li>
+    </ul>
+
+    <p data-t="ch06-091">
+        در مثال بالا، دو عدد قیمت وسط یک جمله هستند. اگر آنها را در
+        <code>div</code> می‌گذاشتیم، هر کدام به خط جداگانه می‌رفتند
+        و جمله به هم می‌ریخت. <code>span</code> این مشکل را ندارد.
+    </p>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch06-092">اشتباه رایج: بیماری div بسیار</span>
+        <p data-t="ch06-093">بعضی‌ها همه چیز را در <code>div</code> می‌پیچند و به کدی می‌رسند که ده لایه <code>div</code> تودرتو دارد. قانون ساده این است: <strong>اول</strong> ببینید تگ معنایی مناسبی وجود دارد یا نه. اگر سربرگ است، <code>header</code>. اگر منوست، <code>nav</code>. اگر پاورقی است، <code>footer</code>. تنها وقتی هیچ تگ معنایی مناسب نبود، سراغ <code>div</code> بروید.</p>
+    </div>
+
+    <h2 id="s7" data-t="ch06-094">۷. نمونه نهایی فصل</h2>
+
+    <pre class="code"><code>&lt;body&gt;
+
+    &lt;header&gt;
+        &lt;h1&gt;مجله وب&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href="#"&gt;HOME&lt;/a&gt;
+            &lt;a href="#"&gt;ABOUT&lt;/a&gt;
+            &lt;a href="#"&gt;CONTACT&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;h2&gt;چرا طراحی وب یاد بگیریم&lt;/h2&gt;
+            &lt;p class="meta"&gt;
+                نویسنده: &lt;span class="author"&gt;سارا احمدی&lt;/span&gt;
+            &lt;/p&gt;
+            &lt;p&gt;
+                طراحی وب یکی از مهارت‌هایی است که با یک کامپیوتر ساده
+                هم می‌شود یادش گرفت و خیلی زود به کار گرفت.
+            &lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;مؤسسه فنی و آموزشی کادوس&lt;/p&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;</code></pre>
+
+    <pre class="code"><code>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Tahoma, sans-serif;
+    line-height: 1.9;
+    color: #333333;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #2f4f4f;
+    color: white;
+    padding: 25px 40px;
+}
+
+header h1 {
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 13px;
+    margin-left: 20px;
+}
+
+nav a:hover {
+    color: #ff6347;
+}
+
+main {
+    padding: 40px;
+}
+
+article h2 {
+    color: #2f4f4f;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.meta {
+    color: gray;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.author {
+    color: #ff6347;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #2f4f4f;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}</code></pre>
+    <p class="code-caption" data-t="ch06-095">نمونه نهایی فصل: نمونه 07-final-example</p>
+
+    <h3 data-t="ch06-096">شرح مثال</h3>
+
+    <p data-t="ch06-097">اول به HTML نگاه کنید: در کل صفحه تنها <strong>یک</strong> <code>span</code> داریم و هیچ <code>div</code> ای نیست. هر قسمت با تگ معنایی خودش مشخص شده است. این کد را هر کسی باز کند، در ده ثانیه ساختار صفحه را می‌فهمد.</p>
+
+    <p data-t="ch06-098">در CSS هم دقت کنید که چگونه می‌شود بدون هیچ کلاسی به عنصرها استایل داد. <code>header</code> و <code>nav a</code> و <code>footer</code> همه انتخابگر تگ هستند و چون این تگ‌ها در صفحه یکتا هستند، نیازی به کلاس نداریم. کلاس را تنها جایی گذاشته‌ایم که واقعاً لازم بود: <code>meta.</code> و <code>author.</code></p>
+
+    <p data-t="ch06-099">ویژگی‌های این فصل هم اینجا نقش دارند:</p>
+
+    <ul>
+        <li data-t="ch06-100"><code>line-height: 1.9</code> روی <code>body</code> که به کل متن صفحه ارث می‌رسد و خواندن را آسان می‌کند.</li>
+        <li data-t="ch06-101">
+            <code>font-weight: normal</code> روی عنوان اصلی، برای ظاهری سبک‌تر و مدرن‌تر.
+        </li>
+        <li data-t="ch06-102">
+            <code>text-transform: uppercase</code> به‌علاوه
+            <code>letter-spacing: 2px</code> روی لینک‌های منو، که ترکیب کلاسیک
+            منوهای انگلیسی است. توجه کنید که این ترکیب را روی منوی فارسی
+            نباید به کار برد.
+        </li>
+        <li data-t="ch06-103">
+            <code>text-decoration: none</code> برای برداشتن خط زیر لینک‌ها.
+        </li>
+        <li data-t="ch06-104">
+            <code>line-height: 1.5</code> روی عنوان مقاله، چون عنوان‌ها
+            به فاصله کمتری نسبت به متن نیاز دارند.
+        </li>
+    </ul>
+
+    <div class="folder-ref">
+        <span class="box-title" data-t="ch06-105">فایل‌های تمرینی این فصل</span>
+        <p data-t="ch06-106">
+            پوشه <code>06-typography-and-semantics</code> شامل نمونه‌های
+            <code>01-font-family</code> تا <code>07-final-example</code>.
+        </p>
+    </div>
+
+    <h2 data-t="ch06-107">خلاصه فصل</h2>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch06-108">ویژگی یا تگ</th><th data-t="ch06-109">کارش</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>font-family</code></td><td data-t="ch06-110">فهرست قلم‌ها، با خانواده عمومی در انتها</td></tr>
+            <tr><td><code>font-weight</code></td><td data-t="ch06-111">ضخامت حروف، <code>normal</code> یا <code>bold</code> یا عدد</td></tr>
+            <tr><td><code>font-style: italic</code></td><td data-t="ch06-112">کج کردن. برای فارسی مناسب نیست.</td></tr>
+            <tr><td><code>line-height</code></td><td data-t="ch06-113">فاصله خطوط. برای فارسی ۱.۸ به بالا.</td></tr>
+            <tr><td><code>letter-spacing</code></td><td data-t="ch06-114">فاصله حروف. تنها برای انگلیسی.</td></tr>
+            <tr><td><code>text-decoration: none</code></td><td data-t="ch06-115">برداشتن خط زیر لینک</td></tr>
+            <tr><td><code>text-transform</code></td><td data-t="ch06-116">بزرگ و کوچک کردن حروف انگلیسی</td></tr>
+            <tr><td><code>header</code> <code>nav</code> <code>main</code></td><td data-t="ch06-117">سربرگ، منو، محتوای اصلی</td></tr>
+            <tr><td><code>section</code> <code>article</code> <code>aside</code></td><td data-t="ch06-118">بخش، محتوای مستقل، محتوای کناری</td></tr>
+            <tr><td><code>footer</code></td><td data-t="ch06-119">پاورقی</td></tr>
+            <tr><td><code>div</code></td><td data-t="ch06-120">جعبه بلوکی بدون معنی، برای گروه‌بندی</td></tr>
+            <tr><td><code>span</code></td><td data-t="ch06-121">جعبه درون‌خطی بدون معنی، برای چند کلمه</td></tr>
+        </tbody>
+    </table>
+
+    <div class="exercise">
+        <h3 data-t="ch06-122">تمرین‌های فصل شش</h3>
+        <ol>
+            <li data-t="ch06-123">صفحه‌ای بسازید که تنها از تگ‌های معنایی استفاده کند و حتی یک <code>div</code> نداشته باشد.</li>
+            <li data-t="ch06-124">یک پاراگراف بلند فارسی بنویسید و <code>line-height</code> را از ۱.۲ تا ۲.۲ عوض کنید تا بهترین حالت را پیدا کنید.</li>
+            <li data-t="ch06-125">یک منوی انگلیسی با <code>uppercase</code> و <code>letter-spacing</code> بسازید.</li>
+            <li data-t="ch06-126">قیمت یک محصول را با تخفیف نشان دهید: قیمت قدیم با خط روی آن و قیمت جدید پررنگ و رنگی، هر دو در یک خط.</li>
+            <li data-t="ch06-127">روی یک متن فارسی <code>letter-spacing: 3px</code> بگذارید و ببینید چرا این کار را نباید کرد.</li>
+        </ol>
+    </div>
+
+    <div class="pager">
+        <a href="chapter-05.html">فصل قبل: انتخابگرها و پس‌زمینه</a>
+        <a href="chapter-07.html">فصل بعد: فلکس‌باکس</a>
+    </div>
+
+</main>
+
+</body>
+</html>

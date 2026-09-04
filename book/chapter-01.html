@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="فصل یک: اسکلت سند HTML، عنوان‌ها، پاراگراف، قالب‌بندی متن، فهرست‌ها، لینک و تصویر">
+    <title>فصل ۱: اولین صفحه</title>
+    <link rel="icon" href="logokm.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="book-bar">
+    <a class="name" href="index.html">طراحی وب با HTML و CSS</a>
+    <a href="index.html">فهرست مطالب</a>
+</header>
+
+<main class="paper">
+
+    <div class="chapter-head">
+        <span class="chapter-num">فصل ۱</span>
+        <h1 data-t="ch01-001">اولین صفحه: متن، فهرست، لینک و تصویر</h1>
+        <p class="lead" data-t="ch01-002">
+            در این فصل با کمترین تعداد تگ ممکن، یک صفحه واقعی می‌سازیم.
+            همه چیزهایی که اینجا یاد می‌گیرید تا آخر کتاب با شما می‌مانند.
+        </p>
+    </div>
+
+    <div class="mini-toc">
+        <span class="box-title" data-t="ch01-003">در این فصل با این مباحث آشنا می‌شوید</span>
+        <ol>
+            <li data-t="ch01-004"><a href="#s1">اسکلت سند و اولین صفحه</a></li>
+            <li data-t="ch01-005"><a href="#s2">عنوان‌ها و پاراگراف</a></li>
+            <li data-t="ch01-006"><a href="#s3">قالب‌بندی متن</a></li>
+            <li data-t="ch01-007"><a href="#s4">فهرست نامرتب</a></li>
+            <li data-t="ch01-008"><a href="#s5">فهرست مرتب و لینک</a></li>
+            <li data-t="ch01-009"><a href="#s6">تصویر</a></li>
+            <li data-t="ch01-010"><a href="#s7">مثال نهایی: صفحه معرفی</a></li>
+        </ol>
+    </div>
+
+    <h2 id="s1" data-t="ch01-011">۱. اسکلت سند و اولین صفحه</h2>
+
+    <p data-t="ch01-012">در فصل قبل با ساختار پایه فایل HTML آشنا شدیم. در این بخش همان ساختار را کامل و به شکل نهایی بار دیگر می‌نویسیم، چون از اینجا به بعد همه نمونه‌ها بر پایه همین ساختار ساخته می‌شوند.</p>
+
+    <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fa" dir="rtl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;سلام دنیا&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    سلام دنیا
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p class="code-caption" data-t="ch01-013">اولین صفحه: نمونه 01-hello-world</p>
+
+    <h3 data-t="ch01-014">شرح مثال</h3>
+
+    <p data-t="ch01-015">نسبت به فصل قبل تنها یک خط تازه دارد و آن خط <code>viewport</code> است. این خط به گوشی و تبلت می‌گوید صفحه را با عرض واقعی خودشان نمایش بدهند، نه اینکه یک صفحه بزرگ را کوچک کنند و به دست کاربر بدهند. بدون این خط، سایت شما روی موبایل ریز و ناخوانا می‌شود. در فصل دوازدهم دقیقاً می‌بینیم چرا.</p>
+
+    <p data-t="ch01-016">توجه داشته باشید که متن «سلام دنیا» را بدون هیچ تگی نوشتیم و بار دیگر نمایش داده می‌شود. HTML سخت‌گیر نیست، اما این روش درست نیست. متن بدون تگ یعنی مرورگر نمی‌داند این متن چه نقشی دارد و همین باعث می‌شود بعداً نتوانیم به آن استایل بدهیم. از بخش بعدی، هر محتوا را داخل تگ مناسب خودش قرار می‌دهیم.</p>
+
+    <h2 id="s2" data-t="ch01-017">۲. عنوان‌ها و پاراگراف</h2>
+
+    <p data-t="ch01-018">عنوان و پاراگراف از پرکاربردترین تگ‌های HTML هستند. HTML شش سطح عنوان دارد، از <code>h1</code> تا <code>h6</code>.</p>
+
+    <pre class="code"><code>&lt;h1&gt;آموزش طراحی وب&lt;/h1&gt;
+&lt;p&gt;در این دوره ساخت صفحه‌های وب را از پایه یاد می‌گیریم.&lt;/p&gt;
+
+&lt;h2&gt;جلسه اول&lt;/h2&gt;
+&lt;p&gt;در جلسه اول با تگ‌های پایه آشنا می‌شویم.&lt;/p&gt;
+
+&lt;h2&gt;جلسه دوم&lt;/h2&gt;
+&lt;p&gt;در جلسه دوم سراغ جدول‌ها می‌رویم.&lt;/p&gt;</code></pre>
+    <p class="code-caption" data-t="ch01-019">عنوان‌ها و پاراگراف‌ها: نمونه‌های 02 و 03</p>
+
+    <h3 data-t="ch01-020">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch01-021"><code>h1</code> بزرگ‌ترین و مهم‌ترین عنوان است. در هر صفحه <strong>تنها یک بار</strong> از آن استفاده کنید، برای عنوان اصلی صفحه.</li>
+        <li data-t="ch01-022">
+            <code>h2</code> برای عنوان بخش‌های اصلی است، <code>h3</code> برای زیربخش‌ها و همین‌طور تا شش.
+        </li>
+        <li data-t="ch01-023">
+            <code>p</code> مخفف paragraph است. هر پاراگراف خودش را در یک <code>p</code> بگذارید.
+        </li>
+    </ul>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch01-024">اشتباه رایج</span>
+        <p data-t="ch01-025">بعضی‌ها از <code>h3</code> استفاده می‌کنند تنها چون اندازه‌اش را می‌پسندند. این کار اشتباه است. تگ عنوان برای <strong>معنی</strong> است، نه برای اندازه. اگر اندازه را نمی‌پسندید، در فصل سوم یاد می‌گیرید با یک خط CSS عوضش کنید. گوگل و برنامه‌های صفحه‌خوان از همین ترتیب عنوان‌ها ساختار صفحه شما را می‌فهمند.</p>
+    </div>
+
+    <p data-t="ch01-026">یک نکته دیگر اینکه مرورگر فاصله‌ها و خط‌های خالی داخل کد را نادیده می‌گیرد. اگر بین دو جمله ده خط فاصله بگذارید، در خروجی همه به یک فاصله ساده تبدیل می‌شوند. رفتن به خط بعد تنها با تگ اتفاق می‌افتد، نه با کلید ورود.</p>
+
+    <h2 id="s3" data-t="ch01-027">۳. قالب‌بندی متن</h2>
+
+    <p data-t="ch01-028">گاهی می‌خواهیم بخشی از متن پررنگ یا کج باشد. برای این کار تگ‌هایی داریم که تنها همان بخش کوتاه از متن را در بر می‌گیرند.</p>
+
+    <pre class="code"><code>&lt;h1&gt;قالب‌بندی متن&lt;/h1&gt;
+
+&lt;p&gt;
+    این یک متن &lt;strong&gt;بسیار مهم&lt;/strong&gt; است که باید به آن دقت کنید.
+&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;
+    و این هم یک &lt;em&gt;تأکید ملایم&lt;/em&gt; روی بخشی از جمله است.
+&lt;/p&gt;</code></pre>
+    <p class="code-caption" data-t="ch01-029">قالب‌بندی متن: نمونه 04-text-formatting</p>
+
+    <h3 data-t="ch01-030">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch01-031">
+            <code>strong</code> متن را پررنگ نشان می‌دهد و به مرورگر می‌گوید
+            این قسمت <strong>اهمیت زیادی</strong> دارد.
+        </li>
+        <li data-t="ch01-032">
+            <code>em</code> متن را کج می‌کند و یعنی روی این کلمه
+            <strong>تأکید</strong> داریم. em مخفف emphasis است.
+        </li>
+        <li data-t="ch01-033"><code>hr</code> یک خط افقی جداکننده می‌کشد. مانند تگ تصویر، تگ بسته ندارد چون محتوایی برای در بر گرفتن ندارد.</li>
+    </ul>
+
+    <div class="note">
+        <span class="box-title" data-t="ch01-034">چرا strong را به b ترجیح می‌دهیم</span>
+        <p data-t="ch01-035">تگ‌های <code>b</code> و <code>i</code> هم متن را پررنگ و کج می‌کنند، اما تنها ظاهر را عوض می‌کنند و هیچ معنایی ندارند. <code>strong</code> و <code>em</code> علاوه بر ظاهر، معنی هم منتقل می‌کنند. برنامه‌های صفحه‌خوان که برای نابینایان متن را می‌خوانند، لحن خواندنشان را روی <code>strong</code> عوض می‌کنند اما روی <code>b</code> نه. پس همیشه دو تای اول را انتخاب کنید.</p>
+    </div>
+
+    <h2 id="s4" data-t="ch01-036">۴. فهرست نامرتب</h2>
+
+    <p data-t="ch01-037">وقتی ترتیب چند مورد اهمیتی ندارد، از فهرست نامرتب استفاده می‌کنیم. مرورگر جلوی هر مورد یک نقطه توپر می‌گذارد.</p>
+
+    <pre class="code"><code>&lt;h1&gt;وسایل مورد نیاز&lt;/h1&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;کامپیوتر یا لپ‌تاپ&lt;/li&gt;
+    &lt;li&gt;مرورگر&lt;/li&gt;
+    &lt;li&gt;ویرایشگر متن&lt;/li&gt;
+    &lt;li&gt;کمی حوصله&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+    <p class="code-caption" data-t="ch01-038">فهرست نامرتب: نمونه 05-unordered-list</p>
+
+    <h3 data-t="ch01-039">شرح مثال</h3>
+
+    <p data-t="ch01-040">در اینجا دو تگ داریم که همیشه در کنار هم استفاده می‌شوند:</p>
+
+    <ul>
+        <li data-t="ch01-041"><code>ul</code> مخفف unordered list است و کل فهرست را در بر می‌گیرد.</li>
+        <li data-t="ch01-042"><code>li</code> مخفف list item است و هر مورد فهرست را در بر می‌گیرد.</li>
+    </ul>
+
+    <p data-t="ch01-043">قاعده مهم این است که <code>li</code> تنها و تنها می‌تواند مستقیماً داخل <code>ul</code> یا <code>ol</code> باشد و بیرون از آنها معنی ندارد. به قرار گرفتن یک تگ درون تگ دیگر، <strong>تودرتویی</strong> می‌گوییم و در HTML بسیار با آن سر و کار داریم.</p>
+
+    <h2 id="s5" data-t="ch01-044">۵. فهرست مرتب و لینک</h2>
+
+    <p data-t="ch01-045">اگر ترتیب موارد مهم باشد، مثلاً در فهرست مراحل یک کار، از فهرست مرتب استفاده می‌کنیم. در این حالت مرورگر خودش شماره‌گذاری می‌کند.</p>
+
+    <pre class="code"><code>&lt;h1&gt;مراحل ساخت اولین صفحه&lt;/h1&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;یک پوشه بساز&lt;/li&gt;
+    &lt;li&gt;فایل index.html را ایجاد کن&lt;/li&gt;
+    &lt;li&gt;کد را بنویس&lt;/li&gt;
+    &lt;li&gt;فایل را در مرورگر باز کن&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;
+    برای اطلاعات بیشتر به
+    &lt;a href="https://kadoosedu.ir" target="_blank"&gt;سایت کادوس&lt;/a&gt;
+    مراجعه کنید.
+&lt;/p&gt;</code></pre>
+    <p class="code-caption" data-t="ch01-046">فهرست مرتب و لینک: نمونه 06-ordered-list-link</p>
+
+    <h3 data-t="ch01-047">شرح مثال</h3>
+
+    <p data-t="ch01-048">بخش مربوط به فهرست دقیقاً مانند نمونه قبل است، تنها <code>ul</code> را با <code>ol</code> عوض کرده‌ایم. ol مخفف ordered list است. نکته اینکه شماره‌ها را ما نمی‌نویسیم؛ مرورگر خودش می‌گذارد. اگر بعداً یک مورد وسط فهرست اضافه کنید، بقیه خودشان بار دیگر شماره‌گذاری می‌شوند.</p>
+
+    <p data-t="ch01-049">بخش مهم‌تر این نمونه، تگ لینک است:</p>
+
+    <ul>
+        <li data-t="ch01-050">
+            <code>a</code> مخفف anchor است و متنی که داخلش می‌گذارید،
+            متن قابل کلیک می‌شود.
+        </li>
+        <li data-t="ch01-051">
+            ویژگی <code>href</code> مقصد لینک را مشخص می‌کند؛ یعنی با کلیک کجا برویم.
+        </li>
+        <li data-t="ch01-052">
+            ویژگی <code>target="_blank"</code> باعث می‌شود مقصد در یک سربرگ تازه باز شود
+            و صفحه فعلی بسته نشود. برای لینک به سایت‌های دیگر معمولاً همین را می‌خواهیم.
+        </li>
+    </ul>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch01-053">لینک به صفحه‌های داخلی سایت</span>
+        <p data-t="ch01-054"><code>href</code> تنها برای سایت‌های بیرونی نیست. اگر بنویسید <code>href="about.html"</code> به فایل about.html در همان پوشه می‌رود. در فصل چهاردهم با همین روش هفت صفحه یک سایت را به هم وصل می‌کنیم.</p>
+    </div>
+
+    <h2 id="s6" data-t="ch01-055">۶. تصویر</h2>
+
+    <p data-t="ch01-056">تگ تصویر در HTML ویژگی متفاوتی دارد، چون تنها تگی است که محتوایش داخل خود فایل نیست و از جای دیگری خوانده می‌شود.</p>
+
+    <pre class="code"><code>&lt;h1&gt;تصویر در صفحه&lt;/h1&gt;
+
+&lt;img src="images/classroom.jpg" alt="کلاس درس" width="400"&gt;
+
+&lt;p&gt;تصویر بالا از کلاس درس ما گرفته شده است.&lt;/p&gt;</code></pre>
+    <p class="code-caption" data-t="ch01-057">تصویر: نمونه 07-image</p>
+
+    <h3 data-t="ch01-058">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch01-059"><code>src</code> مسیر فایل تصویر است. اینجا یعنی «داخل پوشه images دنبال فایل classroom.jpg بگرد». اگر مسیر را اشتباه وارد کنید، به جای تصویر یک آیکون شکسته می‌بینید.</li>
+        <li data-t="ch01-060">
+            <code>alt</code> متن جایگزین است. اگر تصویر پیدا نشود همین متن دیده می‌شود،
+            و صفحه‌خوان‌ها هم همین را برای نابینایان می‌خوانند.
+            نوشتن <code>alt</code> اختیاری نیست؛ عادت خوبی است که از همین حالا شروع کنید.
+        </li>
+        <li data-t="ch01-061">
+            <code>width</code> عرض تصویر را بر حسب پیکسل تعیین می‌کند و
+            ارتفاع خودش متناسب تنظیم می‌شود.
+        </li>
+    </ul>
+
+    <div class="note">
+        <span class="box-title" data-t="ch01-062">اندازه در HTML یا در CSS</span>
+        <p data-t="ch01-063">نوشتن <code>width</code> داخل تگ کار می‌کند، اما روش بهتر تعیین اندازه در CSS است. دلیلش را در فصل سوم می‌بینیم: وظیفه HTML مشخص کردن «وجود تصویر» است و CSS اندازه و ظاهر آن را تعیین می‌کند.</p>
+    </div>
+
+    <h2 id="s7" data-t="ch01-064">۷. مثال نهایی: صفحه معرفی</h2>
+
+    <p data-t="ch01-065">حالا هر هفت موردی را که یاد گرفته‌ایم، در یک صفحه واقعی کنار هم قرار می‌دهیم.</p>
+
+    <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fa" dir="rtl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;درباره من&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;سلام، من سارا هستم&lt;/h1&gt;
+
+    &lt;img src="images/me.jpg" alt="عکس من" width="200"&gt;
+
+    &lt;p&gt;
+        دانش‌آموز سال دهم و علاقه‌مند به &lt;strong&gt;طراحی سایت&lt;/strong&gt; هستم.
+    &lt;/p&gt;
+
+    &lt;h2&gt;چیزهایی که دوست دارم&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;برنامه‌نویسی&lt;/li&gt;
+        &lt;li&gt;کتاب خواندن&lt;/li&gt;
+        &lt;li&gt;والیبال&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h2&gt;هدف‌های امسال من&lt;/h2&gt;
+    &lt;ol&gt;
+        &lt;li&gt;یادگیری HTML و CSS&lt;/li&gt;
+        &lt;li&gt;ساختن یک سایت شخصی&lt;/li&gt;
+        &lt;li&gt;شرکت در مسابقه وب مدرسه&lt;/li&gt;
+    &lt;/ol&gt;
+
+    &lt;p&gt;
+        صفحه من در
+        &lt;a href="https://kadoosedu.ir" target="_blank"&gt;کادوس&lt;/a&gt;
+    &lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p class="code-caption" data-t="ch01-066">نمونه نهایی فصل: نمونه 08-final-example</p>
+
+    <h3 data-t="ch01-067">شرح مثال</h3>
+
+    <p data-t="ch01-068">
+        در این صفحه هیچ تگ تازه‌ای وجود ندارد. تنها کاری که کردیم این بود که
+        هفت تگ آشنا را به ترتیبی منطقی کنار هم گذاشتیم:
+        یک عنوان اصلی در بالا، یک تصویر، یک پاراگراف معرفی،
+        و بعد دو بخش که هر کدام با یک <code>h2</code> شروع می‌شوند و
+        محتوایشان یک فهرست است. در آخر هم یک لینک.
+    </p>
+
+    <p data-t="ch01-069">این دقیقاً همان روشی است که در طراحی وب به کار می‌بریم. تعداد تگ‌های پرکاربرد بسیار نیست؛ مهارت اصلی این است که بدانید هر مورد را کجا استفاده کنید. صفحه هنوز زشت است، چون تنها HTML داریم. از فصل سوم رنگ و شکل هم اضافه می‌کنیم.</p>
+
+    <div class="folder-ref">
+        <span class="box-title" data-t="ch01-070">فایل‌های تمرینی این فصل</span>
+        <p data-t="ch01-071">
+            پوشه <code>01-html-basics</code> شامل هشت نمونه:
+            <code>01-hello-world</code> تا <code>08-final-example</code>.
+        </p>
+    </div>
+
+    <h2 data-t="ch01-072">خلاصه فصل</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th data-t="ch01-073">تگ</th>
+                <th data-t="ch01-074">کارش</th>
+                <th data-t="ch01-075">تگ بسته دارد</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td data-t="ch01-076"><code>&lt;h1&gt;</code> تا <code>&lt;h6&gt;</code></td><td data-t="ch01-077">عنوان، از مهم‌ترین به کم‌اهمیت‌ترین</td><td data-t="ch01-078">بله</td></tr>
+            <tr><td><code>&lt;p&gt;</code></td><td data-t="ch01-079">پاراگراف</td><td data-t="ch01-080">بله</td></tr>
+            <tr><td><code>&lt;strong&gt;</code></td><td data-t="ch01-081">متن مهم و پررنگ</td><td data-t="ch01-082">بله</td></tr>
+            <tr><td><code>&lt;em&gt;</code></td><td data-t="ch01-083">متن با تأکید و کج</td><td data-t="ch01-084">بله</td></tr>
+            <tr><td><code>&lt;hr&gt;</code></td><td data-t="ch01-085">خط جداکننده افقی</td><td data-t="ch01-086">خیر</td></tr>
+            <tr><td data-t="ch01-087"><code>&lt;ul&gt;</code> و <code>&lt;li&gt;</code></td><td data-t="ch01-088">فهرست نامرتب با نقطه</td><td data-t="ch01-089">بله</td></tr>
+            <tr><td data-t="ch01-090"><code>&lt;ol&gt;</code> و <code>&lt;li&gt;</code></td><td data-t="ch01-091">فهرست مرتب با شماره</td><td data-t="ch01-092">بله</td></tr>
+            <tr><td><code>&lt;a href="..."&gt;</code></td><td data-t="ch01-093">لینک</td><td data-t="ch01-094">بله</td></tr>
+            <tr><td><code>&lt;img src="..." alt="..."&gt;</code></td><td data-t="ch01-095">تصویر</td><td data-t="ch01-096">خیر</td></tr>
+        </tbody>
+    </table>
+
+    <div class="exercise">
+        <h3 data-t="ch01-097">تمرین‌های فصل یک</h3>
+        <ol>
+            <li data-t="ch01-098">یک صفحه درباره خودتان بسازید که حتماً یک <code>h1</code>، دو <code>h2</code>، یک فهرست نامرتب، یک فهرست مرتب، یک تصویر و یک لینک داشته باشد.</li>
+            <li data-t="ch01-099">در یکی از پاراگراف‌ها، دو کلمه را با <code>strong</code> و یک کلمه را با <code>em</code> مشخص کنید.</li>
+            <li data-t="ch01-100">یک پوشه به نام <code>images</code> بسازید، عکسی در آن بگذارید و در صفحه نمایشش دهید.</li>
+            <li data-t="ch01-101">لینکی بسازید که با کلیک، سایت مدرسه یا آموزشگاهتان را در سربرگ تازه باز کند.</li>
+            <li data-t="ch01-102">مقدار <code>src</code> تصویر را عمداً اشتباه بنویسید و ببینید متن <code>alt</code> چگونه نمایش داده می‌شود.</li>
+        </ol>
+    </div>
+
+    <div class="pager">
+        <a href="chapter-00.html">فصل قبل: مفاهیم پایه</a>
+        <a href="chapter-02.html">فصل بعد: جدول و مسیر فایل</a>
+    </div>
+
+</main>
+
+</body>
+</html>

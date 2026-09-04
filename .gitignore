@@ -1,6 +1,7 @@
 # ---------- فایل‌های کاری که منتشر نمی‌شوند ----------
 PROGRESS.en.md
-book/
+book/BOOK-PROGRESS.md
+book/proofread/
 
 # ---------- فایل‌های سیستم‌عامل ----------
 Thumbs.db
@@ -13,3 +14,4 @@ desktop.ini
 *~
 .vscode/
 .idea/
+__pycache__/

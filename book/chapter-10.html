@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="فصل ده: فرم‌ها، input و انواع آن، برچسب، جعبه متن، فهرست کشویی، تیک و دکمه رادیویی، دکمه و استایل فرم">
+    <title>فصل ۱۰: فرم‌ها</title>
+    <link rel="icon" href="logokm.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="book-bar">
+    <a class="name" href="index.html">طراحی وب با HTML و CSS</a>
+    <a href="index.html">فهرست مطالب</a>
+</header>
+
+<main class="paper">
+
+    <div class="chapter-head">
+        <span class="chapter-num">فصل ۱۰</span>
+        <h1 data-t="ch10-001">فرم‌ها</h1>
+        <p class="lead" data-t="ch10-002">تا اینجا صفحه‌هایمان تنها چیزی به کاربر نشان می‌دادند. فرم اولین جایی است که کاربر هم می‌تواند چیزی به ما بدهد.</p>
+    </div>
+
+    <div class="mini-toc">
+        <span class="box-title" data-t="ch10-003">در این فصل با این مباحث آشنا می‌شوید</span>
+        <ol>
+            <li data-t="ch10-004"><a href="#s1">ساختار فرم و input</a></li>
+            <li data-t="ch10-005"><a href="#s2">برچسب و انواع input</a></li>
+            <li data-t="ch10-006"><a href="#s3">جعبه متن و فهرست کشویی</a></li>
+            <li data-t="ch10-007"><a href="#s4">تیک و دکمه رادیویی</a></li>
+            <li data-t="ch10-008"><a href="#s5">دکمه</a></li>
+            <li data-t="ch10-009"><a href="#s6">استایل دادن به فرم</a></li>
+            <li data-t="ch10-010"><a href="#s7">مثال نهایی و فرم جست‌وجو</a></li>
+        </ol>
+    </div>
+
+    <h2 id="s1" data-t="ch10-011">۱. ساختار فرم و input</h2>
+
+    <pre class="code"><code>&lt;form&gt;
+    &lt;input type="text" name="fullname" placeholder="نام و نام خانوادگی"&gt;
+    &lt;input type="text" name="city" placeholder="شهر"&gt;
+&lt;/form&gt;</code></pre>
+    <p class="code-caption" data-t="ch10-012">فرم ساده: نمونه 01-form-basic-input</p>
+
+    <h3 data-t="ch10-013">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch10-014">
+            <code>form</code> ظرف همه اجزای فرم است. تمام input ها باید داخل آن باشند.
+        </li>
+        <li data-t="ch10-015"><code>input</code> یک جعبه ورودی می‌سازد. مانند <code>img</code> تگ بسته ندارد.</li>
+        <li data-t="ch10-016">
+            <code>type</code> نوع ورودی را مشخص می‌کند. مقدار
+            <code>text</code> یعنی یک متن کوتاه یک‌خطی.
+        </li>
+        <li data-t="ch10-017">
+            <code>name</code> نام آن فیلد است. وقتی فرم به سرور فرستاده شود،
+            سرور با همین نام مقدار را می‌شناسد. بدون <code>name</code>
+            مقدار آن فیلد اصلاً فرستاده نمی‌شود.
+        </li>
+        <li data-t="ch10-018">
+            <code>placeholder</code> متن راهنمای کم‌رنگی است که تا وقتی
+            کاربر چیزی ننوشته دیده می‌شود و به محض تایپ ناپدید می‌شود.
+        </li>
+    </ul>
+
+    <div class="note">
+        <span class="box-title" data-t="ch10-019">فرم و سرور</span>
+        <p data-t="ch10-020">تگ <code>form</code> دو ویژگی مهم دیگر هم دارد: <code>action</code> که آدرس برنامه‌ای روی سرور است که فرم را دریافت می‌کند، و <code>method</code> که روش ارسال را مشخص می‌کند. چون در این دوره سرور نداریم، فرم‌های ما داده را واقعاً جایی نمی‌فرستند. ما تنها ظاهر و ساختار فرم را می‌سازیم. کار سرور مربوط به برنامه‌نویسی بک‌اند است که در فصل پانزدهم درباره‌اش صحبت می‌کنیم.</p>
+    </div>
+
+    <h2 id="s2" data-t="ch10-021">۲. برچسب و انواع input</h2>
+
+    <pre class="code"><code>&lt;form&gt;
+    &lt;label for="email"&gt;ایمیل&lt;/label&gt;
+    &lt;input type="email" id="email" name="email"&gt;
+
+    &lt;label for="pass"&gt;رمز عبور&lt;/label&gt;
+    &lt;input type="password" id="pass" name="pass"&gt;
+
+    &lt;label for="age"&gt;سن&lt;/label&gt;
+    &lt;input type="number" id="age" name="age" min="10" max="99"&gt;
+
+    &lt;label for="birth"&gt;تاریخ تولد&lt;/label&gt;
+    &lt;input type="date" id="birth" name="birth"&gt;
+
+    &lt;label for="phone"&gt;شماره تماس&lt;/label&gt;
+    &lt;input type="tel" id="phone" name="phone" required&gt;
+&lt;/form&gt;</code></pre>
+    <p class="code-caption" data-t="ch10-022">برچسب و انواع: نمونه 02-label-and-input-types</p>
+
+    <h3 data-t="ch10-023">شرح مثال</h3>
+
+    <p data-t="ch10-024">
+        <code>label</code> برچسب هر فیلد است. ویژگی <code>for</code> آن
+        باید دقیقاً برابر <code>id</code> فیلد مربوطه باشد. با این کار
+        برچسب و فیلد به هم وصل می‌شوند و دو فایده مهم دارد:
+    </p>
+
+    <ol>
+        <li data-t="ch10-025">کاربر می‌تواند روی <strong>متن برچسب</strong> کلیک کند و نشانگر داخل فیلد برود. این روی موبایل که هدف‌ها کوچک‌اند، بسیار مهم است.</li>
+        <li data-t="ch10-026">صفحه‌خوان‌ها می‌فهمند این جعبه ورودی برای چیست. بدون <code>label</code>، کاربر نابینا تنها می‌شنود «جعبه متن» و نمی‌داند چه باید بنویسد.</li>
+    </ol>
+
+    <p data-t="ch10-027">انواع پرکاربرد <code>type</code>:</p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch10-028">مقدار</th><th data-t="ch10-029">نتیجه</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>text</code></td><td data-t="ch10-030">متن ساده یک‌خطی</td></tr>
+            <tr><td><code>email</code></td><td data-t="ch10-031">مرورگر بررسی می‌کند علامت اَت داشته باشد</td></tr>
+            <tr><td><code>password</code></td><td data-t="ch10-032">حروف به شکل نقطه نمایش داده می‌شوند</td></tr>
+            <tr><td><code>number</code></td><td data-t="ch10-033">تنها عدد. با <code>min</code> و <code>max</code> محدود می‌شود.</td></tr>
+            <tr><td><code>date</code></td><td data-t="ch10-034">تقویم بازشو</td></tr>
+            <tr><td><code>tel</code></td><td data-t="ch10-035">شماره تلفن. روی موبایل صفحه‌کلید عددی باز می‌شود.</td></tr>
+            <tr><td><code>file</code></td><td data-t="ch10-036">انتخاب فایل از کامپیوتر</td></tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch10-037">ویژگی <code>required</code> هم مقدار نمی‌گیرد و تنها نوشتنش کافی است. یعنی «این فیلد اجباری است» و مرورگر تا وقتی پر نشود اجازه ارسال نمی‌دهد.</p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch10-038">چرا type درست مهم است</span>
+        <p data-t="ch10-039">نوشتن <code>type="text"</code> برای همه چیز کار می‌کند، اما نوع درست دو مزیت رایگان می‌دهد: مرورگر خودش ورودی را بررسی می‌کند، و روی موبایل <strong>صفحه‌کلید مناسب</strong> باز می‌شود. برای فیلد شماره، صفحه‌کلید عددی و برای ایمیل، صفحه‌کلیدی که علامت اَت را جلوی چشم کاربر می‌گذارد.</p>
+    </div>
+
+    <h2 id="s3" data-t="ch10-040">۳. جعبه متن و فهرست کشویی</h2>
+
+    <pre class="code"><code>&lt;label for="msg"&gt;پیام شما&lt;/label&gt;
+&lt;textarea id="msg" name="msg" rows="5" placeholder="متن پیام..."&gt;&lt;/textarea&gt;
+
+&lt;label for="city"&gt;شهر&lt;/label&gt;
+&lt;select id="city" name="city"&gt;
+    &lt;option value=""&gt;انتخاب کنید&lt;/option&gt;
+    &lt;option value="tehran"&gt;تهران&lt;/option&gt;
+    &lt;option value="rasht" selected&gt;رشت&lt;/option&gt;
+    &lt;option value="tabriz"&gt;تبریز&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+    <p class="code-caption" data-t="ch10-041">جعبه متن و کشویی: نمونه 03-textarea-select</p>
+
+    <h3 data-t="ch10-042">شرح مثال</h3>
+
+    <p data-t="ch10-043">
+        <code>textarea</code> برای متن‌های چندخطی است.
+        برخلاف <code>input</code>، این تگ <strong>تگ بسته دارد</strong>
+        و متن پیش‌فرضش بین دو تگ نوشته می‌شود، نه در ویژگی <code>value</code>.
+        اگر می‌خواهید خالی باشد، حتماً دو تگ را بدون فاصله بچسبانید،
+        وگرنه آن فاصله‌ها به عنوان متن اولیه داخل جعبه می‌نشینند.
+        <code>rows</code> ارتفاع اولیه را بر حسب تعداد خط تعیین می‌کند.
+    </p>
+
+    <p data-t="ch10-044">
+        <code>select</code> فهرست کشویی می‌سازد و هر گزینه‌اش یک
+        <code>option</code> است. ویژگی <code>value</code> آن چیزی است
+        که به سرور می‌رود و متن بین دو تگ، آن چیزی است که کاربر می‌بیند.
+        این دو معمولاً فرق دارند: کاربر «رشت» می‌بیند و سرور
+        <code>rasht</code> دریافت می‌کند.
+    </p>
+
+    <p data-t="ch10-045">
+        ویژگی <code>selected</code> روی یک گزینه، آن را از ابتدا انتخاب‌شده می‌کند.
+        گزینه اول با <code>value</code> خالی هم ترفند رایجی است تا
+        کاربر مجبور شود آگاهانه انتخاب کند.
+    </p>
+
+    <h2 id="s4" data-t="ch10-046">۴. تیک و دکمه رادیویی</h2>
+
+    <pre class="code"><code>&lt;p&gt;علاقه‌مندی‌ها (چند گزینه)&lt;/p&gt;
+
+&lt;input type="checkbox" id="web" name="interest" value="web"&gt;
+&lt;label for="web"&gt;طراحی وب&lt;/label&gt;
+
+&lt;input type="checkbox" id="net" name="interest" value="net" checked&gt;
+&lt;label for="net"&gt;شبکه&lt;/label&gt;
+
+&lt;p&gt;جنسیت (یک گزینه)&lt;/p&gt;
+
+&lt;input type="radio" id="male" name="gender" value="male"&gt;
+&lt;label for="male"&gt;آقا&lt;/label&gt;
+
+&lt;input type="radio" id="female" name="gender" value="female"&gt;
+&lt;label for="female"&gt;خانم&lt;/label&gt;</code></pre>
+    <p class="code-caption" data-t="ch10-047">تیک و رادیویی: نمونه 04-checkbox-radio</p>
+
+    <h3 data-t="ch10-048">شرح مثال</h3>
+
+    <p data-t="ch10-049">تفاوت این دو در تعداد انتخاب است:</p>
+
+    <ul>
+        <li data-t="ch10-050">
+            <code>checkbox</code> برای وقتی است که کاربر می‌تواند
+            <strong>چند</strong> گزینه یا هیچ گزینه‌ای را انتخاب کند.
+        </li>
+        <li data-t="ch10-051"><code>radio</code> برای وقتی است که تنها <strong>یک</strong> گزینه مجاز است. با انتخاب یکی، بقیه خودکار برداشته می‌شوند.</li>
+    </ul>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch10-052">مهم‌ترین قانون دکمه‌های رادیویی</span>
+        <p data-t="ch10-053">
+            دکمه‌های رادیویی که باید با هم یک گروه باشند، باید
+            <strong>دقیقاً یک نام یکسان</strong> در ویژگی <code>name</code> داشته باشند.
+            اگر نامشان فرق کند، هر کدام گروه جداگانه‌ای می‌شوند و
+            کاربر می‌تواند همه را با هم انتخاب کند.
+            برعکس، <code>id</code> هر کدام باید <strong>متفاوت</strong> باشد،
+            چون برچسبشان با همان id به آنها وصل می‌شود.
+        </p>
+    </div>
+
+    <p data-t="ch10-054">ویژگی <code>checked</code> هم مانند <code>required</code> مقدار نمی‌گیرد و گزینه را از ابتدا انتخاب‌شده می‌کند.</p>
+
+    <h2 id="s5" data-t="ch10-055">۵. دکمه</h2>
+
+    <pre class="code"><code>&lt;button type="submit"&gt;ارسال فرم&lt;/button&gt;
+
+&lt;button type="reset"&gt;پاک کردن&lt;/button&gt;
+
+&lt;button type="button"&gt;یک دکمه معمولی&lt;/button&gt;
+
+&lt;input type="submit" value="ارسال"&gt;</code></pre>
+    <p class="code-caption" data-t="ch10-056">دکمه: نمونه 05-button</p>
+
+    <h3 data-t="ch10-057">شرح مثال</h3>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch10-058">مقدار type</th><th data-t="ch10-059">رفتار</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>submit</code></td><td data-t="ch10-060">فرم را ارسال می‌کند. پیش‌فرض داخل فرم همین است.</td></tr>
+            <tr><td><code>reset</code></td><td data-t="ch10-061">همه فیلدها را خالی می‌کند.</td></tr>
+            <tr><td><code>button</code></td><td data-t="ch10-062">هیچ کاری نمی‌کند مگر با جاوااسکریپت به آن کاری بدهیم.</td></tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch10-063">دو روش ساخت دکمه داریم: تگ <code>button</code> و <code>input type="submit"</code>. تگ <code>button</code> بهتر است چون تگ بسته دارد و می‌شود داخلش هر چیزی گذاشت، حتی آیکون یا متن پررنگ. در <code>input</code> تنها متن ساده در ویژگی <code>value</code> ممکن است.</p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch10-064">دکمه reset را کم استفاده کنید</span>
+        <p data-t="ch10-065">
+            کاربری که فرم بلندی را پر کرده و اشتباهی روی «پاک کردن» می‌زند،
+            همه چیز را از دست می‌دهد. بیشتر سایت‌های حرفه‌ای امروز
+            اصلاً دکمه reset ندارند.
+        </p>
+    </div>
+
+    <h2 id="s6" data-t="ch10-066">۶. استایل دادن به فرم</h2>
+
+    <p data-t="ch10-067">
+        اجزای فرم ظاهر پیش‌فرض زشتی دارند و از همه بدتر،
+        قلمشان را از صفحه به ارث نمی‌برند. باید حتماً دستی تنظیمشان کنیم.
+    </p>
+
+    <pre class="code"><code>input, textarea, select, button {
+    font-family: Tahoma, sans-serif;    /* حتماً لازم است */
+    font-size: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    margin-bottom: 18px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #2f4f4f;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #2f4f4f;
+    font-weight: bold;
+}
+
+button {
+    background-color: #2f4f4f;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff6347;
+}
+
+textarea {
+    resize: vertical;
+}</code></pre>
+    <p class="code-caption" data-t="ch10-068">استایل فرم: نمونه 06-form-styling-css</p>
+
+    <h3 data-t="ch10-069">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch10-070">
+            <strong>قلم.</strong> اولین قانون از همه مهم‌تر است.
+            بدون آن، متنی که کاربر در فیلد فارسی می‌نویسد با قلمی
+            متفاوت از بقیه صفحه نمایش داده می‌شود.
+        </li>
+        <li data-t="ch10-071"><strong>انتخابگر با ویژگی.</strong> نوشتار <code>input[type="text"]</code> تازه است و یعنی «تنها input هایی که ویژگی type آنها برابر text است». به این کار نیاز داریم چون نمی‌خواهیم همین استایل روی <code>checkbox</code> و <code>radio</code> هم بیفتد و آنها را خراب کند.</li>
+        <li data-t="ch10-072"><strong>focus:</strong> یک شبه‌کلاس تازه است، مانند <code>hover:</code> اما برای وقتی که نشانگر <strong>داخل</strong> آن فیلد است. اینجا با آن رنگ حاشیه را عوض کرده‌ایم تا کاربر بداند در کدام فیلد است.</li>
+        <li data-t="ch10-073">
+            <strong>display: block روی label.</strong> برچسب به طور
+            پیش‌فرض درون‌خطی است. با بلوکی کردنش، هر برچسب بالای
+            فیلد خودش و در خط جداگانه قرار می‌گیرد.
+        </li>
+        <li data-t="ch10-074">
+            <strong>cursor: pointer.</strong> شکل موس را روی دکمه به
+            دست تبدیل می‌کند تا معلوم شود قابل کلیک است.
+        </li>
+        <li data-t="ch10-075"><strong>resize: vertical.</strong> کاربر می‌تواند <code>textarea</code> را بکشد و بزرگ کند. این خط اجازه بزرگ کردن عمودی را می‌دهد اما افقی را نه، تا طرح صفحه به هم نریزد.</li>
+    </ul>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch10-076">درباره outline: none</span>
+        <p data-t="ch10-077"><code>outline</code> آن خط آبی است که مرورگر دور فیلد فعال می‌کشد. برداشتنش زیباتر است، اما <strong>تنها</strong> در صورتی مجاز است که چیز دیگری جایش بگذارید، مانند تغییر رنگ حاشیه در همین مثال. اگر آن را بردارید و جایگزینی نگذارید، کسی که با کلید Tab در فرم حرکت می‌کند اصلاً نمی‌فهمد کجاست.</p>
+    </div>
+
+    <h2 id="s7" data-t="ch10-078">۷. مثال نهایی و فرم جست‌وجو</h2>
+
+    <pre class="code"><code>&lt;div class="form-box"&gt;
+    &lt;h2&gt;فرم تماس با ما&lt;/h2&gt;
+
+    &lt;form&gt;
+        &lt;label for="name"&gt;نام و نام خانوادگی&lt;/label&gt;
+        &lt;input type="text" id="name" name="name" placeholder="مثلاً سارا احمدی" required&gt;
+
+        &lt;label for="email"&gt;ایمیل&lt;/label&gt;
+        &lt;input type="email" id="email" name="email" placeholder="name@example.com" required&gt;
+
+        &lt;label for="subject"&gt;موضوع&lt;/label&gt;
+        &lt;select id="subject" name="subject"&gt;
+            &lt;option value=""&gt;انتخاب کنید&lt;/option&gt;
+            &lt;option value="signup"&gt;ثبت‌نام&lt;/option&gt;
+            &lt;option value="support"&gt;پشتیبانی&lt;/option&gt;
+        &lt;/select&gt;
+
+        &lt;label for="message"&gt;پیام&lt;/label&gt;
+        &lt;textarea id="message" name="message" rows="5"&gt;&lt;/textarea&gt;
+
+        &lt;div class="check-row"&gt;
+            &lt;input type="checkbox" id="rules" name="rules"&gt;
+            &lt;label for="rules"&gt;قوانین سایت را می‌پذیرم&lt;/label&gt;
+        &lt;/div&gt;
+
+        &lt;button type="submit"&gt;ارسال پیام&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+
+&lt;form class="search-form"&gt;
+    &lt;input type="search" name="q" placeholder="جست‌وجو در سایت..."&gt;
+    &lt;button type="submit"&gt;بگرد&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+    <pre class="code"><code>.form-box {
+    max-width: 550px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 35px;
+    border-radius: 12px;
+}
+
+.form-box h2 {
+    color: #2f4f4f;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* ردیف تیک: برچسب باید کنار تیک بماند، نه زیرش */
+.check-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.check-row label {
+    display: inline;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+button {
+    width: 100%;
+}
+
+/* فرم جست‌وجو: فیلد و دکمه در یک خط */
+.search-form {
+    display: flex;
+    gap: 8px;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.search-form input {
+    flex-grow: 1;
+    margin-bottom: 0;
+}
+
+.search-form button {
+    width: auto;
+    flex-shrink: 0;
+}</code></pre>
+    <p class="code-caption" data-t="ch10-079">مثال نهایی: نمونه‌های 07-final-example و 08-search</p>
+
+    <h3 data-t="ch10-080">شرح مثال</h3>
+
+    <p data-t="ch10-081">
+        در این فرم دو مشکل رایج و راه‌حلشان را می‌بینید:
+    </p>
+
+    <p data-t="ch10-082"><strong>مشکل اول: برچسب تیک.</strong> قانون کلی ما <code>display: block</code> روی همه برچسب‌ها بود، که برای برچسب بالای فیلد درست است. اما برچسب یک تیک باید <strong>کنارش</strong> بماند. راه‌حل، پیچیدن آن دو در یک <code>div</code> با <code>display: flex</code> و بازگرداندن برچسب به حالت درون‌خطی است. این دقیقاً همان الگوی «قانون کلی، سپس استثنا» است که در فصل هشتم دیدیم.</p>
+
+    <p data-t="ch10-083">
+        <strong>مشکل دوم: فرم جست‌وجو.</strong> فیلد و دکمه باید در یک خط باشند
+        و فیلد باید تمام فضای باقی‌مانده را بگیرد. این دقیقاً کاری است که
+        فلکس‌باکس در فصل هشتم به ما یاد داد:
+        <code>flex-grow: 1</code> روی فیلد و <code>flex-shrink: 0</code>
+        روی دکمه تا هرگز فشرده نشود. توجه کنید که <code>width: 100%</code>
+        و <code>margin-bottom</code> عمومی را هم باید برای این حالت خنثی کنیم.
+    </p>
+
+    <p data-t="ch10-084">
+        این نکته را در ذهن نگه دارید: از فصل هفتم به بعد، هر مشکل چیدمانی
+        که پیش می‌آید، اول با فلکس‌باکس امتحانش کنید.
+    </p>
+
+    <div class="folder-ref">
+        <span class="box-title" data-t="ch10-085">فایل‌های تمرینی این فصل</span>
+        <p data-t="ch10-086">
+            پوشه <code>10-forms</code> شامل نمونه‌های
+            <code>01-form-basic-input</code> تا <code>07-final-example</code>،
+            به‌علاوه <code>08-search</code>.
+        </p>
+    </div>
+
+    <h2 data-t="ch10-087">خلاصه فصل</h2>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch10-088">تگ یا ویژگی</th><th data-t="ch10-089">کارش</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>&lt;form&gt;</code></td><td data-t="ch10-090">ظرف کل فرم</td></tr>
+            <tr><td><code>&lt;input type="..."&gt;</code></td><td data-t="ch10-091">فیلد ورودی، بسته به نوع</td></tr>
+            <tr><td><code>&lt;label for="..."&gt;</code></td><td data-t="ch10-092">برچسب، وصل به id فیلد</td></tr>
+            <tr><td><code>&lt;textarea&gt;</code></td><td data-t="ch10-093">متن چندخطی. تگ بسته دارد.</td></tr>
+            <tr><td data-t="ch10-094"><code>&lt;select&gt;</code> و <code>&lt;option&gt;</code></td><td data-t="ch10-095">فهرست کشویی</td></tr>
+            <tr><td><code>type="checkbox"</code></td><td data-t="ch10-096">چند انتخاب</td></tr>
+            <tr><td><code>type="radio"</code></td><td data-t="ch10-097">یک انتخاب. نام گروه یکسان.</td></tr>
+            <tr><td><code>&lt;button type="submit"&gt;</code></td><td data-t="ch10-098">ارسال فرم</td></tr>
+            <tr><td><code>placeholder</code></td><td data-t="ch10-099">متن راهنمای داخل فیلد</td></tr>
+            <tr><td><code>required</code></td><td data-t="ch10-100">پر کردن اجباری</td></tr>
+            <tr><td><code>input:focus</code></td><td data-t="ch10-101">حالت فعال بودن فیلد</td></tr>
+            <tr><td><code>input[type="text"]</code></td><td data-t="ch10-102">انتخابگر بر اساس ویژگی</td></tr>
+        </tbody>
+    </table>
+
+    <div class="exercise">
+        <h3 data-t="ch10-103">تمرین‌های فصل ده</h3>
+        <ol>
+            <li data-t="ch10-104">یک فرم ثبت‌نام کامل بسازید: نام، ایمیل، رمز، تاریخ تولد، شهر و پذیرش قوانین.</li>
+            <li data-t="ch10-105">سه دکمه رادیویی برای انتخاب رشته تحصیلی بگذارید و مطمئن شوید تنها یکی قابل انتخاب است.</li>
+            <li data-t="ch10-106">عمداً نام دو دکمه رادیویی را متفاوت بگذارید و ببینید چه اتفاقی می‌افتد.</li>
+            <li data-t="ch10-107">روی هر فیلد یک استایل <code>focus:</code> بگذارید که رنگ حاشیه‌اش را عوض کند.</li>
+            <li data-t="ch10-108">قانون قلم را از فایل CSS حذف کنید و ببینید فیلدها چقدر بد می‌شوند.</li>
+            <li data-t="ch10-109">یک فرم جست‌وجو بسازید که فیلد و دکمه‌اش با فلکس‌باکس در یک خط باشند.</li>
+        </ol>
+    </div>
+
+    <div class="pager">
+        <a href="chapter-09.html">فصل قبل: موقعیت‌دهی</a>
+        <a href="chapter-11.html">فصل بعد: گرید</a>
+    </div>
+
+</main>
+
+</body>
+</html>

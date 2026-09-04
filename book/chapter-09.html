@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="فصل نه: position در چهار حالت relative و absolute و fixed و sticky، لایه‌بندی با z-index و کنترل سرریز">
+    <title>فصل ۹: موقعیت‌دهی و سرریز</title>
+    <link rel="icon" href="logokm.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="book-bar">
+    <a class="name" href="index.html">طراحی وب با HTML و CSS</a>
+    <a href="index.html">فهرست مطالب</a>
+</header>
+
+<main class="paper">
+
+    <div class="chapter-head">
+        <span class="chapter-num">فصل ۹</span>
+        <h1 data-t="ch09-001">موقعیت‌دهی و سرریز</h1>
+        <p class="lead" data-t="ch09-002">
+            تا اینجا عنصرها همیشه سر جای طبیعی خودشان بودند.
+            در این فصل یاد می‌گیریم آنها را از جریان عادی صفحه بیرون بکشیم
+            و هر جا که خواستیم قرار دهیم.
+        </p>
+    </div>
+
+    <div class="mini-toc">
+        <span class="box-title" data-t="ch09-003">در این فصل با این مباحث آشنا می‌شوید</span>
+        <ol>
+            <li data-t="ch09-004"><a href="#s0">جریان عادی صفحه</a></li>
+            <li><a href="#s1">position: relative</a></li>
+            <li><a href="#s2">position: absolute</a></li>
+            <li><a href="#s3">position: fixed</a></li>
+            <li><a href="#s4">position: sticky</a></li>
+            <li data-t="ch09-005"><a href="#s5">z-index و لایه‌بندی</a></li>
+            <li><a href="#s6">overflow</a></li>
+            <li data-t="ch09-006"><a href="#s7">نمونه نهایی فصل</a></li>
+        </ol>
+    </div>
+
+    <h2 id="s0" data-t="ch09-007">۱. جریان عادی صفحه</h2>
+
+    <p data-t="ch09-008">
+        مرورگر عنصرها را به ترتیبی که در HTML نوشته‌اید می‌چیند:
+        بلوکی‌ها زیر هم و درون‌خطی‌ها کنار هم. به این ترتیب طبیعی،
+        <strong>جریان عادی</strong> می‌گویند.
+    </p>
+
+    <p data-t="ch09-009">
+        ویژگی <code>position</code> به ما اجازه می‌دهد این جریان را بشکنیم.
+        مقدار پیش‌فرضش <code>static</code> است که یعنی «همان جریان عادی».
+        چهار مقدار دیگر هم دارد که این فصل درباره آنهاست.
+    </p>
+
+    <p data-t="ch09-010">هر چهار حالت با چهار ویژگی همراه، جای دقیق عنصر را تعیین می‌کنند: <code>top</code>، <code>bottom</code>، <code>right</code> و <code>left</code>. این چهار ویژگی روی عنصر <code>static</code> هیچ اثری ندارند و تنها وقتی <code>position</code> را عوض کنید کار می‌کنند.</p>
+
+    <h2 id="s1" data-t="ch09-011">۲. position: relative</h2>
+
+    <pre class="code"><code>.box {
+    position: relative;
+    top: 20px;
+    right: 30px;
+}</code></pre>
+    <p class="code-caption" data-t="ch09-012">position relative: نمونه 01-position-relative</p>
+
+    <h3 data-t="ch09-013">شرح مثال</h3>
+
+    <p data-t="ch09-014">
+        <code>relative</code> عنصر را نسبت به <strong>جای اصلی خودش</strong>
+        جابه‌جا می‌کند. در این مثال جعبه بیست پیکسل از بالا و
+        سی پیکسل از سمت راست خودش فاصله می‌گیرد.
+    </p>
+
+    <p data-t="ch09-015">نکته مهم اینکه <strong>جای اصلی عنصر خالی می‌ماند</strong>. بقیه عنصرها طوری رفتار می‌کنند که انگار این عنصر هنوز سر جایش است. پس <code>relative</code> تنها ظاهر را جابه‌جا می‌کند و چیدمان بقیه را به هم نمی‌زند.</p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch09-016">کاربرد اصلی relative</span>
+        <p data-t="ch09-017">راستش را بخواهید، <code>relative</code> را به ندرت برای جابه‌جا کردن عنصر به کار می‌بریم. کاربرد اصلی‌اش این است که به یک عنصر <code>position: relative</code> بدهیم <strong>بدون هیچ مقدار top و right</strong>، تنها برای اینکه بشود عنصرهای <code>absolute</code> را داخلش قرار داد. در بخش بعد می‌بینید چرا.</p>
+    </div>
+
+    <h2 id="s2" data-t="ch09-018">۳. position: absolute</h2>
+
+    <pre class="code"><code>.card {
+    position: relative;          /* والد مرجع */
+    width: 300px;
+    height: 200px;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ff6347;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+}</code></pre>
+    <p class="code-caption" data-t="ch09-019">position absolute: نمونه 02-position-absolute</p>
+
+    <h3 data-t="ch09-020">شرح مثال</h3>
+
+    <p data-t="ch09-021">
+        <code>absolute</code> عنصر را کاملاً از جریان عادی
+        <strong>بیرون می‌کشد</strong>. جای اصلی‌اش دیگر خالی نمی‌ماند و
+        بقیه عنصرها جایش را پر می‌کنند، انگار که اصلاً وجود ندارد.
+    </p>
+
+    <p data-t="ch09-022">
+        سؤال مهم این است: نسبت به چه چیزی جابه‌جا می‌شود؟ جواب:
+        نسبت به <strong>نزدیک‌ترین والدی که position غیر از static دارد</strong>.
+        اگر هیچ والدی چنین چیزی نداشته باشد، نسبت به کل صفحه محاسبه می‌شود.
+    </p>
+
+    <p data-t="ch09-023">
+        به همین دلیل در مثال بالا به کارت <code>position: relative</code> دادیم.
+        این کار کارت را «مرجع» می‌کند تا نشان کوچک دقیقاً در گوشه
+        <strong>کارت</strong> بنشیند، نه در گوشه صفحه.
+    </p>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch09-024">پرتکرارترین اشتباه</span>
+        <p data-t="ch09-025">
+            اگر عنصر <code>absolute</code> شما به جای گوشه کارت،
+            به گوشه کل صفحه پرید، دلیلش صد در صد این است که
+            به والدش <code>position: relative</code> نداده‌اید.
+            این جفت، همیشه با هم می‌آیند:
+            <strong>والد relative، فرزند absolute</strong>.
+        </p>
+    </div>
+
+    <p data-t="ch09-026">موارد کاربرد رایج: نشان تخفیف روی گوشه محصول، دکمه بستن در گوشه یک پنجره، متن روی تصویر.</p>
+
+    <h2 id="s3" data-t="ch09-027">۴. position: fixed</h2>
+
+    <pre class="code"><code>.top-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #2f4f4f;
+    padding: 15px;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+}
+
+body {
+    padding-top: 60px;           /* جبران ارتفاع نوار ثابت */
+}</code></pre>
+    <p class="code-caption" data-t="ch09-028">position fixed: نمونه 03-position-fixed</p>
+
+    <h3 data-t="ch09-029">شرح مثال</h3>
+
+    <p data-t="ch09-030"><code>fixed</code> هم عنصر را از جریان بیرون می‌کشد، اما مرجعش همیشه <strong>پنجره مرورگر</strong> است، نه هیچ والدی. نتیجه‌اش این است که عنصر با اسکرول کردن صفحه <strong>حرکت نمی‌کند</strong> و همیشه سر جایش روی صفحه باقی می‌ماند.</p>
+
+    <p data-t="ch09-031">
+        در مثال بالا با دادن <code>right: 0</code> و <code>left: 0</code>
+        به نوار بالا، آن را به تمام عرض صفحه کشیده‌ایم.
+        این ترفند رایجی برای منوهای ثابت است.
+    </p>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch09-032">نکته‌ای که همه فراموش می‌کنند</span>
+        <p data-t="ch09-033">
+            چون عنصر <code>fixed</code> از جریان بیرون است، جایی برای خودش
+            اشغال نمی‌کند و روی محتوای ابتدای صفحه می‌افتد و آن را می‌پوشاند.
+            راه‌حل، دادن <code>padding-top</code> به <code>body</code>
+            به اندازه ارتفاع نوار است، دقیقاً همان خط آخر مثال.
+        </p>
+    </div>
+
+    <h2 id="s4" data-t="ch09-034">۵. position: sticky</h2>
+
+    <pre class="code"><code>.section-title {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 12px;
+}</code></pre>
+    <p class="code-caption" data-t="ch09-035">position sticky: نمونه 04-position-sticky</p>
+
+    <h3 data-t="ch09-036">شرح مثال</h3>
+
+    <p data-t="ch09-037">
+        <code>sticky</code> ترکیبی از دو حالت قبل است و رفتار جالبی دارد:
+    </p>
+
+    <ol>
+        <li data-t="ch09-038">تا وقتی عنصر در محدوده دید است، مانند یک عنصر عادی رفتار می‌کند و با صفحه حرکت می‌کند.</li>
+        <li data-t="ch09-039">به محض اینکه بخواهد از بالای صفحه خارج شود، در همان نقطه <strong>می‌چسبد</strong> و مانند <code>fixed</code> ثابت می‌ماند.</li>
+        <li data-t="ch09-040">وقتی والدش هم از صفحه خارج شود، بار دیگر با آن می‌رود.</li>
+    </ol>
+
+    <p data-t="ch09-041">
+        دو شرط برای کار کردن <code>sticky</code> لازم است:
+        باید حتماً یکی از <code>top</code> یا <code>bottom</code> را
+        مشخص کنید، و والد عنصر نباید <code>overflow: hidden</code> داشته باشد.
+        اگر <code>sticky</code> شما کار نمی‌کند، این دو را بررسی کنید.
+    </p>
+
+    <div class="note">
+        <span class="box-title" data-t="ch09-042">مقایسه چهار حالت</span>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th data-t="ch09-043">مقدار</th>
+                <th data-t="ch09-044">نسبت به چه</th>
+                <th data-t="ch09-045">جای اصلی خالی می‌ماند</th>
+                <th data-t="ch09-046">با اسکرول حرکت می‌کند</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><code>static</code></td><td data-t="ch09-047">جریان عادی</td><td data-t="ch09-048">خودش آنجاست</td><td data-t="ch09-049">بله</td></tr>
+            <tr><td><code>relative</code></td><td data-t="ch09-050">جای خودش</td><td data-t="ch09-051">بله</td><td data-t="ch09-052">بله</td></tr>
+            <tr><td><code>absolute</code></td><td data-t="ch09-053">نزدیک‌ترین والد غیر static</td><td data-t="ch09-054">خیر</td><td data-t="ch09-055">بله</td></tr>
+            <tr><td><code>fixed</code></td><td data-t="ch09-056">پنجره مرورگر</td><td data-t="ch09-057">خیر</td><td data-t="ch09-058">خیر</td></tr>
+            <tr><td><code>sticky</code></td><td data-t="ch09-059">ترکیبی</td><td data-t="ch09-060">بله</td><td data-t="ch09-061">تا نقطه چسبیدن</td></tr>
+        </tbody>
+    </table>
+
+    <h2 id="s5" data-t="ch09-062">۶. z-index و لایه‌بندی</h2>
+
+    <p data-t="ch09-063">
+        وقتی عنصرها از جریان بیرون می‌آیند، ممکن است روی هم بیفتند.
+        <code>z-index</code> تعیین می‌کند کدام رو باشد و کدام زیر.
+    </p>
+
+    <pre class="code"><code>.background-layer {
+    position: absolute;
+    z-index: 1;
+}
+
+.content-layer {
+    position: absolute;
+    z-index: 10;               /* روی لایه قبلی */
+}
+
+.modal {
+    position: fixed;
+    z-index: 1000;             /* روی همه چیز */
+}</code></pre>
+    <p class="code-caption" data-t="ch09-064">z-index: نمونه 05-z-index</p>
+
+    <h3 data-t="ch09-065">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch09-066">
+            عدد بزرگ‌تر یعنی جلوتر. عنصری با <code>z-index: 10</code>
+            روی عنصری با <code>z-index: 1</code> قرار می‌گیرد.
+        </li>
+        <li data-t="ch09-067"><code>z-index</code> تنها روی عنصرهایی کار می‌کند که <code>position</code> غیر از <code>static</code> دارند. این پرتکرارترین دلیل کار نکردن آن است.</li>
+        <li data-t="ch09-068">
+            اگر <code>z-index</code> ندهید، عنصری که در HTML
+            <strong>پایین‌تر</strong> نوشته شده رو قرار می‌گیرد.
+        </li>
+    </ul>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch09-069">اعداد را منظم نگه دارید</span>
+        <p data-t="ch09-070">عادت بدی که بسیار رایج است، نوشتن اعداد بی‌حساب مانند ۹۹۹۹۹ است. بعد از مدتی هیچ‌کس نمی‌داند چه چیزی روی چه چیزی است. یک نظم ساده انتخاب کنید: مثلاً ۱ تا ۱۰ برای محتوای عادی، ۱۰۰ برای منوی ثابت و ۱۰۰۰ برای پنجره‌های بازشو.</p>
+    </div>
+
+    <h2 id="s6" data-t="ch09-071">۷. overflow</h2>
+
+    <p data-t="ch09-072">
+        وقتی محتوا از جعبه‌اش بزرگ‌تر است چه اتفاقی می‌افتد؟
+        به طور پیش‌فرض بیرون می‌زند و روی بقیه صفحه می‌ریزد.
+        <code>overflow</code> این را کنترل می‌کند.
+    </p>
+
+    <pre class="code"><code>.box {
+    width: 300px;
+    height: 150px;
+}
+
+.visible {
+    overflow: visible;         /* پیش‌فرض: بیرون می‌ریزد */
+}
+
+.hidden {
+    overflow: hidden;          /* اضافه‌ها بریده می‌شوند */
+}
+
+.scroll {
+    overflow: scroll;          /* همیشه نوار اسکرول */
+}
+
+.auto {
+    overflow: auto;            /* فقط در صورت نیاز نوار اسکرول */
+}
+
+.only-vertical {
+    overflow-x: hidden;
+    overflow-y: auto;
+}</code></pre>
+    <p class="code-caption" data-t="ch09-073">overflow: نمونه 06-overflow</p>
+
+    <h3 data-t="ch09-074">شرح مثال</h3>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch09-075">مقدار</th><th data-t="ch09-076">نتیجه</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>visible</code></td><td data-t="ch09-077">پیش‌فرض. محتوا از جعبه بیرون می‌زند.</td></tr>
+            <tr><td><code>hidden</code></td><td data-t="ch09-078">هر چه بیرون بزند بریده و پنهان می‌شود.</td></tr>
+            <tr><td><code>scroll</code></td><td data-t="ch09-079">نوار اسکرول همیشه هست، حتی وقتی لازم نیست.</td></tr>
+            <tr><td><code>auto</code></td><td data-t="ch09-080">نوار اسکرول تنها وقتی محتوا بسیار باشد. بهترین انتخاب.</td></tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch09-081">
+        دو نسخه جهت‌دار هم دارد: <code>overflow-x</code> برای افقی و
+        <code>overflow-y</code> برای عمودی. ترکیب رایج آنها،
+        همان دو خط آخر مثال است: اسکرول عمودی مجاز، افقی ممنوع.
+    </p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch09-082">دو کاربرد بسیار پرتکرار</span>
+        <p data-t="ch09-083">
+            اول، <code>overflow: hidden</code> روی جعبه‌ای که
+            <code>border-radius</code> دارد و داخلش تصویر است.
+            بدون آن، گوشه‌های تصویر از گوشه گرد جعبه بیرون می‌زنند.
+            دوم، <code>overflow-x: auto</code> روی جدول‌های عریض،
+            تا روی موبایل به جای خراب کردن کل صفحه، خودشان اسکرول بخورند.
+        </p>
+    </div>
+
+    <h2 id="s7" data-t="ch09-084">۸. نمونه نهایی فصل</h2>
+
+    <pre class="code"><code>&lt;body&gt;
+
+    &lt;header class="navbar"&gt;
+        &lt;div class="logo"&gt;فروشگاه&lt;/div&gt;
+        &lt;nav&gt;&lt;a href="#"&gt;خانه&lt;/a&gt;&lt;a href="#"&gt;محصولات&lt;/a&gt;&lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;h2 class="sticky-title"&gt;محصولات ویژه&lt;/h2&gt;
+
+        &lt;div class="products"&gt;
+            &lt;div class="product"&gt;
+                &lt;span class="badge"&gt;۳۰٪ تخفیف&lt;/span&gt;
+                &lt;div class="image"&gt;&lt;/div&gt;
+                &lt;h3&gt;محصول اول&lt;/h3&gt;
+            &lt;/div&gt;
+
+            &lt;div class="product"&gt;
+                &lt;span class="badge"&gt;جدید&lt;/span&gt;
+                &lt;div class="image"&gt;&lt;/div&gt;
+                &lt;h3&gt;محصول دوم&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="note-box"&gt;
+            &lt;p&gt;متن طولانی که داخل یک جعبه با ارتفاع محدود قرار دارد...&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+
+    &lt;a href="#" class="to-top"&gt;بالا&lt;/a&gt;
+
+&lt;/body&gt;</code></pre>
+
+    <pre class="code"><code>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    line-height: 1.9;
+    padding-top: 65px;             /* جبران نوار ثابت */
+}
+
+/* نوار بالا: همیشه ثابت */
+.navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2f4f4f;
+    color: white;
+    padding: 18px 30px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-right: 18px;
+}
+
+/* عنوان چسبان */
+.sticky-title {
+    position: sticky;
+    top: 65px;
+    z-index: 50;
+    background-color: #f5f5f5;
+    color: #2f4f4f;
+    padding: 15px 30px;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 30px;
+}
+
+/* کارت محصول: مرجع نشان تخفیف */
+.product {
+    position: relative;
+    width: 250px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;              /* تا تصویر از گوشه گرد بیرون نزند */
+    padding-bottom: 15px;
+}
+
+.product .image {
+    height: 160px;
+    background-color: #dddddd;
+}
+
+.product h3 {
+    padding: 12px 15px 0;
+    color: #2f4f4f;
+}
+
+/* نشان تخفیف در گوشه کارت */
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 5;
+    background-color: #ff6347;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* جعبه با ارتفاع محدود و اسکرول داخلی */
+.note-box {
+    margin: 20px 30px;
+    height: 120px;
+    overflow-y: auto;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* دکمه شناور بازگشت به بالا */
+.to-top {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    z-index: 200;
+    background-color: #ff6347;
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 50px;
+}</code></pre>
+    <p class="code-caption" data-t="ch09-085">نمونه نهایی فصل: نمونه 07-final-example</p>
+
+    <h3 data-t="ch09-086">شرح مثال</h3>
+
+    <p data-t="ch09-087">در این صفحه هر چهار حالت position و هر دو مفهوم دیگر فصل نقش دارند:</p>
+
+    <ul>
+        <li data-t="ch09-088">
+            <strong>fixed</strong> روی نوار بالا و روی دکمه بازگشت به بالا.
+            هر دو با اسکرول حرکت نمی‌کنند. توجه کنید که
+            <code>padding-top: 65px</code> روی <code>body</code>
+            جای نوار را جبران کرده است.
+        </li>
+        <li data-t="ch09-089">
+            <strong>sticky</strong> روی عنوان بخش، با
+            <code>top: 65px</code>. یعنی «وقتی به شصت و پنج پیکسلی
+            بالای صفحه رسیدی بچسب»، دقیقاً زیر نوار ثابت.
+            این عدد باید با ارتفاع نوار هماهنگ باشد.
+        </li>
+        <li data-t="ch09-090">
+            <strong>relative و absolute</strong> به صورت جفت: کارت محصول
+            <code>relative</code> است و نشان تخفیف <code>absolute</code>.
+            به همین دلیل نشان در گوشه کارت می‌نشیند، نه گوشه صفحه.
+        </li>
+        <li data-t="ch09-091">
+            <strong>z-index</strong> با یک نظم مشخص: ۵ برای نشان روی کارت،
+            ۵۰ برای عنوان چسبان، ۱۰۰ برای نوار بالا و ۲۰۰ برای دکمه شناور.
+            به این ترتیب همیشه معلوم است چه چیزی روی چه چیزی می‌افتد.
+        </li>
+        <li data-t="ch09-092">
+            <strong>overflow</strong> در دو نقش: <code>hidden</code> روی
+            کارت محصول تا گوشه‌های گرد تمیز بمانند، و
+            <code>overflow-y: auto</code> روی جعبه یادداشت تا متن طولانی
+            به جای بیرون زدن، داخل خودش اسکرول بخورد.
+        </li>
+    </ul>
+
+    <div class="folder-ref">
+        <span class="box-title" data-t="ch09-093">فایل‌های تمرینی این فصل</span>
+        <p data-t="ch09-094">
+            پوشه <code>09-position-and-overflow</code> شامل نمونه‌های
+            <code>01-position-relative</code> تا <code>07-final-example</code>.
+        </p>
+    </div>
+
+    <h2 data-t="ch09-095">خلاصه فصل</h2>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch09-096">ویژگی</th><th data-t="ch09-097">کارش</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>position: relative</code></td><td data-t="ch09-098">جابه‌جایی نسبت به جای خود؛ مرجع فرزندان absolute</td></tr>
+            <tr><td><code>position: absolute</code></td><td data-t="ch09-099">خروج از جریان، نسبت به نزدیک‌ترین والد غیر static</td></tr>
+            <tr><td><code>position: fixed</code></td><td data-t="ch09-100">ثابت روی پنجره، بی‌تأثیر از اسکرول</td></tr>
+            <tr><td><code>position: sticky</code></td><td data-t="ch09-101">عادی تا نقطه‌ای، بعد چسبیده</td></tr>
+            <tr><td><code>top</code> <code>bottom</code> <code>right</code> <code>left</code></td><td data-t="ch09-102">تعیین جای دقیق. روی static اثر ندارند.</td></tr>
+            <tr><td><code>z-index</code></td><td data-t="ch09-103">ترتیب لایه‌ها. تنها با position غیر static.</td></tr>
+            <tr><td><code>overflow: hidden</code></td><td data-t="ch09-104">بریدن محتوای اضافه</td></tr>
+            <tr><td><code>overflow: auto</code></td><td data-t="ch09-105">اسکرول تنها در صورت نیاز</td></tr>
+        </tbody>
+    </table>
+
+    <div class="exercise">
+        <h3 data-t="ch09-106">تمرین‌های فصل نه</h3>
+        <ol>
+            <li data-t="ch09-107">یک منوی ثابت بالای صفحه بسازید و با <code>padding-top</code> جای آن را جبران کنید.</li>
+            <li data-t="ch09-108">یک کارت محصول با نشان تخفیف در گوشه‌اش بسازید.</li>
+            <li data-t="ch09-109">عمداً <code>position: relative</code> والد را حذف کنید و ببینید نشان کجا می‌رود.</li>
+            <li data-t="ch09-110">یک دکمه بازگشت به بالا در گوشه پایین صفحه بگذارید که با اسکرول حرکت نکند.</li>
+            <li data-t="ch09-111">یک عنوان چسبان بسازید و صفحه را اسکرول کنید تا رفتارش را ببینید.</li>
+            <li data-t="ch09-112">جعبه‌ای با ارتفاع ثابت بسازید و متن طولانی داخلش بگذارید. یک بار با <code>hidden</code> و یک بار با <code>auto</code> امتحان کنید.</li>
+        </ol>
+    </div>
+
+    <div class="pager">
+        <a href="chapter-08.html">فصل قبل: فلکس‌باکس پیشرفته</a>
+        <a href="chapter-10.html">فصل بعد: فرم‌ها</a>
+    </div>
+
+</main>
+
+</body>
+</html>

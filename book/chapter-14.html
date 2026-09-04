@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="فصل چهارده: پروژه نهایی، ساخت گام‌به‌گام سایت هفت‌صفحه‌ای دبیرستان دانش از پایه تا نسخه کامل و واکنش‌گرا">
+    <title>فصل ۱۴: پروژه نهایی</title>
+    <link rel="icon" href="logokm.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="book-bar">
+    <a class="name" href="index.html">طراحی وب با HTML و CSS</a>
+    <a href="index.html">فهرست مطالب</a>
+</header>
+
+<main class="paper">
+
+    <div class="chapter-head">
+        <span class="chapter-num">فصل ۱۴</span>
+        <h1 data-t="ch14-001">پروژه نهایی: سایت دبیرستان دانش</h1>
+        <p class="lead" data-t="ch14-002">
+            سیزده فصل مفهوم یاد گرفتیم. حالا همه را کنار هم می‌گذاریم و
+            یک سایت هفت‌صفحه‌ای واقعی و واکنش‌گرا می‌سازیم، گام به گام.
+        </p>
+    </div>
+
+    <div class="mini-toc">
+        <span class="box-title" data-t="ch14-003">در این فصل با این مباحث آشنا می‌شوید</span>
+        <ol>
+            <li data-t="ch14-004"><a href="#s1">نقشه پروژه</a></li>
+            <li data-t="ch14-005"><a href="#s2">گام ۱: پایه طراحی</a></li>
+            <li data-t="ch14-006"><a href="#s3">گام ۲: صفحه اصلی</a></li>
+            <li data-t="ch14-007"><a href="#s4">گام ۳: صفحه درباره ما و اتصال صفحه‌ها</a></li>
+            <li data-t="ch14-008"><a href="#s5">گام ۴: صفحه رشته‌ها</a></li>
+            <li data-t="ch14-009"><a href="#s6">گام ۵: صفحه دبیران</a></li>
+            <li data-t="ch14-010"><a href="#s7">گام ۶: صفحه گالری</a></li>
+            <li data-t="ch14-011"><a href="#s8">گام ۷: صفحه اخبار</a></li>
+            <li data-t="ch14-012"><a href="#s9">گام ۸: صفحه تماس</a></li>
+            <li data-t="ch14-013"><a href="#s10">گام ۹: پرداخت نهایی</a></li>
+            <li data-t="ch14-014"><a href="#s11">گام ۱۰: بررسی و تحویل</a></li>
+        </ol>
+    </div>
+
+    <h2 id="s1" data-t="ch14-015">۱. نقشه پروژه</h2>
+
+    <p data-t="ch14-016">پروژه ما سایت یک دبیرستان خیالی به نام <strong>دبیرستان دانش</strong> است. هفت صفحه دارد و هر صفحه یک فایل HTML است، اما هر هفت صفحه به <strong>یک</strong> فایل <code>style.css</code> وصل می‌شوند.</p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch14-017">فایل</th><th data-t="ch14-018">محتوا</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>index.html</code></td><td data-t="ch14-019">صفحه اصلی: هدر بزرگ، امکانات، آمار، پیش‌نمایش اخبار</td></tr>
+            <tr><td><code>about.html</code></td><td data-t="ch14-020">درباره ما: تاریخچه و اهداف مدرسه</td></tr>
+            <tr><td><code>programs.html</code></td><td data-t="ch14-021">سه رشته تحصیلی</td></tr>
+            <tr><td><code>teachers.html</code></td><td data-t="ch14-022">معرفی دبیران</td></tr>
+            <tr><td><code>gallery.html</code></td><td data-t="ch14-023">گالری تصاویر</td></tr>
+            <tr><td><code>news.html</code></td><td data-t="ch14-024">اخبار و اطلاعیه‌ها</td></tr>
+            <tr><td><code>contact.html</code></td><td data-t="ch14-025">فرم تماس و اطلاعات ارتباطی</td></tr>
+        </tbody>
+    </table>
+
+    <h3 data-t="ch14-026">روش کار: ساخت تجمعی</h3>
+
+    <p data-t="ch14-027">این پروژه را در ده گام می‌سازیم و هر گام یک پوشه کامل و قابل اجراست. یعنی پوشه گام سوم، همه چیز گام دوم را دارد به‌علاوه صفحه تازه. به این صورت اگر جایی گم شدید، می‌توانید پوشه گام قبل را باز کنید و ببینید کد در آن مرحله چه شکلی بوده است.</p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch14-028">قانون طلایی این پروژه</span>
+        <p data-t="ch14-029">
+            در این سایت از هیچ چیزی استفاده نمی‌کنیم که تا فصل سیزدهم
+            یاد نگرفته باشیم. هیچ کتابخانه‌ای، هیچ جاوااسکریپتی و
+            هیچ فایلی از اینترنت. همه چیز دست‌ساز و محلی است.
+        </p>
+    </div>
+
+    <h2 id="s2" data-t="ch14-030">۲. گام ۱: پایه طراحی</h2>
+
+    <p data-t="ch14-031">
+        هیچ‌وقت یک پروژه را با نوشتن HTML شروع نکنید. اول باید تصمیم بگیرید
+        رنگ‌ها، قلم، فاصله‌ها و اندازه‌ها چه باشند. به این مجموعه تصمیم‌ها
+        <strong>راهنمای سبک</strong> می‌گویند.
+    </p>
+
+    <pre class="code"><code>/* ---------- متغیرهای سایت ---------- */
+:root {
+    --primary: #2f4f4f;
+    --primary-dark: #1c3333;
+    --accent: #ff6347;
+    --bg-light: #f5f5f5;
+    --text: #333333;
+    --muted: #666666;
+    --border: #dddddd;
+    --radius: 10px;
+    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 10px 26px rgba(0, 0, 0, 0.16);
+}
+
+/* ---------- ریست پایه ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+html {
+    direction: rtl;
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--text);
+    line-height: 1.8;
+    background-color: #ffffff;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ---------- ظرف استاندارد ---------- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}</code></pre>
+    <p class="code-caption" data-t="ch14-032">پایه طراحی: پوشه 01-design-foundation</p>
+
+    <h3 data-t="ch14-033">شرح مثال</h3>
+
+    <p data-t="ch14-034">این چند خط، پایه تمام هفت صفحه است. هر قسمتش دلیلی دارد:</p>
+
+    <ul>
+        <li data-t="ch14-035"><strong>متغیرها.</strong> دو رنگ اصلی، یک رنگ تأکیدی، سه خاکستری، یک اندازه گردی و سه سایه. این موارد کل زبان بصری سایت هستند. چون همه از فصل سیزدهم متغیر شده‌اند، برای عوض کردن تم کل سایت تنها همین بلوک تغییر می‌کند.</li>
+        <li data-t="ch14-036">
+            <strong>ریست.</strong> همان قانون ستاره فصل چهارم و پنجم.
+        </li>
+        <li data-t="ch14-037">
+            <code>a { color: inherit; text-decoration: none; }</code>
+            لینک‌ها را از حالت آبی و زیرخط‌دار پیش‌فرض خارج می‌کند تا
+            رنگشان را از والدشان بگیرند. با این کار در هر جای سایت،
+            لینک‌ها با محیطشان هماهنگ می‌شوند.
+        </li>
+        <li data-t="ch14-038">
+            <strong>قانون تصویر.</strong> همان سه خط فصل دوازدهم که
+            یک بار نوشته می‌شود و برای همیشه مشکل تصویرهای بزرگ را حل می‌کند.
+        </li>
+        <li data-t="ch14-039">
+            <strong>کلاس container.</strong> این مهم‌ترین کلاس کمکی سایت است.
+            محتوا را به حداکثر ۱۱۰۰ پیکسل محدود می‌کند، وسط‌چین می‌کند و
+            از دو طرف بیست پیکسل فاصله می‌دهد. بدون آن، متن روی
+            مانیتور بزرگ از لبه تا لبه کشیده می‌شود و خواندنش سخت می‌شود.
+        </li>
+    </ul>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch14-040">چرا ۱۱۰۰ پیکسل</span>
+        <p data-t="ch14-041">چشم انسان نمی‌تواند خط‌های بسیار بلند را آسان دنبال کند. محدود کردن عرض محتوا در همه سایت‌های حرفه‌ای انجام می‌شود و عدد رایجش بین ۱۰۰۰ تا ۱۲۰۰ پیکسل است.</p>
+    </div>
+
+    <h2 id="s3" data-t="ch14-042">۳. گام ۲: صفحه اصلی</h2>
+
+    <p data-t="ch14-043">
+        صفحه اصلی مهم‌ترین صفحه است و چهار بخش دارد.
+        اول اسکلت مشترکی که در هر هفت صفحه تکرار می‌شود:
+    </p>
+
+    <pre class="code"><code>&lt;body&gt;
+
+&lt;header class="site-header"&gt;
+    &lt;div class="container"&gt;
+        &lt;a href="index.html" class="logo"&gt;🎓 دبیرستان دانش&lt;/a&gt;
+        &lt;nav&gt;
+            &lt;a href="index.html" class="active"&gt;خانه&lt;/a&gt;
+            &lt;a href="about.html"&gt;درباره ما&lt;/a&gt;
+            &lt;a href="programs.html"&gt;رشته‌ها&lt;/a&gt;
+            &lt;a href="teachers.html"&gt;دبیران&lt;/a&gt;
+            &lt;a href="gallery.html"&gt;گالری&lt;/a&gt;
+            &lt;a href="news.html"&gt;اخبار&lt;/a&gt;
+            &lt;a href="contact.html"&gt;تماس با ما&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;!-- محتوای مخصوص هر صفحه اینجا --&gt;
+
+&lt;footer class="site-footer"&gt;
+    &lt;div class="container"&gt;
+        &lt;p&gt;دبیرستان دانش - تهران، خیابان آزادی&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;
+
+&lt;/body&gt;</code></pre>
+
+    <pre class="code"><code>.site-header {
+    background-color: var(--primary);
+    color: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.logo {
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+
+.site-header nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.site-header nav a {
+    padding: 5px 2px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.site-header nav a:hover,
+.site-header nav a.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}</code></pre>
+    <p class="code-caption" data-t="ch14-044">سربرگ مشترک: پوشه 02-home-page</p>
+
+    <h3 data-t="ch14-045">شرح مثال</h3>
+
+    <p data-t="ch14-046">این سربرگ در هر هفت صفحه <strong>عیناً</strong> تکرار می‌شود و تنها جای کلاس <code>active</code> عوض می‌شود. آن کلاس به کاربر نشان می‌دهد الان در کدام صفحه است، که برای گم نشدن در سایت لازم است.</p>
+
+    <p data-t="ch14-047">در این کد هفت مفهوم از هفت فصل مختلف کنار هم آمده‌اند:</p>
+
+    <ul>
+        <li data-t="ch14-048"><strong>فلکس‌باکس</strong> با <code>space-between</code> برای لوگو و منو.</li>
+        <li data-t="ch14-049"><strong>gap</strong> از فصل هشتم برای فاصله لینک‌های منو.</li>
+        <li data-t="ch14-050"><strong>sticky</strong> از فصل نهم تا منو با اسکرول همراه بماند.</li>
+        <li data-t="ch14-051"><strong>z-index</strong> تا منو زیر محتوا نرود.</li>
+        <li data-t="ch14-052"><strong>transition</strong> برای نرم شدن تغییر رنگ.</li>
+        <li data-t="ch14-053"><strong>متغیرها و سایه</strong> از فصل سیزدهم.</li>
+        <li data-t="ch14-054"><strong>ترفند حاشیه شفاف.</strong> در حالت عادی به لینک‌ها <code>border-bottom</code> با رنگ <code>transparent</code> داده‌ایم. اگر این کار را نمی‌کردیم و حاشیه تنها در <code>hover:</code> اضافه می‌شد، ارتفاع لینک دو پیکسل بسیار می‌شد و کل منو در لحظه عبور موس تکان می‌خورد. این ترفند کوچک، نشانه یک کد حرفه‌ای است.</li>
+    </ul>
+
+    <h3 data-t="ch14-055">هدر بزرگ صفحه اصلی</h3>
+
+    <pre class="code"><code>&lt;section class="hero"&gt;
+    &lt;div class="container"&gt;
+        &lt;h1&gt;به دبیرستان دانش خوش آمدید&lt;/h1&gt;
+        &lt;p&gt;آموزش با کیفیت در محیطی آرام و پویا&lt;/p&gt;
+        &lt;a href="programs.html" class="btn"&gt;رشته‌های ما&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+
+    <pre class="code"><code>.hero {
+    background-image:
+        linear-gradient(rgba(20, 40, 40, 0.72), rgba(20, 40, 40, 0.72)),
+        url('images/hero-classroom.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    text-align: center;
+    padding: 110px 0;
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent);
+    color: #ffffff;
+    padding: 13px 34px;
+    border-radius: var(--radius);
+    margin-top: 25px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    background-color: #e5533d;
+}</code></pre>
+    <p class="code-caption" data-t="ch14-056">هدر بزرگ صفحه اصلی</p>
+
+    <p data-t="ch14-057">
+        این همان تکنیک «پرده تیره روی عکس» فصل سیزدهم است.
+        بدون آن پرده، متن سفید روی عکس روشن کلاس درس اصلاً خوانده نمی‌شد.
+    </p>
+
+    <h2 id="s4" data-t="ch14-058">۴. گام ۳: صفحه درباره ما و اتصال صفحه‌ها</h2>
+
+    <p data-t="ch14-059">
+        حالا اولین صفحه داخلی را می‌سازیم. صفحه‌های داخلی به جای هدر بزرگ،
+        یک نوار عنوان کوتاه‌تر دارند.
+    </p>
+
+    <pre class="code"><code>&lt;div class="page-banner"
+     style="background-image: linear-gradient(rgba(20,40,40,0.7), rgba(20,40,40,0.7)),
+            url('images/about-building.jpg');"&gt;
+    &lt;div class="container"&gt;
+        &lt;h1&gt;درباره ما&lt;/h1&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;section class="section"&gt;
+    &lt;div class="container"&gt;
+        &lt;h2 class="section-title"&gt;تاریخچه مدرسه&lt;/h2&gt;
+        &lt;p&gt;دبیرستان دانش از سال ۱۳۷۵ فعالیت می‌کند...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+
+    <pre class="code"><code>.page-banner {
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    padding: 70px 0;
+    text-align: center;
+}
+
+.section {
+    padding: 55px 0;
+}
+
+.section-title {
+    position: relative;
+    color: var(--primary);
+    font-size: 1.6rem;
+    padding-bottom: 14px;
+    margin-bottom: 28px;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}</code></pre>
+    <p class="code-caption" data-t="ch14-060">نوار عنوان و عنوان بخش: پوشه 03-about-page</p>
+
+    <h3 data-t="ch14-061">شرح مثال</h3>
+
+    <p data-t="ch14-062">
+        <code>section-title.</code> با خط تزیینی <code>after::</code>
+        در تمام هفت صفحه استفاده می‌شود. این تکرار عمدی است و
+        به سایت <strong>هویت بصری واحد</strong> می‌دهد.
+    </p>
+
+    <div class="note">
+        <span class="box-title" data-t="ch14-063">درباره آن style درون‌خطی</span>
+        <p data-t="ch14-064">در فصل سوم گفتیم CSS درون‌خطی روش خوبی نیست، اما اینجا برای عکس نوار عنوان از آن استفاده کرده‌ایم. دلیلش این است که هر صفحه عکس متفاوتی دارد و این روش برای دانش‌آموز بسیار روشن‌تر است. راه تمیزتر، ساختن هفت کلاس جداگانه مانند <code>banner-about.</code> و <code>banner-programs.</code> در فایل CSS است. هر دو راه درست‌اند؛ این یک انتخاب سلیقه‌ای است.</p>
+    </div>
+
+    <h3 data-t="ch14-065">اتصال صفحه‌ها</h3>
+
+    <p data-t="ch14-066">
+        از این گام به بعد، منوی سربرگ واقعاً کار می‌کند. چون همه فایل‌ها
+        در یک پوشه هستند، لینک‌ها به شکل ساده و نسبی نوشته می‌شوند:
+        <code>href="about.html"</code>. همان درس فصل دوم درباره مسیرها.
+    </p>
+
+    <h2 id="s5" data-t="ch14-067">۵. گام ۴: صفحه رشته‌ها</h2>
+
+    <pre class="code"><code>&lt;section class="section"&gt;
+    &lt;div class="container"&gt;
+        &lt;h2 class="section-title"&gt;رشته‌های تحصیلی&lt;/h2&gt;
+
+        &lt;div class="cards"&gt;
+            &lt;article class="card"&gt;
+                &lt;img src="images/math-class.jpg" alt="کلاس ریاضی"&gt;
+                &lt;div class="card-body"&gt;
+                    &lt;h3&gt;ریاضی و فیزیک&lt;/h3&gt;
+                    &lt;p&gt;مناسب علاقه‌مندان به مهندسی و علوم پایه&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/article&gt;
+            &lt;!-- دو کارت دیگر --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+
+    <pre class="code"><code>.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background-color: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-body h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+}</code></pre>
+    <p class="code-caption" data-t="ch14-068">کارت‌های رشته‌ها: پوشه 04-programs-page</p>
+
+    <h3 data-t="ch14-069">شرح مثال</h3>
+
+    <p data-t="ch14-070">
+        سه نکته کلیدی در این کارت‌ها هست که هر سه را در فصل‌های قبل یاد گرفتیم:
+    </p>
+
+    <ol>
+        <li data-t="ch14-071">
+            <code>object-fit: cover</code> روی تصویرها. سه عکس رشته‌ها
+            اندازه‌های مختلفی دارند و بدون این خط، کارت‌ها نامرتب می‌شدند.
+        </li>
+        <li data-t="ch14-072">
+            <code>overflow: hidden</code> روی کارت. بدون آن، گوشه‌های
+            مربعی تصویر از گوشه گرد کارت بیرون می‌زند.
+        </li>
+        <li data-t="ch14-073">
+            افکت <code>hover:</code> با <code>transform</code> و سایه بزرگ‌تر،
+            که به کارت‌ها حس تعامل می‌دهد.
+        </li>
+    </ol>
+
+    <h2 id="s6" data-t="ch14-074">۶. گام ۵: صفحه دبیران</h2>
+
+    <p data-t="ch14-075">این صفحه ساختار مشابه رشته‌ها دارد، اما کارت‌های کوچک‌تر و بیشتری در هر ردیف جا می‌گیرد و عکس‌ها دایره‌ای هستند.</p>
+
+    <pre class="code"><code>.teacher-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.teacher {
+    background-color: #ffffff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 25px 18px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.teacher:hover {
+    transform: translateY(-5px);
+}
+
+.teacher img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 15px;
+}
+
+.teacher h3 {
+    color: var(--primary);
+    font-size: 1.05rem;
+}
+
+.teacher .role {
+    color: var(--muted);
+    font-size: 0.9rem;
+}</code></pre>
+    <p class="code-caption" data-t="ch14-076">کارت‌های دبیران: پوشه 05-teachers-page</p>
+
+    <h3 data-t="ch14-077">شرح مثال</h3>
+
+    <p data-t="ch14-078">
+        ترکیب سه خط، عکس پروفایل دایره‌ای می‌سازد:
+        عرض و ارتفاع <strong>برابر</strong>،
+        <code>border-radius: 50%</code> از فصل چهارم و
+        <code>object-fit: cover</code> از فصل سیزدهم.
+        بدون مورد آخر، عکس‌های مستطیلی داخل دایره فشرده و بدشکل می‌شدند.
+    </p>
+
+    <p data-t="ch14-079">
+        <code>margin: 0 auto 15px</code> هم عکس را در کارت وسط‌چین می‌کند.
+        اینجا سه مقدار داده‌ایم که یعنی بالا صفر، چپ و راست خودکار
+        و پایین پانزده پیکسل.
+    </p>
+
+    <h2 id="s7" data-t="ch14-080">۷. گام ۶: صفحه گالری</h2>
+
+    <pre class="code"><code>.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-item .caption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(20, 40, 40, 0.8);
+    color: #ffffff;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+}
+
+.gallery-item.wide {
+    grid-column: span 2;
+}</code></pre>
+    <p class="code-caption" data-t="ch14-081">گالری: پوشه 06-gallery-page</p>
+
+    <h3 data-t="ch14-082">شرح مثال</h3>
+
+    <p data-t="ch14-083">این بخش زیباترین افکت کل سایت را دارد و از سه قطعه ساخته شده است:</p>
+
+    <ul>
+        <li data-t="ch14-084"><strong>بزرگ‌نمایی تصویر.</strong> در <code>hover:</code> تصویر با <code>scale(1.08)</code> کمی بزرگ می‌شود. چون والدش <code>overflow: hidden</code> دارد، تصویر از کادر بیرون نمی‌زند و تنها داخل قاب بزرگ می‌شود. این دو با هم کار می‌کنند و بدون یکی، دیگری بی‌معنی است.</li>
+        <li data-t="ch14-085">
+            <strong>نوار توضیح.</strong> با <code>absolute</code> روی
+            پایین تصویر نشسته. دادن هر سه مقدار <code>right</code> و
+            <code>bottom</code> و <code>left</code> باعث می‌شود
+            نوار تمام عرض تصویر را بگیرد. پس‌زمینه نیمه‌شفاف
+            <code>rgba</code> هم متن را روی هر عکسی خوانا نگه می‌دارد.
+        </li>
+        <li data-t="ch14-086">
+            <strong>تصویرهای عریض.</strong> کلاس <code>wide.</code> با
+            <code>grid-column: span 2</code> بعضی تصویرها را دو برابر
+            می‌کند و گالری را از حالت یکنواخت درمی‌آورد.
+        </li>
+    </ul>
+
+    <h2 id="s8" data-t="ch14-087">۸. گام ۷: صفحه اخبار</h2>
+
+    <pre class="code"><code>.news-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.news-item {
+    display: flex;
+    gap: 18px;
+    background-color: #ffffff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.news-item img {
+    width: 150px;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.news-text {
+    padding: 18px 0 18px 18px;
+}
+
+.news-text h3 {
+    color: var(--primary);
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+}
+
+.date {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}</code></pre>
+    <p class="code-caption" data-t="ch14-088">فهرست اخبار: پوشه 07-news-page</p>
+
+    <h3 data-t="ch14-089">شرح مثال</h3>
+
+    <p data-t="ch14-090">
+        اینجا برای اولین بار <strong>گرید و فلکس را تودرتو</strong> استفاده می‌کنیم،
+        دقیقاً همان چیزی که در فصل یازدهم گفتیم:
+    </p>
+
+    <ul>
+        <li data-t="ch14-091">
+            <strong>گرید بیرونی</strong> خبرها را در دو ستون می‌چیند.
+        </li>
+        <li data-t="ch14-092">
+            <strong>فلکس درونی</strong> داخل هر خبر، تصویر را کنار متن می‌گذارد.
+        </li>
+    </ul>
+
+    <p data-t="ch14-093">
+        <code>flex-shrink: 0</code> روی تصویر لازم است تا وقتی عنوان خبر
+        طولانی شد، تصویر باریک و فشرده نشود. این همان درس فصل هشتم است.
+    </p>
+
+    <h2 id="s9" data-t="ch14-094">۹. گام ۸: صفحه تماس</h2>
+
+    <pre class="code"><code>.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+}
+
+.contact-info p {
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.contact-info p:last-child {
+    border-bottom: none;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    width: 100%;
+    font-family: Tahoma, sans-serif;
+    font-size: 1rem;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 18px;
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.contact-form button {
+    width: 100%;
+    background-color: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    border-radius: var(--radius);
+    font-family: Tahoma, sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: var(--accent);
+}</code></pre>
+    <p class="code-caption" data-t="ch14-095">صفحه تماس: پوشه 08-contact-page</p>
+
+    <h3 data-t="ch14-096">شرح مثال</h3>
+
+    <p data-t="ch14-097">
+        اینجا تمام درس‌های فصل دهم را به کار می‌بریم:
+        قلم روی اجزای فرم که حتماً لازم است،
+        <code>display: block</code> روی برچسب‌ها،
+        حالت <code>focus:</code> برای نشان دادن فیلد فعال، و
+        <code>cursor: pointer</code> روی دکمه.
+    </p>
+
+    <p data-t="ch14-098">
+        در بخش اطلاعات تماس هم از <code>last-child:</code> فصل سیزدهم
+        استفاده کرده‌ایم تا خط جداکننده زیر آخرین مورد برداشته شود.
+    </p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch14-099">لینک‌های کاربردی</span>
+        <p data-t="ch14-100">
+            در بخش اطلاعات تماس، شماره تلفن را با <code>tel:</code> و
+            ایمیل را با <code>mailto:</code> لینک کنید.
+            کاربر موبایل با یک لمس تماس می‌گیرد.
+        </p>
+    </div>
+
+    <h2 id="s10" data-t="ch14-101">۱۰. گام ۹: پرداخت نهایی</h2>
+
+    <p data-t="ch14-102">سایت کامل شده اما هنوز روی موبایل خوب نیست. در این گام همه چیز را واکنش‌گرا می‌کنیم و جزئیات ظاهری را صیقل می‌دهیم.</p>
+
+    <pre class="code"><code>/* ================= تبلت ================= */
+@media (max-width: 900px) {
+    .cards,
+    .news-list,
+    .contact-layout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .teacher-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero {
+        padding: 80px 0;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* ================= موبایل ================= */
+@media (max-width: 600px) {
+    .site-header .container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .site-header nav {
+        justify-content: center;
+        gap: 12px;
+        font-size: 0.9rem;
+    }
+
+    .cards,
+    .news-list,
+    .contact-layout,
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .teacher-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-item.wide {
+        grid-column: span 1;
+    }
+
+    .news-item {
+        flex-direction: column;
+    }
+
+    .news-item img {
+        width: 100%;
+        height: 180px;
+    }
+
+    .news-text {
+        padding: 0 18px 18px;
+    }
+
+    .section {
+        padding: 35px 0;
+    }
+}</code></pre>
+    <p class="code-caption" data-t="ch14-103">واکنش‌گرا کردن: پوشه 09-visual-polish</p>
+
+    <h3 data-t="ch14-104">شرح مثال</h3>
+
+    <p data-t="ch14-105">دقت کنید که چگونه با <strong>انتخابگر گروهی</strong> فصل پنجم، چند چیدمان را با یک قانون عوض کرده‌ایم. این کد بسیار کوتاه‌تر از نوشتن قانون جداگانه برای هر کدام است.</p>
+
+    <p data-t="ch14-106">چند نکته مهم در بخش موبایل:</p>
+
+    <ul>
+        <li data-t="ch14-107">
+            سربرگ عمودی می‌شود تا لوگو بالا و منو زیرش قرار بگیرد.
+        </li>
+        <li data-t="ch14-108"><code>gallery-item.wide.</code> باید به <code>span 1</code> برگردد. اگر این کار را نکنید، در گرید تک‌ستونی خطا می‌دهد و تصویر عریض چیدمان را می‌شکند. این نوع جزئیات را تنها با <strong>امتحان کردن واقعی</strong> پیدا می‌کنید.</li>
+        <li data-t="ch14-109">
+            کارت‌های خبر از افقی به عمودی تغییر جهت می‌دهند و
+            عرض ثابت تصویر هم باید به صد درصد برگردد.
+        </li>
+    </ul>
+
+    <h2 id="s11" data-t="ch14-110">۱۱. گام ۱۰: بررسی و تحویل</h2>
+
+    <p data-t="ch14-111">
+        پوشه <code>10-final-project</code> نسخه کامل و نهایی است.
+        پیش از تحویل هر پروژه‌ای، این فهرست را بررسی کنید:
+    </p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch14-112">بررسی</th><th data-t="ch14-113">چگونه</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-t="ch14-114">همه لینک‌ها کار می‌کنند</td>
+                <td data-t="ch14-115">روی تک‌تک لینک‌های منو در هر هفت صفحه کلیک کنید</td>
+            </tr>
+            <tr>
+                <td data-t="ch14-116">هیچ تصویری خراب نیست</td>
+                <td data-t="ch14-117">دنبال آیکون تصویر شکسته بگردید و مسیرها را بررسی کنید</td>
+            </tr>
+            <tr>
+                <td data-t="ch14-118">هر صفحه عنوان و توضیح دارد</td>
+                <td data-t="ch14-119"><code>title</code> و <code>meta description</code> هر صفحه متفاوت باشد</td>
+            </tr>
+            <tr>
+                <td data-t="ch14-120">سه اندازه صفحه</td>
+                <td data-t="ch14-121">دسکتاپ، سپس ۹۰۰ پیکسل، سپس ۶۰۰ پیکسل</td>
+            </tr>
+            <tr>
+                <td data-t="ch14-122">هر تصویر <code>alt</code> دارد</td>
+                <td data-t="ch14-123">برای دسترس‌پذیری و زمانی که تصویر بارگذاری نمی‌شود</td>
+            </tr>
+            <tr>
+                <td data-t="ch14-124">کلاس <code>active</code> درست است</td>
+                <td data-t="ch14-125">در هر صفحه روی لینک همان صفحه باشد</td>
+            </tr>
+            <tr>
+                <td data-t="ch14-126">نوار اسکرول افقی وجود ندارد</td>
+                <td data-t="ch14-127">پنجره را کاملاً باریک کنید و مطمئن شوید صفحه نمی‌شکند</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch14-128">تنها کاری که نتوانستیم بکنیم</span>
+        <p data-t="ch14-129">روی موبایل، منوی ما هفت لینک را در دو خط نشان می‌دهد و فضای زیادی می‌گیرد. راه‌حل درست یک دکمه سه‌خطی است که با کلیک منو را باز کند، اما CSS نمی‌تواند کلیک را به خاطر بسپارد. این تنها محدودیت واقعی ما در کل دوره است و در فصل بعد با سه خط جاوااسکریپت حلش می‌کنیم.</p>
+    </div>
+
+    <div class="folder-ref">
+        <span class="box-title" data-t="ch14-130">فایل‌های پروژه</span>
+        <p data-t="ch14-131">
+            پوشه <code>14-final-project</code> شامل ده گام:
+            <code>01-design-foundation</code> تا
+            <code>10-final-project</code>. هر پوشه به تنهایی قابل اجراست.
+        </p>
+    </div>
+
+    <h2 data-t="ch14-132">خلاصه فصل</h2>
+
+    <p data-t="ch14-133">در این پروژه از هر سیزده فصل قبل چیزی به کار رفت:</p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch14-134">فصل</th><th data-t="ch14-135">چه چیزی به کار رفت</th></tr>
+        </thead>
+        <tbody>
+            <tr><td data-t="ch14-136">۱ و ۲</td><td data-t="ch14-137">ساختار سند، عنوان، فهرست، لینک، تصویر، جدول، مسیر فایل</td></tr>
+            <tr><td data-t="ch14-138">۳</td><td data-t="ch14-139">فایل CSS خارجی مشترک برای هفت صفحه، کلاس و آی‌دی</td></tr>
+            <tr><td data-t="ch14-140">۴</td><td data-t="ch14-141">padding و margin و border-radius همه جا</td></tr>
+            <tr><td data-t="ch14-142">۵</td><td data-t="ch14-143">انتخابگر گروهی و فرزندی، hover، تصویر پس‌زمینه</td></tr>
+            <tr><td data-t="ch14-144">۶</td><td data-t="ch14-145">تگ‌های معنایی، line-height، برداشتن خط زیر لینک</td></tr>
+            <tr><td data-t="ch14-146">۷ و ۸</td><td data-t="ch14-147">فلکس‌باکس در سربرگ و کارت خبر، gap، transition</td></tr>
+            <tr><td data-t="ch14-148">۹</td><td data-t="ch14-149">sticky برای منو، absolute برای نوار توضیح گالری، overflow</td></tr>
+            <tr><td data-t="ch14-150">۱۰</td><td data-t="ch14-151">فرم تماس کامل با استایل</td></tr>
+            <tr><td data-t="ch14-152">۱۱</td><td data-t="ch14-153">گرید برای کارت‌ها، گالری، دبیران و اخبار</td></tr>
+            <tr><td data-t="ch14-154">۱۲</td><td data-t="ch14-155">media query در دو نقطه شکست، تصویر واکنش‌گرا</td></tr>
+            <tr><td data-t="ch14-156">۱۳</td><td data-t="ch14-157">متغیرها، سایه، پرده تیره روی عکس، transform، object-fit، شبه‌عنصرها</td></tr>
+        </tbody>
+    </table>
+
+    <div class="exercise">
+        <h3 data-t="ch14-158">تمرین‌های فصل چهارده</h3>
+        <ol>
+            <li data-t="ch14-159">کل پروژه را برای موضوعی دیگر بازسازی کنید: باشگاه ورزشی، کتابفروشی یا رستوران.</li>
+            <li data-t="ch14-160">تنها بلوک <code>root:</code> را عوض کنید و تم کاملاً متفاوتی برای سایت بسازید.</li>
+            <li data-t="ch14-161">یک صفحه هشتم به سایت اضافه کنید و لینکش را به منوی هر هفت صفحه اضافه کنید.</li>
+            <li data-t="ch14-162">عکس‌های پروژه را با عکس‌های خودتان عوض کنید و مطمئن شوید <code>object-fit</code> همه را مرتب نگه می‌دارد.</li>
+            <li data-t="ch14-163">فهرست بررسی گام دهم را روی پروژه خودتان اجرا کنید و هر ایرادی پیدا کردید بنویسید و رفع کنید.</li>
+            <li data-t="ch14-164">نوار عنوان صفحه‌های داخلی را از <code>style</code> درون‌خطی به هفت کلاس در فایل CSS تبدیل کنید.</li>
+        </ol>
+    </div>
+
+    <div class="pager">
+        <a href="chapter-13.html">فصل قبل: تکنیک‌های تکمیلی</a>
+        <a href="chapter-15.html">فصل بعد: نگاهی به آینده</a>
+    </div>
+
+</main>
+
+</body>
+</html>

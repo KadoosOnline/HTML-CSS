@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="فصل دوازده: طراحی واکنش‌گرا، واحدهای نسبی، media query، پنهان کردن در موبایل و تصویر واکنش‌گرا">
+    <title>فصل ۱۲: طراحی واکنش‌گرا</title>
+    <link rel="icon" href="logokm.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="book-bar">
+    <a class="name" href="index.html">طراحی وب با HTML و CSS</a>
+    <a href="index.html">فهرست مطالب</a>
+</header>
+
+<main class="paper">
+
+    <div class="chapter-head">
+        <span class="chapter-num">فصل ۱۲</span>
+        <h1 data-t="ch12-001">طراحی واکنش‌گرا</h1>
+        <p class="lead" data-t="ch12-002">
+            امروز بیشتر بازدیدکنندگان هر سایتی با گوشی می‌آیند.
+            در این فصل یاد می‌گیریم یک صفحه بسازیم که روی هر اندازه‌ای
+            درست و زیبا دیده شود.
+        </p>
+    </div>
+
+    <div class="mini-toc">
+        <span class="box-title" data-t="ch12-003">در این فصل با این مباحث آشنا می‌شوید</span>
+        <ol>
+            <li data-t="ch12-004"><a href="#s1">واکنش‌گرا یعنی چه</a></li>
+            <li data-t="ch12-005"><a href="#s2">واحدهای نسبی</a></li>
+            <li><a href="#s3">media query</a></li>
+            <li data-t="ch12-006"><a href="#s4">پنهان کردن در موبایل</a></li>
+            <li data-t="ch12-007"><a href="#s5">تغییر جهت فلکس</a></li>
+            <li data-t="ch12-008"><a href="#s6">تغییر ستون‌های گرید</a></li>
+            <li data-t="ch12-009"><a href="#s7">تصویر واکنش‌گرا</a></li>
+            <li data-t="ch12-010"><a href="#s8">نمونه نهایی فصل</a></li>
+        </ol>
+    </div>
+
+    <h2 id="s1" data-t="ch12-011">۱. واکنش‌گرا یعنی چه</h2>
+
+    <p data-t="ch12-012">
+        یک سایت <strong>واکنش‌گرا</strong> سایتی است که چیدمانش را
+        با اندازه صفحه بازدیدکننده تطبیق می‌دهد. روی مانیتور بزرگ
+        سه ستون نشان می‌دهد، روی تبلت دو ستون و روی گوشی یک ستون.
+    </p>
+
+    <p data-t="ch12-013">
+        قدم اول این کار را از فصل اول انجام داده‌ایم، بدون اینکه بدانیم چرا.
+        همان خط <code>viewport</code> در قسمت <code>head</code>:
+    </p>
+
+    <pre class="code"><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+    <p class="code-caption" data-t="ch12-014">خطی که بدون آن هیچ‌کدام از تکنیک‌های این فصل کار نمی‌کنند</p>
+
+    <h3 data-t="ch12-015">توضیح</h3>
+
+    <p data-t="ch12-016">گوشی‌ها مشکلی تاریخی دارند: وقتی ساخته شدند، هیچ سایتی برای صفحه کوچک طراحی نشده بود. پس تصمیم گرفتند وانمود کنند صفحه‌شان حدود ۹۸۰ پیکسل عرض دارد و بعد کل تصویر را کوچک کنند تا جا شود. نتیجه‌اش سایتی است که کاملاً درست اما به شکل ریز و ناخوانا دیده می‌شود.</p>
+
+    <p data-t="ch12-017">
+        <code>width=device-width</code> به گوشی می‌گوید
+        «وانمود نکن، عرض واقعی خودت را استفاده کن».
+        <code>initial-scale=1.0</code> هم یعنی «هیچ بزرگ‌نمایی اولیه‌ای اعمال نکن».
+    </p>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch12-018">بدون این خط هیچ چیز کار نمی‌کند</span>
+        <p data-t="ch12-019">
+            اگر این خط را ننویسید، می‌توانید ده‌ها media query بنویسید و
+            هیچ‌کدام روی گوشی اجرا نمی‌شوند. چون گوشی فکر می‌کند عرضش
+            ۹۸۰ پیکسل است و شرط‌های شما برای عرض کمتر از ۷۶۸ هرگز درست نمی‌شوند.
+        </p>
+    </div>
+
+    <h2 id="s2" data-t="ch12-020">۲. واحدهای نسبی</h2>
+
+    <p data-t="ch12-021">تا این بخش تقریباً همه اندازه‌ها را با پیکسل مشخص کرده‌ایم. پیکسل واحد <strong>ثابت</strong> است و در طراحی واکنش‌گرا محدودمان می‌کند. چند واحد نسبی هم داریم.</p>
+
+    <pre class="code"><code>.fixed {
+    width: 300px;              /* ثابت */
+}
+
+.percent {
+    width: 80%;                /* نسبت به عرض والد */
+}
+
+.viewport-width {
+    width: 50vw;               /* نصف عرض پنجره */
+}
+
+.viewport-height {
+    height: 100vh;             /* تمام ارتفاع پنجره */
+}
+
+html {
+    font-size: 16px;
+}
+
+.rem-size {
+    font-size: 1.5rem;         /* ۱.۵ برابر قلم ریشه = ۲۴ پیکسل */
+    padding: 2rem;             /* ۳۲ پیکسل */
+}
+
+.em-size {
+    font-size: 1.2em;          /* ۱.۲ برابر قلم والد */
+}</code></pre>
+    <p class="code-caption" data-t="ch12-022">واحدها: نمونه‌های 01-units و 01-partition</p>
+
+    <h3 data-t="ch12-023">شرح مثال</h3>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch12-024">واحد</th><th data-t="ch12-025">نسبت به چه</th><th data-t="ch12-026">کاربرد</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>px</code></td>
+                <td data-t="ch12-027">هیچ چیز، ثابت است</td>
+                <td data-t="ch12-028">حاشیه، گردی گوشه، سایه</td>
+            </tr>
+            <tr>
+                <td><code>%</code></td>
+                <td data-t="ch12-029">عنصر والد</td>
+                <td data-t="ch12-030">عرض جعبه‌ها</td>
+            </tr>
+            <tr>
+                <td><code>vw</code></td>
+                <td data-t="ch12-031">عرض پنجره مرورگر</td>
+                <td data-t="ch12-032">بخش‌های تمام‌عرض</td>
+            </tr>
+            <tr>
+                <td><code>vh</code></td>
+                <td data-t="ch12-033">ارتفاع پنجره مرورگر</td>
+                <td data-t="ch12-034">هدر بزرگ تمام‌صفحه</td>
+            </tr>
+            <tr>
+                <td><code>rem</code></td>
+                <td data-t="ch12-035">قلم ریشه صفحه</td>
+                <td data-t="ch12-036">اندازه قلم و فاصله‌ها</td>
+            </tr>
+            <tr>
+                <td><code>em</code></td>
+                <td data-t="ch12-037">قلم عنصر والد</td>
+                <td data-t="ch12-038">فاصله داخلی دکمه‌ها</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch12-039">
+        <code>rem</code> مهم‌ترینشان است. قلم ریشه به طور پیش‌فرض
+        شانزده پیکسل است، پس <code>1rem</code> برابر شانزده پیکسل و
+        <code>2rem</code> برابر سی و دو پیکسل. مزیتش این است که
+        اگر روزی قلم ریشه را عوض کنید، <strong>کل سایت</strong>
+        به شکل هماهنگ بزرگ یا کوچک می‌شود.
+    </p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch12-040">rem یا em</span>
+        <p data-t="ch12-041">
+            <code>rem</code> همیشه به ریشه نگاه می‌کند، پس قابل پیش‌بینی است.
+            <code>em</code> به والد نگاه می‌کند و در عنصرهای تودرتو
+            ضرب می‌شود و از کنترل خارج می‌شود. برای شروع، همیشه
+            <code>rem</code> را انتخاب کنید.
+        </p>
+    </div>
+
+    <h2 id="s3" data-t="ch12-042">۳. media query</h2>
+
+    <p data-t="ch12-043">این بخش هسته اصلی طراحی واکنش‌گراست: راهی برای نوشتن قانون‌هایی که تنها در اندازه‌های مشخصی از صفحه اجرا می‌شوند.</p>
+
+    <pre class="code"><code>/* استایل پایه: برای همه اندازه‌ها */
+.container {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+/* فقط وقتی عرض صفحه ۷۶۸ پیکسل یا کمتر است */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        font-size: 0.95rem;
+    }
+}
+
+/* فقط وقتی عرض صفحه ۴۸۰ پیکسل یا کمتر است */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+}</code></pre>
+    <p class="code-caption" data-t="ch12-044">media query: نمونه 02-media-query-basics</p>
+
+    <h3 data-t="ch12-045">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch12-046"><code>media@</code> با شرطی داخل پرانتز شروع می‌شود. هر چه داخل آکولاد بزرگش باشد، تنها وقتی شرط درست باشد اجرا می‌شود.</li>
+        <li data-t="ch12-047">
+            <code>max-width: 768px</code> یعنی «۷۶۸ پیکسل یا <strong>کمتر</strong>».
+        </li>
+        <li data-t="ch12-048">
+            <code>min-width: 768px</code> یعنی «۷۶۸ پیکسل یا <strong>بیشتر</strong>».
+        </li>
+        <li data-t="ch12-049">
+            media query ها همیشه <strong>پایین</strong> فایل نوشته می‌شوند،
+            بعد از استایل‌های عادی. چون در تداخل، قانون پایین‌تر برنده است.
+        </li>
+    </ul>
+
+    <p data-t="ch12-050">
+        نقطه‌هایی که در آنها چیدمان عوض می‌شود را <strong>نقطه شکست</strong>
+        می‌نامیم. اعداد رایج:
+    </p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch12-051">عرض</th><th data-t="ch12-052">معمولاً یعنی</th></tr>
+        </thead>
+        <tbody>
+            <tr><td data-t="ch12-053">۴۸۰ پیکسل</td><td data-t="ch12-054">گوشی</td></tr>
+            <tr><td data-t="ch12-055">۷۶۸ پیکسل</td><td data-t="ch12-056">تبلت</td></tr>
+            <tr><td data-t="ch12-057">۹۹۲ پیکسل</td><td data-t="ch12-058">لپ‌تاپ کوچک</td></tr>
+            <tr><td data-t="ch12-059">۱۲۰۰ پیکسل</td><td data-t="ch12-060">مانیتور بزرگ</td></tr>
+        </tbody>
+    </table>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch12-061">این اعداد قانون ثابت و تغییرناپذیری نیستند</span>
+        <p data-t="ch12-062">روش بهتر این است که عرض پنجره مرورگر را به‌تدریج کاهش دهید و هر جا طرحتان زشت شد، همان‌جا یک نقطه شکست بگذارید. نقطه شکست را طرح شما تعیین می‌کند، نه فهرست مدل‌های گوشی.</p>
+    </div>
+
+    <h2 id="s4" data-t="ch12-063">۴. پنهان کردن در موبایل</h2>
+
+    <pre class="code"><code>.sidebar {
+    display: block;
+}
+
+.mobile-only {
+    display: none;             /* در حالت عادی پنهان */
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;         /* در موبایل پنهان شود */
+    }
+
+    .mobile-only {
+        display: block;        /* فقط در موبایل دیده شود */
+    }
+}</code></pre>
+    <p class="code-caption" data-t="ch12-064">پنهان کردن: نمونه 03-hide-in-mobile</p>
+
+    <h3 data-t="ch12-065">شرح مثال</h3>
+
+    <p data-t="ch12-066">
+        <code>display: none</code> عنصر را کاملاً از صفحه حذف می‌کند.
+        نه دیده می‌شود و نه جایی اشغال می‌کند، انگار اصلاً در HTML نیست.
+    </p>
+
+    <p data-t="ch12-067">
+        با ترکیب این ویژگی و media query می‌شود دو نسخه از یک قسمت داشت:
+        یکی برای صفحه بزرگ و یکی برای موبایل. مثلاً یک منوی کامل برای
+        دسکتاپ و یک منوی فشرده برای گوشی.
+    </p>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch12-068">با احتیاط پنهان کنید</span>
+        <p data-t="ch12-069">کاربر موبایل، کاربر درجه دو نیست. محتوای مهم را از موبایل حذف نکنید؛ تنها چیدمانش را عوض کنید. <code>display: none</code> را برای تزیینات و ستون‌های فرعی نگه دارید، نه برای محتوای اصلی.</p>
+    </div>
+
+    <h2 id="s5" data-t="ch12-070">۵. تغییر جهت فلکس</h2>
+
+    <p data-t="ch12-071">
+        این پرکاربردترین تکنیک واکنش‌گرا کردن یک چیدمان فلکس است.
+    </p>
+
+    <pre class="code"><code>.layout {
+    display: flex;
+    flex-direction: row;       /* کنار هم در دسکتاپ */
+    gap: 20px;
+}
+
+.sidebar {
+    flex-basis: 250px;
+    flex-shrink: 0;
+}
+
+.content {
+    flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+    .layout {
+        flex-direction: column;    /* زیر هم در موبایل */
+    }
+
+    .sidebar {
+        flex-basis: auto;          /* دیگر عرض ثابت لازم نیست */
+    }
+}</code></pre>
+    <p class="code-caption" data-t="ch12-072">تغییر جهت: نمونه 03-responsive-flex-direction</p>
+
+    <h3 data-t="ch12-073">شرح مثال</h3>
+
+    <p data-t="ch12-074">تنها با عوض کردن <code>flex-direction</code> از <code>row</code> به <code>column</code>، کل چیدمان از افقی به عمودی تبدیل می‌شود. نوار کناری که در دسکتاپ کنار محتوا بود، در موبایل بالای آن قرار می‌گیرد.</p>
+
+    <p data-t="ch12-075">نکته‌ای که بسیار‌ها فراموش می‌کنند: باید <code>flex-basis</code> را هم به <code>auto</code> برگردانید. وگرنه در حالت عمودی، آن مقدار به <strong>ارتفاع</strong> تبدیل می‌شود و نوار کناری بی‌دلیل دویست و پنجاه پیکسل بلند می‌شود.</p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch12-076">یادآوری از فصل هفتم</span>
+        <p data-t="ch12-077">اگر تنها چند کارت کنار هم دارید، حتی به media query هم نیاز ندارید. <code>flex-wrap: wrap</code> به تنهایی کار را انجام می‌دهد و کارت‌ها خودشان در صفحه باریک زیر هم می‌روند. ساده‌ترین راه‌حل را همیشه اول امتحان کنید.</p>
+    </div>
+
+    <h2 id="s6" data-t="ch12-078">۶. تغییر ستون‌های گرید</h2>
+
+    <pre class="code"><code>.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 992px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}</code></pre>
+    <p class="code-caption" data-t="ch12-079">ستون‌های واکنش‌گرا: نمونه 04-responsive-grid-columns</p>
+
+    <h3 data-t="ch12-080">شرح مثال</h3>
+
+    <p data-t="ch12-081">یکی از دلایلی که گرید را دوست داریم همین است: برای عوض کردن کل چیدمان یک گالری، تنها <strong>یک خط</strong> عوض می‌شود. چهار ستون در مانیتور بزرگ، سه ستون در لپ‌تاپ، دو ستون در تبلت و یک ستون در گوشی.</p>
+
+    <p data-t="ch12-082">همین کار را با <code>grid-template-areas</code> هم می‌شود کرد. کافی است نقشه را در media query بار دیگر و به شکل تک‌ستونی بنویسید:</p>
+
+    <pre class="code"><code>@media (max-width: 768px) {
+    .layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "content"
+            "sidebar"
+            "footer";
+    }
+}</code></pre>
+    <p class="code-caption" data-t="ch12-083">عوض کردن کل نقشه صفحه با چند خط</p>
+
+    <p data-t="ch12-084">
+        دقت کنید که در این نقشه، <code>content</code> بالای
+        <code>sidebar</code> آمده است، در حالی که در دسکتاپ کناری اول بود.
+        یعنی حتی ترتیب بخش‌ها را هم بدون دست زدن به HTML عوض کردیم.
+    </p>
+
+    <h2 id="s7" data-t="ch12-085">۷. تصویر واکنش‌گرا</h2>
+
+    <pre class="code"><code>img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}</code></pre>
+    <p class="code-caption" data-t="ch12-086">تصویر واکنش‌گرا: نمونه 05-responsive-images</p>
+
+    <h3 data-t="ch12-087">شرح مثال</h3>
+
+    <p data-t="ch12-088">
+        این سه خط کوچک، مشکل بزرگی را حل می‌کنند. یک تصویر با عرض
+        ۱۲۰۰ پیکسل روی گوشی ۳۷۵ پیکسلی، صفحه را می‌شکند و
+        نوار اسکرول افقی می‌سازد.
+    </p>
+
+    <ul>
+        <li data-t="ch12-089">
+            <code>max-width: 100%</code> یعنی «هرگز از عرض والدت
+            بزرگ‌تر نشو». اگر جا بود اندازه اصلی‌ات را داشته باش،
+            وگرنه کوچک شو. اگر به جایش <code>width: 100%</code>
+            بنویسید، تصویرهای کوچک هم به زور کشیده و بی‌کیفیت می‌شوند.
+        </li>
+        <li data-t="ch12-090">
+            <code>height: auto</code> باعث می‌شود ارتفاع متناسب با
+            عرض تغییر کند و تصویر کشیده و بدشکل نشود.
+        </li>
+        <li data-t="ch12-091">
+            <code>display: block</code> فاصله سفید کوچکی را که مرورگر
+            زیر تصویرهای درون‌خطی می‌گذارد حذف می‌کند.
+        </li>
+    </ul>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch12-092">این را در هر پروژه بنویسید</span>
+        <p data-t="ch12-093">
+            این سه خط را همان اول فایل CSS و کنار قانون ستاره بنویسید.
+            یک بار می‌نویسید و دیگر هیچ‌وقت مشکل تصویر بزرگ‌تر از صفحه نخواهید داشت.
+        </p>
+    </div>
+
+    <h2 id="s8" data-t="ch12-094">۸. نمونه نهایی فصل</h2>
+
+    <pre class="code"><code>&lt;body&gt;
+
+    &lt;header class="site-header"&gt;
+        &lt;div class="logo"&gt;کادوس&lt;/div&gt;
+        &lt;nav class="desktop-menu"&gt;
+            &lt;a href="#"&gt;خانه&lt;/a&gt;
+            &lt;a href="#"&gt;دوره‌ها&lt;/a&gt;
+            &lt;a href="#"&gt;درباره ما&lt;/a&gt;
+            &lt;a href="#"&gt;تماس&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;div class="layout"&gt;
+        &lt;aside class="sidebar"&gt;
+            &lt;h3&gt;دسته‌بندی&lt;/h3&gt;
+            &lt;p&gt;طراحی وب&lt;/p&gt;
+            &lt;p&gt;شبکه&lt;/p&gt;
+        &lt;/aside&gt;
+
+        &lt;main class="content"&gt;
+            &lt;h2&gt;دوره‌های ما&lt;/h2&gt;
+            &lt;div class="cards"&gt;
+                &lt;div class="card"&gt;&lt;h3&gt;HTML&lt;/h3&gt;&lt;/div&gt;
+                &lt;div class="card"&gt;&lt;h3&gt;CSS&lt;/h3&gt;&lt;/div&gt;
+                &lt;div class="card"&gt;&lt;h3&gt;فلکس&lt;/h3&gt;&lt;/div&gt;
+                &lt;div class="card"&gt;&lt;h3&gt;گرید&lt;/h3&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/main&gt;
+    &lt;/div&gt;
+
+&lt;/body&gt;</code></pre>
+
+    <pre class="code"><code>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+body {
+    background-color: #f5f5f5;
+    line-height: 1.9;
+    font-size: 1rem;
+}
+
+/* ---------- سربرگ ---------- */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2f4f4f;
+    color: white;
+    padding: 1rem 2rem;
+}
+
+.desktop-menu a {
+    color: white;
+    text-decoration: none;
+    margin-right: 1.2rem;
+}
+
+/* ---------- چیدمان اصلی ---------- */
+.layout {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.sidebar {
+    flex-basis: 240px;
+    flex-shrink: 0;
+    background-color: white;
+    padding: 1.2rem;
+    border-radius: 10px;
+}
+
+.content {
+    flex-grow: 1;
+}
+
+.content h2 {
+    color: #2f4f4f;
+    margin-bottom: 1rem;
+}
+
+/* ---------- کارت‌ها ---------- */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-top: 4px solid #ff6347;
+}
+
+.card h3 {
+    color: #2f4f4f;
+}
+
+/* ================= تبلت ================= */
+@media (max-width: 768px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex-basis: auto;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ================= موبایل ================= */
+@media (max-width: 480px) {
+    body {
+        font-size: 0.95rem;
+    }
+
+    .site-header {
+        padding: 1rem;
+    }
+
+    .desktop-menu {
+        display: none;
+    }
+
+    .layout {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}</code></pre>
+    <p class="code-caption" data-t="ch12-095">نمونه نهایی فصل: نمونه 06-final-example</p>
+
+    <h3 data-t="ch12-096">شرح مثال</h3>
+
+    <p data-t="ch12-097">این یک صفحه واقعاً واکنش‌گراست و در سه حالت مختلف رفتار می‌کند. روش نوشتنش هم روش درست است: <strong>اول</strong> استایل عادی و کامل را برای صفحه بزرگ می‌نویسیم، <strong>بعد</strong> در media query ها تنها چیزهایی را که باید عوض شوند بازنویسی می‌کنیم.</p>
+
+    <p data-t="ch12-098"><strong>روی دسکتاپ:</strong></p>
+    <ul>
+        <li data-t="ch12-099">سربرگ با لوگو در یک سو و منوی کامل در سوی دیگر.</li>
+        <li data-t="ch12-100">نوار کناری ۲۴۰ پیکسلی در کنار محتوا.</li>
+        <li data-t="ch12-101">کارت‌ها در سه ستون.</li>
+    </ul>
+
+    <p data-t="ch12-102"><strong>روی تبلت با عرض ۷۶۸ یا کمتر:</strong></p>
+    <ul>
+        <li data-t="ch12-103">
+            <code>flex-direction: column</code> نوار کناری را بالای محتوا می‌برد،
+            و <code>flex-basis: auto</code> جلوی بلند شدن بی‌دلیلش را می‌گیرد.
+        </li>
+        <li data-t="ch12-104">کارت‌ها از سه ستون به دو ستون می‌آیند.</li>
+    </ul>
+
+    <p data-t="ch12-105"><strong>روی گوشی با عرض ۴۸۰ یا کمتر:</strong></p>
+    <ul>
+        <li data-t="ch12-106">منوی دسکتاپ پنهان می‌شود، چون در آن عرض جا نمی‌شود.</li>
+        <li data-t="ch12-107">کارت‌ها تک‌ستونی می‌شوند.</li>
+        <li data-t="ch12-108">
+            قلم پایه و همه فاصله‌ها کمی کوچک‌تر می‌شوند. چون همه اندازه‌ها را
+            با <code>rem</code> نوشته‌ایم، عوض کردن یک عدد روی
+            <code>body</code> همه‌شان را با هم تنظیم می‌کند.
+        </li>
+    </ul>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch12-109">یک کار ناتمام</span>
+        <p data-t="ch12-110">وقتی منوی دسکتاپ را پنهان می‌کنیم، کاربر موبایل هیچ منویی ندارد. راه‌حل درست، یک دکمه سه‌خطی است که با کلیک منو را باز کند. اما CSS نمی‌تواند «کلیک» را به خاطر بسپارد. این تنها کاری است که در این دوره با CSS تنها نمی‌توانیم انجام دهیم، و در فصل پانزدهم با سه خط جاوااسکریپت حلش می‌کنیم.</p>
+    </div>
+
+    <div class="folder-ref">
+        <span class="box-title" data-t="ch12-111">فایل‌های تمرینی این فصل</span>
+        <p data-t="ch12-112">
+            پوشه <code>12-responsive-design</code> شامل نمونه‌های
+            <code>01-units</code> و <code>01-partition</code> تا
+            <code>06-final-example</code>.
+        </p>
+    </div>
+
+    <h2 data-t="ch12-113">خلاصه فصل</h2>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch12-114">ویژگی یا مفهوم</th><th data-t="ch12-115">کارش</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>meta viewport</code></td><td data-t="ch12-116">پیش‌نیاز همه چیز. بدون آن هیچ media query روی گوشی کار نمی‌کند.</td></tr>
+            <tr><td><code>%</code></td><td data-t="ch12-117">نسبت به عنصر والد</td></tr>
+            <tr><td data-t="ch12-118"><code>vw</code> و <code>vh</code></td><td data-t="ch12-119">نسبت به عرض و ارتفاع پنجره</td></tr>
+            <tr><td><code>rem</code></td><td data-t="ch12-120">نسبت به قلم ریشه. انتخاب اول برای قلم و فاصله.</td></tr>
+            <tr><td><code>em</code></td><td data-t="ch12-121">نسبت به قلم والد. در تودرتویی ضرب می‌شود.</td></tr>
+            <tr><td><code>@media (max-width: ...)</code></td><td data-t="ch12-122">قانون‌هایی برای صفحه‌های کوچک‌تر</td></tr>
+            <tr><td><code>display: none</code></td><td data-t="ch12-123">حذف کامل عنصر از صفحه</td></tr>
+            <tr><td><code>flex-direction: column</code></td><td data-t="ch12-124">عمودی کردن چیدمان در موبایل</td></tr>
+            <tr><td data-t="ch12-125"><code>grid-template-columns</code> در media query</td><td data-t="ch12-126">کم کردن تعداد ستون‌ها</td></tr>
+            <tr><td data-t="ch12-127"><code>max-width: 100%</code> روی تصویر</td><td data-t="ch12-128">جلوگیری از بیرون زدن تصویر</td></tr>
+        </tbody>
+    </table>
+
+    <div class="exercise">
+        <h3 data-t="ch12-129">تمرین‌های فصل دوازده</h3>
+        <ol>
+            <li data-t="ch12-130">صفحه‌ای بسازید که در دسکتاپ سه ستون، در تبلت دو ستون و در موبایل یک ستون داشته باشد.</li>
+            <li data-t="ch12-131">خط <code>viewport</code> را حذف کنید، صفحه را روی گوشی باز کنید و تفاوت را ببینید.</li>
+            <li data-t="ch12-132">همه اندازه‌های یک صفحه را از <code>px</code> به <code>rem</code> تبدیل کنید و بعد تنها قلم <code>body</code> را عوض کنید.</li>
+            <li data-t="ch12-133">یک نوار کناری بسازید که در موبایل به بالای محتوا منتقل شود.</li>
+            <li data-t="ch12-134">تصویری بزرگ‌تر از عرض صفحه بگذارید و ببینید <code>max-width: 100%</code> چگونه نجاتش می‌دهد.</li>
+            <li data-t="ch12-135">پنجره مرورگر را آرام‌آرام باریک کنید و هر جا طرحتان زشت شد، یک نقطه شکست تازه اضافه کنید.</li>
+        </ol>
+    </div>
+
+    <div class="pager">
+        <a href="chapter-11.html">فصل قبل: گرید</a>
+        <a href="chapter-13.html">فصل بعد: تکنیک‌های تکمیلی</a>
+    </div>
+
+</main>
+
+</body>
+</html>

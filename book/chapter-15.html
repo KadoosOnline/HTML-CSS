@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="فصل پانزده: نگاهی به آینده، بوت‌استرپ، اولین برنامه‌های جاوااسکریپت، منوی موبایل و نقشه راه ادامه یادگیری">
+    <title>فصل ۱۵: نگاهی به آینده</title>
+    <link rel="icon" href="logokm.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="book-bar">
+    <a class="name" href="index.html">طراحی وب با HTML و CSS</a>
+    <a href="index.html">فهرست مطالب</a>
+</header>
+
+<main class="paper">
+
+    <div class="chapter-head">
+        <span class="chapter-num">فصل ۱۵</span>
+        <h1 data-t="ch15-001">نگاهی به آینده: بوت‌استرپ و جاوااسکریپت</h1>
+        <p class="lead" data-t="ch15-002">این فصل جزو سرفصل دوره نیست و امتحان نمی‌آید. هدفش تنها این است که ببینید بعد از این کتاب، راه از کجا ادامه پیدا می‌کند.</p>
+    </div>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch15-003">پیش از شروع</span>
+        <p data-t="ch15-004">هیچ‌کدام از مطالب این فصل را قرار نیست کامل یاد بگیرید. تنها می‌خواهیم بدانید چنین چیزهایی وجود دارند و هر کدام چه مشکلی را حل می‌کنند.</p>
+    </div>
+
+    <div class="mini-toc">
+        <span class="box-title" data-t="ch15-005">در این فصل با این مباحث آشنا می‌شوید</span>
+        <ol>
+            <li data-t="ch15-006"><a href="#s1">بوت‌استرپ چیست</a></li>
+            <li data-t="ch15-007"><a href="#s2">سیستم ستونی بوت‌استرپ</a></li>
+            <li data-t="ch15-008"><a href="#s3">اجزای آماده</a></li>
+            <li data-t="ch15-009"><a href="#s4">مقایسه با سایت دست‌ساز ما</a></li>
+            <li data-t="ch15-010"><a href="#s5">اولین جاوااسکریپت</a></li>
+            <li data-t="ch15-011"><a href="#s6">تغییر دادن صفحه با جاوااسکریپت</a></li>
+            <li data-t="ch15-012"><a href="#s7">رویداد کلیک</a></li>
+            <li data-t="ch15-013"><a href="#s8">منوی موبایل، بالاخره</a></li>
+            <li data-t="ch15-014"><a href="#s9">نقشه راه</a></li>
+        </ol>
+    </div>
+
+    <h2 id="s1" data-t="ch15-015">۱. بوت‌استرپ چیست</h2>
+
+    <p data-t="ch15-016">در چهارده فصل گذشته هر استایلی که خواستیم، خودمان نوشتیم. <strong>بوت‌استرپ</strong> یک فایل CSS آماده و بسیار بزرگ است که هزاران کلاس از پیش نوشته دارد. کافی است آن را به صفحه وصل کنیم و بعد تنها نام کلاس‌ها را در HTML بنویسیم.</p>
+
+    <pre class="code"><code>&lt;link rel="stylesheet" href="bootstrap.rtl.min.css"&gt;
+&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+    <p class="code-caption" data-t="ch15-017">وصل کردن بوت‌استرپ: نمونه 01-bootstrap-intro</p>
+
+    <h3 data-t="ch15-018">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch15-019">فایل را از سایت <code>getbootstrap.com</code> دانلود می‌کنیم و <strong>کنار فایل‌های پروژه</strong> می‌گذاریم، دقیقاً مانند کاری که با <code>style.css</code> خودمان می‌کنیم.</li>
+        <li data-t="ch15-020">
+            نام فایل <strong>bootstrap.rtl.min.css</strong> است.
+            آن <code>rtl</code> یعنی نسخه راست‌چین که برای فارسی لازم داریم.
+            نسخه معمولی، کل چیدمان صفحه فارسی را برعکس می‌کند.
+        </li>
+        <li data-t="ch15-021">
+            فایل خودمان همیشه <strong>بعد از</strong> بوت‌استرپ می‌آید.
+            یادتان هست که در فصل سوم گفتیم در تداخل، قانون پایین‌تر برنده است؟
+            اگر جایشان را عوض کنید، بوت‌استرپ روی استایل شما را می‌پوشاند.
+        </li>
+    </ul>
+
+    <pre class="code"><code>&lt;button class="btn btn-primary"&gt;دکمه اصلی&lt;/button&gt;
+&lt;button class="btn btn-success"&gt;دکمه سبز&lt;/button&gt;
+&lt;button class="btn btn-outline-primary"&gt;دکمه توخالی&lt;/button&gt;
+
+&lt;div class="alert alert-success"&gt;ثبت‌نام انجام شد.&lt;/div&gt;
+&lt;div class="alert alert-danger"&gt;رمز عبور اشتباه است.&lt;/div&gt;</code></pre>
+    <p class="code-caption" data-t="ch15-022">دکمه و پیام آماده، بدون یک خط CSS</p>
+
+    <p data-t="ch15-023">در فصل چهارم برای ساخت همین دکمه حدود ده خط CSS نوشتیم: <code>padding</code>، <code>border</code>، <code>border-radius</code>، <code>background-color</code> و <code>hover:</code>. در بوت‌استرپ همه این موارد از قبل داخل کلاس <code>btn btn-primary</code> نوشته شده است.</p>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch15-024">چرا فایل را دانلود می‌کنیم</span>
+        <p data-t="ch15-025">بسیار از آموزش‌ها به جای فایل محلی، آدرس اینترنتی بوت‌استرپ را می‌نویسند. ما این کار را نمی‌کنیم، چون آن‌وقت صفحه بدون اینترنت اصلاً درست نمایش داده نمی‌شود. با فایل محلی، پروژه شما روی هر کامپیوتری کار می‌کند.</p>
+    </div>
+
+    <h2 id="s2" data-t="ch15-026">۲. سیستم ستونی بوت‌استرپ</h2>
+
+    <p data-t="ch15-027">
+        در فصل یازدهم گرید و در فصل دوازدهم media query را یاد گرفتیم.
+        بوت‌استرپ همین دو کار را با سه کلاس ساده انجام می‌دهد.
+    </p>
+
+    <pre class="code"><code>&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-md-4"&gt;ستون یک&lt;/div&gt;
+        &lt;div class="col-md-4"&gt;ستون دو&lt;/div&gt;
+        &lt;div class="col-md-4"&gt;ستون سه&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <p class="code-caption" data-t="ch15-028">سیستم ستونی: نمونه 02-bootstrap-grid</p>
+
+    <h3 data-t="ch15-029">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch15-030"><code>container</code> یک جعبه وسط‌چین با عرض محدود، مانند کلاس <code>container.</code> خودمان در فصل چهاردهم.</li>
+        <li data-t="ch15-031"><code>row</code> یک ردیف. ستون‌ها باید داخلش باشند.</li>
+        <li data-t="ch15-032"><code>col</code> یک ستون داخل ردیف.</li>
+    </ul>
+
+    <p data-t="ch15-033">
+        بوت‌استرپ هر ردیف را به <strong>دوازده قسمت</strong> تقسیم می‌کند.
+        عدد جلوی <code>col-</code> می‌گوید این جعبه چند قسمت از آن دوازده تا را بگیرد.
+        پس <code>col-4</code> یعنی یک‌سوم و <code>col-6</code> یعنی نصف.
+        جمع عددهای یک ردیف باید دوازده شود.
+    </p>
+
+    <p data-t="ch15-034">
+        حرف وسط، نقطه شکست است. <code>col-md-4</code> یعنی
+        «از عرض تبلت به بالا یک‌سوم، و روی موبایل تمام عرض».
+        یعنی چیدمان واکنش‌گرا، <strong>بدون نوشتن حتی یک media query</strong>.
+    </p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch15-035">کلاس</th><th data-t="ch15-036">از چه عرضی به بالا</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>col-sm-</code></td><td data-t="ch15-037">۵۷۶ پیکسل، موبایل بزرگ</td></tr>
+            <tr><td><code>col-md-</code></td><td data-t="ch15-038">۷۶۸ پیکسل، تبلت</td></tr>
+            <tr><td><code>col-lg-</code></td><td data-t="ch15-039">۹۹۲ پیکسل، لپ‌تاپ</td></tr>
+            <tr><td><code>col-xl-</code></td><td data-t="ch15-040">۱۲۰۰ پیکسل، مانیتور بزرگ</td></tr>
+        </tbody>
+    </table>
+
+    <h2 id="s3" data-t="ch15-041">۳. اجزای آماده</h2>
+
+    <p data-t="ch15-042">بوت‌استرپ تنها رنگ و فاصله نیست؛ قطعه‌های کامل و آماده هم دارد.</p>
+
+    <pre class="code"><code>&lt;div class="card"&gt;
+    &lt;img src="images/math-class.jpg" class="card-img-top" alt="کلاس ریاضی"&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;ریاضی و فیزیک&lt;/h5&gt;
+        &lt;p class="card-text"&gt;مناسب علاقه‌مندان به مهندسی&lt;/p&gt;
+        &lt;a href="#" class="btn btn-primary"&gt;بیشتر بدانید&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;table class="table table-striped table-bordered"&gt;
+    ...
+&lt;/table&gt;
+
+&lt;span class="badge bg-primary"&gt;جدید&lt;/span&gt;</code></pre>
+    <p class="code-caption" data-t="ch15-043">اجزای آماده: نمونه 03-bootstrap-components</p>
+
+    <h3 data-t="ch15-044">شرح مثال</h3>
+
+    <p data-t="ch15-045">کارتی که در فصل چهاردهم با حدود سی خط CSS ساختیم، اینجا تنها چند نام کلاس است. جدول راه‌راهی که در فصل سیزدهم با <code>nth-child(odd):</code> ساختیم، اینجا تنها <code>table-striped</code> است.</p>
+
+    <p data-t="ch15-046">بوت‌استرپ یک فایل جاوااسکریپت هم دارد که اجزای متحرک را ممکن می‌کند: منوی موبایلی که باز و بسته می‌شود، پنجره بازشو، برگه‌های تب‌دار. آن فایل هم مانند CSS دانلود و کنار پروژه گذاشته می‌شود و درست قبل از <code>&lt;/body&gt;</code> وصل می‌شود.</p>
+
+    <h2 id="s4" data-t="ch15-047">۴. مقایسه با سایت دست‌ساز ما</h2>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch15-048">موضوع</th><th data-t="ch15-049">سایت فصل ۱۴</th><th data-t="ch15-050">همان صفحه با بوت‌استرپ</th></tr>
+        </thead>
+        <tbody>
+            <tr><td data-t="ch15-051">CSS نوشته‌شده توسط ما</td><td data-t="ch15-052">بیش از ۳۰۰ خط</td><td data-t="ch15-053">حدود ۲۵ خط</td></tr>
+            <tr><td data-t="ch15-054">زمان ساخت</td><td data-t="ch15-055">چند جلسه</td><td data-t="ch15-056">کمتر از یک ساعت</td></tr>
+            <tr><td data-t="ch15-057">منوی موبایل</td><td data-t="ch15-058">با CSS تنها ممکن نبود</td><td data-t="ch15-059">آماده است و کار می‌کند</td></tr>
+            <tr><td data-t="ch15-060">ظاهر اختصاصی</td><td data-t="ch15-061">کاملاً دلخواه ما</td><td data-t="ch15-062">شبیه بقیه سایت‌های بوت‌استرپی</td></tr>
+            <tr><td data-t="ch15-063">حجم فایل CSS</td><td data-t="ch15-064">چند کیلوبایت</td><td data-t="ch15-065">حدود ۲۳۰ کیلوبایت</td></tr>
+        </tbody>
+    </table>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch15-066">پس چرا چهارده فصل CSS را یاد گرفتیم؟</span>
+        <p data-t="ch15-067">چون بوت‌استرپ قرار نیست جای یادگیری CSS را بگیرد. تا وقتی ندانید <code>padding</code> و <code>flex</code> چه می‌کنند، نمی‌فهمید کلاس‌های بوت‌استرپ چه کاری انجام می‌دهند و نمی‌توانید تغییرشان دهید. هر سایت واقعی جایی دارد که بوت‌استرپ آن را پوشش نمی‌دهد، و آنجا باید خودتان CSS بنویسید. به‌علاوه سایتی که تنها با کلاس‌های آماده ساخته شود، شبیه هزاران سایت دیگر می‌شود.</p>
+    </div>
+
+    <h2 id="s5" data-t="ch15-068">۵. اولین جاوااسکریپت</h2>
+
+    <p data-t="ch15-069">
+        تا اینجا دو زبان یاد گرفتیم: HTML می‌گوید چه چیزی در صفحه باشد و
+        CSS می‌گوید آن چیزها چه شکلی باشند. زبان سوم،
+        <strong>جاوااسکریپت</strong>، کار سومی انجام می‌دهد:
+        صفحه <strong>چه کاری انجام دهد</strong>.
+    </p>
+
+    <pre class="code"><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+
+    <pre class="code"><code>// این پیام را به کاربر نشان بده
+alert("سلام! به دنیای جاوااسکریپت خوش آمدید");
+
+// و این را در کنسول مرورگر بنویس
+console.log("این پیام فقط برای برنامه‌نویس است");
+
+// دو متغیر بساز
+let name = "سارا";
+let age = 16;
+
+console.log(name);</code></pre>
+    <p class="code-caption" data-t="ch15-070">اولین برنامه: نمونه 05-js-intro</p>
+
+    <h3 data-t="ch15-071">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch15-072">
+            فایل جاوااسکریپت با پسوند <code>js.</code> ساخته می‌شود و
+            درست <strong>قبل از</strong> <code>&lt;/body&gt;</code> وصل می‌شود.
+            چرا آخر صفحه؟ چون مرورگر فایل را از بالا به پایین می‌خواند.
+            اگر جاوااسکریپت اول باشد، وقتی اجرا می‌شود هنوز هیچ عنصری از صفحه
+            ساخته نشده و برنامه نمی‌تواند آنها را پیدا کند.
+        </li>
+        <li data-t="ch15-073">
+            <code>alert</code> یک پنجره کوچک به کاربر نشان می‌دهد.
+        </li>
+        <li data-t="ch15-074"><code>console.log</code> پیامی در کنسول مرورگر می‌نویسد که تنها برنامه‌نویس می‌بیند. کنسول را با کلید F12 باز کنید.</li>
+        <li data-t="ch15-075"><code>let</code> یعنی «یک جعبه بساز». متن را داخل گیومه می‌گذاریم اما عدد را نه. توضیح در جاوااسکریپت با دو اسلش شروع می‌شود.</li>
+    </ul>
+
+    <div class="note">
+        <span class="box-title" data-t="ch15-076">آشناست، نه؟</span>
+        <p data-t="ch15-077">
+            در فصل سیزدهم در CSS هم متغیر داشتیم:
+            <code>--primary</code>. ایده‌اش همان است:
+            یک اسم بگذار، بعد هر جا لازم شد از آن اسم استفاده کن.
+        </p>
+    </div>
+
+    <h2 id="s6" data-t="ch15-078">۶. تغییر دادن صفحه با جاوااسکریپت</h2>
+
+    <p data-t="ch15-079">
+        کار جاوااسکریپت با صفحه دو مرحله دارد:
+        اول عنصر را <strong>پیدا کن</strong>، بعد آن را <strong>عوض کن</strong>.
+    </p>
+
+    <pre class="code"><code>// مرحله ۱: پیدا کردن با id
+let box = document.getElementById("welcome");
+
+// مرحله ۲: عوض کردن
+box.textContent = "سلام! این متن را جاوااسکریپت نوشت";
+box.style.backgroundColor = "#2f4f4f";
+box.style.color = "#ffffff";</code></pre>
+    <p class="code-caption" data-t="ch15-080">تغییر صفحه: نمونه 06-js-dom</p>
+
+    <h3 data-t="ch15-081">شرح مثال</h3>
+
+    <p data-t="ch15-082">
+        <code>document.getElementById("welcome")</code> یعنی
+        «در سند دنبال عنصری بگرد که <code>id</code> آن welcome است».
+        همان آی‌دی فصل سوم، این بار برای جاوااسکریپت.
+    </p>
+
+    <p data-t="ch15-083"><code>textContent</code> متن داخل عنصر را عوض می‌کند و <code>style</code> استایلش را. تنها دقت کنید که نام ویژگی‌های CSS در جاوااسکریپت کمی فرق دارد: خط تیره حذف و حرف بعدی بزرگ می‌شود.</p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch15-084">در CSS</th><th data-t="ch15-085">در جاوااسکریپت</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><span dir="ltr">background-color</span></td><td><span dir="ltr">style.backgroundColor</span></td></tr>
+            <tr><td><span dir="ltr">font-size</span></td><td><span dir="ltr">style.fontSize</span></td></tr>
+            <tr><td><span dir="ltr">border-radius</span></td><td><span dir="ltr">style.borderRadius</span></td></tr>
+        </tbody>
+    </table>
+
+    <h2 id="s7" data-t="ch15-086">۷. رویداد کلیک</h2>
+
+    <p data-t="ch15-087">در فصل پنجم <code>hover:</code> را یاد گرفتیم: وقتی موس روی چیزی می‌رود، ظاهرش عوض می‌شود. اما CSS نمی‌تواند بفهمد کاربر <strong>کلیک</strong> کرده و بعد از آن کاری انجام دهد. این کار جاوااسکریپت است.</p>
+
+    <pre class="code"><code>let btn = document.getElementById("my-button");
+
+btn.onclick = function () {
+    document.body.style.backgroundColor = "#2f4f4f";
+};
+
+
+// شمارنده
+let number = 0;
+let box = document.getElementById("count");
+let countBtn = document.getElementById("count-btn");
+
+countBtn.onclick = function () {
+    number = number + 1;
+    box.textContent = number;
+};</code></pre>
+    <p class="code-caption" data-t="ch15-088">رویداد کلیک: نمونه 07-js-click</p>
+
+    <h3 data-t="ch15-089">شرح مثال</h3>
+
+    <p data-t="ch15-090"><code>onclick</code> یعنی «هنگام کلیک». آن <code>function</code> یک بسته از دستورهاست که تا وقتی کلیک نشود اجرا نمی‌شود. هر بار که کاربر کلیک کند، دستورهای داخلش بار دیگر اجرا می‌شوند.</p>
+
+    <p data-t="ch15-091">
+        در مثال شمارنده، متغیر <code>number</code> بیرون از تابع تعریف شده
+        تا مقدارش بین کلیک‌ها حفظ شود. این اولین باری است که
+        صفحه ما چیزی را «به خاطر می‌سپارد»، کاری که با CSS هرگز ممکن نبود.
+    </p>
+
+    <h2 id="s8" data-t="ch15-092">۸. منوی موبایل، بالاخره</h2>
+
+    <p data-t="ch15-093">
+        در فصل دوازدهم و چهاردهم گفتیم تنها کاری که با CSS نتوانستیم انجام دهیم،
+        منوی موبایلی است که با دکمه باز و بسته شود. حالا حلش می‌کنیم.
+    </p>
+
+    <pre class="code"><code>&lt;button class="menu-btn" id="menu-btn"&gt;☰&lt;/button&gt;
+
+&lt;nav class="main-nav" id="main-nav"&gt;
+    &lt;a href="#"&gt;خانه&lt;/a&gt;
+    &lt;a href="#"&gt;درباره ما&lt;/a&gt;
+    &lt;a href="#"&gt;تماس&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+
+    <pre class="code"><code>.menu-btn {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block;          /* دکمه ظاهر شود */
+    }
+
+    .main-nav {
+        display: none;           /* منو پنهان شود */
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .main-nav.open {
+        display: flex;           /* مگر اینکه کلاس open داشته باشد */
+    }
+}</code></pre>
+
+    <pre class="code"><code>let btn  = document.getElementById("menu-btn");
+let menu = document.getElementById("main-nav");
+
+btn.onclick = function () {
+    menu.classList.toggle("open");
+};</code></pre>
+    <p class="code-caption" data-t="ch15-094">منوی موبایل: نمونه 08-js-menu-toggle</p>
+
+    <h3 data-t="ch15-095">شرح مثال</h3>
+
+    <p data-t="ch15-096">
+        به تقسیم کار دقت کنید، چون این تمیزترین روش کار با این سه زبان است:
+    </p>
+
+    <ul>
+        <li data-t="ch15-097"><strong>HTML</strong> تنها ساختار را دارد: یک دکمه و یک منو، هر کدام با یک <code>id</code>.</li>
+        <li data-t="ch15-098">
+            <strong>CSS</strong> تمام ظاهر را دارد: پنهان شدن منو،
+            ظاهر شدن دکمه، و یک کلاس آماده به نام <code>open</code>
+            که وقتی روی منو باشد آن را نشان می‌دهد. تمام کارهای این فصل
+            و فصل دوازدهم اینجاست.
+        </li>
+        <li data-t="ch15-099"><strong>جاوااسکریپت</strong> تنها <strong>یک کار</strong> می‌کند: کلاس <code>open</code> را می‌گذارد یا برمی‌دارد. <code>classList.toggle</code> یعنی «اگر این کلاس هست بردار، اگر نیست بگذار». سه خط، برای حل مشکلی که دو فصل با آن درگیر بودیم.</li>
+    </ul>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch15-100">مهم‌ترین درس این فصل</span>
+        <p data-t="ch15-101">جاوااسکریپت خوب، جاوااسکریپتی است که کم نوشته شود. هر جا می‌شود کاری را با CSS انجام داد، با CSS انجام دهید و جاوااسکریپت را تنها برای چیزی نگه دارید که CSS نمی‌تواند: به خاطر سپردن اینکه کاربر چه کاری کرده است.</p>
+    </div>
+
+    <h2 id="s9" data-t="ch15-102">۹. نقشه راه</h2>
+
+    <p data-t="ch15-103">در پانزده فصل، مسیر ساخت یک سایت هفت‌صفحه‌ای واکنش‌گرا را از یک صفحه خالی طی کردید. برای ادامه مسیر یادگیری، پیشنهاد ما این ترتیب است:</p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch15-104">گام</th><th data-t="ch15-105">چه چیزی</th><th data-t="ch15-106">چرا</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-t="ch15-107">۱</td>
+                <td data-t="ch15-108">جاوااسکریپت به شکل جدی</td>
+                <td data-t="ch15-109">مهم‌ترین قدم بعدی. شرط، حلقه، تابع، آرایه و کار با عنصرهای صفحه.</td>
+            </tr>
+            <tr>
+                <td data-t="ch15-110">۲</td>
+                <td data-t="ch15-111">گیت و گیت‌هاب</td>
+                <td data-t="ch15-112">نگه‌داشتن تاریخچه کار، بازگشت به نسخه‌های قبلی، همکاری با دیگران</td>
+            </tr>
+            <tr>
+                <td data-t="ch15-113">۳</td>
+                <td data-t="ch15-114">انتشار سایت</td>
+                <td data-t="ch15-115">هاست، دامنه و انتقال فایل. تا سایت آنلاین نشود، تنها خودتان می‌بینیدش.</td>
+            </tr>
+            <tr>
+                <td data-t="ch15-116">۴</td>
+                <td data-t="ch15-117">یک فریم‌ورک: React یا Vue</td>
+                <td data-t="ch15-118">وقتی سایت بزرگ می‌شود، جاوااسکریپت خام سخت می‌شود.</td>
+            </tr>
+            <tr>
+                <td data-t="ch15-119">۵</td>
+                <td data-t="ch15-120">سمت سرور: Node یا PHP</td>
+                <td data-t="ch15-121">ذخیره اطلاعات، ورود کاربر و پایگاه داده</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch15-122">درباره گام چهارم</span>
+        <p data-t="ch15-123">برای رفتن سراغ فریم‌ورک عجله نکنید. تا جاوااسکریپت خام را خوب بلد نباشید، فریم‌ورک تنها گیج‌کننده است.</p>
+    </div>
+
+    <h3 data-t="ch15-124">دو مسیر شغلی</h3>
+
+    <ul>
+        <li data-t="ch15-125">
+            <strong>فرانت‌اند:</strong> هر چیزی که کاربر می‌بیند.
+            HTML، CSS، جاوااسکریپت و یک فریم‌ورک.
+            شما همین حالا در این مسیر هستید.
+        </li>
+        <li data-t="ch15-126">
+            <strong>بک‌اند:</strong> هر چیزی که پشت صحنه است.
+            سرور، پایگاه داده و امنیت.
+            کسی که هر دو را بلد باشد، فول‌استک نامیده می‌شود.
+        </li>
+    </ul>
+
+    <h3 data-t="ch15-127">پنج توصیه مهم</h3>
+
+    <ol>
+        <li data-t="ch15-128"><strong>بسازید و فقط به خواندن اکتفا نکنید.</strong> ویدیو دیدن حس یادگیری می‌دهد اما مهارت نمی‌سازد. هر چیزی را که یاد گرفتید، همان روز پیاده کنید.</li>
+        <li data-t="ch15-129">
+            <strong>پروژه‌های کوچک و واقعی.</strong> سایت باشگاه مدرسه،
+            صفحه معرفی خودتان، یک ماشین‌حساب ساده.
+        </li>
+        <li data-t="ch15-130"><strong>کد دیگران را بخوانید.</strong> روی هر سایتی F12 بزنید و ببینید چگونه ساخته شده است.</li>
+        <li data-t="ch15-131">
+            <strong>پروژه‌هایتان را نگه دارید.</strong> شش ماه بعد که به
+            کد امروزتان نگاه کنید، پیشرفت خودتان را می‌بینید.
+        </li>
+        <li data-t="ch15-132"><strong>سردرگم شدن و گیر کردن بخشی طبیعی از مسیر برنامه‌نویسی است.</strong> هر برنامه‌نویسی روزی چند بار جست‌وجو می‌کند. این ضعف نیست، خودِ مهارت است.</li>
+    </ol>
+
+    <div class="folder-ref">
+        <span class="box-title" data-t="ch15-133">فایل‌های تمرینی این فصل</span>
+        <p data-t="ch15-134">
+            پوشه <code>15-bootstrap-and-js</code> شامل نه نمونه:
+            <code>01-bootstrap-intro</code> تا <code>09-whats-next</code>.
+            فایل‌های بوت‌استرپ داخل همان پوشه‌ها هستند و به اینترنت نیاز ندارند.
+        </p>
+    </div>
+
+    <h2 data-t="ch15-135">سخن پایانی</h2>
+
+    <p data-t="ch15-136">حالا مفاهیمی را می‌دانید که پایه بخش بزرگی از وب را تشکیل می‌دهند. هر سایتی که در دنیا باز می‌کنید، در پایه‌ای‌ترین لایه‌اش همان تگ‌ها و همان قانون‌های CSS است که در این کتاب خواندید.</p>
+
+    <p data-t="ch15-137">بقیه مسیر بیش از هر چیز به تمرین و تجربه نیاز دارد.</p>
+
+    <div class="exercise">
+        <h3 data-t="ch15-138">تمرین‌های فصل پانزده</h3>
+        <ol>
+            <li data-t="ch15-139">یک صفحه ساده تنها با کلاس‌های بوت‌استرپ بسازید و با نسخه دست‌ساز خودتان مقایسه کنید.</li>
+            <li data-t="ch15-140">به سایت فصل چهاردهم منوی موبایل اضافه کنید، با همان سه خط جاوااسکریپت.</li>
+            <li data-t="ch15-141">یک دکمه بسازید که با کلیک، رنگ پس‌زمینه صفحه را عوض کند.</li>
+            <li data-t="ch15-142">یک شمارنده بسازید که با هر کلیک یکی اضافه شود.</li>
+            <li data-t="ch15-143">سه سایت مورد علاقه‌تان را با F12 باز کنید و ببینید کدامشان از بوت‌استرپ استفاده کرده‌اند.</li>
+            <li data-t="ch15-144">برای شش ماه آینده‌تان یک برنامه یادگیری بنویسید و روی دیوار اتاقتان بچسبانید.</li>
+        </ol>
+    </div>
+
+    <div class="pager">
+        <a href="chapter-14.html">فصل قبل: پروژه نهایی</a>
+        <a href="index.html">بازگشت به فهرست مطالب</a>
+    </div>
+
+</main>
+
+</body>
+</html>

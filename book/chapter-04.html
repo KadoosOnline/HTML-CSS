@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="فصل چهار: مدل جعبه‌ای، عرض و ارتفاع، حاشیه، فاصله داخلی و بیرونی، گردی گوشه‌ها و box-sizing">
+    <title>فصل ۴: مدل جعبه‌ای</title>
+    <link rel="icon" href="logokm.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="book-bar">
+    <a class="name" href="index.html">طراحی وب با HTML و CSS</a>
+    <a href="index.html">فهرست مطالب</a>
+</header>
+
+<main class="paper">
+
+    <div class="chapter-head">
+        <span class="chapter-num">فصل ۴</span>
+        <h1 data-t="ch04-001">مدل جعبه‌ای</h1>
+        <p class="lead" data-t="ch04-002">
+            در CSS هر عنصر یک جعبه است. اگر این جمله را عمیقاً بفهمید،
+            نیمی از مشکلات چیدمان صفحه برایتان حل می‌شود.
+        </p>
+    </div>
+
+    <div class="mini-toc">
+        <span class="box-title" data-t="ch04-003">در این فصل با این مباحث آشنا می‌شوید</span>
+        <ol>
+            <li data-t="ch04-004"><a href="#s0">مدل جعبه‌ای چیست</a></li>
+            <li data-t="ch04-005"><a href="#s1">عرض و ارتفاع</a></li>
+            <li data-t="ch04-006"><a href="#s2">حاشیه</a></li>
+            <li data-t="ch04-007"><a href="#s3">فاصله داخلی</a></li>
+            <li data-t="ch04-008"><a href="#s4">فاصله بیرونی</a></li>
+            <li data-t="ch04-009"><a href="#s5">گرد کردن گوشه‌ها</a></li>
+            <li data-t="ch04-010"><a href="#s6">box-sizing و حل یک مشکل قدیمی</a></li>
+            <li data-t="ch04-011"><a href="#s7">نمونه نهایی فصل</a></li>
+        </ol>
+    </div>
+
+    <h2 id="s0" data-t="ch04-012">۱. مدل جعبه‌ای چیست</h2>
+
+    <p data-t="ch04-013">
+        مرورگر هر عنصر HTML را به شکل یک جعبه مستطیلی می‌بیند، حتی یک کلمه ساده.
+        این جعبه از چهار لایه تشکیل شده که از داخل به بیرون این‌طور هستند:
+    </p>
+
+    <ol>
+        <li data-t="ch04-014"><strong>محتوا:</strong> خود متن یا تصویر.</li>
+        <li data-t="ch04-015"><strong>فاصله داخلی یا padding:</strong> فاصله بین محتوا و خط دور جعبه.</li>
+        <li data-t="ch04-016"><strong>حاشیه یا border:</strong> خط دور جعبه.</li>
+        <li data-t="ch04-017"><strong>فاصله بیرونی یا margin:</strong> فاصله این جعبه تا جعبه‌های همسایه.</li>
+    </ol>
+
+    <p data-t="ch04-018">
+        یک مقایسه که کار را آسان می‌کند: یک عکس قاب‌شده روی دیوار را تصور کنید.
+        خود عکس <strong>محتوا</strong> است. حاشیه سفید دور عکس داخل قاب،
+        <strong>padding</strong> است. خود چوب قاب، <strong>border</strong> است.
+        و فاصله این قاب تا قاب بعدی روی دیوار، <strong>margin</strong> است.
+    </p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch04-019">فرق padding و margin در یک جمله</span>
+        <p data-t="ch04-020">
+            padding فضای <strong>داخل</strong> جعبه است و رنگ پس‌زمینه دارد.
+            margin فضای <strong>بیرون</strong> جعبه است و همیشه خالی و بی‌رنگ است.
+        </p>
+    </div>
+
+    <h2 id="s1" data-t="ch04-021">۲. عرض و ارتفاع</h2>
+
+    <pre class="code"><code>.box {
+    width: 300px;
+    height: 150px;
+    background-color: #2f4f4f;
+    color: white;
+}
+
+.half {
+    width: 50%;
+    height: 100px;
+    background-color: #ff6347;
+}</code></pre>
+    <p class="code-caption" data-t="ch04-022">عرض و ارتفاع: نمونه 01-width-height</p>
+
+    <h3 data-t="ch04-023">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch04-024">
+            <code>width</code> عرض و <code>height</code> ارتفاع جعبه را مشخص می‌کند.
+        </li>
+        <li data-t="ch04-025">
+            وقتی مقدار را با <code>px</code> می‌دهیم، اندازه ثابت است و
+            هر قدر پنجره مرورگر تغییر کند، عوض نمی‌شود.
+        </li>
+        <li data-t="ch04-026">
+            وقتی با درصد می‌دهیم، اندازه نسبت به <strong>عنصر والد</strong>
+            محاسبه می‌شود. <code>width: 50%</code> یعنی نصف عرض جعبه‌ای که
+            این جعبه داخلش قرار دارد.
+        </li>
+    </ul>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch04-027">دو نکته مهم</span>
+        <p data-t="ch04-028">اول اینکه <code>width</code> و <code>height</code> روی عنصرهای <strong>درون‌خطی</strong> مانند <code>span</code> و <code>a</code> اثری ندارند. باید اول با <code>display</code> رفتارشان را عوض کرد. دوم اینکه معمولاً بهتر است <code>height</code> را تعیین <strong>نکنید</strong> و بگذارید ارتفاع جعبه خودش را با محتوایش تنظیم کند. وگرنه اگر متن طولانی شود، از جعبه بیرون می‌زند.</p>
+    </div>
+
+    <h2 id="s2" data-t="ch04-029">۳. حاشیه</h2>
+
+    <pre class="code"><code>.box1 {
+    border: 2px solid #2f4f4f;
+}
+
+.box2 {
+    border: 5px dashed #ff6347;
+}
+
+.box3 {
+    border: 3px dotted gray;
+}
+
+.box4 {
+    border-bottom: 4px solid #2f4f4f;
+}</code></pre>
+    <p class="code-caption" data-t="ch04-030">حاشیه: نمونه 02-border</p>
+
+    <h3 data-t="ch04-031">شرح مثال</h3>
+
+    <p data-t="ch04-032">
+        ویژگی <code>border</code> سه مقدار را با هم و در یک خط می‌گیرد:
+    </p>
+
+    <ol>
+        <li data-t="ch04-033"><strong>ضخامت</strong> مانند <code>2px</code></li>
+        <li data-t="ch04-034"><strong>نوع خط</strong> مانند <code>solid</code></li>
+        <li data-t="ch04-035"><strong>رنگ</strong> مانند <code>2f4f4f#</code></li>
+    </ol>
+
+    <p data-t="ch04-036">پرکاربردترین انواع خط:</p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch04-037">مقدار</th><th data-t="ch04-038">نتیجه</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>solid</code></td><td data-t="ch04-039">خط پیوسته. پرکاربردترین حالت.</td></tr>
+            <tr><td><code>dashed</code></td><td data-t="ch04-040">خط‌چین</td></tr>
+            <tr><td><code>dotted</code></td><td data-t="ch04-041">نقطه‌چین</td></tr>
+            <tr><td><code>none</code></td><td data-t="ch04-042">بدون حاشیه</td></tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch04-043">اگر تنها یک طرف را بخواهید، از نسخه‌های جهت‌دار استفاده کنید: <code>border-top</code>، <code>border-bottom</code>، <code>border-right</code> و <code>border-left</code>. مانند <code>box4.</code> در مثال بالا که تنها زیرش خط دارد. این تکنیک برای زیر عنوان‌ها بسیار به کار می‌آید.</p>
+
+    <h2 id="s3" data-t="ch04-044">۴. فاصله داخلی</h2>
+
+    <pre class="code"><code>.box1 {
+    padding: 20px;                    /* هر چهار طرف */
+}
+
+.box2 {
+    padding: 10px 30px;               /* بالا و پایین، سپس چپ و راست */
+}
+
+.box3 {
+    padding: 10px 20px 30px 40px;     /* بالا، راست، پایین، چپ */
+}
+
+.box4 {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}</code></pre>
+    <p class="code-caption" data-t="ch04-045">فاصله داخلی: نمونه‌های 03-padding و 03-padding2</p>
+
+    <h3 data-t="ch04-046">شرح مثال</h3>
+
+    <p data-t="ch04-047">
+        <code>padding</code> بسته به تعداد عددهایی که می‌دهید،
+        رفتار متفاوتی دارد. این قاعده برای <code>margin</code> هم دقیقاً همین است:
+    </p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch04-048">تعداد مقدار</th><th data-t="ch04-049">معنی</th></tr>
+        </thead>
+        <tbody>
+            <tr><td data-t="ch04-050">یک مقدار</td><td data-t="ch04-051">هر چهار طرف یکسان</td></tr>
+            <tr><td data-t="ch04-052">دو مقدار</td><td data-t="ch04-053">اولی بالا و پایین، دومی چپ و راست</td></tr>
+            <tr><td data-t="ch04-054">چهار مقدار</td><td data-t="ch04-055">به ترتیب ساعتگرد: بالا، راست، پایین، چپ</td></tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch04-056">
+        برای به خاطر سپردن ترتیب چهارتایی، از بالا شروع کنید و
+        در جهت عقربه‌های ساعت بچرخید.
+    </p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch04-057">چرا padding اینقدر مهم است</span>
+        <p data-t="ch04-058">
+            متنی که به لبه جعبه چسبیده باشد، خواندنش سخت و ظاهرش ناخوشایند است.
+            padding به محتوا فضای نفس کشیدن می‌دهد.
+            اگر طرح شما «شلوغ» به نظر می‌رسد، در نود درصد موارد
+            راه‌حل اضافه کردن padding است.
+        </p>
+    </div>
+
+    <h2 id="s4" data-t="ch04-059">۵. فاصله بیرونی</h2>
+
+    <pre class="code"><code>.card {
+    margin: 20px;
+    background-color: white;
+    padding: 15px;
+}
+
+.center-box {
+    width: 400px;
+    margin: 0 auto;                   /* وسط‌چین کردن جعبه */
+}
+
+.spaced {
+    margin-bottom: 30px;
+}</code></pre>
+    <p class="code-caption" data-t="ch04-060">فاصله بیرونی: نمونه 04-margin</p>
+
+    <h3 data-t="ch04-061">شرح مثال</h3>
+
+    <p data-t="ch04-062"><code>margin</code> از نظر نوشتاری دقیقاً مانند <code>padding</code> است، اما یک قابلیت ویژه دارد که بسیار به کار می‌آید:</p>
+
+    <p data-t="ch04-063"><code>margin: 0 auto;</code> یعنی «فاصله بالا و پایین صفر، و فاصله چپ و راست را خودت به طور مساوی تقسیم کن». نتیجه‌اش <strong>وسط‌چین شدن خود جعبه</strong> است. این کلاسیک‌ترین روش وسط‌چین کردن یک جعبه در CSS است، اما حتماً باید عرض جعبه مشخص باشد، وگرنه کار نمی‌کند.</p>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch04-064">پدیده ادغام margin</span>
+        <p data-t="ch04-065">اگر دو جعبه زیر هم باشند و جعبه بالایی <code>margin-bottom: 30px</code> و پایینی <code>margin-top: 20px</code> داشته باشد، فاصله بینشان پنجاه پیکسل <strong>نمی‌شود</strong>؛ سی پیکسل می‌شود. یعنی بزرگ‌ترشان برنده است و کوچک‌تر داخلش ادغام می‌شود. این رفتار تنها برای margin بالا و پایین اتفاق می‌افتد و برای چپ و راست و برای padding هرگز. اگر روزی دیدید فاصله‌ها آن‌طور که انتظار دارید جمع نمی‌شوند، علتش همین است.</p>
+    </div>
+
+    <h2 id="s5" data-t="ch04-066">۶. گرد کردن گوشه‌ها</h2>
+
+    <pre class="code"><code>.rounded {
+    border-radius: 10px;
+}
+
+.more-rounded {
+    border-radius: 25px;
+}
+
+.pill {
+    border-radius: 50px;
+    padding: 10px 25px;
+}
+
+.circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}</code></pre>
+    <p class="code-caption" data-t="ch04-067">گردی گوشه‌ها: نمونه 05-border-radius</p>
+
+    <h3 data-t="ch04-068">شرح مثال</h3>
+
+    <ul>
+        <li data-t="ch04-069">
+            <code>border-radius</code> با مقدار پیکسلی، گوشه‌ها را به همان اندازه گرد می‌کند.
+            عدد بزرگ‌تر یعنی گوشه گردتر.
+        </li>
+        <li data-t="ch04-070">
+            <code>border-radius: 50%</code> حالت ویژه‌ای است:
+            جعبه را کاملاً <strong>دایره</strong> می‌کند.
+            به شرطی که عرض و ارتفاع برابر باشند، وگرنه بیضی می‌شود.
+        </li>
+        <li data-t="ch04-071">برای ساختن دکمه‌های قرصی‌شکل، یک عدد بزرگ مانند <code>50px</code> بدهید.</li>
+    </ul>
+
+    <p data-t="ch04-072">نکته جالب اینکه برای گرد کردن گوشه‌ها اصلاً لازم نیست جعبه <code>border</code> داشته باشد. نام ویژگی گمراه‌کننده است، اما <code>border-radius</code> روی رنگ پس‌زمینه و تصویر هم اثر می‌گذارد. دایره‌ای کردن عکس پروفایل دقیقاً با همین یک خط انجام می‌شود.</p>
+
+    <h2 id="s6" data-t="ch04-073">۷. box-sizing و حل یک مشکل قدیمی</h2>
+
+    <p data-t="ch04-074">این بخش کوتاه است اما یکی از مهم‌ترین بخش‌های کل کتاب است. فرض کنید این کد را می‌نویسید:</p>
+
+    <pre class="code"><code>.box {
+    width: 200px;
+    padding: 20px;
+    border: 5px solid black;
+}</code></pre>
+
+    <p data-t="ch04-075">عرض واقعی این جعبه روی صفحه چند پیکسل است؟ شهود می‌گوید ۲۰۰. اما جواب <strong>۲۵۰</strong> است. چون به طور پیش‌فرض، مرورگر padding و border را <strong>به</strong> عرض اضافه می‌کند:</p>
+
+    <p data-t="ch04-076">
+        ۲۰۰ محتوا، به‌علاوه ۲۰ پیکسل padding از هر طرف که می‌شود ۴۰،
+        به‌علاوه ۵ پیکسل حاشیه از هر طرف که می‌شود ۱۰. جمعاً ۲۵۰ پیکسل.
+    </p>
+
+    <p data-t="ch04-077">این رفتار دردسرساز است. اگر دو جعبه بخواهید که هر کدام پنجاه درصد عرض بگیرند، به محض اضافه کردن کمی padding، جمعشان از صد درصد بیشتر می‌شود و جعبه دوم به خط بعد می‌پرد. خوشبختانه راه‌حل تنها یک خط است:</p>
+
+    <pre class="code"><code>* {
+    box-sizing: border-box;
+}</code></pre>
+    <p class="code-caption" data-t="ch04-078">حل مشکل: نمونه 06-box-sizing</p>
+
+    <h3 data-t="ch04-079">شرح مثال</h3>
+
+    <p data-t="ch04-080">
+        علامت ستاره یعنی «همه عنصرهای صفحه» و در فصل پنجم کامل معرفی می‌شود.
+        مقدار <code>border-box</code> به مرورگر می‌گوید:
+        «وقتی می‌گویم عرض ۲۰۰ پیکسل، یعنی عرض کل جعبه شامل padding و border
+        باید ۲۰۰ باشد. خودت محتوا را کوچک‌تر کن تا این عدد رعایت شود.»
+    </p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch04-081">حالت</th><th data-t="ch04-082">معنی <code>width: 200px</code></th><th data-t="ch04-083">عرض نهایی</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-t="ch04-084"><code>content-box</code> (پیش‌فرض)</td>
+                <td data-t="ch04-085">تنها محتوا ۲۰۰ باشد</td>
+                <td data-t="ch04-086">۲۵۰ پیکسل</td>
+            </tr>
+            <tr>
+                <td><code>border-box</code></td>
+                <td data-t="ch04-087">کل جعبه ۲۰۰ باشد</td>
+                <td data-t="ch04-088">۲۰۰ پیکسل</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch04-089">این را همیشه بنویسید</span>
+        <p data-t="ch04-090">
+            تقریباً همه طراحان حرفه‌ای، این سه خط را در ابتدای هر فایل CSS می‌نویسند
+            و بعد کار را شروع می‌کنند. از این پس ما هم همین کار را می‌کنیم.
+        </p>
+    </div>
+
+    <pre class="code"><code>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}</code></pre>
+    <p class="code-caption" data-t="ch04-091">شروع استاندارد هر فایل CSS از این به بعد</p>
+
+    <p data-t="ch04-092">
+        دو خط اول، فاصله‌های پیش‌فرضی را که مرورگر خودش به عنوان‌ها و
+        پاراگراف‌ها می‌دهد صفر می‌کنند، تا کنترل کامل فاصله‌ها دست خودمان باشد.
+    </p>
+
+    <h2 id="s7" data-t="ch04-093">۸. نمونه نهایی فصل</h2>
+
+    <pre class="code"><code>&lt;body&gt;
+    &lt;div class="card"&gt;
+        &lt;h2&gt;دوره طراحی وب&lt;/h2&gt;
+        &lt;p&gt;پانزده جلسه آموزش عملی HTML و CSS&lt;/p&gt;
+        &lt;p class="price"&gt;۵۰۰ هزار تومان&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class="card"&gt;
+        &lt;h2&gt;دوره جاوااسکریپت&lt;/h2&gt;
+        &lt;p&gt;بیست جلسه برنامه‌نویسی سمت کاربر&lt;/p&gt;
+        &lt;p class="price"&gt;۷۰۰ هزار تومان&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+
+    <pre class="code"><code>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f5f5f5;
+    font-family: Tahoma, sans-serif;
+    padding: 40px;
+}
+
+.card {
+    width: 400px;
+    margin: 0 auto 25px auto;
+    padding: 25px 30px;
+    background-color: white;
+    border: 1px solid #dddddd;
+    border-top: 4px solid #ff6347;
+    border-radius: 10px;
+}
+
+.card h2 {
+    color: #2f4f4f;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #666666;
+    margin-bottom: 8px;
+}
+
+.price {
+    color: #ff6347;
+    font-size: 20px;
+    padding-top: 12px;
+    border-top: 1px solid #eeeeee;
+}</code></pre>
+    <p class="code-caption" data-t="ch04-094">نمونه نهایی فصل: نمونه 07-final-example</p>
+
+    <h3 data-t="ch04-095">شرح مثال</h3>
+
+    <p data-t="ch04-096">در این کارت، هر پنج ویژگی این فصل نقشی دارند:</p>
+
+    <ul>
+        <li data-t="ch04-097">
+            <code>width: 400px</code> عرض کارت را ثابت می‌کند و
+            <code>margin: 0 auto 25px auto</code> آن را وسط‌چین می‌کند و
+            بیست و پنج پیکسل هم از کارت بعدی فاصله می‌گیرد.
+            چون چهار مقدار داده‌ایم، ترتیبشان بالا، راست، پایین، چپ است.
+        </li>
+        <li data-t="ch04-098">
+            <code>padding: 25px 30px</code> به محتوا فضا می‌دهد.
+            بیست و پنج از بالا و پایین، سی از چپ و راست.
+        </li>
+        <li data-t="ch04-099">دو خط <code>border</code> پشت سر هم آمده‌اند. اول یک حاشیه نازک دور تا دور، بعد تنها بالای کارت با یک خط نارنجی ضخیم بازنویسی شده است. چون خط دوم پایین‌تر نوشته شده، برای لبه بالا برنده می‌شود. این یک تکنیک بسیار رایج در طراحی کارت است.</li>
+        <li data-t="ch04-100">
+            <code>border-radius: 10px</code> گوشه‌ها را نرم می‌کند.
+        </li>
+        <li data-t="ch04-101">
+            کلاس <code>price</code> با یک خط بالای خودش، از بقیه متن جدا شده است.
+            <code>padding-top</code> باعث می‌شود قیمت به آن خط نچسبد.
+        </li>
+    </ul>
+
+    <p data-t="ch04-102">
+        و مهم‌تر از همه، چون <code>box-sizing: border-box</code> را در بالای
+        فایل نوشته‌ایم، عرض کارت دقیقاً ۴۰۰ پیکسل است، نه ۴۶۲ پیکسل که
+        با احتساب padding و border به دست می‌آمد.
+    </p>
+
+    <div class="folder-ref">
+        <span class="box-title" data-t="ch04-103">فایل‌های تمرینی این فصل</span>
+        <p data-t="ch04-104">
+            پوشه <code>04-box-model</code> شامل نمونه‌های
+            <code>01-width-height</code> تا <code>07-final-example</code>.
+        </p>
+    </div>
+
+    <h2 data-t="ch04-105">خلاصه فصل</h2>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch04-106">ویژگی</th><th data-t="ch04-107">کارش</th></tr>
+        </thead>
+        <tbody>
+            <tr><td data-t="ch04-108"><code>width</code> و <code>height</code></td><td data-t="ch04-109">عرض و ارتفاع جعبه</td></tr>
+            <tr><td><code>border</code></td><td data-t="ch04-110">خط دور جعبه: ضخامت، نوع، رنگ</td></tr>
+            <tr><td><code>padding</code></td><td data-t="ch04-111">فاصله داخل جعبه، بین محتوا و حاشیه</td></tr>
+            <tr><td><code>margin</code></td><td data-t="ch04-112">فاصله بیرون جعبه، تا همسایه‌ها</td></tr>
+            <tr><td><code>margin: 0 auto</code></td><td data-t="ch04-113">وسط‌چین کردن خود جعبه</td></tr>
+            <tr><td><code>border-radius</code></td><td data-t="ch04-114">گرد کردن گوشه‌ها، با ۵۰٪ دایره می‌شود</td></tr>
+            <tr><td><code>box-sizing: border-box</code></td><td data-t="ch04-115">عرض یعنی عرض کل جعبه</td></tr>
+        </tbody>
+    </table>
+
+    <div class="exercise">
+        <h3 data-t="ch04-116">تمرین‌های فصل چهار</h3>
+        <ol>
+            <li data-t="ch04-117">یک کارت پروفایل بسازید: عکس دایره‌ای، نام، یک جمله معرفی، همه داخل یک جعبه با گوشه گرد.</li>
+            <li data-t="ch04-118">سه کارت زیر هم بسازید که هر کدام رنگ حاشیه بالای متفاوتی داشته باشند.</li>
+            <li data-t="ch04-119">یک جعبه با عرض ۳۰۰ پیکسل بسازید و آن را با <code>margin: 0 auto</code> وسط صفحه بیاورید.</li>
+            <li data-t="ch04-120">یک بار <code>box-sizing: border-box</code> را حذف کنید و ببینید چیدمان چگونه به هم می‌ریزد.</li>
+            <li data-t="ch04-121">چهار جعبه بسازید و روی هر کدام یکی از حالت‌های <code>solid</code>، <code>dashed</code>، <code>dotted</code> و <code>none</code> را امتحان کنید.</li>
+        </ol>
+    </div>
+
+    <div class="pager">
+        <a href="chapter-03.html">فصل قبل: آشنایی با CSS</a>
+        <a href="chapter-05.html">فصل بعد: انتخابگرها و پس‌زمینه</a>
+    </div>
+
+</main>
+
+</body>
+</html>

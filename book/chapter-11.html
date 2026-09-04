@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="فصل یازده: گرید، ستون‌ها و ردیف‌ها، واحد fr، تابع repeat، اشغال چند خانه و نام‌گذاری نواحی">
+    <title>فصل ۱۱: گرید</title>
+    <link rel="icon" href="logokm.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="book-bar">
+    <a class="name" href="index.html">طراحی وب با HTML و CSS</a>
+    <a href="index.html">فهرست مطالب</a>
+</header>
+
+<main class="paper">
+
+    <div class="chapter-head">
+        <span class="chapter-num">فصل ۱۱</span>
+        <h1 data-t="ch11-001">گرید: چیدمان دوبعدی</h1>
+        <p class="lead" data-t="ch11-002">فلکس‌باکس در یک بُعد عالی است. گرید برای وقتی است که هم ستون و هم ردیف را هم‌زمان می‌خواهید کنترل کنید.</p>
+    </div>
+
+    <div class="mini-toc">
+        <span class="box-title" data-t="ch11-003">در این فصل با این مباحث آشنا می‌شوید</span>
+        <ol>
+            <li data-t="ch11-004"><a href="#s1">گرید چیست و کجا بهتر از فلکس است</a></li>
+            <li data-t="ch11-005"><a href="#s2">ستون‌ها و واحد fr</a></li>
+            <li data-t="ch11-006"><a href="#s3">ردیف‌ها و فاصله</a></li>
+            <li data-t="ch11-007"><a href="#s4">اشغال چند خانه</a></li>
+            <li data-t="ch11-008"><a href="#s5">نام‌گذاری نواحی</a></li>
+            <li data-t="ch11-009"><a href="#s6">نمونه نهایی فصل</a></li>
+        </ol>
+    </div>
+
+    <h2 id="s1" data-t="ch11-010">۱. گرید چیست و کجا بهتر از فلکس است</h2>
+
+    <p data-t="ch11-011">فلکس‌باکس <strong>یک‌بعدی</strong> است: یا در یک ردیف کار می‌کند یا در یک ستون. گرید <strong>دوبعدی</strong> است و هم‌زمان ستون‌ها و ردیف‌ها را می‌سازد و کنترل می‌کند.</p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch11-012">موقعیت</th><th data-t="ch11-013">ابزار بهتر</th></tr>
+        </thead>
+        <tbody>
+            <tr><td data-t="ch11-014">یک ردیف دکمه یا لینک</td><td data-t="ch11-015">فلکس‌باکس</td></tr>
+            <tr><td data-t="ch11-016">سربرگ با لوگو در یک سو و منو در سوی دیگر</td><td data-t="ch11-017">فلکس‌باکس</td></tr>
+            <tr><td data-t="ch11-018">گالری تصاویر با سطر و ستون منظم</td><td data-t="ch11-019">گرید</td></tr>
+            <tr><td data-t="ch11-020">چیدمان کلی صفحه: سربرگ، کناری، محتوا، پاورقی</td><td data-t="ch11-021">گرید</td></tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch11-022">
+        این دو رقیب هم نیستند و در یک صفحه واقعی هر دو را با هم به کار می‌بریم:
+        گرید برای اسکلت کلی صفحه و فلکس‌باکس برای جزئیات داخل هر بخش.
+    </p>
+
+    <pre class="code"><code>&lt;div class="grid"&gt;
+    &lt;div class="item"&gt;۱&lt;/div&gt;
+    &lt;div class="item"&gt;۲&lt;/div&gt;
+    &lt;div class="item"&gt;۳&lt;/div&gt;
+    &lt;div class="item"&gt;۴&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+    <pre class="code"><code>.grid {
+    display: grid;
+}</code></pre>
+    <p class="code-caption" data-t="ch11-023">اولین گرید: نمونه 01-display-grid-intro</p>
+
+    <h3 data-t="ch11-024">شرح مثال</h3>
+
+    <p data-t="ch11-025">درست مانند فلکس‌باکس، <code>display: grid</code> را روی <strong>ظرف</strong> می‌نویسیم و فرزندان مستقیمش آیتم می‌شوند. تنها با همین یک خط، آیتم‌ها هنوز زیر هم هستند، چون هنوز نگفته‌ایم چند ستون می‌خواهیم. آن قدم بعدی است.</p>
+
+    <h2 id="s2" data-t="ch11-026">۲. ستون‌ها و واحد fr</h2>
+
+    <pre class="code"><code>.three-equal {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.sidebar-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+}
+
+.mixed {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+
+.short {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}</code></pre>
+    <p class="code-caption" data-t="ch11-027">ستون‌ها: نمونه 02-grid-template-columns</p>
+
+    <h3 data-t="ch11-028">شرح مثال</h3>
+
+    <p data-t="ch11-029">
+        <code>grid-template-columns</code> ستون‌ها را می‌سازد.
+        <strong>تعداد مقادیری که می‌نویسید، تعداد ستون‌هاست</strong> و
+        هر مقدار، عرض یک ستون است. پس <code>1fr 1fr 1fr</code>
+        یعنی سه ستون مساوی.
+    </p>
+
+    <p data-t="ch11-030">
+        واحد <code>fr</code> مخفف fraction یعنی «کسر» و مخصوص گرید است.
+        معنی‌اش «یک سهم از فضای باقی‌مانده» است. اگر بنویسید
+        <code>2fr 1fr 1fr</code>، فضا به چهار سهم تقسیم می‌شود و
+        ستون اول دو سهم و بقیه هر کدام یک سهم می‌گیرند.
+    </p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch11-031">چرا fr بهتر از درصد است</span>
+        <p data-t="ch11-032">
+            اگر سه ستون سی و سه درصدی بسازید و <code>gap</code> اضافه کنید،
+            جمعشان از صد درصد بیشتر می‌شود و چیدمان می‌شکند.
+            واحد <code>fr</code> این مشکل را ندارد، چون <strong>بعد از</strong>
+            کم کردن فاصله‌ها محاسبه می‌شود. دیگر لازم نیست چیزی حساب کنید.
+        </p>
+    </div>
+
+    <p data-t="ch11-033">می‌شود واحدها را ترکیب کرد. در <code>250px 1fr</code> ستون اول همیشه دویست و پنجاه پیکسل می‌ماند و ستون دوم هر چه باقی ماند را می‌گیرد. این دقیقاً همان چیدمان نوار کناری است که در فصل هشتم با فلکس ساختیم، اینجا تنها ساده‌تر.</p>
+
+    <p data-t="ch11-034"><code>repeat(4, 1fr)</code> هم تنها یک میان‌بر نوشتاری است و معادل <code>1fr 1fr 1fr 1fr</code>. برای گریدهای دوازده‌ستونه این میان‌بر واقعاً به کار می‌آید.</p>
+
+    <h2 id="s3" data-t="ch11-035">۳. ردیف‌ها و فاصله</h2>
+
+    <pre class="code"><code>.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 100px 200px;
+    gap: 20px;
+}
+
+.grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 30px;
+    column-gap: 10px;
+}</code></pre>
+    <p class="code-caption" data-t="ch11-036">ردیف‌ها و فاصله: نمونه 03-grid-template-rows-gap</p>
+
+    <h3 data-t="ch11-037">شرح مثال</h3>
+
+    <p data-t="ch11-038"><code>grid-template-rows</code> ارتفاع ردیف‌ها را مشخص می‌کند و دقیقاً مانند ستون‌ها کار می‌کند.</p>
+
+    <p data-t="ch11-039">نکته مهم اینکه معمولاً <strong>لازم نیست</strong> ردیف‌ها را تعیین کنید. اگر تنها ستون‌ها را بسازید، گرید خودش هر چند ردیف که لازم باشد اضافه می‌کند و ارتفاع هر ردیف را با بلندترین محتوایش تنظیم می‌کند. در بیشتر موارد همین رفتار خودکار بهترین نتیجه را می‌دهد.</p>
+
+    <p data-t="ch11-040">
+        <code>gap</code> همان چیزی است که در فصل هشتم برای فلکس دیدیم و
+        اینجا هم دقیقاً همان‌طور کار می‌کند. نسخه‌های جداگانه‌اش
+        <code>row-gap</code> و <code>column-gap</code> هستند،
+        یا با دو مقدار: <code>gap: 30px 10px</code> که اولی
+        فاصله سطرها و دومی فاصله ستون‌هاست.
+    </p>
+
+    <h2 id="s4" data-t="ch11-041">۴. اشغال چند خانه</h2>
+
+    <p data-t="ch11-042">
+        تا اینجا هر آیتم یک خانه می‌گرفت. حالا می‌خواهیم بعضی آیتم‌ها
+        بزرگ‌تر باشند و چند خانه را اشغال کنند.
+    </p>
+
+    <pre class="code"><code>.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.wide {
+    grid-column: span 2;          /* دو ستون بگیر */
+}
+
+.full {
+    grid-column: 1 / -1;          /* تمام عرض */
+}
+
+.tall {
+    grid-row: span 2;             /* دو ردیف بگیر */
+}
+
+.big {
+    grid-column: span 2;
+    grid-row: span 2;             /* بزرگ در هر دو جهت */
+}</code></pre>
+    <p class="code-caption" data-t="ch11-043">اشغال چند خانه: نمونه 04-grid-column-row-span</p>
+
+    <h3 data-t="ch11-044">شرح مثال</h3>
+
+    <p data-t="ch11-045">
+        این دو ویژگی روی <strong>آیتم</strong> نوشته می‌شوند، نه روی ظرف.
+        این را یادتان باشد؛ همان تقسیم‌بندی ظرف و آیتم که در فلکس‌باکس داشتیم،
+        در گرید هم برقرار است.
+    </p>
+
+    <ul>
+        <li data-t="ch11-046">
+            <code>span 2</code> یعنی «از جای فعلی، دو خانه را اشغال کن».
+            ساده‌ترین و پرکاربردترین حالت است.
+        </li>
+        <li data-t="ch11-047">
+            <code>1 / -1</code> یعنی «از خط اول تا خط آخر»، یعنی تمام عرض گرید.
+            عدد منفی از انتها شمرده می‌شود، پس <code>1-</code> همیشه
+            آخرین خط است، هر چند ستون که داشته باشید.
+        </li>
+        <li data-t="ch11-048">یک آیتم می‌تواند هم‌زمان هر دو را داشته باشد و مربع بزرگی بسازد.</li>
+    </ul>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch11-049">گالری تصاویر حرفه‌ای</span>
+        <p data-t="ch11-050">
+            گالری‌هایی که در سایت‌ها می‌بینید و در آنها بعضی عکس‌ها
+            بزرگ‌تر از بقیه هستند، دقیقاً با همین دو خط ساخته می‌شوند.
+            در فصل چهاردهم صفحه گالری پروژه را با همین روش می‌سازیم.
+        </p>
+    </div>
+
+    <h2 id="s5" data-t="ch11-051">۵. نام‌گذاری نواحی</h2>
+
+    <p data-t="ch11-052">
+        این زیباترین قابلیت گرید است: می‌توانید به هر ناحیه یک نام بدهید
+        و بعد نقشه صفحه را به شکل یک تصویر متنی بکشید.
+    </p>
+
+    <pre class="code"><code>.layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 15px;
+    min-height: 100vh;
+
+    grid-template-areas:
+        "header  header"
+        "sidebar content"
+        "footer  footer";
+}
+
+.site-header  { grid-area: header; }
+.site-sidebar { grid-area: sidebar; }
+.site-content { grid-area: content; }
+.site-footer  { grid-area: footer; }</code></pre>
+    <p class="code-caption" data-t="ch11-053">نام‌گذاری نواحی: نمونه 05-grid-template-areas</p>
+
+    <h3 data-t="ch11-054">شرح مثال</h3>
+
+    <p data-t="ch11-055">روش کار سه مرحله دارد:</p>
+
+    <ol>
+        <li data-t="ch11-056">
+            در ظرف، با <code>grid-template-areas</code> نقشه را می‌کشید.
+            هر رشته داخل گیومه یک <strong>ردیف</strong> است و
+            هر کلمه داخل آن، یک <strong>خانه</strong>.
+        </li>
+        <li data-t="ch11-057">
+            نام تکراری یعنی آن ناحیه کشیده می‌شود. در ردیف اول،
+            <code>header</code> دو بار آمده، پس سربرگ هر دو ستون را می‌گیرد.
+        </li>
+        <li data-t="ch11-058">
+            به هر عنصر با <code>grid-area</code> می‌گویید در کدام ناحیه بنشیند.
+        </li>
+    </ol>
+
+    <p data-t="ch11-059">
+        زیبایی این روش این است که با نگاه کردن به آن سه خط،
+        <strong>ساختار صفحه را می‌بینید</strong>. هیچ روش دیگری در CSS
+        اینقدر خوانا نیست. اگر می‌خواهید ناحیه‌ای خالی بماند،
+        به جای نام یک نقطه بگذارید.
+    </p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch11-060">قدرت واقعی این روش</span>
+        <p data-t="ch11-061">در فصل بعد می‌بینید که برای موبایل کافی است همین نقشه را بار دیگر و به شکل تک‌ستونی بنویسید. چیدمان کل صفحه با سه خط کاملاً عوض می‌شود، بدون اینکه به HTML دست بزنید.</p>
+    </div>
+
+    <h2 id="s6" data-t="ch11-062">۶. نمونه نهایی فصل</h2>
+
+    <pre class="code"><code>&lt;body&gt;
+
+    &lt;div class="layout"&gt;
+
+        &lt;header class="site-header"&gt;
+            &lt;h1&gt;گالری هنری&lt;/h1&gt;
+        &lt;/header&gt;
+
+        &lt;aside class="site-sidebar"&gt;
+            &lt;h3&gt;دسته‌ها&lt;/h3&gt;
+            &lt;p&gt;نقاشی&lt;/p&gt;
+            &lt;p&gt;عکاسی&lt;/p&gt;
+        &lt;/aside&gt;
+
+        &lt;main class="site-content"&gt;
+            &lt;div class="gallery"&gt;
+                &lt;div class="pic big"&gt;۱&lt;/div&gt;
+                &lt;div class="pic"&gt;۲&lt;/div&gt;
+                &lt;div class="pic"&gt;۳&lt;/div&gt;
+                &lt;div class="pic wide"&gt;۴&lt;/div&gt;
+                &lt;div class="pic"&gt;۵&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/main&gt;
+
+        &lt;footer class="site-footer"&gt;
+            &lt;p&gt;مؤسسه فنی و آموزشی کادوس&lt;/p&gt;
+        &lt;/footer&gt;
+
+    &lt;/div&gt;
+
+&lt;/body&gt;</code></pre>
+
+    <pre class="code"><code>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    line-height: 1.9;
+}
+
+/* گرید بیرونی: اسکلت کل صفحه */
+.layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header  header"
+        "sidebar content"
+        "footer  footer";
+    gap: 15px;
+    min-height: 100vh;
+    padding: 15px;
+}
+
+.site-header  { grid-area: header; }
+.site-sidebar { grid-area: sidebar; }
+.site-content { grid-area: content; }
+.site-footer  { grid-area: footer; }
+
+.site-header,
+.site-footer {
+    background-color: #2f4f4f;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.site-sidebar {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.site-sidebar h3 {
+    color: #2f4f4f;
+    margin-bottom: 10px;
+}
+
+/* گرید درونی: خود گالری */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.pic {
+    background-color: #2f4f4f;
+    color: white;
+    border-radius: 10px;
+    min-height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.pic.big {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.pic.wide {
+    grid-column: span 2;
+}</code></pre>
+    <p class="code-caption" data-t="ch11-063">نمونه نهایی فصل: نمونه 06-final-example</p>
+
+    <h3 data-t="ch11-064">شرح مثال</h3>
+
+    <p data-t="ch11-065">
+        در این صفحه <strong>دو گرید تودرتو</strong> داریم و این نکته مهمی است:
+    </p>
+
+    <ul>
+        <li data-t="ch11-066">
+            <strong>گرید بیرونی</strong> اسکلت کل صفحه است و با
+            <code>grid-template-areas</code> ساخته شده. با نگاهی به آن سه رشته،
+            فوراً می‌فهمید سربرگ بالا در تمام عرض است، وسط صفحه
+            به نوار کناری و محتوا تقسیم شده و پاورقی هم تمام عرض را می‌گیرد.
+        </li>
+        <li data-t="ch11-067">
+            <strong>گرید درونی</strong> خود گالری است، با سه ستون مساوی.
+            دو تصویر با <code>span</code> بزرگ‌تر شده‌اند و بقیه
+            خودشان اطراف آنها جا می‌گیرند. هیچ محاسبه‌ای لازم نبود.
+        </li>
+    </ul>
+
+    <p data-t="ch11-068">
+        در <code>grid-template-rows</code> بیرونی از سه مقدار
+        <code>auto 1fr auto</code> استفاده کرده‌ایم. یعنی سربرگ و پاورقی
+        به اندازه محتوایشان ارتفاع بگیرند و ردیف وسط تمام فضای باقی‌مانده را.
+        همراه با <code>min-height: 100vh</code>، نتیجه‌اش پاورقی‌ای است که
+        همیشه پایین صفحه می‌ماند، حتی وقتی محتوا کم است.
+        این الگو در طراحی سایت بسیار پرکاربرد است.
+    </p>
+
+    <p data-t="ch11-069">
+        و توجه کنید که داخل خانه‌های گالری از <strong>فلکس‌باکس</strong>
+        استفاده کرده‌ایم تا شماره‌ها وسط قرار بگیرند. این همان نکته ابتدای فصل است:
+        گرید برای اسکلت، فلکس برای جزئیات.
+    </p>
+
+    <div class="folder-ref">
+        <span class="box-title" data-t="ch11-070">فایل‌های تمرینی این فصل</span>
+        <p data-t="ch11-071">
+            پوشه <code>11-grid</code> شامل نمونه‌های
+            <code>01-display-grid-intro</code> تا <code>06-final-example</code>.
+        </p>
+    </div>
+
+    <h2 data-t="ch11-072">خلاصه فصل</h2>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch11-073">ویژگی</th><th data-t="ch11-074">روی چه</th><th data-t="ch11-075">کارش</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>display: grid</code></td><td data-t="ch11-076">ظرف</td><td data-t="ch11-077">فعال کردن گرید</td></tr>
+            <tr><td><code>grid-template-columns</code></td><td data-t="ch11-078">ظرف</td><td data-t="ch11-079">تعداد و عرض ستون‌ها</td></tr>
+            <tr><td><code>grid-template-rows</code></td><td data-t="ch11-080">ظرف</td><td data-t="ch11-081">ارتفاع ردیف‌ها. معمولاً لازم نیست.</td></tr>
+            <tr><td><code>fr</code></td><td data-t="ch11-082">واحد</td><td data-t="ch11-083">یک سهم از فضای باقی‌مانده</td></tr>
+            <tr><td><code>repeat(3, 1fr)</code></td><td data-t="ch11-084">میان‌بر</td><td data-t="ch11-085">معادل <code>1fr 1fr 1fr</code></td></tr>
+            <tr><td><code>gap</code></td><td data-t="ch11-086">ظرف</td><td data-t="ch11-087">فاصله بین خانه‌ها</td></tr>
+            <tr><td><code>grid-column: span 2</code></td><td data-t="ch11-088">آیتم</td><td data-t="ch11-089">اشغال دو ستون</td></tr>
+            <tr><td><code>grid-column: 1 / -1</code></td><td data-t="ch11-090">آیتم</td><td data-t="ch11-091">اشغال تمام عرض</td></tr>
+            <tr><td><code>grid-row: span 2</code></td><td data-t="ch11-092">آیتم</td><td data-t="ch11-093">اشغال دو ردیف</td></tr>
+            <tr><td><code>grid-template-areas</code></td><td data-t="ch11-094">ظرف</td><td data-t="ch11-095">کشیدن نقشه صفحه با نام</td></tr>
+            <tr><td><code>grid-area</code></td><td data-t="ch11-096">آیتم</td><td data-t="ch11-097">نشستن در ناحیه نام‌گذاری‌شده</td></tr>
+        </tbody>
+    </table>
+
+    <div class="exercise">
+        <h3 data-t="ch11-098">تمرین‌های فصل یازده</h3>
+        <ol>
+            <li data-t="ch11-099">یک گالری با چهار ستون مساوی و ده تصویر بسازید.</li>
+            <li data-t="ch11-100">در همان گالری، دو تصویر را با <code>span</code> بزرگ‌تر کنید.</li>
+            <li data-t="ch11-101">چیدمان کامل یک صفحه را با <code>grid-template-areas</code> بسازید: سربرگ، کناری، محتوا، پاورقی.</li>
+            <li data-t="ch11-102">مقدار ستون‌ها را از <code>1fr 1fr 1fr</code> به <code>2fr 1fr 1fr</code> عوض کنید و تفاوت را ببینید.</li>
+            <li data-t="ch11-103">یک بار سه ستون را با درصد بسازید و <code>gap</code> اضافه کنید تا ببینید چرا <code>fr</code> بهتر است.</li>
+            <li data-t="ch11-104">در یک صفحه، هم گرید و هم فلکس‌باکس را با هم به کار ببرید.</li>
+        </ol>
+    </div>
+
+    <div class="pager">
+        <a href="chapter-10.html">فصل قبل: فرم‌ها</a>
+        <a href="chapter-12.html">فصل بعد: طراحی واکنش‌گرا</a>
+    </div>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="فصل پنج: انتخابگر گروهی، فرزندی و سراسری، شبه‌کلاس hover و تصویر پس‌زمینه با تنظیمات آن">
+    <title>فصل ۵: انتخابگرها و تصویر پس‌زمینه</title>
+    <link rel="icon" href="logokm.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="book-bar">
+    <a class="name" href="index.html">طراحی وب با HTML و CSS</a>
+    <a href="index.html">فهرست مطالب</a>
+</header>
+
+<main class="paper">
+
+    <div class="chapter-head">
+        <span class="chapter-num">فصل ۵</span>
+        <h1 data-t="ch05-001">انتخابگرهای بیشتر و تصویر پس‌زمینه</h1>
+        <p class="lead" data-t="ch05-002">تا اینجا تنها سه انتخابگر بلد بودیم. در این فصل چهار انتخابگر تازه یاد می‌گیریم که کد CSS را کوتاه‌تر و دقیق‌تر می‌کنند.</p>
+    </div>
+
+    <div class="mini-toc">
+        <span class="box-title" data-t="ch05-003">در این فصل با این مباحث آشنا می‌شوید</span>
+        <ol>
+            <li data-t="ch05-004"><a href="#s1">انتخابگر گروهی</a></li>
+            <li data-t="ch05-005"><a href="#s2">انتخابگر فرزندی</a></li>
+            <li data-t="ch05-006"><a href="#s3">انتخابگر سراسری</a></li>
+            <li data-t="ch05-007"><a href="#s4">شبه‌کلاس hover</a></li>
+            <li data-t="ch05-008"><a href="#s5">تصویر پس‌زمینه</a></li>
+            <li data-t="ch05-009"><a href="#s6">تنظیمات تصویر پس‌زمینه</a></li>
+            <li data-t="ch05-010"><a href="#s7">نمونه نهایی فصل</a></li>
+        </ol>
+    </div>
+
+    <h2 id="s1" data-t="ch05-011">۱. انتخابگر گروهی</h2>
+
+    <p data-t="ch05-012">
+        گاهی چند عنصر مختلف باید استایل یکسانی بگیرند. به جای تکرار،
+        نامشان را با ویرگول پشت سر هم می‌نویسیم.
+    </p>
+
+    <pre class="code"><code>/* روش طولانی */
+h1 { color: #2f4f4f; }
+h2 { color: #2f4f4f; }
+h3 { color: #2f4f4f; }
+
+/* روش کوتاه با انتخابگر گروهی */
+h1, h2, h3 {
+    color: #2f4f4f;
+    font-family: Tahoma, sans-serif;
+}</code></pre>
+    <p class="code-caption" data-t="ch05-013">انتخابگر گروهی: نمونه 01-group-selector</p>
+
+    <h3 data-t="ch05-014">شرح مثال</h3>
+
+    <p data-t="ch05-015">
+        ویرگول بین انتخابگرها معنی «و» می‌دهد: این قانون روی
+        h1 و h2 و h3، هر سه، اعمال می‌شود. هر نوع انتخابگری را
+        می‌شود در گروه آورد، حتی مخلوطی از تگ و کلاس و آی‌دی:
+        <code>h1, .title, #main { ... }</code>
+    </p>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch05-016">ویرگول را فراموش نکنید</span>
+        <p data-t="ch05-017">
+            <code>h1, h2</code> با <code>h1 h2</code> دو چیز کاملاً متفاوت‌اند.
+            اولی یعنی «h1 و h2»، دومی یعنی «هر h2 که داخل یک h1 باشد».
+            فراموش کردن یک ویرگول، رایج‌ترین دلیل «چرا استایلم اعمال نمی‌شود» است.
+        </p>
+    </div>
+
+    <h2 id="s2" data-t="ch05-018">۲. انتخابگر فرزندی</h2>
+
+    <p data-t="ch05-019">این انتخابگر می‌گوید «تنها عنصرهایی که داخل فلان عنصر هستند». فاصله بین دو نام، همین معنی را می‌دهد.</p>
+
+    <pre class="code"><code>/* فقط پاراگراف‌هایی که داخل جعبه معرفی هستند */
+.intro p {
+    color: #555555;
+    font-size: 18px;
+}
+
+/* فقط لینک‌هایی که داخل منو هستند */
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+
+/* فقط موردهای فهرستی که داخل پاورقی هستند */
+.footer li {
+    color: gray;
+}</code></pre>
+    <p class="code-caption" data-t="ch05-020">انتخابگر فرزندی: نمونه 02-descendant-selector</p>
+
+    <h3 data-t="ch05-021">شرح مثال</h3>
+
+    <p data-t="ch05-022">فرض کنید صفحه شما بیست لینک دارد اما تنها می‌خواهید لینک‌های منو سفید باشند. اگر بنویسید <code>a { color: white; }</code> همه لینک‌ها سفید می‌شوند و لینک‌های وسط متن ناخوانا. با <code>.menu a</code> تنها لینک‌های داخل منو را هدف می‌گیریم.</p>
+
+    <p data-t="ch05-023">این انتخابگر تا هر عمقی کار می‌کند. اگر لینک داخل یک <code>li</code> و آن هم داخل یک <code>ul</code> و آن هم داخل <code>menu.</code> باشد، بار دیگر <code>.menu a</code> پیدایش می‌کند.</p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch05-024">چرا این انتخابگر مهم است</span>
+        <p data-t="ch05-025">
+            بدون آن، مجبور بودید به تک‌تک عنصرها کلاس بدهید.
+            با آن، به والد یک کلاس می‌دهید و همه فرزندانش را کنترل می‌کنید.
+            این یعنی HTML تمیزتر و CSS کوتاه‌تر.
+        </p>
+    </div>
+
+    <h2 id="s3" data-t="ch05-026">۳. انتخابگر سراسری</h2>
+
+    <pre class="code"><code>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}</code></pre>
+    <p class="code-caption" data-t="ch05-027">انتخابگر سراسری: نمونه 03-universal-selector</p>
+
+    <h3 data-t="ch05-028">شرح مثال</h3>
+
+    <p data-t="ch05-029">
+        علامت ستاره یعنی «هر عنصری در صفحه، بدون استثنا».
+        این همان کدی است که در فصل چهارم معرفی شد و از این پس
+        در ابتدای هر فایل CSS می‌نویسیمش.
+    </p>
+
+    <p data-t="ch05-030">دلیل هر خط:</p>
+
+    <ul>
+        <li data-t="ch05-031">
+            <code>margin: 0</code> و <code>padding: 0</code> فاصله‌های پیش‌فرض
+            مرورگر را پاک می‌کنند. مرورگرها خودشان به عنوان‌ها و پاراگراف‌ها
+            فاصله می‌دهند و این فاصله در مرورگرهای مختلف کمی فرق دارد.
+            با صفر کردن، از یک نقطه شروع یکسان و قابل پیش‌بینی آغاز می‌کنیم.
+        </li>
+        <li data-t="ch05-032">
+            <code>box-sizing: border-box</code> همان راه‌حل فصل قبل.
+        </li>
+        <li data-t="ch05-033">
+            <code>font-family</code> قلم را برای کل صفحه یکسان می‌کند
+            و در فصل بعد کامل توضیح داده می‌شود.
+        </li>
+    </ul>
+
+    <div class="warn">
+        <span class="box-title" data-t="ch05-034">از ستاره کم استفاده کنید</span>
+        <p data-t="ch05-035">انتخابگر سراسری روی هزاران عنصر اعمال می‌شود و اگر بسیار از آن استفاده کنید، مرورگر کند می‌شود. معمولاً تنها یک بار در ابتدای فایل و برای همین سه چهار خط از آن استفاده می‌کنیم.</p>
+    </div>
+
+    <h2 id="s4" data-t="ch05-036">۴. شبه‌کلاس hover</h2>
+
+    <p data-t="ch05-037">تا اینجا استایل‌ها ثابت بودند. حالا اولین استایل «واکنشی» را می‌بینیم: استایلی که تنها وقتی موس روی عنصر می‌رود اعمال می‌شود.</p>
+
+    <pre class="code"><code>.btn {
+    background-color: #2f4f4f;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #ff6347;
+}
+
+.card:hover {
+    border-color: #ff6347;
+}
+
+a:hover {
+    color: #ff6347;
+}</code></pre>
+    <p class="code-caption" data-t="ch05-038">شبه‌کلاس hover: نمونه 04-pseudo-class-hover</p>
+
+    <h3 data-t="ch05-039">شرح مثال</h3>
+
+    <p data-t="ch05-040"><code>hover:</code> با دو نقطه به انتخابگر می‌چسبد و یعنی «در حالتی که موس روی این عنصر است». به این نوع انتخابگر <strong>شبه‌کلاس</strong> می‌گویند، چون مانند کلاس عمل می‌کند اما ما آن را در HTML ننوشته‌ایم؛ مرورگر خودش بر اساس وضعیت کاربر آن را اعمال و بعد برمی‌دارد.</p>
+
+    <p data-t="ch05-041">دقت کنید که در قانون <code>hover:</code> تنها چیزی را می‌نویسیم که می‌خواهیم <strong>تغییر</strong> کند. بقیه ویژگی‌ها از قانون اصلی سر جایشان می‌مانند. اینجا تنها رنگ پس‌زمینه عوض می‌شود و padding و گردی گوشه دست‌نخورده باقی می‌مانند.</p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch05-042">چرا hover مهم است</span>
+        <p data-t="ch05-043">
+            وقتی موس روی چیزی می‌رود و آن چیز واکنش نشان می‌دهد،
+            کاربر می‌فهمد که «این قابل کلیک است». یک دکمه بدون
+            <code>hover:</code> شبیه یک تصویر بی‌جان است.
+            در فصل هشتم یاد می‌گیریم این تغییر را نرم و تدریجی هم بکنیم.
+        </p>
+    </div>
+
+    <div class="note">
+        <span class="box-title" data-t="ch05-044">روی موبایل</span>
+        <p data-t="ch05-045">گوشی موس ندارد، پس <code>hover:</code> روی آن عملاً کار نمی‌کند. هیچ‌وقت اطلاعات مهم را تنها با hover نشان ندهید، چون کاربر موبایل هرگز آن را نخواهد دید.</p>
+    </div>
+
+    <h2 id="s5" data-t="ch05-046">۵. تصویر پس‌زمینه</h2>
+
+    <pre class="code"><code>body {
+    background-image: url('images/pattern.png');
+}
+
+.hero {
+    height: 400px;
+    background-image: url('images/school.jpg');
+}</code></pre>
+    <p class="code-caption" data-t="ch05-047">تصویر پس‌زمینه: نمونه 05-background-image</p>
+
+    <h3 data-t="ch05-048">شرح مثال</h3>
+
+    <p data-t="ch05-049">
+        مسیر تصویر داخل <code>url()</code> و بین گیومه نوشته می‌شود.
+        قوانین مسیر دقیقاً همان‌هایی است که در فصل دوم دیدیم،
+        با یک تفاوت مهم: مسیر نسبت به محل <strong>فایل CSS</strong>
+        محاسبه می‌شود، نه فایل HTML. اگر فایل CSS شما در پوشه دیگری باشد،
+        باید مسیر را از آنجا حساب کنید.
+    </p>
+
+    <h3 data-t="ch05-050">تفاوت با تگ img</h3>
+
+    <table>
+        <thead>
+            <tr><th></th><th><code>&lt;img&gt;</code></th><th><code>background-image</code></th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-t="ch05-051">کجا نوشته می‌شود</td>
+                <td>HTML</td>
+                <td>CSS</td>
+            </tr>
+            <tr>
+                <td data-t="ch05-052">چه زمانی استفاده کنیم</td>
+                <td data-t="ch05-053">تصویر بخشی از محتواست</td>
+                <td data-t="ch05-054">تصویر تنها تزیین است</td>
+            </tr>
+            <tr>
+                <td data-t="ch05-055">نمونه</td>
+                <td data-t="ch05-056">عکس یک محصول، عکس پروفایل</td>
+                <td data-t="ch05-057">پس‌زمینه سربرگ، بافت تزیینی</td>
+            </tr>
+            <tr>
+                <td data-t="ch05-058">متن جایگزین دارد</td>
+                <td data-t="ch05-059">بله، با <code>alt</code></td>
+                <td data-t="ch05-060">خیر</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch05-061">
+        سؤال ساده برای تصمیم‌گیری: اگر این تصویر حذف شود، آیا معنی صفحه ناقص می‌شود؟
+        اگر بله، از <code>img</code> استفاده کنید. اگر نه، پس‌زمینه بهتر است.
+    </p>
+
+    <h2 id="s6" data-t="ch05-062">۶. تنظیمات تصویر پس‌زمینه</h2>
+
+    <p data-t="ch05-063">
+        تصویر پس‌زمینه به تنهایی معمولاً نتیجه خوبی نمی‌دهد.
+        اگر تصویر کوچک باشد تکرار می‌شود و اگر بزرگ باشد بریده می‌شود.
+        سه ویژگی این را کنترل می‌کنند.
+    </p>
+
+    <pre class="code"><code>.hero {
+    height: 400px;
+    background-image: url('images/school.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.pattern {
+    background-image: url('images/dot.png');
+    background-repeat: repeat;
+}
+
+.corner-logo {
+    background-image: url('images/logo.png');
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 80px;
+}</code></pre>
+    <p class="code-caption" data-t="ch05-064">تنظیمات پس‌زمینه: نمونه 06-background-position-size-repeat</p>
+
+    <h3 data-t="ch05-065">شرح مثال</h3>
+
+    <p data-t="ch05-066"><strong>background-repeat</strong> تکرار تصویر را کنترل می‌کند:</p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch05-067">مقدار</th><th data-t="ch05-068">نتیجه</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>repeat</code></td><td data-t="ch05-069">پیش‌فرض. تصویر مانند کاشی در هر دو جهت تکرار می‌شود.</td></tr>
+            <tr><td><code>no-repeat</code></td><td data-t="ch05-070">تنها یک بار نمایش داده می‌شود.</td></tr>
+            <tr><td><code>repeat-x</code></td><td data-t="ch05-071">تنها به صورت افقی تکرار می‌شود.</td></tr>
+            <tr><td><code>repeat-y</code></td><td data-t="ch05-072">تنها به صورت عمودی تکرار می‌شود.</td></tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch05-073"><strong>background-size</strong> اندازه تصویر را تعیین می‌کند:</p>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch05-074">مقدار</th><th data-t="ch05-075">نتیجه</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>cover</code></td>
+                <td data-t="ch05-076">تصویر کل جعبه را پر می‌کند. نسبت تصویر حفظ می‌شود اما ممکن است لبه‌هایش بریده شود. پرکاربردترین حالت.</td>
+            </tr>
+            <tr>
+                <td><code>contain</code></td>
+                <td data-t="ch05-077">کل تصویر دیده می‌شود، اما ممکن است بخشی از جعبه خالی بماند.</td>
+            </tr>
+            <tr>
+                <td><code>100px 50px</code></td>
+                <td data-t="ch05-078">اندازه دقیق و دستی.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-t="ch05-079"><strong>background-position</strong> می‌گوید کدام قسمت تصویر دیده شود. مقدارهای رایج: <code>center</code>، <code>top</code>، <code>bottom</code> یا ترکیبی مانند <code>top left</code>. وقتی از <code>cover</code> استفاده می‌کنید، <code>center</code> معمولاً بهترین انتخاب است، چون مهم‌ترین بخش هر عکسی معمولاً وسطش است.</p>
+
+    <div class="tip">
+        <span class="box-title" data-t="ch05-080">ترکیب طلایی</span>
+        <p data-t="ch05-081">
+            برای هر سربرگ بزرگ با عکس، این سه خط را با هم بنویسید.
+            این ترکیب باعث می‌شود عکس در هر اندازه صفحه‌ای درست و بدون کشیدگی دیده شود.
+        </p>
+    </div>
+
+    <pre class="code"><code>background-size: cover;
+background-position: center;
+background-repeat: no-repeat;</code></pre>
+
+    <h2 id="s7" data-t="ch05-082">۷. نمونه نهایی فصل</h2>
+
+    <pre class="code"><code>&lt;body&gt;
+    &lt;div class="hero"&gt;
+        &lt;h1&gt;مؤسسه فنی و آموزشی کادوس&lt;/h1&gt;
+        &lt;p&gt;آموزش مهارت‌های واقعی بازار کار&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class="menu"&gt;
+        &lt;a href="#"&gt;خانه&lt;/a&gt;
+        &lt;a href="#"&gt;دوره‌ها&lt;/a&gt;
+        &lt;a href="#"&gt;تماس&lt;/a&gt;
+    &lt;/div&gt;
+
+    &lt;div class="content"&gt;
+        &lt;h2&gt;درباره ما&lt;/h2&gt;
+        &lt;p&gt;ما از سال ۱۳۹۰ در حال آموزش هستیم.&lt;/p&gt;
+        &lt;a href="#" class="btn"&gt;مشاهده دوره‌ها&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+
+    <pre class="code"><code>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+.hero {
+    height: 350px;
+    background-image: url('images/campus.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 120px 40px;
+    text-align: center;
+}
+
+.menu {
+    background-color: #2f4f4f;
+    padding: 15px;
+    text-align: center;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 18px;
+}
+
+.menu a:hover {
+    color: #ff6347;
+}
+
+.content {
+    padding: 40px;
+}
+
+h1, h2 {
+    margin-bottom: 15px;
+}
+
+.content h2 {
+    color: #2f4f4f;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #2f4f4f;
+    color: white;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: #ff6347;
+}</code></pre>
+    <p class="code-caption" data-t="ch05-083">نمونه نهایی فصل: نمونه 07-final-example</p>
+
+    <h3 data-t="ch05-084">شرح مثال</h3>
+
+    <p data-t="ch05-085">هر چهار انتخابگر تازه این فصل در این کد استفاده شده‌اند:</p>
+
+    <ul>
+        <li data-t="ch05-086">
+            <strong>سراسری:</strong> قانون ستاره در بالای فایل، پایه کار را یکدست می‌کند.
+        </li>
+        <li data-t="ch05-087">
+            <strong>گروهی:</strong> <code>h1, h2</code> به هر دو عنوان با یک قانون
+            فاصله پایین می‌دهد.
+        </li>
+        <li data-t="ch05-088"><strong>فرزندی:</strong> <code>.menu a</code> تنها لینک‌های منو را سفید می‌کند و <code>.content h2</code> تنها عنوان داخل محتوا را رنگ می‌دهد. دقت کنید لینک <code>btn.</code> که داخل محتواست، رنگ سفید منو را نمی‌گیرد.</li>
+        <li data-t="ch05-089">
+            <strong>hover:</strong> هم روی لینک‌های منو و هم روی دکمه،
+            تا کاربر بفهمد این‌ها قابل کلیک هستند.
+        </li>
+    </ul>
+
+    <p data-t="ch05-090">در بخش <code>hero.</code> هم سه تنظیم پس‌زمینه را با هم می‌بینید. <code>padding: 120px 40px</code> باعث می‌شود متن در ارتفاع سربرگ پایین‌تر بیاید و وسط‌تر به نظر برسد. در فصل هفتم روش بسیار بهتری برای وسط‌چین کردن عمودی یاد می‌گیریم.</p>
+
+    <p data-t="ch05-091">یک نکته تازه هم اینجا هست: <code>display: inline-block</code> روی دکمه. چون <code>a</code> یک عنصر درون‌خطی است، padding عمودی روی آن درست عمل نمی‌کند. این خط رفتارش را عوض می‌کند تا مانند یک جعبه واقعی رفتار کند. درباره <code>display</code> در فصل ششم و هفتم بیشتر می‌خوانیم.</p>
+
+    <div class="folder-ref">
+        <span class="box-title" data-t="ch05-092">فایل‌های تمرینی این فصل</span>
+        <p data-t="ch05-093">
+            پوشه <code>05-selectors-and-background</code> شامل نمونه‌های
+            <code>01-group-selector</code> تا <code>07-final-example</code>.
+        </p>
+    </div>
+
+    <h2 data-t="ch05-094">خلاصه فصل</h2>
+
+    <table>
+        <thead>
+            <tr><th data-t="ch05-095">انتخابگر یا ویژگی</th><th data-t="ch05-096">معنی</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>h1, h2, h3</code></td><td data-t="ch05-097">گروهی: هر سه</td></tr>
+            <tr><td><code>.menu a</code></td><td data-t="ch05-098">فرزندی: لینک‌های داخل منو</td></tr>
+            <tr><td><code>*</code></td><td data-t="ch05-099">سراسری: همه عنصرها</td></tr>
+            <tr><td><code>a:hover</code></td><td data-t="ch05-100">وقتی موس روی لینک است</td></tr>
+            <tr><td><code>background-image</code></td><td data-t="ch05-101">تصویر پس‌زمینه</td></tr>
+            <tr><td><code>background-size: cover</code></td><td data-t="ch05-102">پر کردن کامل جعبه</td></tr>
+            <tr><td><code>background-position: center</code></td><td data-t="ch05-103">نمایش مرکز تصویر</td></tr>
+            <tr><td><code>background-repeat: no-repeat</code></td><td data-t="ch05-104">بدون تکرار</td></tr>
+        </tbody>
+    </table>
+
+    <div class="exercise">
+        <h3 data-t="ch05-105">تمرین‌های فصل پنج</h3>
+        <ol>
+            <li data-t="ch05-106">یک منوی افقی با پنج لینک بسازید که با رفتن موس روی هر کدام، رنگش عوض شود.</li>
+            <li data-t="ch05-107">یک سربرگ بزرگ با تصویر پس‌زمینه بسازید و هر سه تنظیم پس‌زمینه را روی آن اعمال کنید.</li>
+            <li data-t="ch05-108">یک بار <code>background-size</code> را از <code>cover</code> به <code>contain</code> عوض کنید و تفاوت را ببینید.</li>
+            <li data-t="ch05-109">با انتخابگر گروهی، هر شش سطح عنوان را با یک قانون هم‌رنگ کنید.</li>
+            <li data-t="ch05-110">در صفحه‌ای که دو گروه لینک دارد، با انتخابگر فرزندی تنها یکی از گروه‌ها را استایل بدهید.</li>
+        </ol>
+    </div>
+
+    <div class="pager">
+        <a href="chapter-04.html">فصل قبل: مدل جعبه‌ای</a>
+        <a href="chapter-06.html">فصل بعد: متن‌آرایی و تگ‌های معنایی</a>
+    </div>
+
+</main>
+
+</body>
+</html>
