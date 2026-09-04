@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>transform - جابه‌جایی، بزرگ‌نمایی و چرخش</h1>
+    <p>در جلسه ۸ با transition آشنا شدیم. حالا یاد می‌گیریم چه چیزی را حرکت بدهیم.</p>
+
+    <h2>حالت ثابت (بدون hover)</h2>
+    <div class="boxes">
+        <div class="box t-translate">translate</div>
+        <div class="box t-scale">scale</div>
+        <div class="box t-rotate">rotate</div>
+    </div>
+
+    <h2>ترکیب transform با transition (موس را ببرید روی کارت‌ها)</h2>
+    <div class="cards">
+        <div class="card up">
+            <h3>بالا آمدن</h3>
+            <p>translateY(-10px)</p>
+        </div>
+        <div class="card zoom">
+            <h3>بزرگ شدن</h3>
+            <p>scale(1.08)</p>
+        </div>
+        <div class="card tilt">
+            <h3>کج شدن</h3>
+            <p>rotate(-3deg)</p>
+        </div>
+        <div class="card combo">
+            <h3>ترکیبی</h3>
+            <p>بالا آمدن + بزرگ شدن</p>
+        </div>
+    </div>
+
+    <h2>بزرگ‌نمایی عکس داخل قاب</h2>
+    <div class="photo">
+        <img src="images/photo.jpg" alt="کلاس درس">
+    </div>
+
+</body>
+</html>

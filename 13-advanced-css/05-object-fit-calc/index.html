@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object-fit و calc</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>عکس‌های یک‌اندازه و محاسبه با calc</h1>
+
+    <h2>۱. مشکل: عکس‌ها اندازه‌های مختلف دارند</h2>
+    <div class="grid">
+        <div class="card">
+            <img class="bad" src="images/wide.jpg" alt="عکس افقی">
+            <p>عکس افقی</p>
+        </div>
+        <div class="card">
+            <img class="bad" src="images/tall.jpg" alt="عکس عمودی">
+            <p>عکس عمودی</p>
+        </div>
+        <div class="card">
+            <img class="bad" src="images/square.jpg" alt="عکس مربع">
+            <p>عکس مربع</p>
+        </div>
+    </div>
+
+    <h2>۲. راه‌حل: object-fit: cover</h2>
+    <p>ارتفاع ثابت می‌دهیم و با cover عکس بدون کِش آمدن، قاب را پر می‌کند.</p>
+    <div class="grid">
+        <div class="card">
+            <img class="good" src="images/wide.jpg" alt="عکس افقی">
+            <p>عکس افقی</p>
+        </div>
+        <div class="card">
+            <img class="good" src="images/tall.jpg" alt="عکس عمودی">
+            <p>عکس عمودی</p>
+        </div>
+        <div class="card">
+            <img class="good" src="images/square.jpg" alt="عکس مربع">
+            <p>عکس مربع</p>
+        </div>
+    </div>
+
+    <h2>۳. مقایسه cover و contain</h2>
+    <div class="compare">
+        <div>
+            <img class="fit-cover" src="images/tall.jpg" alt="cover">
+            <p>cover: قاب را پر می‌کند (اضافه‌اش بریده می‌شود)</p>
+        </div>
+        <div>
+            <img class="fit-contain" src="images/tall.jpg" alt="contain">
+            <p>contain: کل عکس دیده می‌شود (کنارش خالی می‌ماند)</p>
+        </div>
+    </div>
+
+    <h2>۴. calc: محاسبه در CSS</h2>
+    <div class="calc-demo">
+        <div class="calc-box">عرض: calc(100% - 100px)</div>
+        <div class="calc-box2">ارتفاع: calc(100vh - 500px)</div>
+    </div>
+
+    <h2>۵. کاربرد واقعی calc: عکس تمام‌عرض داخل کارت</h2>
+    <div class="grid">
+        <div class="card">
+            <img class="full-bleed" src="images/wide.jpg" alt="نمونه">
+            <h3>عکس چسبیده به لبه کارت</h3>
+            <p>با margin منفی و calc، عکس تا لبه کارت کشیده می‌شود.</p>
+        </div>
+    </div>
+
+</body>
+</html>

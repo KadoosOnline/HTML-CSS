@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شبه‌کلاس‌های بیشتر</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>شبه‌کلاس‌های کاربردی</h1>
+    <p>در جلسه ۵ با hover: آشنا شدیم. چند شبه‌کلاس مفید دیگر هم وجود دارد.</p>
+
+    <h2>۱. اولین و آخرین عنصر</h2>
+    <ul class="menu">
+        <li>خانه</li>
+        <li>درباره ما</li>
+        <li>رشته‌ها</li>
+        <li>تماس با ما</li>
+    </ul>
+    <p class="hint">اولی رنگ اصلی گرفته و آخری خط جداکننده ندارد.</p>
+
+    <h2>۲. یک‌درمیان کردن سطرهای جدول با nth-child</h2>
+    <table>
+        <tr>
+            <th>ردیف</th>
+            <th>درس</th>
+            <th>واحد</th>
+        </tr>
+        <tr><td>۱</td><td>ریاضی</td><td>۴</td></tr>
+        <tr><td>۲</td><td>فیزیک</td><td>۳</td></tr>
+        <tr><td>۳</td><td>شیمی</td><td>۳</td></tr>
+        <tr><td>۴</td><td>ادبیات</td><td>۲</td></tr>
+        <tr><td>۵</td><td>زبان</td><td>۲</td></tr>
+    </table>
+    <p class="hint">even یعنی زوج، odd یعنی فرد. عدد هم می‌شود داد: nth-child(3)</p>
+
+    <h2>۳. حالت focus روی فرم</h2>
+    <p>روی کادرها کلیک کنید تا حاشیه‌شان تغییر کند.</p>
+    <form>
+        <label for="name">نام:</label>
+        <input type="text" id="name" placeholder="نام خود را بنویسید">
+
+        <label for="msg">پیام:</label>
+        <textarea id="msg" rows="3" placeholder="پیام شما"></textarea>
+
+        <button type="button" class="btn">ارسال</button>
+    </form>
+    <p class="hint">active: لحظه‌ای است که دکمه فشرده می‌شود. آن را امتحان کنید.</p>
+
+</body>
+</html>

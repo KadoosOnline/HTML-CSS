@@ -1,0 +1,14 @@
+html {
+    direction: rtl;
+}
+
+.spaced-title {
+    font-family: Tahoma, sans-serif;
+    letter-spacing: 10px;
+}
+
+.readable-text {
+    font-family: Tahoma, sans-serif;
+    font-size: 18px;
+    line-height: 2;
+}

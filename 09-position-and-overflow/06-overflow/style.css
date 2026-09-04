@@ -1,0 +1,31 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+p {
+    padding: 10px;
+}
+
+.box {
+    width: 250px;
+    height: 80px;
+    background-color: #eeeeee;
+    border: 2px solid #2f4f4f;
+    padding: 10px;
+    margin: 10px 10px 30px 10px;
+}
+
+.hidden-box {
+    overflow: hidden;
+}
+
+.auto-box {
+    overflow: auto;
+}

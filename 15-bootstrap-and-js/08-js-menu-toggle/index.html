@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="منوی موبایل با دکمه همبرگری - همان چیزی که در جلسه چهاردهم با CSS تنها ممکن نبود">
+    <title>منوی موبایل</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ========== سربرگ سایت ========== -->
+<header class="site-header">
+    <div class="logo">🎓 دبیرستان دانش</div>
+
+    <!-- این دکمه فقط روی موبایل دیده می‌شود -->
+    <button class="menu-btn" id="menu-btn">☰</button>
+
+    <nav class="main-nav" id="main-nav">
+        <a href="#">خانه</a>
+        <a href="#">درباره ما</a>
+        <a href="#">رشته‌ها</a>
+        <a href="#">دبیران</a>
+        <a href="#">تماس</a>
+    </nav>
+</header>
+
+<div class="page">
+
+    <div class="note">
+        جلسه پانزدهم جزو سرفصل درس نیست.
+    </div>
+
+    <h1>منویی که در جلسه ۱۴ نتوانستیم بسازیم</h1>
+
+    <p>
+        در سایت جلسه چهاردهم، منو روی موبایل مجبور بود همیشه باز بماند و
+        چند خط از صفحه را بگیرد. دلیلش این بود که CSS نمی‌تواند یادش بماند که
+        کاربر روی دکمه‌ای کلیک کرده است. حالا با سه خط جاوااسکریپت حلش می‌کنیم.
+    </p>
+
+    <div class="tip">
+        <strong>امتحان کنید:</strong> پنجره مرورگر را باریک کنید تا کمتر از ۷۶۸ پیکسل شود
+        (یا <kbd>F12</kbd> بزنید و حالت موبایل را روشن کنید).
+        دکمه <strong>☰</strong> بالای صفحه ظاهر می‌شود؛ روی آن کلیک کنید.
+    </div>
+
+    <h2>قسمت HTML</h2>
+    <pre class="code">&lt;button class="menu-btn" id="menu-btn"&gt;☰&lt;/button&gt;
+
+&lt;nav class="main-nav" id="main-nav"&gt;
+    &lt;a href="#"&gt;خانه&lt;/a&gt;
+    ...
+&lt;/nav&gt;</pre>
+
+    <h2>قسمت CSS</h2>
+    <p>روی موبایل، منو را پنهان می‌کنیم و یک کلاس آماده به نام <code>open</code> می‌سازیم:</p>
+    <pre class="code">@media (max-width: 768px) {
+    .menu-btn { display: block; }   /* دکمه ظاهر شود */
+    .main-nav { display: none; }    /* منو پنهان شود */
+    .main-nav.open { display: flex; } /* مگر اینکه کلاس open داشته باشد */
+}</pre>
+
+    <h2>قسمت جاوااسکریپت: فقط ۳ خط</h2>
+    <pre class="code">let btn  = document.getElementById("menu-btn");
+let menu = document.getElementById("main-nav");
+
+btn.onclick = function () {
+    menu.classList.toggle("open");
+};</pre>
+
+    <div class="tip">
+        <strong>دقت کنید تقسیم کار چطور است:</strong>
+        تمام ظاهر منو (رنگ، فاصله، پنهان شدن، باز شدن) در CSS نوشته شده است.
+        جاوااسکریپت فقط یک کار می‌کند: کلاس <code>open</code> را می‌گذارد یا برمی‌دارد.
+        این روش تمیزترین راه کار کردن با این دو زبان است.
+    </div>
+
+    <h2>چند خط دیگر برای تجربه بهتر</h2>
+    <p>
+        در فایل <code>script.js</code> این صفحه، دو چیز کوچک دیگر هم اضافه شده است:
+        بستن منو بعد از کلیک روی هر لینک، و عوض شدن شکل دکمه از ☰ به ✕ وقتی منو باز است.
+    </p>
+
+    <p class="filler">
+        متن نمونه برای اینکه صفحه کمی بلند شود و بشود اثر منو را بهتر دید.
+        دبیرستان دانش از سال ۱۳۷۵ فعالیت می‌کند و در سه رشته ریاضی و فیزیک،
+        علوم تجربی و علوم انسانی دانش‌آموز می‌پذیرد.
+    </p>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

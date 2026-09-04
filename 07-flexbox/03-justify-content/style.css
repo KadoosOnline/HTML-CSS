@@ -1,0 +1,42 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+p {
+    padding: 10px;
+}
+
+.container {
+    display: flex;
+    background-color: #eeeeee;
+    margin-bottom: 20px;
+}
+
+.center {
+    justify-content: center;
+}
+
+.between {
+    justify-content: space-between;
+}
+
+.around {
+    justify-content: space-around;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: #2f4f4f;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    margin: 10px;
+}

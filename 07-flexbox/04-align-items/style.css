@@ -1,0 +1,50 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+p {
+    padding: 10px;
+}
+
+.container {
+    display: flex;
+    background-color: #eeeeee;
+    height: 180px;
+    margin-bottom: 20px;
+}
+
+.start {
+    align-items: flex-start;
+}
+
+.center {
+    align-items: center;
+}
+
+.end {
+    align-items: flex-end;
+}
+
+.box {
+    width: 100px;
+    background-color: #2f4f4f;
+    color: white;
+    text-align: center;
+    margin: 10px;
+    padding-top: 10px;
+}
+
+.short {
+    height: 60px;
+}
+
+.tall {
+    height: 130px;
+}

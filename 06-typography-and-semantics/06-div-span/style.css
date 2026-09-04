@@ -1,0 +1,14 @@
+html {
+    direction: rtl;
+}
+
+.box {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.highlight {
+    color: orangered;
+    font-weight: bold;
+}

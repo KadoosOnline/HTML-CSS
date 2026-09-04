@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گرادیانت و رنگ شفاف</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>گرادیانت و رنگ شفاف</h1>
+
+    <h2>۱. رنگ با شفافیت (rgba)</h2>
+    <div class="rgba-demo">
+        <div class="layer o-100">۱۰۰٪</div>
+        <div class="layer o-60">۶۰٪</div>
+        <div class="layer o-30">۳۰٪</div>
+    </div>
+
+    <h2>۲. گرادیانت خطی (linear-gradient)</h2>
+    <div class="boxes">
+        <div class="box grad-1">از بالا به پایین</div>
+        <div class="box grad-2">مورب</div>
+        <div class="box grad-3">سه رنگ</div>
+    </div>
+
+    <h2>۳. مهم‌ترین کاربرد: تیره کردن عکس پس‌زمینه</h2>
+    <div class="hero-plain">
+        <h3>بدون لایه تیره - متن خوانا نیست</h3>
+    </div>
+    <div class="hero-overlay">
+        <h3>با لایه تیره روی عکس - متن خوانا است</h3>
+    </div>
+
+    <h2>۴. تفاوت opacity با rgba</h2>
+    <p>opacity کل عنصر (همراه متن داخلش) را کم‌رنگ می‌کند، اما rgba فقط رنگ را شفاف می‌کند.</p>
+    <div class="boxes">
+        <div class="box op-box">opacity: 0.4</div>
+        <div class="box rgba-box">rgba با شفافیت 0.4</div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+html {
+    direction: rtl;
+    font-size: 16px;
+}
+
+.percent-box {
+    width: 50%;
+    background-color: #cce0dd;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.viewport-box {
+    width: 50vw;
+    background-color: #ffe0b2;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.rem-text {
+    font-size: 1.5rem;
+    padding: 10px;
+}
+
+.em-text {
+    font-size: 1.5em;
+    padding: 10px;
+}

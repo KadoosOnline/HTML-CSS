@@ -1,0 +1,12 @@
+html {
+    direction: rtl;
+}
+
+.box {
+    width: 300px;
+    height: 100px;
+    background-color: #cce0dd;
+    border: 3px solid #2f4f4f;
+    padding: 20px;
+    margin: 20px;
+}

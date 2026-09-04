@@ -1,0 +1,128 @@
+:root {
+    --primary: #2f4f4f;
+    --accent: #ff6347;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+html {
+    direction: rtl;
+}
+
+body {
+    padding: 30px;
+    line-height: 1.8;
+    color: #333;
+}
+
+h1 {
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin: 30px 0 12px;
+}
+
+/* ---------- ۱. rgba ---------- */
+/* rgba(قرمز, سبز, آبی, میزان کدر بودن از 0 تا 1) */
+.rgba-demo {
+    display: flex;
+    gap: 20px;
+}
+
+.layer {
+    width: 150px;
+    height: 90px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.o-100 { background-color: rgba(47, 79, 79, 1); }
+.o-60  { background-color: rgba(47, 79, 79, 0.6); }
+.o-30  { background-color: rgba(47, 79, 79, 0.3); }
+
+/* ---------- ۲. گرادیانت ---------- */
+.boxes {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.box {
+    width: 180px;
+    height: 100px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* حالت ساده: از رنگ اول به رنگ دوم، از بالا به پایین */
+.grad-1 {
+    background-image: linear-gradient(#2f4f4f, #ff6347);
+}
+
+/* می‌توان جهت را مشخص کرد: to left / to right / 45deg */
+.grad-2 {
+    background-image: linear-gradient(45deg, #2f4f4f, #4fa3a3);
+}
+
+/* بیشتر از دو رنگ هم می‌شود داد */
+.grad-3 {
+    background-image: linear-gradient(to left, #2f4f4f, #ff6347, #ffb347);
+}
+
+/* ---------- ۳. لایه تیره روی عکس ---------- */
+.hero-plain,
+.hero-overlay {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.hero-plain {
+    background-image: url("images/hero.jpg");
+}
+
+/* اول گرادیانت نوشته می‌شود، بعد عکس. گرادیانت روی عکس می‌نشیند. */
+.hero-overlay {
+    background-image: linear-gradient(rgba(20, 40, 40, 0.65), rgba(20, 40, 40, 0.65)),
+                      url("images/hero.jpg");
+}
+
+.hero-plain h3,
+.hero-overlay h3 {
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* ---------- ۴. opacity در برابر rgba ---------- */
+.op-box {
+    background-color: var(--primary);
+    opacity: 0.4;   /* متن هم کم‌رنگ می‌شود */
+}
+
+.rgba-box {
+    background-color: rgba(47, 79, 79, 0.4);   /* فقط پس‌زمینه شفاف می‌شود */
+    color: #333;
+}

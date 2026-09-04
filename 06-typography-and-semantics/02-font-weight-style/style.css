@@ -1,0 +1,18 @@
+html {
+    direction: rtl;
+}
+
+.normal-text {
+    font-family: Tahoma, sans-serif;
+    font-weight: normal;
+}
+
+.bold-text {
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+.italic-text {
+    font-family: Tahoma, sans-serif;
+    font-style: italic;
+}

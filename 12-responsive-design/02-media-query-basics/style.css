@@ -1,0 +1,23 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+body {
+    background-color: #cce0dd;
+    text-align: center;
+    padding: 30px;
+}
+
+/* در صفحه‌های با عرض کمتر از ۶۰۰ پیکسل، رنگ پس‌زمینه تغییر می‌کند */
+@media (max-width: 600px) {
+    body {
+        background-color: #ffe0b2;
+    }
+}

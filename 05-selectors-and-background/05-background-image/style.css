@@ -1,0 +1,13 @@
+html {
+    direction: rtl;
+}
+
+.header {
+    height: 800px;
+    background-image: url("images/matrix.avif");
+}
+
+h1 {
+    text-align: center;
+    color: #fefefe;
+}

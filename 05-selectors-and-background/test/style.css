@@ -1,0 +1,35 @@
+html {
+    direction: rtl;
+}
+
+a {
+    color: blue;
+    font-weight: bolder;
+    font-size: 4em;
+    text-align: center;
+    background-color: aqua;
+    padding: 20px;
+    border: 3px solid blue;
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+a:hover {
+    color: red;
+    background-color: darksalmon;
+    border: 3px solid red;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: blueviolet;
+}
+
+a:active {
+    color: yellow;
+}
+
+a:focus {
+    color: orange;
+    border: 5px solid blue;
+}

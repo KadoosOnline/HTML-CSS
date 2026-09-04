@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="اولین برنامه جاوااسکریپت - وصل کردن فایل script.js و آشنایی با alert و console.log">
+    <title>اولین جاوااسکریپت</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+
+    <div class="note">
+        جلسه پانزدهم جزو سرفصل درس نیست. هدف فقط این است که ببینید ادامه راه چیست.
+    </div>
+
+    <h1>جاوااسکریپت چیست؟</h1>
+
+    <p>
+        تا اینجا دو زبان یاد گرفتیم:
+    </p>
+    <ul>
+        <li><strong>HTML</strong>: چه چیزی در صفحه باشد (متن، عکس، دکمه)</li>
+        <li><strong>CSS</strong>: آن چیزها چه شکلی باشند (رنگ، اندازه، چیدمان)</li>
+    </ul>
+    <p>
+        زبان سوم <strong>جاوااسکریپت</strong> است و کار سومی انجام می‌دهد:
+        <strong>صفحه چه کاری انجام دهد</strong>. یعنی رفتار صفحه.
+    </p>
+
+    <h2>چطور به صفحه وصلش کنیم؟</h2>
+    <p>
+        یک فایل به نام <code>script.js</code> کنار بقیه فایل‌ها می‌سازیم و
+        این خط را <strong>درست قبل از</strong> <code>&lt;/body&gt;</code> می‌نویسیم:
+    </p>
+    <pre class="code">&lt;script src="script.js"&gt;&lt;/script&gt;</pre>
+    <p>
+        چرا آخر صفحه؟ چون مرورگر فایل‌ها را از بالا به پایین می‌خواند.
+        اگر جاوااسکریپت را اول بگذاریم، وقتی اجرا می‌شود هنوز هیچ‌کدام از عنصرهای
+        صفحه ساخته نشده‌اند و برنامه نمی‌تواند آنها را پیدا کند.
+    </p>
+
+    <h2>دستور اول: alert</h2>
+    <p>
+        <code>alert</code> یک پنجره کوچک به کاربر نشان می‌دهد.
+        همین حالا که این صفحه باز شد، یکی از آنها را دیدید.
+    </p>
+    <pre class="code">alert("سلام! به دنیای جاوااسکریپت خوش آمدید");</pre>
+
+    <h2>دستور دوم: console.log</h2>
+    <p>
+        <code>console.log</code> چیزی را در «کنسول» مرورگر می‌نویسد؛
+        جایی که فقط برنامه‌نویس می‌بیند، نه کاربر. برای آزمایش کردن عالی است.
+    </p>
+    <pre class="code">console.log("این پیام فقط برای برنامه‌نویس است");</pre>
+
+    <div class="tip">
+        <strong>کنسول را چطور ببینیم؟</strong>
+        کلید <kbd>F12</kbd> را بزنید و سربرگ <strong>Console</strong> را باز کنید.
+        سه پیامی که فایل <code>script.js</code> نوشته است را آنجا می‌بینید.
+    </div>
+
+    <h2>متغیر: جعبه‌ای برای نگه‌داشتن یک مقدار</h2>
+    <pre class="code">let name = "سارا";
+let age = 16;
+console.log(name);</pre>
+    <p>
+        <code>let</code> یعنی «یک جعبه بساز». اسم جعبه <code>name</code> است و
+        داخلش کلمه «سارا» را گذاشتیم. متن را داخل گیومه می‌گذاریم، ولی عدد را نه.
+    </p>
+
+    <div class="tip">
+        <strong>یادآوری:</strong> در CSS هم متغیر داشتیم (<code>--primary</code> در جلسه ۱۳).
+        ایده‌اش همان است: یک اسم بگذار، بعد هر جا لازم شد از آن اسم استفاده کن.
+    </div>
+
+</div>
+
+<!-- فایل جاوااسکریپت همیشه درست قبل از بستن body -->
+<script src="script.js"></script>
+
+</body>
+</html>

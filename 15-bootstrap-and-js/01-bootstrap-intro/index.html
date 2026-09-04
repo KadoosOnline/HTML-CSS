@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="آشنایی با بوت‌استرپ - افزودن فایل CSS آماده و ساخت دکمه و پیام هشدار بدون نوشتن استایل">
+    <title>آشنایی با بوت‌استرپ</title>
+
+    <!-- ۱) فایل آماده بوت‌استرپ (نسخه راست‌چین) که کنار همین صفحه قرار دارد -->
+    <link rel="stylesheet" href="bootstrap.rtl.min.css">
+
+    <!-- ۲) استایل خودمان همیشه بعد از بوت‌استرپ می‌آید تا بتواند آن را تغییر دهد -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container py-4">
+
+    <div class="alert alert-warning">
+        <strong>توجه:</strong> جلسه پانزدهم جزو سرفصل درس نیست و امتحان نمی‌آید.
+        این جلسه فقط یک نگاه کوتاه به ادامه راه است.
+    </div>
+
+    <h1>بوت‌استرپ (Bootstrap) چیست؟</h1>
+
+    <p>
+        در دوازده جلسه گذشته هر استایلی که خواستیم، خودمان نوشتیم. بوت‌استرپ
+        یک فایل CSS آماده و بسیار بزرگ است که هزاران کلاس از پیش نوشته دارد.
+        کافی است آن فایل را به صفحه وصل کنیم و بعد فقط اسم کلاس‌ها را در HTML بنویسیم.
+    </p>
+
+    <h2>یک خط برای شروع</h2>
+    <p>
+        فایل <code>bootstrap.rtl.min.css</code> را از سایت <code>getbootstrap.com</code>
+        دانلود می‌کنیم و <strong>کنار فایل index.html خودمان</strong> می‌گذاریم؛
+        دقیقاً مثل کاری که با <code>style.css</code> می‌کنیم.
+        بعد فقط دو خط داخل <code>&lt;head&gt;</code> می‌نویسیم:
+    </p>
+    <pre class="code">&lt;link rel="stylesheet" href="bootstrap.rtl.min.css"&gt;
+&lt;link rel="stylesheet" href="style.css"&gt;</pre>
+    <p>
+        دو نکته: اول اینکه نام فایل <strong>bootstrap.rtl.min.css</strong> است؛
+        یعنی نسخه راست‌چین (RTL) که برای فارسی لازم داریم.
+        دوم اینکه <code>style.css</code> خودمان همیشه <strong>بعد از</strong> بوت‌استرپ می‌آید،
+        وگرنه استایل بوت‌استرپ روی استایل ما را می‌پوشاند.
+    </p>
+
+    <h2>مثال ۱: دکمه</h2>
+    <p>بدون یک خط CSS، فقط با نوشتن کلاس:</p>
+
+    <button class="btn btn-primary">دکمه اصلی</button>
+    <button class="btn btn-success">دکمه سبز</button>
+    <button class="btn btn-danger">دکمه قرمز</button>
+    <button class="btn btn-outline-primary">دکمه توخالی</button>
+    <button class="btn btn-primary btn-lg">دکمه بزرگ</button>
+
+    <pre class="code">&lt;button class="btn btn-primary"&gt;دکمه اصلی&lt;/button&gt;</pre>
+
+    <h2>مثال ۲: پیام هشدار</h2>
+
+    <div class="alert alert-success">ثبت‌نام شما با موفقیت انجام شد.</div>
+    <div class="alert alert-danger">رمز عبور اشتباه است.</div>
+    <div class="alert alert-info">مهلت ثبت‌نام تا پایان مهرماه است.</div>
+
+    <pre class="code">&lt;div class="alert alert-success"&gt;ثبت‌نام شما با موفقیت انجام شد.&lt;/div&gt;</pre>
+
+    <h2>مقایسه با کاری که خودمان کردیم</h2>
+    <p>
+        در جلسه چهارم برای ساخت همین دکمه، حدود ده خط CSS نوشتیم:
+        <code>padding</code> و <code>border</code> و <code>border-radius</code> و
+        <code>background-color</code> و <code>:hover</code>.
+        در بوت‌استرپ همه اینها از قبل داخل کلاس <code>btn btn-primary</code> نوشته شده است.
+    </p>
+
+    <div class="alert alert-secondary">
+        <strong>نکته مهم:</strong> بوت‌استرپ جای یادگیری CSS را نمی‌گیرد.
+        چون تا وقتی ندانید <code>padding</code> و <code>flex</code> چه می‌کنند،
+        نمی‌فهمید کلاس‌های بوت‌استرپ چه کاری انجام می‌دهند و نمی‌توانید آنها را تغییر دهید.
+    </div>
+
+    <div class="alert alert-warning">
+        <strong>چرا فایل را دانلود کردیم؟</strong>
+        بعضی سایت‌ها به جای فایل محلی، آدرس اینترنتی بوت‌استرپ را می‌نویسند.
+        ما این کار را نمی‌کنیم، چون آن‌وقت صفحه بدون اینترنت اصلاً درست نمایش داده نمی‌شود.
+        با فایل محلی، همه مثال‌های این پوشه روی کامپیوتر کلاس هم کار می‌کنند.
+    </div>
+
+</div>
+
+</body>
+</html>

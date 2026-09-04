@@ -1,0 +1,33 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+.container {
+    display: flex;
+    gap: 10px;
+    background-color: #eeeeee;
+    padding: 20px;
+}
+
+.box {
+    height: 100px;
+    background-color: #2f4f4f;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+}
+
+.grow-1 {
+    flex-grow: 1;
+}
+
+.grow-2 {
+    flex-grow: 2;
+}

@@ -1,0 +1,44 @@
+html {
+    direction: rtl;
+}
+
+h1 {
+    color: blue;
+    text-align: center;
+}
+
+p {
+    color: green;
+    font-size: 18px;
+}
+
+.note {
+    color: orangered;
+    font-weight: bold;
+}
+
+#intro {
+    background-color: #eeeeee;
+    padding: 10px;
+    text-align: center;
+}
+
+.box {
+    background-color: #ffe0b2;
+    color: black;
+    padding: 10px;
+}
+
+.box2 {
+    background-color: rgb(179, 229, 252);
+    color: black;
+    padding: 10px;
+}
+
+.small {
+    font-size: 12px;
+}
+
+.big {
+    font-size: 28px;
+}

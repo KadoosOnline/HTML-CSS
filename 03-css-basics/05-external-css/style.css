@@ -1,0 +1,18 @@
+h1 {
+    color: blue;
+}
+
+p {
+    color: green;
+    font-size: 18px;
+}
+
+.note {
+    color: orangered;
+    font-weight: bold;
+}
+
+#intro {
+    background-color: #eeeeee;
+    padding: 10px;
+}

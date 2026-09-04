@@ -1,0 +1,39 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+.box {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    padding: 15px;
+    color: white;
+}
+
+.box1 {
+    top: 40px;
+    left: 40px;
+    background-color: #2f4f4f;
+    z-index: 1;
+}
+
+.box2 {
+    top: 80px;
+    left: 90px;
+    background-color: orangered;
+    z-index: 3;
+}
+
+.box3 {
+    top: 120px;
+    left: 140px;
+    background-color: darkgreen;
+    z-index: 2;
+}

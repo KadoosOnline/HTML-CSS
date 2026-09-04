@@ -1,0 +1,26 @@
+/* کل استایل دست‌نویس این صفحه همین چند خط است!
+   در جلسه چهاردهم برای همین صفحه بیش از ۳۰۰ خط CSS نوشتیم. */
+
+body {
+    font-family: Tahoma, sans-serif;
+    line-height: 1.9;
+}
+
+h2 {
+    color: #2f4f4f;
+}
+
+/* هدر بزرگ با عکس و پرده تیره - همان تکنیک جلسه ۱۳/۰۳ */
+.hero {
+    min-height: 60vh;
+    background-image: linear-gradient(rgba(20, 40, 40, 0.65), rgba(20, 40, 40, 0.65)),
+                      url('images/hero-classroom.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* عکس همه کارت‌ها هم‌اندازه */
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}

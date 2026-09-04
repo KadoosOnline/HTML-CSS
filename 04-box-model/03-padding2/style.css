@@ -1,0 +1,18 @@
+html {
+    direction: rtl;
+}
+
+.box {
+    width: 300px;
+    background-color: #cce0dd;
+    border: 3px solid #2f4f4f;
+    
+    /*
+    padding-right: 100px;
+    padding-left: 10px;
+    padding-top: 50px;
+    padding-bottom: 200px;
+    */
+
+    padding: 50px 100px 200px 10px;
+}

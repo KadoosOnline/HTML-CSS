@@ -1,0 +1,30 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    background-color: #eeeeee;
+    padding: 15px;
+}
+
+.box {
+    background-color: #2f4f4f;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+.featured {
+    grid-column: span 2;
+    background-color: orangered;
+}

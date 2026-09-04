@@ -1,0 +1,42 @@
+body {
+    font-family: Tahoma, sans-serif;
+    line-height: 1.9;
+}
+
+h1 {
+    color: #2f4f4f;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #2f4f4f;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+/* جعبه رنگی داخل ستون‌ها فقط برای اینکه ستون‌ها دیده شوند */
+.demo {
+    background-color: #2f4f4f;
+    color: #ffffff;
+    padding: 20px 10px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.code {
+    background-color: #2f4f4f;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    direction: ltr;
+    text-align: left;
+    font-family: monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+}
+
+table {
+    font-size: 0.95rem;
+}

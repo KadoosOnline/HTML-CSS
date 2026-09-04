@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="اجزای آماده بوت‌استرپ - منوی واکنش‌گرا، کارت، پنجره مودال و نوار پیشرفت">
+    <title>اجزای آماده بوت‌استرپ</title>
+    <link rel="stylesheet" href="bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ========== منوی آماده (Navbar) ========== -->
+<!-- روی موبایل خودش جمع می‌شود و دکمه همبرگری نشان می‌دهد -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">🎓 دبیرستان دانش</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <div class="navbar-nav">
+                <a class="nav-link active" href="#">خانه</a>
+                <a class="nav-link" href="#cards">رشته‌ها</a>
+                <a class="nav-link" href="#modal-part">تماس</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container py-4">
+
+    <h1>اجزای آماده بوت‌استرپ</h1>
+    <p>
+        بوت‌استرپ فقط رنگ و فاصله نیست؛ قطعه‌های کامل و آماده هم دارد:
+        منو، کارت، پنجره بازشو، نوار پیشرفت و ده‌ها چیز دیگر.
+    </p>
+
+    <h2>۱) منوی بالای صفحه</h2>
+    <p>
+        همان منوی بالای همین صفحه. پنجره مرورگر را باریک کنید:
+        منو جمع می‌شود و دکمه سه‌خطی ظاهر می‌شود. این همان کاری است که در
+        جلسه چهاردهم با CSS تنها نتوانستیم انجام دهیم.
+    </p>
+    <pre class="code">&lt;nav class="navbar navbar-expand-md navbar-dark bg-dark"&gt; ... &lt;/nav&gt;</pre>
+
+    <h2 id="cards">۲) کارت (Card)</h2>
+    <p>در جلسه چهاردهم کارت رشته‌ها را دستی ساختیم. نسخه آماده‌اش این است:</p>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <img src="images/math-class.jpg" class="card-img-top" alt="کلاس ریاضی">
+                <div class="card-body">
+                    <h5 class="card-title">ریاضی و فیزیک</h5>
+                    <p class="card-text">مناسب علاقه‌مندان به مهندسی و علوم پایه.</p>
+                    <a href="#" class="btn btn-primary">بیشتر بدانید</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <img src="images/science-lab.jpg" class="card-img-top" alt="آزمایشگاه">
+                <div class="card-body">
+                    <h5 class="card-title">علوم تجربی</h5>
+                    <p class="card-text">مسیر پزشکی، داروسازی و زیست‌شناسی.</p>
+                    <a href="#" class="btn btn-primary">بیشتر بدانید</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <img src="images/humanities-library.jpg" class="card-img-top" alt="کتابخانه">
+                <div class="card-body">
+                    <h5 class="card-title">علوم انسانی</h5>
+                    <p class="card-text">حقوق، روان‌شناسی، ادبیات و علوم اجتماعی.</p>
+                    <a href="#" class="btn btn-primary">بیشتر بدانید</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 id="modal-part">۳) پنجره بازشو (Modal)</h2>
+    <p>
+        این یکی بدون جاوااسکریپت اصلاً ممکن نیست. بوت‌استرپ فایل جاوااسکریپتش را
+        هم آماده دارد؛ کافی است آن را ته صفحه اضافه کنیم.
+    </p>
+
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#form-modal">
+        فرم تماس را باز کن
+    </button>
+
+    <div class="modal fade" id="form-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">تماس با ما</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">نام شما</label>
+                    <input type="text" class="form-control mb-3" placeholder="مثلاً سارا احمدی">
+
+                    <label class="form-label">پیام</label>
+                    <textarea class="form-control" rows="3"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">ارسال</button>
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>۴) چند جزء کوچک دیگر</h2>
+
+    <p>نوار پیشرفت:</p>
+    <div class="progress mb-3">
+        <div class="progress-bar" style="width: 75%">۷۵٪</div>
+    </div>
+
+    <p>برچسب و نشان:</p>
+    <span class="badge bg-primary">جدید</span>
+    <span class="badge bg-danger">مهم</span>
+    <span class="badge bg-success">ثبت‌نام باز است</span>
+
+    <p class="mt-3">جدول راه‌راه:</p>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr><th>ردیف</th><th>درس</th><th>ساعت</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>۱</td><td>ریاضی</td><td>۸ تا ۹:۳۰</td></tr>
+            <tr><td>۲</td><td>فیزیک</td><td>۹:۴۵ تا ۱۱:۱۵</td></tr>
+            <tr><td>۳</td><td>ادبیات</td><td>۱۱:۳۰ تا ۱۳</td></tr>
+        </tbody>
+    </table>
+
+    <div class="alert alert-info">
+        <strong>یادتان باشد:</strong> جدول راه‌راه را در جلسه سیزدهم خودمان با
+        <code>:nth-child(odd)</code> ساختیم. اینجا فقط نوشتیم <code>table-striped</code>.
+    </div>
+
+</div>
+
+<!-- فایل جاوااسکریپت بوت‌استرپ - برای منوی موبایل و مودال لازم است -->
+<script src="bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

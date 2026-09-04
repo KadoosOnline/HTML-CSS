@@ -1,0 +1,94 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 80px 1fr 60px;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    min-height: 100vh;
+}
+
+.area-header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    background-color: #2f4f4f;
+    color: white;
+    padding: 0 20px;
+}
+
+.area-sidebar {
+    grid-area: sidebar;
+    background-color: #cce0dd;
+    padding: 20px;
+}
+
+.area-sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.area-sidebar a {
+    color: #2f4f4f;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.area-sidebar a:hover {
+    color: orangered;
+}
+
+.area-main {
+    grid-area: main;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.area-main h2 {
+    color: #2f4f4f;
+    margin-bottom: 15px;
+}
+
+.courses {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.featured {
+    grid-column: span 2;
+    background-color: #ffe0b2;
+}
+
+.area-footer {
+    grid-area: footer;
+    background-color: #eeeeee;
+    text-align: center;
+    padding: 15px;
+}

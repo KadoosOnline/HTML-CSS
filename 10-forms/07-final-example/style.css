@@ -1,0 +1,83 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2f4f4f;
+    color: white;
+    padding: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: orangered;
+}
+
+main {
+    padding: 30px;
+}
+
+h2 {
+    color: #2f4f4f;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 350px;
+}
+
+label {
+    font-weight: bold;
+    color: #2f4f4f;
+}
+
+input, textarea, select {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-family: Tahoma, sans-serif;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #2f4f4f;
+}
+
+.radio-group label,
+.checkbox-group label {
+    font-weight: normal;
+    margin-left: 15px;
+}
+
+button {
+    padding: 10px;
+    background-color: #2f4f4f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: orangered;
+}

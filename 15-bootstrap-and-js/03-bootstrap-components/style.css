@@ -1,0 +1,39 @@
+body {
+    font-family: Tahoma, sans-serif;
+    line-height: 1.9;
+}
+
+h1 {
+    color: #2f4f4f;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #2f4f4f;
+    margin-top: 35px;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+/* عکس کارت‌ها هم‌اندازه شود - همان object-fit جلسه ۱۳ */
+.card-img-top {
+    height: 180px;
+    object-fit: cover;
+}
+
+.code {
+    background-color: #2f4f4f;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    direction: ltr;
+    text-align: left;
+    font-family: monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+}
+
+.badge {
+    margin-left: 6px;
+    font-size: 0.9rem;
+}

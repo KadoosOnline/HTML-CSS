@@ -1,0 +1,24 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+.box {
+    background-color: #2f4f4f;
+    color: white;
+    padding: 20px;
+    margin: 10px;
+}
+
+.moved {
+    position: relative;
+    top: 20px;
+    right: 40px;
+    background-color: orangered;
+}

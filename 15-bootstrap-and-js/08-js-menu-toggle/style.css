@@ -1,0 +1,167 @@
+:root {
+    --primary: #2f4f4f;
+    --primary-dark: #223a3a;
+    --accent: #ff6347;
+    --bg-light: #f5f5f5;
+    --text: #333333;
+    --radius: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text);
+    line-height: 1.9;
+}
+
+/* ---------- سربرگ ---------- */
+.site-header {
+    background-color: var(--primary);
+    color: #ffffff;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.main-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 6px 4px;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: var(--accent);
+}
+
+/* دکمه همبرگری - روی دسکتاپ پنهان است */
+.menu-btn {
+    display: none;
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.6rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* ---------- حالت موبایل ---------- */
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block;          /* دکمه ظاهر شود */
+    }
+
+    .main-nav {
+        display: none;           /* منو پنهان شود */
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    /* فقط وقتی جاوااسکریپت کلاس open را اضافه کند */
+    .main-nav.open {
+        display: flex;
+    }
+
+    .main-nav a {
+        padding: 12px 0;
+        border-top: 1px solid var(--primary-dark);
+    }
+}
+
+/* ---------- محتوای صفحه ---------- */
+.page {
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+code {
+    background-color: var(--bg-light);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--accent);
+    font-family: monospace;
+}
+
+.code {
+    background-color: var(--primary);
+    color: #ffffff;
+    padding: 15px;
+    border-radius: var(--radius);
+    direction: ltr;
+    text-align: left;
+    font-family: monospace;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    overflow-x: auto;
+}
+
+.note {
+    background-color: #fff3cd;
+    border-right: 4px solid #ffc107;
+    padding: 12px 15px;
+    border-radius: var(--radius);
+    margin-bottom: 25px;
+}
+
+.tip {
+    background-color: #e7f3ff;
+    border-right: 4px solid var(--primary);
+    padding: 12px 15px;
+    border-radius: var(--radius);
+    margin: 20px 0;
+}
+
+kbd {
+    background-color: var(--primary);
+    color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.filler {
+    color: #777777;
+}

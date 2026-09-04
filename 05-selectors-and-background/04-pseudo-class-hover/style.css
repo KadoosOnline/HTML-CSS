@@ -1,0 +1,35 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+h1 {
+    color: #2f4f4f;
+    padding: 20px;
+}
+
+.courses li {
+    color: darkgreen;
+    font-weight: bold;
+    padding: 5px 20px;
+}
+
+.courses li:hover {
+    background-color: #cce0dd;
+}
+
+a {
+    color: darkblue;
+    padding: 20px;
+    display: inline-block;
+}
+
+a:hover {
+    color: orangered;
+}

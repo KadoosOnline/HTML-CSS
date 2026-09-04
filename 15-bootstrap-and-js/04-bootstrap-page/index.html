@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="یک صفحه کامل فقط با کلاس‌های بوت‌استرپ - مقایسه با سایت دست‌ساز جلسه چهاردهم">
+    <title>یک صفحه کامل با بوت‌استرپ</title>
+    <link rel="stylesheet" href="bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ========== منو ========== -->
+<nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: #2f4f4f;">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">🎓 دبیرستان دانش</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link active" href="#">خانه</a>
+                <a class="nav-link" href="#programs">رشته‌ها</a>
+                <a class="nav-link" href="#about">درباره ما</a>
+                <a class="nav-link" href="#contact">تماس</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ========== هدر بزرگ (Hero) ========== -->
+<header class="hero text-white text-center d-flex align-items-center">
+    <div class="container">
+        <h1 class="display-5 fw-bold">دبیرستان دانش</h1>
+        <p class="lead">آموزش با کیفیت، در محیطی آرام و پویا</p>
+        <a href="#programs" class="btn btn-warning btn-lg">رشته‌های ما را ببینید</a>
+    </div>
+</header>
+
+<!-- ========== رشته‌ها ========== -->
+<section id="programs" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">رشته‌های تحصیلی</h2>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="images/math-class.jpg" class="card-img-top" alt="کلاس ریاضی">
+                    <div class="card-body">
+                        <h5 class="card-title">ریاضی و فیزیک</h5>
+                        <p class="card-text">برای دانش‌آموزانی که به مهندسی، معماری و علوم پایه علاقه دارند.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="images/science-lab.jpg" class="card-img-top" alt="آزمایشگاه علوم">
+                    <div class="card-body">
+                        <h5 class="card-title">علوم تجربی</h5>
+                        <p class="card-text">مسیر ورود به رشته‌های پزشکی، داروسازی، دامپزشکی و زیست‌شناسی.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="images/humanities-library.jpg" class="card-img-top" alt="کتابخانه">
+                    <div class="card-body">
+                        <h5 class="card-title">علوم انسانی</h5>
+                        <p class="card-text">حقوق، روان‌شناسی، ادبیات، علوم اجتماعی و مدیریت.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== درباره ما ========== -->
+<section id="about" class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-md-6">
+                <img src="images/about-building.jpg" class="img-fluid rounded shadow" alt="ساختمان مدرسه">
+            </div>
+            <div class="col-md-6">
+                <h2>درباره ما</h2>
+                <p>
+                    دبیرستان دانش از سال ۱۳۷۵ فعالیت می‌کند و تا امروز بیش از سه هزار
+                    دانش‌آموز را راهی دانشگاه کرده است.
+                </p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-transparent">آزمایشگاه مجهز فیزیک و شیمی</li>
+                    <li class="list-group-item bg-transparent">کتابخانه با بیش از ۵۰۰۰ جلد کتاب</li>
+                    <li class="list-group-item bg-transparent">کلاس‌های حداکثر ۲۰ نفره</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== تماس ========== -->
+<section id="contact" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">تماس با ما</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">نام و نام خانوادگی</label>
+                        <input type="text" class="form-control" placeholder="مثلاً سارا احمدی">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">ایمیل</label>
+                        <input type="email" class="form-control" placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">پیام شما</label>
+                        <textarea class="form-control" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">ارسال پیام</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== مقایسه با جلسه چهاردهم ========== -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">مقایسه با سایت دست‌ساز جلسه چهاردهم</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <table class="table table-bordered table-striped bg-white">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>موضوع</th>
+                            <th>سایت جلسه ۱۴ (دست‌ساز)</th>
+                            <th>همین صفحه (بوت‌استرپ)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>CSS نوشته‌شده توسط ما</td><td>بیش از ۳۰۰ خط</td><td>حدود ۲۵ خط</td></tr>
+                        <tr><td>زمان ساخت</td><td>چند جلسه</td><td>کمتر از یک ساعت</td></tr>
+                        <tr><td>منوی موبایل</td><td>با CSS تنها ممکن نبود</td><td>آماده است و کار می‌کند</td></tr>
+                        <tr><td>ظاهر اختصاصی</td><td>کاملاً دلخواه ما</td><td>شبیه بقیه سایت‌های بوت‌استرپی</td></tr>
+                        <tr><td>حجم فایل CSS</td><td>چند کیلوبایت</td><td>حدود ۲۳۰ کیلوبایت</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="alert alert-secondary">
+                    <strong>نتیجه:</strong> بوت‌استرپ سریع است، ولی سایت شما شبیه بقیه می‌شود.
+                    تازه برای اینکه بتوانید ظاهرش را دلخواه خودتان کنید، باز هم باید CSS بلد باشید؛
+                    یعنی دقیقاً همان چیزی که در چهارده جلسه گذشته یاد گرفتید.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== پاورقی ========== -->
+<footer class="text-white text-center py-4" style="background-color: #2f4f4f;">
+    <div class="container">
+        <p class="mb-1">دبیرستان دانش - تهران، خیابان آزادی</p>
+        <p class="mb-0 small">این صفحه فقط با کلاس‌های آماده بوت‌استرپ ساخته شده است.</p>
+    </div>
+</footer>
+
+<script src="bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

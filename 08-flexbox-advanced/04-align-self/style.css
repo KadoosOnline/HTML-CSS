@@ -1,0 +1,36 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    height: 200px;
+    background-color: #eeeeee;
+    padding: 20px;
+}
+
+.box {
+    width: 100px;
+    height: 80px;
+    background-color: #2f4f4f;
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.self-center {
+    align-self: center;
+}
+
+.self-end {
+    align-self: flex-end;
+}

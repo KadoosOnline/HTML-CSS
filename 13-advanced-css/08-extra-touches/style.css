@@ -1,0 +1,161 @@
+:root {
+    --primary: #2f4f4f;
+    --accent: #ff6347;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+html {
+    direction: rtl;
+    /* اسکرول نرم هنگام کلیک روی لینک‌های داخلی */
+    scroll-behavior: smooth;
+}
+
+body {
+    line-height: 1.8;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+/* ---------- نوار بالای صفحه ---------- */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    background-color: var(--primary);
+    color: white;
+    padding: 15px 30px;
+}
+
+.topbar nav {
+    display: flex;
+    gap: 15px;
+}
+
+.topbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.topbar a:hover {
+    color: var(--accent);
+}
+
+section {
+    /* ارتفاع زیاد فقط برای اینکه اثر اسکرول نرم دیده شود */
+    min-height: 90vh;
+    padding: 40px 30px;
+}
+
+section:nth-child(even) {
+    background-color: white;
+}
+
+h2 {
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ---------- cursor ---------- */
+.boxes {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.box {
+    width: 150px;
+    height: 80px;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.c-pointer     { cursor: pointer; }      /* دست - برای دکمه‌ها و لینک‌ها */
+.c-not-allowed { cursor: not-allowed; }  /* غیرفعال */
+.c-move        { cursor: move; }         /* جابه‌جا کردن */
+.c-text        { cursor: text; }         /* انتخاب متن */
+
+/* ---------- filter ---------- */
+.photos {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.photos img {
+    width: 200px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 6px;
+}
+
+.f-gray {
+    filter: grayscale(100%);     /* سیاه و سفید */
+}
+
+.f-blur {
+    filter: blur(3px);           /* محو */
+}
+
+.f-hover {
+    filter: grayscale(100%);
+    transition: filter 0.4s;
+}
+
+.f-hover:hover {
+    filter: grayscale(0%);       /* با hover رنگی می‌شود */
+}
+
+/* ---------- لینک‌ها ---------- */
+.links {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.links li {
+    margin-bottom: 10px;
+}
+
+.links a {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.links a:hover {
+    color: var(--accent);
+}
+
+/* ---------- نمایش کد ---------- */
+.code {
+    background-color: #2f4f4f;
+    color: #eee;
+    padding: 15px;
+    border-radius: 8px;
+    direction: ltr;
+    text-align: left;
+    overflow-x: auto;
+    font-family: monospace;
+    margin-top: 10px;
+}

@@ -1,0 +1,87 @@
+/* ---------- تعریف متغیرها ---------- */
+/* :root یعنی ریشه صفحه. متغیرها را اینجا تعریف می‌کنیم تا در کل سایت در دسترس باشند */
+:root {
+    --primary: #2f4f4f;      /* رنگ اصلی */
+    --accent: #ff6347;       /* رنگ تاکیدی */
+    --bg-light: #f5f5f5;     /* پس‌زمینه روشن */
+    --text: #333333;         /* رنگ متن */
+    --radius: 10px;          /* گردی گوشه‌ها */
+    --space: 20px;           /* فاصله استاندارد */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+html {
+    direction: rtl;
+}
+
+body {
+    padding: 30px;
+    line-height: 1.8;
+    color: var(--text);          /* استفاده از متغیر با var() */
+    background-color: var(--bg-light);
+}
+
+h1 {
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: var(--space);
+}
+
+.boxes {
+    display: flex;
+    gap: var(--space);
+    flex-wrap: wrap;
+    margin-bottom: var(--space);
+}
+
+.box {
+    width: 180px;
+    height: 100px;
+    border-radius: var(--radius);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.box-primary {
+    background-color: var(--primary);
+}
+
+.box-accent {
+    background-color: var(--accent);
+}
+
+.box-light {
+    background-color: white;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: var(--radius);
+    background-color: var(--primary);
+    color: white;
+    font-size: 1rem;
+    font-family: Tahoma, sans-serif;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--accent);
+}
+
+/* تمرین: فقط مقدار --primary را در بالای فایل عوض کنید
+   و ببینید کل صفحه با یک خط تغییر می‌کند. */

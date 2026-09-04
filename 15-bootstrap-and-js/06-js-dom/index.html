@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="گرفتن عنصرهای صفحه با getElementById و تغییر متن و استایل آنها با جاوااسکریپت">
+    <title>گرفتن و تغییر دادن عنصرهای صفحه</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+
+    <div class="note">
+        جلسه پانزدهم جزو سرفصل درس نیست.
+    </div>
+
+    <h1>جاوااسکریپت چطور صفحه را عوض می‌کند؟</h1>
+
+    <p>
+        کار جاوااسکریپت با صفحه دو مرحله دارد:
+        اول عنصر مورد نظر را <strong>پیدا کن</strong>، بعد آن را <strong>عوض کن</strong>.
+    </p>
+
+    <h2>مرحله ۱: پیدا کردن با id</h2>
+    <p>
+        در جلسه سوم یاد گرفتیم به هر عنصر می‌شود یک <code>id</code> داد.
+        جاوااسکریپت هم دقیقاً از همان <code>id</code> برای پیدا کردن عنصر استفاده می‌کند:
+    </p>
+    <pre class="code">let box = document.getElementById("welcome");</pre>
+    <p>
+        یعنی: «در سند (document) دنبال عنصری بگرد که <code>id</code> آن
+        <code>welcome</code> است و آن را داخل جعبه‌ای به نام <code>box</code> بگذار.»
+    </p>
+
+    <h2>مرحله ۲: عوض کردن</h2>
+    <pre class="code">box.textContent = "متن جدید";      // متن داخل عنصر
+box.style.color = "red";           // رنگ متن
+box.style.backgroundColor = "#fff"; // رنگ پس‌زمینه</pre>
+
+    <h2>نتیجه روی همین صفحه</h2>
+    <p>سه جعبه زیر را در HTML خالی یا با متن ساده نوشتیم؛ فایل <code>script.js</code> آنها را پر کرده است:</p>
+
+    <div class="demo" id="welcome">این متن قرار است عوض شود</div>
+    <div class="demo" id="today">اینجا هم همینطور</div>
+    <div class="demo" id="counter">و اینجا</div>
+
+    <div class="tip">
+        <strong>امتحان کنید:</strong> فایل <code>script.js</code> را باز کنید،
+        متن‌ها را عوض کنید و صفحه را دوباره بارگذاری کنید (<kbd>F5</kbd>).
+        دقت کنید که فایل HTML را اصلاً دست نزدیم، ولی صفحه عوض شد.
+    </div>
+
+    <h2>نکته مهم درباره <span dir="ltr">style</span></h2>
+    <p>
+        نام ویژگی‌های CSS در جاوااسکریپت کمی فرق دارد: خط تیره حذف می‌شود و
+        حرف بعدی بزرگ می‌شود.
+    </p>
+
+    <table class="tbl">
+        <tr><th>در CSS</th><th>در جاوااسکریپت</th></tr>
+        <tr><td dir="ltr">background-color</td><td dir="ltr">style.backgroundColor</td></tr>
+        <tr><td dir="ltr">font-size</td><td dir="ltr">style.fontSize</td></tr>
+        <tr><td dir="ltr">border-radius</td><td dir="ltr">style.borderRadius</td></tr>
+        <tr><td dir="ltr">color</td><td dir="ltr">style.color</td></tr>
+    </table>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

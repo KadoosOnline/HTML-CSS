@@ -1,0 +1,11 @@
+html {
+    direction: rtl;
+}
+
+.tahoma-text {
+    font-family: Tahoma, sans-serif;
+}
+
+.serif-text {
+    font-family: "Times New Roman", serif;
+}

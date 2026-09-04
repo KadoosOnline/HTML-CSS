@@ -1,0 +1,39 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+.courses {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #f5f5f5;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+}
+
+/* در تبلت، دو ستون */
+@media (max-width: 900px) {
+    .courses {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* در موبایل، یک ستون */
+@media (max-width: 600px) {
+    .courses {
+        grid-template-columns: 1fr;
+    }
+}

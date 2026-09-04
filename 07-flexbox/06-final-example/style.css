@@ -1,0 +1,46 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2f4f4f;
+    color: white;
+    padding: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.courses {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    padding: 30px;
+}
+
+.card {
+    width: 220px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+}

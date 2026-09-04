@@ -1,0 +1,53 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+h1 {
+    padding: 20px;
+    color: #2f4f4f;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+    padding: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: #2f4f4f;
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-family: Tahoma, sans-serif;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #2f4f4f;
+}
+
+button {
+    padding: 10px;
+    background-color: #2f4f4f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: orangered;
+}

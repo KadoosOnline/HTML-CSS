@@ -1,0 +1,8 @@
+html {
+    direction: rtl;
+}
+
+h1, h2, p {
+    font-family: B Titr, Vazir, Tahoma, sans-serif;
+    color: #32c710;
+}

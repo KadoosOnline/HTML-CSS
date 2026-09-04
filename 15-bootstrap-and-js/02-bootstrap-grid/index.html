@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="سیستم ستونی بوت‌استرپ - container و row و col و ساخت چیدمان واکنش‌گرا بدون media query">
+    <title>سیستم ستونی بوت‌استرپ</title>
+    <link rel="stylesheet" href="bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container py-4">
+
+    <h1>سیستم ستونی (Grid) بوت‌استرپ</h1>
+    <p>
+        در جلسه یازدهم Grid و در جلسه دوازدهم media query را یاد گرفتیم.
+        بوت‌استرپ همین دو کار را با سه کلاس ساده انجام می‌دهد.
+    </p>
+
+    <h2>سه کلاس پایه</h2>
+    <ul>
+        <li><code>container</code>: یک جعبه وسط‌چین با عرض محدود (مثل <code>max-width</code> خودمان)</li>
+        <li><code>row</code>: یک ردیف؛ ستون‌ها باید داخل آن باشند</li>
+        <li><code>col</code>: یک ستون داخل ردیف</li>
+    </ul>
+
+    <h2>مثال ۱: سه ستون مساوی</h2>
+    <div class="row">
+        <div class="col"><div class="demo">ستون ۱</div></div>
+        <div class="col"><div class="demo">ستون ۲</div></div>
+        <div class="col"><div class="demo">ستون ۳</div></div>
+    </div>
+    <pre class="code">&lt;div class="row"&gt;
+    &lt;div class="col"&gt;ستون ۱&lt;/div&gt;
+    &lt;div class="col"&gt;ستون ۲&lt;/div&gt;
+    &lt;div class="col"&gt;ستون ۳&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+    <h2>مثال ۲: هر ردیف ۱۲ ستون است</h2>
+    <p>
+        بوت‌استرپ هر ردیف را به <strong>۱۲ قسمت</strong> تقسیم می‌کند.
+        عدد جلوی <code>col-</code> می‌گوید این جعبه چند قسمت از آن ۱۲ تا را بگیرد.
+    </p>
+
+    <div class="row">
+        <div class="col-6"><div class="demo">col-6 (نصف)</div></div>
+        <div class="col-6"><div class="demo">col-6 (نصف)</div></div>
+    </div>
+
+    <div class="row">
+        <div class="col-8"><div class="demo">col-8</div></div>
+        <div class="col-4"><div class="demo">col-4</div></div>
+    </div>
+
+    <div class="row">
+        <div class="col-3"><div class="demo">۳</div></div>
+        <div class="col-3"><div class="demo">۳</div></div>
+        <div class="col-3"><div class="demo">۳</div></div>
+        <div class="col-3"><div class="demo">۳</div></div>
+    </div>
+
+    <p>جمع عددها باید ۱۲ شود: ۶+۶ یا ۸+۴ یا ۳+۳+۳+۳.</p>
+
+    <h2>مثال ۳: واکنش‌گرا بدون media query</h2>
+    <p>
+        حرف وسط کلاس یعنی «از این اندازه صفحه به بالا».
+        <code>col-md-4</code> یعنی: روی تبلت و دسکتاپ ۴ قسمت از ۱۲ (یعنی یک‌سوم)،
+        ولی روی موبایل تمام عرض.
+    </p>
+
+    <div class="row">
+        <div class="col-md-4"><div class="demo">col-md-4</div></div>
+        <div class="col-md-4"><div class="demo">col-md-4</div></div>
+        <div class="col-md-4"><div class="demo">col-md-4</div></div>
+    </div>
+
+    <pre class="code">&lt;div class="row"&gt;
+    &lt;div class="col-md-4"&gt;...&lt;/div&gt;
+    &lt;div class="col-md-4"&gt;...&lt;/div&gt;
+    &lt;div class="col-md-4"&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+    <div class="alert alert-info">
+        <strong>امتحان کنید:</strong> پنجره مرورگر را باریک کنید.
+        سه جعبه بالا خودشان زیر هم می‌روند، بدون اینکه ما حتی یک <code>@media</code> نوشته باشیم.
+    </div>
+
+    <h2>حروف اندازه‌ها</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>کلاس</th>
+                <th>از چه عرضی به بالا</th>
+                <th>معمولاً یعنی</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><code>col-</code></td><td>همه اندازه‌ها</td><td>همیشه</td></tr>
+            <tr><td><code>col-sm-</code></td><td>۵۷۶ پیکسل</td><td>موبایل بزرگ</td></tr>
+            <tr><td><code>col-md-</code></td><td>۷۶۸ پیکسل</td><td>تبلت</td></tr>
+            <tr><td><code>col-lg-</code></td><td>۹۹۲ پیکسل</td><td>لپ‌تاپ</td></tr>
+            <tr><td><code>col-xl-</code></td><td>۱۲۰۰ پیکسل</td><td>مانیتور بزرگ</td></tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

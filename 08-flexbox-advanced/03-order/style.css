@@ -1,0 +1,39 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+.container {
+    display: flex;
+    gap: 10px;
+    background-color: #eeeeee;
+    padding: 20px;
+}
+
+.box {
+    width: 150px;
+    height: 100px;
+    background-color: #2f4f4f;
+    color: white;
+    text-align: center;
+    line-height: 1.3;
+    padding-top: 35px;
+}
+
+.first {
+    order: 3;
+}
+
+.second {
+    order: 1;
+}
+
+.third {
+    order: 2;
+}

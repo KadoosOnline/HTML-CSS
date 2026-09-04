@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+html {
+    direction: rtl;
+}
+
+.container {
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-box {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 300px;
+}
+
+.box {
+    width: 50%;
+    height: 50%;
+}
+
+.green {
+    background-color: darkgreen;
+}
+
+.red {
+    background-color: darkred;
+}
+
+.blue {
+    background-color: darkblue;
+}
+
+.gold {
+    background-color: gold;
+}

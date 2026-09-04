@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="رویداد کلیک در جاوااسکریپت - دکمه‌ای که رنگ صفحه را عوض می‌کند و شمارنده ساده">
+    <title>رویداد کلیک</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+
+    <div class="note">
+        جلسه پانزدهم جزو سرفصل درس نیست.
+    </div>
+
+    <h1>وقتی کاربر کلیک می‌کند</h1>
+
+    <p>
+        در جلسه پنجم <code>:hover</code> را یاد گرفتیم: وقتی موس روی چیزی می‌رود،
+        ظاهرش عوض می‌شود. ولی CSS نمی‌تواند بفهمد کاربر <strong>کلیک</strong> کرده و
+        بعد از آن کاری انجام دهد. این کار جاوااسکریپت است.
+    </p>
+
+    <h2>الگوی کار</h2>
+    <pre class="code">let btn = document.getElementById("my-button");
+
+btn.onclick = function () {
+    // هر چه اینجا بنویسیم، با هر کلیک اجرا می‌شود
+};</pre>
+    <p>
+        <code>onclick</code> یعنی «هنگام کلیک». آن <code>function</code> یک بسته
+        از دستورهاست که تا وقتی کلیک نشود، اجرا نمی‌شود.
+    </p>
+
+    <h2>مثال ۱: رنگ پس‌زمینه صفحه را عوض کن</h2>
+    <button id="color-btn" class="btn">رنگ صفحه را عوض کن</button>
+    <button id="reset-btn" class="btn btn-light">برگرد به حالت اول</button>
+
+    <h2>مثال ۲: شمارنده</h2>
+    <p>هر بار که کلیک کنید، عدد یکی زیاد می‌شود:</p>
+
+    <div class="counter-box">
+        <div id="count">۰</div>
+        <button id="count-btn" class="btn">یکی اضافه کن</button>
+    </div>
+
+    <h2>مثال ۳: نمایش و پنهان کردن</h2>
+    <button id="toggle-btn" class="btn">متن را نشان بده / پنهان کن</button>
+
+    <p id="secret" class="secret">
+        این پاراگراف با کلیک روی دکمه ظاهر و ناپدید می‌شود.
+        در جلسه نهم <code>display: none</code> را یاد گرفتیم؛
+        اینجا فقط جاوااسکریپت آن را روشن و خاموش می‌کند.
+    </p>
+
+    <div class="tip">
+        <strong>کل کاری که کردیم:</strong> فایل <code>script.js</code> این صفحه
+        کمتر از ۲۵ خط است. با همین چند خط، صفحه‌ای که تا دیروز فقط «نگاه کردنی» بود،
+        حالا به کاربر جواب می‌دهد.
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

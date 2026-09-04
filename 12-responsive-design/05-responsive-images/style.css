@@ -1,0 +1,23 @@
+html {
+    direction: rtl;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+p {
+    padding: 15px;
+}
+
+.fixed-image {
+    width: 600px;
+}
+
+.responsive-image {
+    width: 100%;
+    height: auto;
+}

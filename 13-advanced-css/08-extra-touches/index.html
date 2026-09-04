@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نکته‌های تکمیلی</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="topbar">
+        <strong>نکته‌های تکمیلی</strong>
+        <nav>
+            <a href="#part1">لینک داخلی</a>
+            <a href="#part2">cursor</a>
+            <a href="#part3">filter</a>
+            <a href="#part4">لینک خارجی</a>
+        </nav>
+    </header>
+
+    <section id="part1">
+        <h2>۱. لینک داخل همان صفحه + اسکرول نرم</h2>
+        <p>
+            اگر به یک عنصر id بدهیم، می‌توانیم با href="#id" به آن لینک بدهیم.
+            با scroll-behavior: smooth روی html، پرش صفحه نرم می‌شود.
+            روی لینک‌های بالای صفحه کلیک کنید.
+        </p>
+    </section>
+
+    <section id="part2">
+        <h2>۲. شکل نشانگر موس (cursor)</h2>
+        <p>موس را روی جعبه‌ها ببرید:</p>
+        <div class="boxes">
+            <div class="box c-pointer">pointer</div>
+            <div class="box c-not-allowed">not-allowed</div>
+            <div class="box c-move">move</div>
+            <div class="box c-text">text</div>
+        </div>
+    </section>
+
+    <section id="part3">
+        <h2>۳. فیلتر روی عکس (filter)</h2>
+        <div class="photos">
+            <div>
+                <img src="images/photo.jpg" alt="بدون فیلتر">
+                <p>بدون فیلتر</p>
+            </div>
+            <div>
+                <img class="f-gray" src="images/photo.jpg" alt="سیاه و سفید">
+                <p>grayscale</p>
+            </div>
+            <div>
+                <img class="f-blur" src="images/photo.jpg" alt="محو">
+                <p>blur</p>
+            </div>
+            <div>
+                <img class="f-hover" src="images/photo.jpg" alt="با hover">
+                <p>سیاه‌وسفید تا زمان hover</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="part4">
+        <h2>۴. انواع لینک</h2>
+        <ul class="links">
+            <li><a href="https://developer.mozilla.org" target="_blank">باز شدن در تب جدید (target="_blank")</a></li>
+            <li><a href="mailto:info@kadoos.ir">ارسال ایمیل (mailto:)</a></li>
+            <li><a href="tel:01333000000">تماس تلفنی (tel:)</a></li>
+        </ul>
+    </section>
+
+    <section id="part5">
+        <h2>۵. عنوان و توضیحات صفحه</h2>
+        <p>
+            به بالای فایل HTML نگاه کنید: تگ title همان چیزی است که در تب مرورگر
+            دیده می‌شود و در نتایج گوگل هم نمایش داده می‌شود. تگ meta با
+            name="description" هم توضیح کوتاه صفحه است.
+        </p>
+        <pre class="code">&lt;title&gt;آموزشگاه کادوس&lt;/title&gt;
+&lt;meta name="description" content="آموزش طراحی وب در رشت"&gt;</pre>
+    </section>
+
+</body>
+</html>

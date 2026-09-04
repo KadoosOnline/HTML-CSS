@@ -1,0 +1,17 @@
+html {
+    direction: rtl;
+}
+
+.uppercase-title {
+    font-family: Tahoma, sans-serif;
+    text-transform: uppercase;
+}
+
+a {
+    color: darkblue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

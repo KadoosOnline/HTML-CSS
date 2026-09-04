@@ -1,0 +1,13 @@
+html {
+    direction: rtl;
+}
+
+h1 {
+    font-family: Tahoma, sans-serif;
+    color: #2f4f4f;
+}
+
+.courses li {
+    color: darkgreen;
+    font-weight: bold;
+}
